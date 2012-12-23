@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xml:lang="fr">
+<head>
+<title>jQuery Pong</title>
+	<script src="js/jquery.1.2.6.min.js" type="text/javascript"></script>
+	<script src="js/jquery.easing.1.3.min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+// when the DOM is ready...
+$(document).ready(function () {
+	/*$('#frame').hover(function(e){
+		$('#player1').animate( {top: (e.pageY-112)}, 500 );
+	  });*/
+	
+	$('#frame').click(function(e){
+		$('#balle').animate( {top: (e.pageY-this.offsetTop), left: (e.pageX-this.offsetLeft)}, 1500, 'easeOutBounce' );
+	  });
+});
+	
+	</script>
+	<style type="text/css">
+		body{width:100%;backgrond:#666;}
+		#frame{
+			background:#000;border:2px solid #FFF;
+			width:640px; height:480px;
+			position:relative;
+			margin:100px auto;
+		}
+		#player1,#player2{
+			width:10px;
+			height:50px;
+			background:#FFF;
+			position:absolute;
+		}
+		#balle{
+			width:10px;
+			height:10px;
+			-moz-border-radius:5px;
+			background:#FFF;
+			position:absolute;
+			top:50%;
+			left:50%;
+		}
+		#player1{
+			left:10px;
+			top:10px;
+		}
+		#player2{
+			right:10px;
+			top:10px;
+		}
+	</style>
+</head>
+<body>
+<div id="frame">
+	<div id="player1"></div>
+	<div id="player2"></div>
+	<div id="balle"></div>
+</div>
+</body>
+</html>

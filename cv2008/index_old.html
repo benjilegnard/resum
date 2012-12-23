@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>CV Benjamin Legrand - Développeur Web - Intégrateur CSS/xHTML</title>
+<style type="text/css" media="screen">
+@import url(cv.css);
+</style>
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	/*
+	$(".bulle h3:first").addClass("active");	
+	$(".bulle p:not(:first)").hide();
+
+	$(".bulle h3").click(function(){
+		$(this).next("p").slideToggle("slow")
+		.siblings("p:visible").slideUp("slow");
+		$(this).toggleClass("active");
+		$(this).siblings("h3").removeClass("active");
+	});
+*/
+	$("#menu a").hover(function() {
+		$(this).next("em").animate({opacity: "show", top: "-10"}, "slow");
+	}, function() {
+		$(this).next("em").animate({opacity: "hide", top:"-8000"}, "fast");
+	});
+	
+	$("#menu_img img").hover(function() {
+		$(this).animate({width: "64", height: "64"}, "slow");
+	}, function() {
+		$(this).animate({width: "32", height:"32"}, "fast");
+	});
+	//exemple d'animation
+	$("#bulle_cv").click(function(){
+	
+		$("#bulle_cv").animate({opacity: "0.1", left: "+=400"}, 1200)
+		.animate({opacity: "0.4", top: "+=160"}, "slow")
+		.animate({opacity: "1", left: "0"}, "slow")
+		.animate({top: "0"}, "fast")
+		.slideUp()
+		.slideDown("slow")
+		return false;
+	
+	});
+});
+</script>
+
+</head>
+<body>
+<div id="menu_img">
+<img src="ico/assistant.png" alt="Expériences" style="width:32px;height:32px;"/>
+<img src="ico/database.png" alt="Expériences" style="width:32px;height:32px;"/>
+<img src="ico/assistant.png" alt="Expériences" style="width:32px;height:32px;"/>
+<img src="ico/tux.png" alt="Expériences" style="width:32px;height:32px;"/>
+<img src="ico/colors.png" alt="Expériences" style="width:32px;height:32px;"/>
+<img src="ico/assistant.png" alt="Expériences" style="width:32px;height:32px;"/>
+<img src="ico/rss.png" 		alt="Flux Rss" style="width:32px;height:32px;"/>
+</div>
+<div id="menu">
+<ul>
+	<li>
+		<a href="">Formation</a>
+		<em style="top: -160px; display: none;">Licence Pro<br/>DUT Informatique<br/>Bac Sti Elec</em>
+	</li>
+	<li>
+		<a href="">Compétences</a>
+		<em></em></li>
+	<li>Technologies</li>
+	<li>Experiences</li>
+</ul>
+</div>
+
+	<div id="bulle_cv">
+		<div class="none">
+		<name>Benjamin Legrand</name>
+		<p>
+		<address>jibhaine@hotmail.fr</address>
+		<a href="http://www.jibhaine.fr">Mon blog</a>
+		</div>
+	</div>
+<div id="page">
+
+<h1>Curriculum Vitae Benjamin Legrand</h1>
+
+
+	<div id="diplomes" class="bulle">
+		<h3>Diplômes</h3>
+		<div class="fond">
+		
+		<ul><li>2008 : Licence Professionnelle Systèmes Informatiques et Logiciels
+		<br/>option : Développement d'applications réparties</li>
+		</ul>
+		</div>
+	</div>
+
+
+	<div id="technos" class="bulle">
+		<h3>Technologies</h3>
+		<div class="fond">
+		</div>
+	</div>
+
+
+	<div id="loisirs" class="bulle">
+		<h3>Loisirs</h3>
+		<div class="fond">
+		</div>
+
+	</div>
+	<div id="connais" class="bulle">
+		<h3>Connaissances</h3>
+		<div class="fond">
+		</div>
+
+
+	<div id="international" class="bulle">
+		<h3>Diplômes</h3>
+		<div class="fond">
+		</div>
+	</div>
+</div>
+</body>
+</html>
