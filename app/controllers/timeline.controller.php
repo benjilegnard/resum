@@ -1,9 +1,9 @@
 <?php
-//GET index principal
+/*
+//GET route
 $app->get('/', function () use ($app) {
 	echo 'This is a GET route';
 });
-/*
 //POST route
 $app->post('/post', function () {
     echo 'This is a POST route';
