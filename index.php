@@ -4,7 +4,7 @@ define('ROOT', dirname(__DIR__));
 require ROOT.'/vendor/autoload.php';
 
 \Slim\Slim::registerAutoloader();
-require ROOT.'/app/config/appconfig.php';
+require ROOT.'/app/config.php';
 
 $app = new \Slim\Slim(array(
     'templates.path' => ROOT.'/app/views/',
