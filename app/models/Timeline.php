@@ -2,6 +2,8 @@
 
 class Timeline extends ActiveRecord\Model
 {
-    static $has_many = array('period');
+    static $attr_accessible = array('headline','type','start_date','end_date','text');
+
+    static $has_many = array('period','asset');
 
 }

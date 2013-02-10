@@ -13,4 +13,6 @@
 
 class Asset extends ActiveRecord\Model{
 
+    static $attr_accessible = array('media','credit','caption');
+
 }

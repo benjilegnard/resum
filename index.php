@@ -1,4 +1,11 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors","On");
+ini_set("display_startup_errors","On");
+date_default_timezone_set("Europe/Paris");
+
+
+set_include_path(get_include_path() . PATH_SEPARATOR . "./vendor");
 define('ROOT', dirname(__DIR__));
 
 require ROOT.'/vendor/autoload.php';
@@ -12,7 +19,7 @@ $app = new \Slim\Slim(array(
     'view' => new \Slim\Extras\Views\Twig(),
     'cookies.secret_key' => md5('appsecretkey'),
 
-    'log.enabled'    => false,
+    'log.enabled'    => true,
     'log.writer' => new \Slim\Extras\Log\DateTimeFileWriter(array(
         'path' => './logs',
         'name_format' => 'Y-m-d',
