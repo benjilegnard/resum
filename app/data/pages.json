@@ -1,0 +1,47 @@
+{"pages":[
+    {
+        "key":"home",
+        "title":"Benjamin Legrand | Resume",
+        "content":{
+            "slides":[
+                {
+                    "uid":0,
+                    "title":"Je m'appelle Benjamin Legrand",
+                    "caption":"27 ans, célibataire, Permis B"
+                },
+                {
+                    "uid":0,
+                    "title":"Je suis un développeur",
+                    "caption":"Spécialité web et devices mobiles."
+                },
+                {
+                    "uid":0,
+                    "title":"Je suis un créatif",
+                    "caption":"Maitrise de photoshop, des outils 3D."
+                },
+                {
+                    "uid":0,
+                    "title":"Je suis un musicien",
+                    "caption":"27 ans, célibataire, Permis B"
+                },
+                {
+                    "uid":0,
+                    "title":"Je suis à votre service",
+                    "caption":"N\'hésitez pas à me contacter pour toute question."
+                }
+            ]
+        }
+    },
+    {
+        "key":"timeline",
+        "title":"gallerie de mes réalisations et expériences professionnelles sur une ligne de temps",
+        "description":"",
+        "content":{}
+    },
+    {
+        "key":"contact",
+        "title":"contactez-moi",
+        "description":"",
+        "content":{}
+    }
+]}

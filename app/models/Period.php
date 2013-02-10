@@ -1,6 +1,6 @@
 <?php
 
-/**
+/**        A period is a 'date' event start_date is mandatory, end_date can be null.
 <code>
 			{
 				"startDate":"2011,12,10",
@@ -17,6 +17,11 @@
 </code>
 */
 
-class Date extends ActiveRecord\Model{
+class Period extends ActiveRecord\Model{
+
+
+    static $attr_accessible = array('headline','start_date','end_date','text');
+
+    static $has_many = array('asset');
 
 }
