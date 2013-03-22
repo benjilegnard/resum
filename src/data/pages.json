@@ -1,0 +1,24 @@
+{"pages":[
+    {
+        "id":0,
+        "key":"home",
+        "title":"Benjamin Legrand | Resume",
+        "content":[
+            "slides","commons","nodes"
+        ]
+    },
+    {
+        "id":1,
+        "key":"timeline",
+        "title":"gallerie de mes réalisations et expériences professionnelles sur une ligne de temps",
+        "description":"",
+        "content":{}
+    },
+    {
+        "id":2,
+        "key":"contact",
+        "title":"contactez-moi",
+        "description":"",
+        "content":{}
+    }
+]}
