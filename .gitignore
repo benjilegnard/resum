@@ -1,4 +1,6 @@
 vendor/
+logs/
+build/
 .idea/
 .svn/
 composer.lock

@@ -1,0 +1,51 @@
+{
+    "nodes":{
+        "id":0,
+        "title":"?",
+        "description":"Main Node, CV index",
+        "color":"",
+        "icon":"",
+        "children":[
+
+            {
+                "id":1,
+                "title":"TimeLine",
+                "description":"Main Node, CV index",
+                "color":"",
+                "icon":"",
+                "children":[
+                    {}
+                ]
+            },
+            {
+                "id":0,
+                "title":"Skills",
+                "description":"Main Node, CV index",
+                "color":"",
+                "icon":"",
+                "children":[
+                    {}
+                ]
+            },
+            {
+                "id":0,
+                "title":"Realisations",
+                "description":"Main Node, CV index",
+                "color":"",
+                "icon":"",
+                "children":[
+                    {}
+                ]
+            },
+            {
+                "id":0,
+                "title":"Online presence",
+                "description":"Main Node, CV index",
+                "color":"",
+                "icon":"",
+                "children":[
+                    {}
+                ]
+            }
+        ]
+    }}

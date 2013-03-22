@@ -1,34 +1,34 @@
 {
-    "name"          : "jibhaine/resum",
-    "description"   : "my xResume",
-    "homepage"      : "http://www.benjaminlegrand.net/",
-    "version"       : "1.0",
-    "authors"       :
-    [
+    "name":"jibhaine/resum",
+    "description":"my xResume",
+    "homepage":"http://www.benjaminlegrand.net/",
+    "version":"1.0",
+    "authors":[
         {
-            "name"      : "Benjamin Legrand",
-            "email"     : "benjamin.legrand@sogeti.com",
-            "homepage"  : "http://www.fr.sogeti.com/"
+            "name":"Benjamin Legrand",
+            "email":"benjamin.legrand@sogeti.com",
+            "homepage":"http://www.fr.sogeti.com/"
         }
     ],
     "minimum-stability":"dev",
-    "require":
-    {
-        "slim/slim"     : "2.*",
-        "slim/extras"  : "2.*",
-		"kriswallsmith/assetic":"*",
-        "leafo/lessphp": "v0.3.8",
-        "twig/twig"    : "1.10.*",
-        "underscore/Underscore.php": "1.3.1",
-        "php-activerecord/php-activerecord":"*",
-        "dflydev/markdown": "v1.0.2"
+    "require":{
+        "slim/slim":"2.*",
+        "slim/extras":"2.*",
+        "kriswallsmith/assetic":"*",
+        "leafo/lessphp":"v0.3.8",
+        "twig/twig":"1.*",
+        "underscore/Underscore.php":"1.3.1",
+        "dflydev/markdown":"v1.0.2"
     },
-    "require-dev":
-    {
+    "autoload":{
+        "psr-0":{
+            "":"Resum"
+        }
+    },
+    "require-dev":{
         "apigen/apigen":"2.*",
         "phpunit/phpunit":">=3.7.0@stable",
         "phpunit/phpunit-selenium":"1.2.11",
-        "phpunit/dbunit":"1.2.1",
         "phpunit/phpunit-story":"1.0.1"
     }
 }

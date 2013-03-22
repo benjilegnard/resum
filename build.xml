@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="resum" default="build">
+
+    <!-- properties -->
+    <property name="r.js" value="build/lib/r.js" />
+
+    <property name="rhino.jar" value="build/lib/js.jar" />
+    <property name="js.build" value="build/js.build.js" />
+    <property name="css.build" value="build/css.build.js" />
+
+    <target name="composer" description="Installing dependencies">
+
+        <exec executable="wget" failonerror="true">
+            <arg value="-nc" />
+            <arg value="http://getcomposer.org/composer.phar" />
+        </exec>
+        <exec executable="php" failonerror="true">
+            <arg value="composer.phar" />
+            <arg value="install" />
+            <arg value="--install-suggests" />
+        </exec>
+    </target>
+
+    <target name="clean" description="Cleanup build artifacts">
+        <delete dir="${basedir}/build/api"/>
+        <delete dir="${basedir}/build/code-browser"/>
+        <delete dir="${basedir}/build/coverage"/>
+        <delete dir="${basedir}/build/doc"/>
+        <delete dir="${basedir}/build/logs"/>
+        <delete dir="${basedir}/build/pdepend"/>
+        <delete dir="${basedir}/vendor"/>
+        <delete file="${basedir}/composer.phar"/>
+        <delete file="${basedir}/composer.lock"/>
+    </target>
+
+
+    <target name="-optimize" description="Combine and minify files.">
+        <java classname="org.mozilla.javascript.tools.shell.Main">
+            <classpath>
+                <pathelement location="${rhino.jar}" />
+                <pathelement location="${closure.jar}" />
+            </classpath>
+            <arg value="${r.js}"/>
+            <arg value="-o"/>
+            <arg value="${requirejs.optimizer.settings}"/>
+        </java>
+        <echo message="optimized ${requirejs.optimizer.settings}" />
+    </target>
+    <target name="optimizeJS">
+        <echo message="Combining and minifying JS files." />
+        <antcall target="-optimize">
+            <param name="requirejs.optimizer.settings" value="${js.build}" />
+        </antcall>
+    </target>
+    <target name="optimizeCSS">
+        <echo message="Combining and compressing CSS files." />
+        <antcall target="-optimize">
+            <param name="requirejs.optimizer.settings" value="${css.build}" />
+        </antcall>
+    </target>
+
+</project>
