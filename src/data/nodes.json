@@ -18,7 +18,7 @@
                 ]
             },
             {
-                "id":0,
+                "id":2,
                 "title":"Skills",
                 "description":"Main Node, CV index",
                 "color":"",
@@ -28,7 +28,7 @@
                 ]
             },
             {
-                "id":0,
+                "id":3,
                 "title":"Realisations",
                 "description":"Main Node, CV index",
                 "color":"",
@@ -38,7 +38,7 @@
                 ]
             },
             {
-                "id":0,
+                "id":4,
                 "title":"Online presence",
                 "description":"Main Node, CV index",
                 "color":"",
