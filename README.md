@@ -7,9 +7,9 @@ my TimeLine based portfolio / resume, to sell myself and tell the world my techn
 
 #Features
 
-* It is a customizable web site for displaying events on a timeline.
-* Each event as a .bloc div.
-* Imports resume from Facebook/Viadeo/linkedIn if i got the time
+* A sell-myself slideshow.
+* A node-based resume : skills, realisations and .
+* A contact form for requests and job propositions.
 
 backend using [Slim](), [Bootstrap]() and [Backbone-require-boilerplate]()
 

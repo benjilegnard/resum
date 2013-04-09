@@ -163,7 +163,7 @@ $app->map(
 );
 
 //main page
-$app->get('/(:path)(.html)', function ($path) use ($app, $rest) {
+$app->get('/(:path)(.html)', function ($path = null) use ($app, $rest) {
     $app->getLog()->debug("HTML request");
     $app->render('intro.html.twig');
 });
