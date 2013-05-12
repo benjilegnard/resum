@@ -6,10 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 require.config({
-    baseUrl:'js/',
-    paths:[
-
-    ]
+    baseUrl:'js/'
 });
 define(["jquery","backbone","raphael","bootstrap"],function($, Backbone, Raphael){
 
