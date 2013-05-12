@@ -45,6 +45,16 @@ $app = new \Slim\Slim(array(
 ));
 $app->setName('resum');
 
+//LESS middleware for on-th-fly compilation, cf https://github.com/hellogerard/less-slim-middleware
+use \Slim\Middleware\Less;
+
+$app->add(new Less(array(
+    'src' => '/path/to/public',
+    'cache' => true,
+    'cache.dir' => '/path/to/cache',
+    'minify' => true,
+    'debug' => false
+));
 
 /**
  * Automatic login based on user cookie
