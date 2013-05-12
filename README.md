@@ -28,13 +28,17 @@ The site is built using several php frameworks, see composer.json for details
 
 ##Javascript
 
+librairies
+
   Jquery
+  Jquery.mobile
   Backbone
   Underscore
   Require
   Raphael
   Traer
 
+
 #Credits
 
-Coded with narcissic love by Benjamin Legrand
+Coded with love by Benjamin Legrand for himself (c) 2013.

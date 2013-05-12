@@ -6,9 +6,9 @@ date_default_timezone_set("Europe/Paris");
 
 
 set_include_path(get_include_path() . PATH_SEPARATOR . "./vendor");
-define('ROOT', dirname('.'));
+define('ROOT', dirname('./..'));
 
-require './vendor/autoload.php';
+require '../vendor/autoload.php';
 \Slim\Slim::registerAutoloader();
 
 /**
@@ -31,14 +31,14 @@ if(is_writable(ROOT . '/cache/twig')) {
 );
 
 $app = new \Slim\Slim(array(
-    'templates.path' => ROOT.'/src/views/',
+    'templates.path' => '../views/',
     'debug' => false,
     'view' => new \Slim\Extras\Views\Twig(),
     'cookies.secret_key' => md5('appsecretkey'),
 
     'log.enabled'    => true,
     'log.writer' => new \Slim\Extras\Log\DateTimeFileWriter(array(
-        'path' => './logs',
+        'path' => '../logs',
         'name_format' => 'Y-m-d',
         'message_format' => '%label% - %date% - %message%'
     ))
@@ -63,26 +63,8 @@ if($userid = $app->getEncryptedCookie('user_id')) {
     $currentUser = null;
 }
 
-
-/**
- * authentication middleware for is in routes you want protected
- *
- */
-//authentication
-$auth = function () use ($app, $currentUser) {
-    if($currentUser instanceof User) {
-        $app->config('cookies.user_id', $currentUser->id);
-        $app->view()->appendData(array('currentUser' => $currentUser, 'app' => $app));
-        $app->setEncryptedCookie('user_id', $currentUser->id, "+ 30 day");
-        //$app->
-        return true; //true if authenticated, false otherwise
-    } else {
-        //uncomment if redirect
-        //$app->redirect($app->urlFor('login'));
-    }
-};
 $getData = function($entity) use($app){
-    $filePath = ROOT.'/src/data/' . $entity . '.json';
+    $filePath = ROOT.'/data/' . $entity . '.json';
     $app->getLog()->debug("entity param is OK, opening file ". $filePath);
 
     $fileContent = file_get_contents(  $filePath );
