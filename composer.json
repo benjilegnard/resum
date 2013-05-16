@@ -28,6 +28,7 @@
     },
     "require-dev":{
         "apigen/apigen":"2.*",
+        "guzzle/guzzle":"*",
         "phpunit/phpunit":">=3.7.0@stable",
         "phpunit/phpunit-selenium":"1.2.11",
         "phpunit/phpunit-story":"1.0.1"

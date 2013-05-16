@@ -8,6 +8,6 @@
 require.config({
     baseUrl:'js/'
 });
-define(["jquery","backbone","raphael","bootstrap"],function($, Backbone, Raphael){
+define(["zepto","backbone","raphael","traer"],function($, Backbone, Raphael){
 
 });

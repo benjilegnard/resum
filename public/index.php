@@ -48,13 +48,17 @@ $app->setName('resum');
 //LESS middleware for on-th-fly compilation, cf https://github.com/hellogerard/less-slim-middleware
 use \Slim\Middleware\Less;
 
-$app->add(new Less(array(
-    'src' => '/path/to/public',
-    'cache' => true,
-    'cache.dir' => '/path/to/cache',
-    'minify' => true,
-    'debug' => false
-));
+$app->add(
+    new Less(
+        array(
+            'src' => './css',
+            'cache' => true,
+            'cache.dir' => '../cache',
+            'minify' => true,
+            'debug' => false
+        )
+    )
+);
 
 /**
  * Automatic login based on user cookie
@@ -92,7 +96,7 @@ $app->view()->appendData(
     array('currentUser' => $currentUser,
         'app' => $app,
         'rootUri' => $rootUri,
-        'assetUri' => $assetUri.'/public/',
+        'assetUri' => $assetUri,
         'resourceUri' => $resourceUri
     ));
 
@@ -100,6 +104,11 @@ foreach(glob(ROOT.'/src/controllers/*.php') as $router) {
     include $router;
 }
 
+//main page
+$app->get('/(:path)(.html)', function ($path = null) use ($app) {
+    $app->getLog()->debug("HTML request");
+    $app->render($path.'.html.twig');
+});
 //api rest / json, adds a json file in src/data and its name here to enable it.
 $rest = array("icons","jobs","nodes","pages","slides","timeline");
 
@@ -154,10 +163,5 @@ $app->map(
     array('id' => '\d+')
 );
 
-//main page
-$app->get('/(:path)(.html)', function ($path = null) use ($app, $rest) {
-    $app->getLog()->debug("HTML request");
-    $app->render('intro.html.twig');
-});
 
 $app->run();

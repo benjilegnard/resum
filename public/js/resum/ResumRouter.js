@@ -1,5 +1,5 @@
 
-define(["backbone","raphael"],function(Backbone,Raphael){
+define(["backbone","raphael"],function(Backbone, Raphael){
 
     var ResumRouter = Backbone.Router.extend({});
 

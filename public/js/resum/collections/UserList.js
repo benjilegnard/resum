@@ -1,12 +1,12 @@
 define(["jquery","backbone","models/UserModel"], function($, Backbone, User) {
 
-    var Users = Backbone.Collection.extend({
+    var UserList = Backbone.Collection.extend({
 
         model: User
 
     });
 
     // Returns the Model class
-    return Users;
+    return UserList;
 
 });
