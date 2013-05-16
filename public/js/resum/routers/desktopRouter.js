@@ -1,4 +1,4 @@
-define(["jquery","backbone","models/UserModel", "views/UserView","collections/UsersCollection"], function($, Backbone, UserModel, UserView, UsersCollection){
+define(["jquery","backbone","models/UserModel", "views/UserView","collections/UserList"], function($, Backbone, UserModel, UserView, UserList){
 
     var Router = Backbone.Router.extend({
 
@@ -23,7 +23,7 @@ define(["jquery","backbone","models/UserModel", "views/UserView","collections/Us
             var user = new UserModel().set({ "firstname": "Greg", "lastname": "Franko", "email": "example@gmail.com", "phone": "703-243-7371" }),
 
                 // Creates a new Collection instance (Adds the previous Model instance to the Collection)
-                users = new UsersCollection([user]),
+                users = new UserList([user]),
 
                 // Instantiating the mainView instance
                 mainView = new UserView({
