@@ -1,7 +1,9 @@
 
 define(["backbone","raphael"],function(Backbone, Raphael){
 
-    var ResumRouter = Backbone.Router.extend({});
+    var ResumRouter = Backbone.Router.extend({
+
+    });
 
     return ResumRouter;
 });
