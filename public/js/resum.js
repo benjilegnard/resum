@@ -6,8 +6,26 @@
  * To change this template use File | Settings | File Templates.
  */
 require.config({
-    baseUrl:'js/'
+    baseUrl:'js/',
+    paths:{
+        "jquery":"libs/zepto",
+        "backbone":"libs/backbone",
+        "raphael":"libs/raphael",
+        "traer":"libs/traer",
+        "scrollspy":"libs/scrollspy",
+        "underscore":"libs/lodash",
+        "bootstrap":"libs/bootstrap"
+    },
+    shims:{
+        "backbone":{deps:["jquery","underscore"],"exports":"Backbone"},
+        "raphael":{"exports":"Raphael"},
+        "traer":{"exports":"Traer"},
+        "scrollspy":{deps:"jquery"},
+        "underscore":{deps:"jquery","exports":"_"}
+    }
 });
-define(["zepto","backbone","raphael","traer"],function($, Backbone, Raphael){
+define(["zepto", "backbone", "raphael", "traer","resum/ResumRouter"], function ($, Backbone, Raphael,ResumRouter) {
+
+    Backbone.history.start();
 
 });
