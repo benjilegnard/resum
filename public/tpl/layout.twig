@@ -1,0 +1,77 @@
+{% spaceless %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="fr" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="fr" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="fr" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="fr" class="no-js"> <!--<![endif]-->
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="txt/html; charset=utf-8" />
+
+    <title>{{ key }} | {{ page.title }}</title>
+
+    <meta name="description" content="{{ page.description }}">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+
+    <meta http-equiv="Cache-control" content="public" />
+
+    {#liens css spécifique à chaque page
+    <link rel="stylesheet" href="{{ assetUri }}/css/{{ key }}.css">  #}
+
+    {% if ( env == 'development' ) %}
+    {# mode surveillance de less.js#}
+    <link rel="stylesheet/less" type="text/css" href="{{ assetUri }}/less/font-awesome.less">
+    <link rel="stylesheet/less" type="text/css" href="{{ assetUri }}/less/skeleton.less">
+    <link rel="stylesheet/less" type="text/css" href="{{ assetUri }}/less/resum.less">
+    <link rel="stylesheet" media="print" href="{{ assetUri }}/less/print.less">
+    <script src="{{ assetUri }}/js/libs/require.js" data-main="js/libs/less" type="text/javascript">
+        (function(less){
+            less.env = "development";
+            less.watch();
+        }(less));
+
+    </script>
+    {% else %}
+    {# fichiers chargés en prod#}
+        <link rel="stylesheet" href="{{ assetUri }}/less/font-awesome.css">
+    <link rel="stylesheet" href="{{ assetUri }}/less/skeleton.css">
+    <link rel="stylesheet" href="{{ assetUri }}/less/resum.css">
+    <link rel="stylesheet" media="print" href="{{ assetUri }}/css/print.css">
+    {% endif%}
+
+    {% block head_css %}{% endblock%}
+    {#
+    <!--[if (gte IE 6)&(lte IE 8)]>
+    <script src="{{ assetUri }}/js/libs/selectivizr.js" type="text/javascript" charset="utf-8"></script>
+    <noscript><link rel="stylesheet" href="{{ assetUri }}/css/ie.css" /></noscript>
+    <![endif]-->
+     #}
+    <!--[if lt IE 9]>
+    <script src="{{ assetUri }}/js/libs/html5shiv.js" type="text/javascript" charset="utf-8"></script>
+    <![endif]-->
+
+
+
+</head>
+<body class="em-bg-hd off" data-background="{{ assetUri }}/img/fonds/{{ background }}">
+<div class="etremarin">
+    <h1 id="top" class="visuallyhidden">{{ page.title }}</h1>
+    {% block menu %}{% include 'inc/menu.twig' %}{% endblock %}
+    <div id="main"  class="scrollable">
+        {% block ariane %}{% endblock %}
+<ul>
+<li>app<ul><li>{{ app.name }}</li></ul></li>
+<li>rootUri<ul><li>{{ rootUri }}</li></ul></li>
+<li>debug<ul><li>{{ debug }}</li></ul></li>
+<li>assetUri<ul><li>{{ assetUri }}</li></ul></li>
+<li>resourceUri<ul><li>{{ resourceUri }}</li></ul></li>
+</ul>
+        {% block content %}{% endblock %}
+    </div>
+
+</div>
+</body>
+{% block bottom_js %}<script data-main="js/resum" src="{{ assetUri }}/js/libs/require.js"></script>{% endblock %}
+</html>
+{% endspaceless %}

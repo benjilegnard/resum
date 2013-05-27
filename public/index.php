@@ -4,40 +4,48 @@ ini_set("display_errors","On");
 ini_set("display_startup_errors","On");
 date_default_timezone_set("Europe/Paris");
 
-
 set_include_path(get_include_path() . PATH_SEPARATOR . "./vendor");
 define('ROOT', dirname('./..'));
+define('DEBUG',true);
 
 require '../vendor/autoload.php';
-\Slim\Slim::registerAutoloader();
+
+use \Slim\Slim;
+use \Slim\Middleware\Less;
+use \Slim\Extras as SlimExtras;
+use dflydev\markdown\MarkdownExtraParser;
+
+Slim::registerAutoloader();
 
 /**
  * TWIG SETTINGS
  */
-
-
-\Slim\Extras\Views\Twig::$twigDirectory = ROOT.'/vendor/Twig/lib/Twig';
-\Slim\Extras\Views\Twig::$twigOptions = array(
-    "debug" => true
+SlimExtras\Views\Twig::$twigDirectory = ROOT.'/vendor/Twig/lib/Twig';
+SlimExtras\Views\Twig::$twigOptions = array(
+    "debug" => DEBUG
 );
 if(is_writable(ROOT . '/cache/twig')) {
-    \Slim\Extras\Views\Twig::$twigOptions['cache'] = ROOT . '/cache/twig';
+    SlimExtras\Views\Twig::$twigOptions['cache'] = ROOT . '/cache/twig';
 }
 
 
-\Slim\Extras\Views\Twig::$twigExtensions = array(
+SlimExtras\Views\Twig::$twigExtensions = array(
     'Twig_Extensions_Slim',
     'Twig_Extension_Debug'
 );
 
-$app = new \Slim\Slim(array(
-    'templates.path' => '../views/',
-    'debug' => false,
-    'view' => new \Slim\Extras\Views\Twig(),
+
+/**
+ * Notre application.
+ */
+$app = new Slim(array(
+    'templates.path' => './tpl/',
+    'debug' => DEBUG,
+    'view' => new SlimExtras\Views\Twig(),
     'cookies.secret_key' => md5('appsecretkey'),
 
     'log.enabled'    => true,
-    'log.writer' => new \Slim\Extras\Log\DateTimeFileWriter(array(
+    'log.writer' => new SlimExtras\Log\DateTimeFileWriter(array(
         'path' => '../logs',
         'name_format' => 'Y-m-d',
         'message_format' => '%label% - %date% - %message%'
@@ -45,38 +53,12 @@ $app = new \Slim\Slim(array(
 ));
 $app->setName('resum');
 
-//LESS middleware for on-th-fly compilation, cf https://github.com/hellogerard/less-slim-middleware
-use \Slim\Middleware\Less;
-
-$app->add(
-    new Less(
-        array(
-            'src' => './css',
-            'cache' => true,
-            'cache.dir' => '../cache',
-            'minify' => true,
-            'debug' => false
-        )
-    )
-);
-
-/**
- * Automatic login based on user cookie
- * uncomment when user model has been defined
+/*
+ * Fonction utilitaire retournant le contenu d'un fichier json
+ *
+ * @param $entity
+ * @return mixed
  */
-$currentUser = null;
-if($userid = $app->getEncryptedCookie('user_id')) {
-    /*if(User::exists($userid)) {
-         $currentUser = User::find($userid);
-     } else {
-         $currentUser = null;
-     }
-     */
-
-} else {
-    $currentUser = null;
-}
-
 $getData = function($entity) use($app){
     $filePath = ROOT.'/data/' . $entity . '.json';
     $app->getLog()->debug("entity param is OK, opening file ". $filePath);
@@ -87,27 +69,34 @@ $getData = function($entity) use($app){
     return $data;
 };
 /*
- * SET some globally available view data
+ * Fournit des données globales aux vues
  */
 $resourceUri = $_SERVER['REQUEST_URI'];
 $rootUri = $app->request()->getRootUri();
 $assetUri = $rootUri;
 $app->view()->appendData(
-    array('currentUser' => $currentUser,
+    array(
         'app' => $app,
         'rootUri' => $rootUri,
+        'debug' => true,
         'assetUri' => $assetUri,
         'resourceUri' => $resourceUri
     ));
 
-foreach(glob(ROOT.'/src/controllers/*.php') as $router) {
-    include $router;
-}
+$app->add(new Less(array(
+    'src' => ROOT . '/public/',
+    'cache' => true,
+    'cache.dir' => ROOT . '/cache/less',
+    'minify' => true,
+    'debug' => DEBUG
+)));
 
-//main page
-$app->get('/(:path)(.html)', function ($path = null) use ($app) {
+//main
+$app->get('/', function () use ($app) {
+
+    //we can ask for /page.html or /page
     $app->getLog()->debug("HTML request");
-    $app->render($path.'.html.twig');
+    $app->render('index.twig');
 });
 //api rest / json, adds a json file in src/data and its name here to enable it.
 $rest = array("icons","jobs","nodes","pages","slides","timeline");

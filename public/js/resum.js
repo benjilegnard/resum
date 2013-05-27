@@ -8,7 +8,7 @@
 require.config({
     baseUrl:'js/',
     paths:{
-        "jquery":"libs/zepto",
+        "zepto":"libs/zepto",
         "backbone":"libs/backbone",
         "raphael":"libs/raphael",
         "traer":"libs/traer",

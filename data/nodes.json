@@ -9,6 +9,16 @@
 
             {
                 "id":1,
+                "title":"WhoAmI",
+                "description":"Carousel slide presentation, CV index",
+                "color":"",
+                "icon":"",
+                "children":[
+                    {}
+                ]
+            },
+            {
+                "id":1,
                 "title":"TimeLine",
                 "description":"Main Node, CV index",
                 "color":"",
@@ -29,8 +39,8 @@
             },
             {
                 "id":3,
-                "title":"Realisations",
-                "description":"Main Node, CV index",
+                "title":"Projects",
+                "description":"Personal and profesuibak projects ina grid of images",
                 "color":"",
                 "icon":"",
                 "children":[
@@ -39,8 +49,8 @@
             },
             {
                 "id":4,
-                "title":"Online presence",
-                "description":"Main Node, CV index",
+                "title":"Contact",
+                "description":"Online presence + contact me form",
                 "color":"",
                 "icon":"",
                 "children":[
