@@ -5,10 +5,10 @@ ini_set("display_startup_errors","On");
 date_default_timezone_set("Europe/Paris");
 
 set_include_path(get_include_path() . PATH_SEPARATOR . "./vendor");
-define('ROOT', dirname('./..'));
+define('ROOT', dirname('./.'));
 define('DEBUG',true);
 
-require '../vendor/autoload.php';
+require './vendor/autoload.php';
 
 use \Slim\Slim;
 use \Slim\Middleware\Less;
@@ -39,14 +39,14 @@ SlimExtras\Views\Twig::$twigExtensions = array(
  * Notre application.
  */
 $app = new Slim(array(
-    'templates.path' => './tpl/',
+    'templates.path' => './public/tpl/',
     'debug' => DEBUG,
     'view' => new SlimExtras\Views\Twig(),
     'cookies.secret_key' => md5('appsecretkey'),
 
     'log.enabled'    => true,
     'log.writer' => new SlimExtras\Log\DateTimeFileWriter(array(
-        'path' => '../logs',
+        'path' => './logs',
         'name_format' => 'Y-m-d',
         'message_format' => '%label% - %date% - %message%'
     ))
@@ -101,6 +101,33 @@ $app->get('/', function () use ($app) {
 //api rest / json, adds a json file in src/data and its name here to enable it.
 $rest = array("icons","jobs","nodes","pages","slides","timeline");
 
+
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\Asset\GlobAsset;
+
+$js = new AssetCollection(array(
+    new GlobAsset('/path/to/js/*'),
+    new FileAsset('/path/to/another.js'),
+));
+
+// the code is merged when the asset is dumped
+echo $js->dump();
+//load javascript files with Assetic
+$app->get('/js/:path.js', function ($path) use ($app){
+    $app->getLog()->debug("JS request for : ".$path);
+
+});
+//load less files with Assetic
+$app->get('/css/:path.css', function ($path) use ($app){
+    $app->getLog()->debug("CSS request for : ".$path);
+
+});
+//load img files with Assetic
+$app->get('/js/:path.:ext', function($path,$ext) use ($app){
+    $app->getLog()->debug("Image request for : ".$path." with extension : ".$ext);
+
+});
 //one fonction to rule them all
 $app->map(
     '/api(/:entity)(/:id)(/:action)',

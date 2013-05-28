@@ -1,0 +1,27 @@
+SetEnv PHP_VER 5
+#activation du moteur de reecirture durl
+Options +FollowSymLinks
+RewriteEngine On
+
+# Some hosts may require you to use the `RewriteBase` directive.
+# If you need to use the `RewriteBase` directive, it should be the
+# absolute physical path to the directory that contains this htaccess file.
+#
+# RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+
+
+#Redirections
+
+
+#RewriteBase /
+#RewriteCond %{HTTP_HOST} ^(www.zell.fr)$
+#RewriteCond %{REQUEST_URI} ^/(tag|tags|contact|galleries|gallery|category|archive|post|feed|page)
+#RewriteCond %{REQUEST_URI} !^/(public|themes)
+#RewriteCond %{REQUEST_URI} ^/
+#RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+#RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-d
+#RewriteRule (.*) index.php/$1
+
