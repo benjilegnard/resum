@@ -1,6 +1,6 @@
 {
     "name":"jibhaine/resum",
-    "description":"my xResume",
+    "description":"my curriculum vitae",
     "homepage":"http://www.benjaminlegrand.net/",
     "version":"1.0",
     "authors":[
@@ -25,12 +25,5 @@
         "psr-0":{
             "":"Resum"
         }
-    },
-    "require-dev":{
-        "apigen/apigen":"2.*",
-        "guzzle/guzzle":"*",
-        "phpunit/phpunit":">=3.7.0@stable",
-        "phpunit/phpunit-selenium":"1.2.11",
-        "phpunit/phpunit-story":"1.0.1"
     }
 }
