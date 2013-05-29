@@ -1,4 +1,4 @@
-SetEnv PHP_VER 5
+SetEnv PHP_VER 5_4
 #activation du moteur de reecirture durl
 Options +FollowSymLinks
 RewriteEngine On
@@ -10,6 +10,7 @@ RewriteEngine On
 # RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
 
 

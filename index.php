@@ -10,11 +10,15 @@ define('DEBUG',true);
 
 require './vendor/autoload.php';
 
+//imports :
+// Slim microframework and extensions
 use \Slim\Slim;
 use \Slim\Middleware\Less;
 use \Slim\Extras as SlimExtras;
 use dflydev\markdown\MarkdownExtraParser;
 use \Assetic\Extension\Twig\AsseticExtension;
+
+
 
 Slim::registerAutoloader();
 
@@ -100,6 +104,13 @@ $app->add(new Less(array(
     'debug' => DEBUG
 )));
 
+//api rest / json, adds a json file in src/data and its name here to enable it.
+$rest = array("icons","jobs","nodes","pages","slides","timeline");
+
+// Assetic for static resources management.
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\Asset\GlobAsset;
 //main
 $app->get('/', function () use ($app) {
 
@@ -107,24 +118,19 @@ $app->get('/', function () use ($app) {
     $app->getLog()->debug("HTML request");
     $app->render('index.twig');
 });
-//api rest / json, adds a json file in src/data and its name here to enable it.
-$rest = array("icons","jobs","nodes","pages","slides","timeline");
-
-
 //load javascript files with Assetic
 $app->get('/js/:path.js', function ($path) use ($app){
-    $js = new AssetCollection(array(
-        new FileAsset("./public/js/$path.js"),
-    ));
-
-// the code is merged when the asset is dumped
 
     $app->getLog()->debug("JS request for : ".$path);
+
+    $js = new AssetCollection(array(
+        new FileAsset("/js/$path.js")
+    ));
 
     echo $js->dump();
 });
 
-//load css files with Assetic
+//load less files with Assetic
 $app->get('/css/:path.css', function ($path) use ($app){
     $app->getLog()->debug("CSS request for : ".$path);
     $css = new AssetCollection(array(
@@ -133,11 +139,21 @@ $app->get('/css/:path.css', function ($path) use ($app){
 
     $css->dump();
 
+    $css = new AssetCollection(array(
+        new FileAsset("/less/$path.less")
+    ));
+
+    echo $css->dump();
 });
 //load img files with Assetic
 $app->get('/js/:path.:ext', function($path,$ext) use ($app){
     $app->getLog()->debug("Image request for : ".$path." with extension : ".$ext);
 
+    $img = new AssetCollection(array(
+        new FileAsset("/img/$path.$ext")
+    ));
+
+    echo $img->dump();
 });
 //one fonction to rule them all
 $app->map(
