@@ -35,9 +35,9 @@
     {% else %}
     {# fichiers chargés en prod#}
         <link rel="stylesheet" href="{{ assetUri }}/less/font-awesome.css">
-    <link rel="stylesheet" href="{{ assetUri }}/less/skeleton.css">
-    <link rel="stylesheet" href="{{ assetUri }}/less/resum.css">
-    <link rel="stylesheet" media="print" href="{{ assetUri }}/css/print.css">
+        <link rel="stylesheet" href="{{ assetUri }}/less/skeleton.css">
+        <link rel="stylesheet" href="{{ assetUri }}/less/resum.css">
+        <link rel="stylesheet" media="print" href="{{ assetUri }}/css/print.css">
     {% endif%}
 
     {% block head_css %}{% endblock%}
@@ -57,16 +57,19 @@
 <body class="em-bg-hd off" data-background="{{ assetUri }}/img/fonds/{{ background }}">
 <div class="etremarin">
     <h1 id="top" class="visuallyhidden">{{ page.title }}</h1>
+    {% if (debug)%}
+    <ul id="debugZone" style="display:none;">
+        <li>app<ul><li>{{ app.name }}</li></ul></li>
+        <li>rootUri<ul><li>{{ rootUri }}</li></ul></li>
+        <li>debug<ul><li>{{ debug }}</li></ul></li>
+        <li>assetUri<ul><li>{{ assetUri }}</li></ul></li>
+        <li>resourceUri<ul><li>{{ resourceUri }}</li></ul></li>
+    </ul>
+    {%endif%}
     {% block menu %}{% include 'inc/menu.twig' %}{% endblock %}
-    <div id="main"  class="scrollable">
+    <div id="main"  class="container scrollable">
         {% block ariane %}{% endblock %}
-<ul>
-<li>app<ul><li>{{ app.name }}</li></ul></li>
-<li>rootUri<ul><li>{{ rootUri }}</li></ul></li>
-<li>debug<ul><li>{{ debug }}</li></ul></li>
-<li>assetUri<ul><li>{{ assetUri }}</li></ul></li>
-<li>resourceUri<ul><li>{{ resourceUri }}</li></ul></li>
-</ul>
+
         {% block content %}{% endblock %}
     </div>
 

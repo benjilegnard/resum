@@ -14,6 +14,7 @@ use \Slim\Slim;
 use \Slim\Middleware\Less;
 use \Slim\Extras as SlimExtras;
 use dflydev\markdown\MarkdownExtraParser;
+use \Assetic\Extension\Twig\AsseticExtension;
 
 Slim::registerAutoloader();
 
@@ -28,10 +29,18 @@ if(is_writable(ROOT . '/cache/twig')) {
     SlimExtras\Views\Twig::$twigOptions['cache'] = ROOT . '/cache/twig';
 }
 
+use Assetic\AssetManager;
+use Assetic\Asset\AssetCollection;
+use Assetic\Asset\FileAsset;
+use Assetic\Asset\GlobAsset;
+//new resources factory
+$factory = new \Assetic\Factory\AssetFactory(ROOT."/public");
 
+//less to css
 SlimExtras\Views\Twig::$twigExtensions = array(
     'Twig_Extensions_Slim',
-    'Twig_Extension_Debug'
+    'Twig_Extension_Debug',
+    new AsseticExtension($factory, array() )
 );
 
 
@@ -102,25 +111,27 @@ $app->get('/', function () use ($app) {
 $rest = array("icons","jobs","nodes","pages","slides","timeline");
 
 
-use Assetic\Asset\AssetCollection;
-use Assetic\Asset\FileAsset;
-use Assetic\Asset\GlobAsset;
-
-$js = new AssetCollection(array(
-    new GlobAsset('/path/to/js/*'),
-    new FileAsset('/path/to/another.js'),
-));
-
-// the code is merged when the asset is dumped
-echo $js->dump();
 //load javascript files with Assetic
 $app->get('/js/:path.js', function ($path) use ($app){
+    $js = new AssetCollection(array(
+        new FileAsset("./public/js/$path.js"),
+    ));
+
+// the code is merged when the asset is dumped
+
     $app->getLog()->debug("JS request for : ".$path);
 
+    echo $js->dump();
 });
-//load less files with Assetic
+
+//load css files with Assetic
 $app->get('/css/:path.css', function ($path) use ($app){
     $app->getLog()->debug("CSS request for : ".$path);
+    $css = new AssetCollection(array(
+        new FileAsset("./public/css/$path.css"),
+    ));
+
+    $css->dump();
 
 });
 //load img files with Assetic

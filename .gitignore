@@ -3,3 +3,5 @@ target/
 .idea/
 .svn/
 composer.lock
+*.iml
+*.log
