@@ -1,0 +1,16 @@
+<ul>
+
+
+    {% if (debug)%}
+    <li>
+        <a href="#debug">Debug</a>
+        <ul id="debugZone" style="display:none;">
+            <li>app<ul><li>{{ app.name }}</li></ul></li>
+            <li>rootUri<ul><li>{{ rootUri }}</li></ul></li>
+            <li>debug<ul><li>{{ debug }}</li></ul></li>
+            <li>assetUri<ul><li>{{ assetUri }}</li></ul></li>
+            <li>resourceUri<ul><li>{{ resourceUri }}</li></ul></li>
+        </ul>
+    </li>
+    {% endif %}
+</ul>

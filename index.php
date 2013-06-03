@@ -6,6 +6,7 @@ date_default_timezone_set("Europe/Paris");
 
 set_include_path(get_include_path() . PATH_SEPARATOR . "./vendor");
 define('ROOT', dirname('./.'));
+define('WEBROOT', ROOT.'/public/');
 define('DEBUG',true);
 
 require './vendor/autoload.php';
@@ -13,7 +14,6 @@ require './vendor/autoload.php';
 //imports :
 // Slim microframework and extensions
 use \Slim\Slim;
-use \Slim\Middleware\Less;
 use \Slim\Extras as SlimExtras;
 use dflydev\markdown\MarkdownExtraParser;
 use \Assetic\Extension\Twig\AsseticExtension;
@@ -85,8 +85,9 @@ $getData = function($entity) use($app){
  * Fournit des données globales aux vues
  */
 $resourceUri = $_SERVER['REQUEST_URI'];
+//allows the app to be installed in / or /[subPath]/
 $rootUri = $app->request()->getRootUri();
-$assetUri = $rootUri;
+$assetUri = $rootUri.'/public';
 $app->view()->appendData(
     array(
         'app' => $app,
@@ -96,13 +97,6 @@ $app->view()->appendData(
         'resourceUri' => $resourceUri
     ));
 
-$app->add(new Less(array(
-    'src' => ROOT . '/public/',
-    'cache' => true,
-    'cache.dir' => ROOT . '/cache/less',
-    'minify' => true,
-    'debug' => DEBUG
-)));
 
 //api rest / json, adds a json file in src/data and its name here to enable it.
 $rest = array("icons","jobs","nodes","pages","slides","timeline");
@@ -155,6 +149,7 @@ $app->get('/js/:path.:ext', function($path,$ext) use ($app){
 
     echo $img->dump();
 });
+*/
 //one fonction to rule them all
 $app->map(
     '/api(/:entity)(/:id)(/:action)',
