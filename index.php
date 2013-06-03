@@ -6,6 +6,7 @@ date_default_timezone_set("Europe/Paris");
 
 set_include_path(get_include_path() . PATH_SEPARATOR . "./vendor");
 define('ROOT', dirname('./.'));
+define('WEBROOT', ROOT.'/public/');
 define('DEBUG',true);
 
 require './vendor/autoload.php';
@@ -13,7 +14,6 @@ require './vendor/autoload.php';
 //imports :
 // Slim microframework and extensions
 use \Slim\Slim;
-use \Slim\Middleware\Less;
 use \Slim\Extras as SlimExtras;
 use dflydev\markdown\MarkdownExtraParser;
 
@@ -33,10 +33,60 @@ if(is_writable(ROOT . '/cache/twig')) {
 }
 
 
+//Resources configuration via assetic
+
+
+//configure assetics
+
+use Assetic\AssetManager;
+use Assetic\Asset\FileAsset;
+use Assetic\Asset\GlobAsset;
+use Assetic\FilterManager;
+use Assetic\Filter\GoogleClosure\CompilerApiFilter;
+use Assetic\Filter\LessFilter;
+use Assetic\Filter\Yui;
+
+use Assetic\Factory\AssetFactory;
+
+
+//defining Assetic Filters
+
+$fm = new FilterManager();
+//$fm->set('GoogleClosure\CompilerApiFilter', new CompilerApiFilter());
+$fm->set('less',new LessFilter());
+//$yui = new Yui\JsCompressorFilter(ROOT.'/build/yuicompressor.jar');
+//$fm->set('yui', new Yui\CssCompressorFilter('/path/to/yuicompressor.jar'));
+
+//defining assets
+$am = new AssetManager();
+$am->set('jquery', new FileAsset( WEBROOT.'/js/lib/jquery.js'  ));
+
+//less main files
+$am->set('fontawesome', new GlobAsset(WEBROOT.'/less/font-awesome.less'),array("less"));
+$am->set('resum', new GlobAsset(WEBROOT.'/less/resum.less'));
+$am->set('skeleton', new GlobAsset(WEBROOT.'/less/skeleton.less'));
+$am->set('all', new GlobAsset(array('fontawesome','resum','skeleton')));
+
+//initialise assetic Factory
+$factory = new AssetFactory( WEBROOT , DEBUG);
+$factory->setAssetManager($am);
+$factory->setFilterManager($fm);
+$factory->setDebug(DEBUG);
+
+$css = $factory->createAsset(array(
+    '@fontawesome',         // load the asset manager's "reset" asset
+    '@skeleton',
+    '@resum',
+    'css/*.less', // load every scss files from "/path/to/asset/directory/css/src/"
+), array(
+    'less',           // filter through the filter manager's "scss" filter
+    '?yui_css',       // don't use this filter in debug mode
+));
+
 SlimExtras\Views\Twig::$twigExtensions = array(
     'Twig_Extensions_Slim',
-    'Twig_Extension_Debug'
-);
+    'Twig_Extension_Debug',
+    new Assetic\Extension\Twig\AsseticExtension($factory, array("less")));
 
 
 /**
@@ -76,8 +126,9 @@ $getData = function($entity) use($app){
  * Fournit des données globales aux vues
  */
 $resourceUri = $_SERVER['REQUEST_URI'];
+//allows the app to be installed in / or /[subPath]/
 $rootUri = $app->request()->getRootUri();
-$assetUri = $rootUri;
+$assetUri = $rootUri.'/public';
 $app->view()->appendData(
     array(
         'app' => $app,
@@ -87,36 +138,25 @@ $app->view()->appendData(
         'resourceUri' => $resourceUri
     ));
 
-$app->add(new Less(array(
-    'src' => ROOT . '/public/',
-    'cache' => true,
-    'cache.dir' => ROOT . '/cache/less',
-    'minify' => true,
-    'debug' => DEBUG
-)));
 
-//main
+//main  route
 $app->get('/', function () use ($app) {
 
     //we can ask for /page.html or /page
     $app->getLog()->debug("HTML request");
     $app->render('index.twig');
 });
+
+
+
 //api rest / json, adds a json file in src/data and its name here to enable it.
 $rest = array("icons","jobs","nodes","pages","slides","timeline");
-
+    /*
 
 use Assetic\Asset\AssetCollection;
 use Assetic\Asset\FileAsset;
 use Assetic\Asset\GlobAsset;
 
-$js = new AssetCollection(array(
-    new GlobAsset('/path/to/js/*'),
-    new FileAsset('/path/to/another.js'),
-));
-
-// the code is merged when the asset is dumped
-echo $js->dump();
 //load javascript files with Assetic
 $app->get('/js/:path.js', function ($path) use ($app){
     $app->getLog()->debug("JS request for : ".$path);
@@ -147,6 +187,7 @@ $app->get('/img/:path.:ext', function($path,$ext) use ($app){
 
     echo $img->dump();
 });
+*/
 //one fonction to rule them all
 $app->map(
     '/api(/:entity)(/:id)(/:action)',
