@@ -1,22 +1,41 @@
 {"pages":[
     {
-        "id":0,
-        "key":"home",
+        "key":"what",
         "title":"Benjamin Legrand | Resume",
         "content":[
             "slides","commons","nodes"
         ]
     },
     {
-        "id":1,
-        "key":"timeline",
+        "key":"when",
         "title":"gallerie de mes réalisations et expériences professionnelles sur une ligne de temps",
         "description":"",
         "content":{}
     },
     {
-        "id":2,
-        "key":"contact",
+        "key":"who",
+        "title":"contactez-moi",
+        "description":"",
+        "content":{}
+    },
+    {
+        "key":"where",
+        "title":"locate me",
+        "description":"i'm available in europe,espcially west of france region, but really? worldwide.",
+        "content":{}
+    },
+    {
+        "key":"how",
+        "title":"contactez-moi",
+        "description":"Some links if you want to contact me : ",
+        "content":
+                {
+                    social:{},
+                    contact:{}
+                }
+    },
+    {
+        "key":"who",
         "title":"contactez-moi",
         "description":"",
         "content":{}
