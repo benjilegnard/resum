@@ -5,10 +5,12 @@ ini_set("display_startup_errors","On");
 date_default_timezone_set("Europe/Paris");
 
 set_include_path(get_include_path() . PATH_SEPARATOR . "./vendor");
+//global paths and constants
 define('ROOT', dirname('./.'));
 define('WEBROOT', ROOT.'/public/');
-define('DEBUG',true);
+define('DEBUG', false);
 
+//libraries loader main file, you should have run a 'composer install'  if it fails here.
 require './vendor/autoload.php';
 
 //imports :
@@ -16,7 +18,6 @@ require './vendor/autoload.php';
 use \Slim\Slim;
 use \Slim\Extras as SlimExtras;
 use dflydev\markdown\MarkdownExtraParser;
-
 
 
 Slim::registerAutoloader();
@@ -32,11 +33,10 @@ if(is_writable(ROOT . '/cache/twig')) {
     SlimExtras\Views\Twig::$twigOptions['cache'] = ROOT . '/cache/twig';
 }
 
-
-//Resources configuration via assetic
-
-
-//configure assetics
+/**
+ * ASSETIC SETTINGS
+ *
+ */
 
 use Assetic\AssetManager;
 use Assetic\Asset\FileAsset;
@@ -49,23 +49,28 @@ use Assetic\Filter\Yui;
 use Assetic\Factory\AssetFactory;
 
 
-//defining Assetic Filters
-
+//organize Assetic Filters //todo  fetch php loader from yui ? i don't like mixing java/jar with php.
 $fm = new FilterManager();
 //$fm->set('GoogleClosure\CompilerApiFilter', new CompilerApiFilter());
 $fm->set('less',new LessFilter());
-//$yui = new Yui\JsCompressorFilter(ROOT.'/build/yuicompressor.jar');
-//$fm->set('yui', new Yui\CssCompressorFilter('/path/to/yuicompressor.jar'));
+$yui = new Yui\JsCompressorFilter(ROOT.'/build/yuicompressor.jar');
+$fm->set('yui', new Yui\CssCompressorFilter('/build/yuicompressor.jar'));
 
-//defining assets
+//organize assets //todo see how r.js optimized file can fit in .
 $am = new AssetManager();
+$am->set('jquery', new FileAsset( WEBROOT.'/js/lib/jquery.js'  ));
+$am->set('backbone', new FileAsset( WEBROOT.'/js/lib/jquery.js'  ));
+$am->set('lodash', new FileAsset( WEBROOT.'/js/lib/lodash.js'  ));
 $am->set('jquery', new FileAsset( WEBROOT.'/js/lib/jquery.js'  ));
 
 //less main files
-$am->set('fontawesome', new GlobAsset(WEBROOT.'/less/font-awesome.less'),array("less"));
+$lessFiles = array('fontawesome','resum','skeleton');
+
+$am->set('fontawesome', new GlobAsset(WEBROOT.'/less/font-awesome.less'));
 $am->set('resum', new GlobAsset(WEBROOT.'/less/resum.less'));
 $am->set('skeleton', new GlobAsset(WEBROOT.'/less/skeleton.less'));
-$am->set('all', new GlobAsset(array('fontawesome','resum','skeleton')));
+//one file merging them all
+$am->set('all', new GlobAsset($lessFiles,$fm->get('less')));
 
 //initialise assetic Factory
 $factory = new AssetFactory( WEBROOT , DEBUG);
@@ -80,7 +85,7 @@ $css = $factory->createAsset(array(
     'css/*.less', // load every scss files from "/path/to/asset/directory/css/src/"
 ), array(
     'less',           // filter through the filter manager's "scss" filter
-    '?yui_css',       // don't use this filter in debug mode
+    '?yui',       // don't use this filter in debug mode
 ));
 
 SlimExtras\Views\Twig::$twigExtensions = array(
