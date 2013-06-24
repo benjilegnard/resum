@@ -33,65 +33,10 @@ if(is_writable(ROOT . '/cache/twig')) {
     SlimExtras\Views\Twig::$twigOptions['cache'] = ROOT . '/cache/twig';
 }
 
-/**
- * ASSETIC SETTINGS
- *
- */
-
-use Assetic\AssetManager;
-use Assetic\Asset\FileAsset;
-use Assetic\Asset\GlobAsset;
-use Assetic\FilterManager;
-use Assetic\Filter\GoogleClosure\CompilerApiFilter;
-use Assetic\Filter\LessFilter;
-use Assetic\Filter\Yui;
-
-use Assetic\Factory\AssetFactory;
-
-
-//organize Assetic Filters //todo  fetch php loader from yui ? i don't like mixing java/jar with php.
-$fm = new FilterManager();
-//$fm->set('GoogleClosure\CompilerApiFilter', new CompilerApiFilter());
-$fm->set('less',new LessFilter());
-$yui = new Yui\JsCompressorFilter(ROOT.'/build/yuicompressor.jar');
-$fm->set('yui', new Yui\CssCompressorFilter('/build/yuicompressor.jar'));
-
-//organize assets //todo see how r.js optimized file can fit in .
-$am = new AssetManager();
-$am->set('jquery', new FileAsset( WEBROOT.'/js/lib/jquery.js'  ));
-$am->set('backbone', new FileAsset( WEBROOT.'/js/lib/jquery.js'  ));
-$am->set('lodash', new FileAsset( WEBROOT.'/js/lib/lodash.js'  ));
-$am->set('jquery', new FileAsset( WEBROOT.'/js/lib/jquery.js'  ));
-
-//less main files
-$lessFiles = array('fontawesome','resum','skeleton');
-
-$am->set('fontawesome', new GlobAsset(WEBROOT.'/less/font-awesome.less'));
-$am->set('resum', new GlobAsset(WEBROOT.'/less/resum.less'));
-$am->set('skeleton', new GlobAsset(WEBROOT.'/less/skeleton.less'));
-//one file merging them all
-$am->set('all', new GlobAsset($lessFiles,$fm->get('less')));
-
-//initialise assetic Factory
-$factory = new AssetFactory( WEBROOT , DEBUG);
-$factory->setAssetManager($am);
-$factory->setFilterManager($fm);
-$factory->setDebug(DEBUG);
-
-$css = $factory->createAsset(array(
-    '@fontawesome',         // load the asset manager's "reset" asset
-    '@skeleton',
-    '@resum',
-    'css/*.less', // load every scss files from "/path/to/asset/directory/css/src/"
-), array(
-    'less',           // filter through the filter manager's "scss" filter
-    '?yui',       // don't use this filter in debug mode
-));
 
 SlimExtras\Views\Twig::$twigExtensions = array(
     'Twig_Extensions_Slim',
-    'Twig_Extension_Debug',
-    new Assetic\Extension\Twig\AsseticExtension($factory, array("less")));
+    'Twig_Extension_Debug');
 
 
 /**
@@ -111,6 +56,17 @@ $app = new Slim(array(
     ))
 ));
 $app->setName('resum');
+
+
+use \Slim\Middleware\Less;
+
+$app->add(new Less(array(
+    'src' => './public',
+    'cache' => true,
+    'cache.dir' => './cache',
+    'minify' => true,
+    'debug' => false
+)));
 
 /*
  * Fonction utilitaire retournant le contenu d'un fichier json

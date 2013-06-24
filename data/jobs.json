@@ -10,11 +10,10 @@
             "projects":{
                 "name":"",
                 "description":"",
-
                 "start_date":"",
                 "end_date":""
             }
-        }                 ,
+        },
         {
             "id":2,
             "name":"",

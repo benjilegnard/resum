@@ -16,11 +16,30 @@
 
     <meta http-equiv="Cache-control" content="public" />
 
-    {% stylesheets 'all' filter='less,?yui' output='css/all.css' %}
-        <link href="{{ assetUri }}/{{ asset_url }}" type="text/css" rel="stylesheet" />
-    {% endstylesheets %}
 
-    {% block head_css %}{% endblock%}
+    {% if ( debug ) %}
+        {# mode surveillance de less.js#}
+        <link rel="stylesheet/less" type="text/css" href="{{ assetUri }}/less/font-awesome.less">
+        <link rel="stylesheet/less" type="text/css" href="{{ assetUri }}/less/resum.less">
+        <link rel="stylesheet" media="print" href="{{ assetUri }}/less/print.less">
+        <script src="{{ assetUri }}/js/libs/less.js" type="text/javascript">
+            (function(less){
+                less.env = "development";
+                less.watch();
+            }(less));
+
+        </script>
+    {% else %}
+    {# fichiers chargés en prod#}
+        <link rel="stylesheet" href="{{ assetUri }}/less/font-awesome.css">
+        <link rel="stylesheet" href="{{ assetUri }}/less/skeleton.css">
+        <link rel="stylesheet" href="{{ assetUri }}/less/resum.css">
+        <link rel="stylesheet" media="print" href="{{ assetUri }}/css/print.css">
+    {% endif%}
+
+    {% block head_css %}
+
+    {% endblock%}
     {#
     <!--[if (gte IE 6)&(lte IE 8)]>
     <script src="{{ assetUri }}/js/libs/selectivizr.js" type="text/javascript" charset="utf-8"></script>
@@ -36,8 +55,17 @@
 </head>
 <body class="resum">
 <div class="wrapper">
+
     <h1 id="top" class="visuallyhidden">{{ page.title }}</h1>
-    <div id="header">
+    {% if (debug)%}
+    <ul id="debugZone" style="display:none;">
+        <li>app<ul><li>{{ app.name }}</li></ul></li>
+        <li>rootUri<ul><li>{{ rootUri }}</li></ul></li>
+        <li>debug<ul><li>{{ debug }}</li></ul></li>
+        <li>assetUri<ul><li>{{ assetUri }}</li></ul></li>
+        <li>resourceUri<ul><li>{{ resourceUri }}</li></ul></li>
+    </ul>
+    {%endif%}
     {% block menu %}{% include 'inc/menu.twig' %}{% endblock %}
     {% block ariane %}{% endblock %}
     </div>
@@ -48,6 +76,6 @@
 
 </div>
 </body>
-{% block bottom_js %}<script data-main="js/resum" src="{{ assetUri }}/js/libs/require.js"></script>{% endblock %}
+{% block bottom_js %}<script data-main="{{ assetUri }}/js/resum" src="{{ assetUri }}/js/libs/require.js"></script>{% endblock %}
 </html>
 {% endspaceless %}
