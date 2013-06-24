@@ -6,26 +6,22 @@
  * To change this template use File | Settings | File Templates.
  */
 require.config({
-    baseUrl:'js/',
+    baseUrl:'/public/js/',
     paths:{
         "zepto":"libs/zepto",
-        "backbone":"libs/backbone",
+        "angular":"libs/angular",
         "raphael":"libs/raphael",
-        "traer":"libs/traer",
-        "scrollspy":"libs/scrollspy",
-        "underscore":"libs/lodash",
-        "bootstrap":"libs/bootstrap"
+        "lodash":"libs/lodash",
+        "oriDomi":"libs/oriDomi",
+        "noClickDelay":"libs/noClickDelay"
     },
     shims:{
-        "backbone":{deps:["jquery","underscore"],"exports":"Backbone"},
+        "angular":{deps:["zepto"],"exports":"angular"},
         "raphael":{"exports":"Raphael"},
-        "traer":{"exports":"Traer"},
-        "scrollspy":{deps:"jquery"},
-        "underscore":{deps:"jquery","exports":"_"}
+        "lodash":{"exports":"_"}
     }
 });
-define(["zepto", "backbone", "raphael", "traer","resum/ResumRouter"], function ($, Backbone, Raphael,ResumRouter) {
+define(["zepto", "angular", "raphael", "oriDomi","resum/app"], function ($, angular, Raphael, oriDomi, app) {
 
-    Backbone.history.start();
-
+    angular.bootstrap(document, ['app']);
 });

@@ -112,6 +112,17 @@ $app = new Slim(array(
 ));
 $app->setName('resum');
 
+
+use \Slim\Middleware\Less;
+
+$app->add(new Less(array(
+    'src' => './public',
+    'cache' => true,
+    'cache.dir' => './cache',
+    'minify' => true,
+    'debug' => false
+)));
+
 /*
  * Fonction utilitaire retournant le contenu d'un fichier json
  *
