@@ -17,27 +17,11 @@ require './vendor/autoload.php';
 // Slim microframework and extensions
 use \Slim\Slim;
 use \Slim\Extras as SlimExtras;
+use \Slim\Views;
 use dflydev\markdown\MarkdownExtraParser;
 
 
 Slim::registerAutoloader();
-
-/**
- * TWIG SETTINGS
- */
-SlimExtras\Views\Twig::$twigDirectory = ROOT.'/vendor/Twig/lib/Twig';
-SlimExtras\Views\Twig::$twigOptions = array(
-    "debug" => DEBUG
-);
-if(is_writable(ROOT . '/cache/twig')) {
-    SlimExtras\Views\Twig::$twigOptions['cache'] = ROOT . '/cache/twig';
-}
-
-
-SlimExtras\Views\Twig::$twigExtensions = array(
-    'Twig_Extensions_Slim',
-    'Twig_Extension_Debug');
-
 
 /**
  * Notre application.
@@ -45,7 +29,7 @@ SlimExtras\Views\Twig::$twigExtensions = array(
 $app = new Slim(array(
     'templates.path' => './public/tpl/',
     'debug' => DEBUG,
-    'view' => new SlimExtras\Views\Twig(),
+    'view' => new \Slim\Views\Twig(),
     'cookies.secret_key' => md5('appsecretkey'),
 
     'log.enabled'    => true,
