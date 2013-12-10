@@ -17,6 +17,7 @@ require './vendor/autoload.php';
 // Slim microframework and extensions
 use \Slim\Slim;
 use \Slim\Extras as SlimExtras;
+use \Slim\Views;
 use dflydev\markdown\MarkdownExtraParser;
 use \Assetic\Extension\Twig\AsseticExtension;
 
@@ -100,7 +101,7 @@ SlimExtras\Views\Twig::$twigExtensions = array(
 $app = new Slim(array(
     'templates.path' => './public/tpl/',
     'debug' => DEBUG,
-    'view' => new SlimExtras\Views\Twig(),
+    'view' => new \Slim\Views\Twig(),
     'cookies.secret_key' => md5('appsecretkey'),
 
     'log.enabled'    => true,
