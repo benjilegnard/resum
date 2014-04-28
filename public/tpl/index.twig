@@ -1,7 +1,6 @@
 {% extends "layout.twig" %}
 
 {% block content %}
-        <header><h1>Benjamin Legrand</h1> Resume</header>
 <section id="index" class="blue"><h2>Resume</h2>&nbsp;</section>
 <section id="whoami" class="yellow"></section>
 <section id="timeline" class="orange"></section>
@@ -9,7 +8,7 @@
     <dl>
         {% for i in [1,2,3] %}
         <dt>Title</dt>
-        <dd><img src="http://placekitten.com/g/75/75" /></dd>
+        <dd><img src="http://placekitten.com/g/75/75"/></dd>
         {% endfor %}
     </dl>
 
@@ -18,6 +17,7 @@
 <section id="contact" class="purple"></section>
 <section class="row">
     <select id="iconSelect"></select>
+
     <div id="cloud">
         <div class="cloud top">&nbsp;</div>
         <div class="cloud left">&nbsp;</div>

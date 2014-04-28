@@ -30,8 +30,8 @@
         "description":"Some links if you want to contact me : ",
         "content":
                 {
-                    social:{},
-                    contact:{}
+                    "social":{},
+                    "contact":{}
                 }
     },
     {
