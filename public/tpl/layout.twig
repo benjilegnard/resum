@@ -19,9 +19,9 @@
 
     {% if ( debug ) %}
         {# mode surveillance de less.js#}
-        <link rel="stylesheet/less" type="text/css" href="{{ assetUri }}/less/font-awesome.less">
-        <link rel="stylesheet/less" type="text/css" href="{{ assetUri }}/less/resum.less">
-        <link rel="stylesheet" media="print" href="{{ assetUri }}/less/print.less">
+        <link rel="stylesheet/less" type="text/css" href="{{ assetUri }}/css/font-awesome.less">
+        <link rel="stylesheet/less" type="text/css" href="{{ assetUri }}/css/resum.less">
+        <link rel="stylesheet" media="print" href="{{ assetUri }}/css/print.less">
         <script src="{{ assetUri }}/js/libs/less.js" type="text/javascript">
             (function(less){
                 less.env = "development";
@@ -31,9 +31,8 @@
         </script>
     {% else %}
     {# fichiers chargés en prod#}
-        <link rel="stylesheet" href="{{ assetUri }}/less/font-awesome.css">
-        <link rel="stylesheet" href="{{ assetUri }}/less/skeleton.css">
-        <link rel="stylesheet" href="{{ assetUri }}/less/resum.css">
+        <link rel="stylesheet" href="{{ assetUri }}/css/font-awesome.css">
+        <link rel="stylesheet" href="{{ assetUri }}/css/resum.css">
         <link rel="stylesheet" media="print" href="{{ assetUri }}/css/print.css">
     {% endif%}
 
@@ -58,7 +57,7 @@
 
     <h1 id="top" class="visuallyhidden">{{ page.title }}</h1>
     {% if (debug)%}
-    <ul id="debugZone" style="display:none;">
+    <ul id="debugZone">
         <li>app<ul><li>{{ app.name }}</li></ul></li>
         <li>rootUri<ul><li>{{ rootUri }}</li></ul></li>
         <li>debug<ul><li>{{ debug }}</li></ul></li>

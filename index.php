@@ -20,6 +20,8 @@ use \Slim\Extras as SlimExtras;
 use \Slim\Views;
 use dflydev\markdown\MarkdownExtraParser;
 
+use \Slim\Middleware\Less;
+
 
 Slim::registerAutoloader();
 
@@ -41,11 +43,8 @@ $app = new Slim(array(
 ));
 $app->setName('resum');
 
-
-use \Slim\Middleware\Less;
-
 $app->add(new Less(array(
-    'src' => './public',
+    'src' => WEBROOT,
     'cache' => true,
     'cache.dir' => './cache',
     'minify' => true,
@@ -73,12 +72,11 @@ $getData = function($entity) use($app){
 $resourceUri = $_SERVER['REQUEST_URI'];
 //allows the app to be installed in / or /[subPath]/
 $rootUri = $app->request()->getRootUri();
-$assetUri = $rootUri.'/public';
+$assetUri = '/public';
 $app->view()->appendData(
     array(
         'app' => $app,
         'rootUri' => $rootUri,
-        'debug' => true,
         'assetUri' => $assetUri,
         'resourceUri' => $resourceUri
     ));
@@ -89,6 +87,7 @@ $app->get('/', function () use ($app) {
 
     //we can ask for /page.html or /page
     $app->getLog()->debug("HTML request");
+    $app->view()->appendData(array('debug' => $app->request->params("debug") ) );
     $app->render('index.twig');
 });
 
@@ -96,7 +95,7 @@ $app->get('/', function () use ($app) {
 
 //api rest / json, adds a json file in src/data and its name here to enable it.
 $rest = array("icons","jobs","nodes","pages","slides","timeline");
-    /*
+
 
 use Assetic\Asset\AssetCollection;
 use Assetic\Asset\FileAsset;
@@ -132,7 +131,7 @@ $app->get('/img/:path.:ext', function($path,$ext) use ($app){
 
     echo $img->dump();
 });
-*/
+
 //one fonction to rule them all
 $app->map(
     '/api(/:entity)(/:id)(/:action)',

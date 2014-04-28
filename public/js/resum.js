@@ -9,19 +9,29 @@ require.config({
     baseUrl:'/public/js/',
     paths:{
         "zepto":"libs/zepto",
-        "angular":"libs/angular",
-        "raphael":"libs/raphael",
         "lodash":"libs/lodash",
         "oriDomi":"libs/oriDomi",
         "noClickDelay":"libs/noClickDelay"
     },
     shims:{
-        "angular":{deps:["zepto"],"exports":"angular"},
+        "zepto":{"exports":"Zepto"},
         "raphael":{"exports":"Raphael"},
         "lodash":{"exports":"_"}
     }
 });
-define(["zepto", "angular", "raphael", "oriDomi","resum/app"], function ($, angular, Raphael, oriDomi, app) {
+define(["zepto", "oriDomi","icons"], function ($, oriDomi, icons) {
 
-    angular.bootstrap(document, ['app']);
+
+    var resetSectionHeight =  function (e) {
+        $('section').css("height", $(window).height());
+    };
+
+    $(document).ready(function (e) {
+        resetSectionHeight(e);
+        $(window).on('resize', resetSectionHeight);
+        $('#menu ul').on('click', function (e) {
+            return false;
+        });
+    });
+
 });
