@@ -1,0 +1,29 @@
+doctype html
+html(lang='fr')
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='Content-Type', content='txt/html; charset=utf-8')
+        block title
+        meta(name='description', content='{{ page.description }}')
+        meta(name='viewport', content='user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width')
+        meta(http-equiv='Cache-control', content='public')
+        link(rel='stylesheet', href='/css/font-awesome.css')
+        link(rel='stylesheet', href='/css/resum.css')
+        link(rel='stylesheet', media='print', href='/css/print.css')
+
+        block head_css
+
+    body.resum
+        .wrapper
+            h1#top.visuallyhidden {{ page.title }}
+
+            block menu
+                include ./inc/menu.twig
+
+            block ariane
+
+        #main.container.scrollable
+            block content %}{% endblock %}
+
+    block bottom_js
+      script(data-main='{{ assetUri }}/js/resum', src='{{ assetUri }}/js/libs/require.js')
