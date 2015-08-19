@@ -1,8 +1,7 @@
-vendor/
+node_modules/
 target/
 cache/
 .idea/
 .svn/
-composer.lock
 *.iml
 *.log
