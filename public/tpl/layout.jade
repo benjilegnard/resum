@@ -13,17 +13,17 @@ html(lang='fr')
 
         block head_css
 
-    body.resum
+    body#resum
         .wrapper
             h1#top.visuallyhidden {{ page.title }}
 
             block menu
-                include ./inc/menu.twig
+                include ./inc/menu.jade
 
             block ariane
 
         #main.container.scrollable
-            block content %}{% endblock %}
+            block content
 
     block bottom_js
-      script(data-main='{{ assetUri }}/js/resum', src='{{ assetUri }}/js/libs/require.js')
+      //script(data-main='{{ assetUri }}/js/resum', src='{{ assetUri }}/js/libs/require.js')

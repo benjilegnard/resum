@@ -13,7 +13,9 @@ define(["jquery","backbone","models/UserModel", "views/UserView","collections/Us
         routes: {
 
             // When there is no hash bang on the url, the home method is called
-            "": "home"
+            "": "home",
+            "skills":"skills",
+            "experience":"experiencePage",
 
         },
 

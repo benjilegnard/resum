@@ -1,12 +1,7 @@
-define(["jquery","backbone","models/SlideModel"], function($, Backbone, Slide) {
+var Slide = require('../models/SlideModel');
 
-    var SlideList = Backbone.Collection.extend({
+module.exports = Backbone.Collection.extend({
 
-        model: Slide
-
-    });
-
-    // Returns the Collection class
-    return SlideList;
+    model: Slide
 
 });
