@@ -1,104 +1,104 @@
-define(['jquery', 'backbone','models/UserModel'], function($, Backbone, UserModel){
+'use strict';
 
-    var View = Backbone.View.extend({
+var $ = require('jquery');
+var Backbone = require('backbone');
+Backbone.$ = $;
 
-        el: "section#main",
+module.exports = Backbone.View.extend({
 
-        // View constructor
-        initialize: function() {
+    el: "body#resum",
 
-            // Setting the view's template property
-            this.template = _.template( $("#example").html(), { users: this.collection } );
+    // View constructor
+    initialize: function() {
 
-            // The render method is called when Models are added or removed to the Collection
-            this.collection.on("add remove", this.render, this);
+        // Setting the view's template property
+        this.template = _.template( $("#example").html(), { users: this.collection } );
 
-            // Twitter Bootstrap Modal Logic
-            $("#myModal").on("hidden", function() {
-  
-                // Reset's the form input fields
-                $("form#createUser input").val("");
+        // The render method is called when Models are added or removed to the Collection
+        this.collection.on("add remove", this.render, this);
 
-                // Clear's any error messages
-                $(".errors").empty();
+        // Twitter Bootstrap Modal Logic
+        $("#myModal").on("hidden", function() {
 
-            });
+            // Reset's the form input fields
+            $("form#createUser input").val("");
 
-        },
+            // Clear's any error messages
+            $(".errors").empty();
 
-        // Event Handlers
-        events: {
+        });
 
-            "mouseenter tr": "showRemoveOption",
+    },
 
-            "mouseleave tr": "hideRemoveOption",
+    // Event Handlers
+    events: {
 
-            "click .icon-remove": "removeUser",
+        "mouseenter tr": "showRemoveOption",
 
-            "click #create": "addUser"
+        "mouseleave tr": "hideRemoveOption",
 
-        },
+        "click .icon-remove": "removeUser",
 
-        // Renders all of the User models on the UI
-        render: function() {
+        "click #create": "addUser"
 
-            // Setting the view's template property
-            this.template = _.template( $("#example").html(), { users: this.collection } );
+    },
 
-            this.$el.find("#model tbody").html(this.template);
+    // Renders all of the User models on the UI
+    render: function() {
 
-            return this;
+        // Setting the view's template property
+        this.template = _.template( $("#example").html(), { users: this.collection } );
 
-        },
+        this.$el.find("#model tbody").html(this.template);
 
-        // Creates a new User model, validates the model, and adds it to the users Collection
-        addUser: function() {
+        return this;
 
-            var user = new UserModel();
+    },
 
-            user.set({ "firstname": $("#firstname").val(), "lastname": $("#lastname").val(), "email": $("#email").val(), "phone": $("#phone").val() }, {error: function(obj, error) {
+    // Creates a new User model, validates the model, and adds it to the users Collection
+    addUser: function() {
 
-                $(".errors").text(error.error);
+        var user = new UserModel();
 
-                $("#" + error.field).focus();
+        user.set({ "firstname": $("#firstname").val(), "lastname": $("#lastname").val(), "email": $("#email").val(), "phone": $("#phone").val() }, {error: function(obj, error) {
 
-            }});
+            $(".errors").text(error.error);
 
-            if(user.isValid()) {
+            $("#" + error.field).focus();
 
-                this.collection.add(user);
+        }});
 
-                $("#myModal").modal("hide");
+        if(user.isValid()) {
 
-            }
+            this.collection.add(user);
 
-        },
-
-        // Removes a user from the users Collection
-        removeUser: function(event) {
-
-            var id = $(event.currentTarget).closest("tr").attr("data-id");
-
-            this.collection.remove(this.collection.at(id));
-
-        },
-
-        // Makes the close icon visible
-        showRemoveOption: function(event) {
-
-            $(event.currentTarget).find(".icon-remove").show();
-
-        },
-
-        // Hides the close icon visible
-        hideRemoveOption: function(event) {
-
-            $(event.currentTarget).find(".icon-remove").hide();
+            $("#myModal").modal("hide");
 
         }
 
-    });
-	
-    // Returns the View class
-    return View;
+    },
+
+    // Removes a user from the users Collection
+    removeUser: function(event) {
+
+        var id = $(event.currentTarget).closest("tr").attr("data-id");
+
+        this.collection.remove(this.collection.at(id));
+
+    },
+
+    // Makes the close icon visible
+    showRemoveOption: function(event) {
+
+        $(event.currentTarget).find(".icon-remove").show();
+
+    },
+
+    // Hides the close icon visible
+    hideRemoveOption: function(event) {
+
+        $(event.currentTarget).find(".icon-remove").hide();
+
+    }
+
 });

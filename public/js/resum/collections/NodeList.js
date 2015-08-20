@@ -1,12 +1,14 @@
-define(["jquery","backbone","models/SlideModel"], function($, Backbone, Node) {
+'use strict';
 
-    var NodeList = Backbone.Collection.extend({
+var $ = require('jquery');
+var Backbone = require('backbone');
+Backbone.$ = $;
+
+var Node = require('../models/NodeModel');
+
+module.exports = Backbone.Collection.extend({
 
         model: Node
 
-    });
-
-    // Returns the Collection class
-    return NodeList;
 
 });
