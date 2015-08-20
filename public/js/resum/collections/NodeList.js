@@ -10,5 +10,4 @@ module.exports = Backbone.Collection.extend({
 
         model: Node
 
-
 });

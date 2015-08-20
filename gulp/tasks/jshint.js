@@ -9,3 +9,8 @@ gulp.task('lint', function () {
         .pipe(jshint())
         .pipe(jshint.reporter('default', {verbose: true}));
 });
+
+gulp.task('js-copy', function () {
+    return gulp.src(config.source + '/js/**/*.js')
+        .pipe(gulp.dest(config.destination + '/js'));
+});
