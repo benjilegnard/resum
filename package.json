@@ -46,5 +46,14 @@
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "oridomi": "^1.1.2"
+  },
+  "browserify-shim": {
+    "jquery": "$",
+    "lodash":"_"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
   }
 }
