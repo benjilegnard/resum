@@ -1,44 +1,39 @@
-resum
-=====
+# resum
 
-my TimeLine based portfolio / resume, to sell myself and tell the world my technical and professional background.
+my timeLine based portfolio / resume, to sell myself and tell the world my technical and professional background.
 
 [Benjamin Legrand](http://www.benjaminlegrand.net)
 
-#Features
+## Features
 
 * A sell-myself slideshow.
-* A node-based resume : skills, realisations and .
-* A contact form for requests and job propositions.
+* A node-based resume : skills, experience and projects.
+* It's basically a static site generator using JSON files for data, fed to jade template for HTML.
 
-backend using [Slim](), [Bootstrap]() and [Backbone-require-boilerplate]()
+## Installation
 
+You will need node.js and npm available in your PATH
 
-#Installation
+  npm install
 
-You will need PHP 5.4 and Composer available in your PATH
+## Technical details
 
-  composer install --dev
+### Gulp
 
-#Frameworks
+The site is built using gulp tasks and several libraries :
 
-##Php
+* gulp-jade
+* gulp-less
+* gulp-imagemin
+* gulp-font
+* etc... see package.json for details
 
-The site is built using several php frameworks, see composer.json for details
+### Future Enhancements
 
-##Javascript
+* Internationalization
+* Automatic PDF generation (see http://pdfkit.org/)
+*
 
-librairies
+## Credits
 
-  Jquery
-  Jquery.mobile
-  Backbone
-  Underscore
-  Require
-  Raphael
-  Traer
-
-
-#Credits
-
-Coded with love by Benjamin Legrand for himself (c) 2013.
+Coded with love by Benjamin Legrand for himself (c) 2013-2015.
