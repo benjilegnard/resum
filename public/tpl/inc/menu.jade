@@ -30,3 +30,8 @@ header
                     | resourceUri
                     ul
                         li {{ resourceUri }}
+    each page in pages
+        li
+        - var id = '#'+page.key
+            a(href=id,title=page.title)
+                = page.title
