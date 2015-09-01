@@ -34,6 +34,8 @@ module.exports = {
 
     },
     ftp:{
-
+        ftphost:  process.env.BLGNET_HOST,
+        username: process.env.BLGNET_USER,
+        password: process.env.BLGNET_PASS
     }
 };
