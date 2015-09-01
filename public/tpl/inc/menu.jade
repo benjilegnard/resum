@@ -33,5 +33,5 @@ header
     each page in pages
         li
         - var id = '#'+page.key
-            a(href=id,title=page.title)
+            a(data-id=id,href=page.key+'.html', title=page.title)
                 = page.title

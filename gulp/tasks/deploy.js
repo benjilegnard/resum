@@ -1,13 +1,14 @@
 var gulp = require( 'gulp' );
 var util = require( 'gulp-util' );
+var config = require( '../config' );
 var ftp = require( 'vinyl-ftp' );
 
-gulp.task( 'deploy', function() {
+gulp.task( 'deploy',['build'], function() {
 
     var connection = ftp.create( {
-        host:     process.env.BLGNET_HOST,
-        user:     process.env.BLGNET_USER,
-        password: process.env.BLGNET_PASS,
+        host:     config.ftp.ftphost,
+        user:     config.ftp.username,
+        password: config.ftp.password,
         parallel: 10,
         log:      util.log
     } );
@@ -17,7 +18,7 @@ gulp.task( 'deploy', function() {
         'css/**',
         'js/**',
         'fonts/**',
-        'index.html'
+        '*.html'
     ];
 
     // using base = '.' will transfer everything to /public_html correctly
