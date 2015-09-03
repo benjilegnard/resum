@@ -1,11 +1,13 @@
-header
+img.gravatar(src='http://www.gravatar.com/avatar/cdb0added8646a655eff90c676b22467')
+header#menu
+    
     h1 Benjamin Legrand
-        span.small  Resume
-    br
-    h2 Concepteur D&eacute;veloppeur
-    p Front-end, html5, css3, java, php etc...
-
-    ul.tabs
+    
+    #burger
+        a.menu
+            span Menu
+            
+ul.tabs
     if debug
         li
             a(href='#debug') Debug
@@ -32,6 +34,6 @@ header
                         li {{ resourceUri }}
     each page in pages
         li
-        - var id = '#'+page.key
+            - var id = '#'+page.key
             a(data-id=id,href=page.key+'.html', title=page.title)
                 = page.title

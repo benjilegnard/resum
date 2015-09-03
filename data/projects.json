@@ -1,6 +1,14 @@
 [
   {
     "key":"gotloop",
-    "description":""
+    "description":"A sound sample sharing web application",
+    "githubUrl":"jibhaine/gotloop",
+    "imageUrl":""
+  },
+  {
+    "key":"jerzual",
+    "description":"A small indie game studio",
+    "githubUrl":"jerzual",
+    "imageUrl":""
   }
 ]

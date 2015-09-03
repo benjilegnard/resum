@@ -1,32 +1,32 @@
 [
     {
         "key":"index",
-        "title":"Benjamin Legrand | Resume",
+        "title":"Home",
         "content":[
             "slides","commons","nodes"
         ]
     },
     {
         "key":"skills",
-        "title":"My skills",
+        "title":"Skills",
         "description":"what i can do",
         "content":{}
     },
     {
         "key":"experience",
-        "title":"gallerie de mes réalisations et expériences professionnelles sur une ligne de temps",
+        "title":"Experience",
         "description":"",
         "content":{}
     },
     {
         "key":"projects",
-        "title":"Personal projects",
+        "title":"Projects",
         "description":"",
         "content":{}
     },
     {
         "key":"about-me",
-        "title":"contactez-moi",
+        "title":"Contact",
         "description":"Some links if you want to contact me : ",
         "content":
                 {

@@ -1,6 +1,5 @@
 [
     {
-        "id":0,
         "title":"Mon nom est Benjamin Legrand",
         "description":"Je suis né le 16 février 1986",
         "icon":"",
@@ -10,7 +9,6 @@
         }
     },
     {
-        "id":1,
         "title":"Je suis développeur web",
         "description":"Spécialisé dans les interfaces utilisateurs",
         "icon":"",
@@ -20,7 +18,6 @@
         }
     },
     {
-        "id":2,
         "title":"Je suis curieux",
         "description":"J'aime apprendre et comprendre",
         "icon":"",
@@ -30,7 +27,6 @@
         }
     },
     {
-        "id":3,
         "title":"Je suis créatif",
         "description":"Sans musique, la vie serait une erreur.",
         "icon":"",
@@ -40,7 +36,6 @@
         }
     },
     {
-        "id":4,
         "title":"Je suis social",
         "description":"Ma présence en ligne : ",
         "icon":"",

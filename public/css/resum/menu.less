@@ -1,32 +1,50 @@
+@menuBorderColor:#999;
+@menuBorderColorHover:#00B7FF;
+@menuBackgroundColor:#333;
+@pageBackgroundColor:white;
+@menuTextColor:white;
+
+
 #menu{
     position: fixed;
     top: 0;
-    background: #333;
+    background: @menuBackgroundColor;
     width: 100%;
+    z-index:1;
 
+      h1{
+        color:white;
+      }
 }
-
+img.gravatar{
+        border-radius:40px;
+        border:4px solid @menuBackgroundColor;
+        position:fixed;
+        top:-10px;
+        left:-5px;
+        z-index: 2;
+    }
 ul.tabs {
-    width: 100%;
+
     line-height: 1em;
     overflow-x: hidden;
-
+    z-index:3;
     li {
-        background: #333;
+        background: @menuBackgroundColor;
         border-width: 0px 2px 2px;
-        border-color: transparent #333 #00B7FF;
+        border-color: transparent @menuBackgroundColor @menuBorderColorHover;
         list-style-type: none;
         display: block;
         float: left;
-        border-bottom: 2px #999 solid;
+        border-bottom: 2px @menuBorderColor solid;
         position: relative;
         margin: 0 1px;
     }
     li.title {
-        border-bottom-color: #333;
+        border-bottom-color: @menuBackgroundColor;
     }
     li.title a {
-        color: #00B7FF;
+        color: @menuBorderColorHover;
     }
     li.title:after, li.title a:after, ul.list {
         display: none;
@@ -35,7 +53,7 @@ ul.tabs {
         background: #444;
     }
     li:hover, li.active, li:hover:after {
-        border-bottom-color: #00B7FF;
+        border-bottom-color: @menuBorderColorHover;
     }
     li a {
         color: white;
@@ -55,12 +73,12 @@ ul.tabs {
     }
     li:after {
         bottom: 0px;
-        border-color: transparent transparent #999 transparent;
+        border-color: transparent transparent @menuBorderColor transparent;
         z-index: 4;
     }
     li a:after {
         bottom: -3px;
-        border-color: transparent transparent #666 transparent;
+        border-color: transparent transparent @pageBackgroundColor transparent;
         z-index: 5;
     }
 }
