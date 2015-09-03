@@ -1,4 +1,4 @@
-var jquery = require('jquery');
+var jQuery = require('jquery');
 
 (function($){
     var resetSectionHeight =  function (e) {
@@ -11,6 +11,9 @@ var jquery = require('jquery');
         $('#menu').find('ul').on('click', function (e) {
             return false;
         });
+        $('#burger').find('a').on('click',function(){
+            $('ul.tabs').toggleClass('active')
+        })
     });
 
 })(jQuery);
