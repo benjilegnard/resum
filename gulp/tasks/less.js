@@ -5,6 +5,7 @@ var config = require('../config.js');
 var less = require('gulp-less');
 var minifyCSS = require('gulp-minify-css');
 var sourceMaps = require('gulp-sourcemaps');
+var connect = require( 'gulp-connect' );
 
 
 gulp.task('less:dev', function () {
@@ -12,7 +13,8 @@ gulp.task('less:dev', function () {
         .pipe(sourceMaps.init())
         .pipe(less())
         .pipe(sourceMaps.write())
-        .pipe(gulp.dest(config.destination+'/css/'));
+        .pipe(gulp.dest(config.destination+'/css/'))
+        .pipe(connect.reload());
 });
 
 gulp.task('less', function () {
