@@ -5,6 +5,7 @@ var jade = require( 'gulp-jade' );
 var data = require('gulp-data');
 var jsonData = require('./get-data.js');
 var minifyHTML = require('gulp-minify-html');
+var connect = require( 'gulp-connect' );
 
 gulp.task('html:dev', function () {
     gulp.src(config.jade.files)
@@ -13,6 +14,7 @@ gulp.task('html:dev', function () {
             pretty: true
         }))
         .pipe(gulp.dest(config.destination+'/'))
+        .pipe(connect.reload())
 });
 
 gulp.task('html', function () {

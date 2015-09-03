@@ -6,6 +6,7 @@ var connect = require( 'gulp-connect' );
 gulp.task('connect', function () {
     connect.server({
         root: config.destination,
-        livereload: true
+        livereload: true,
+        port:8888
     });
 });
