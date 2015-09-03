@@ -1,3 +1,5 @@
+var jquery = require('jquery');
+
 (function($){
     var resetSectionHeight =  function (e) {
         $('section').css("height", $(window).height());
