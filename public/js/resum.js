@@ -1,19 +1,18 @@
-var jQuery = require('jquery');
+function resizeHandler(e) {
+    var sections = document.getElementsByTagName('section');
+    for(var i = 0 ; i++; i < sections.length){
+        sections.item(i).style.css.height = window.height;
+    }
+}
 
-(function($){
-    var resetSectionHeight =  function (e) {
-        $('section').css("height", $(window).height());
-    };
+function burgerClickHandler(){
+    document.getElementById('tabs').classList.toggle('active')
+}
 
-    $(document).ready(function (e) {
-        resetSectionHeight(e);
-        $(window).on('resize', resetSectionHeight);
-        $('#menu').find('ul').on('click', function (e) {
-            return false;
-        });
-        $('#burger').find('a').on('click',function(){
-            $('ul.tabs').toggleClass('active')
-        })
-    });
+function documentReady(e) {
+    resizeHandler(e);
+    document.getElementById('burger').addEventListener('click', burgerClickHandler);
+}
 
-})(jQuery);
+document.addEventListener('DOMContentLoaded', documentReady);
+window.addEventListener('resize', resizeHandler);
