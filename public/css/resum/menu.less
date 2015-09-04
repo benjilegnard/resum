@@ -43,7 +43,7 @@ ul.tabs {
         float: left;
         border-bottom: 2px @tabsBorderColor solid;
         position: relative;
-        margin: 0 1px;
+        margin: 0;
     }
     li.title {
         border-bottom-color: @menuBackgroundColor;
@@ -92,26 +92,32 @@ ul.tabs {
 ul.tabs.active
 {
     border-right:@borderSize solid @menuBorderColor;
+    background-color:@menuBackgroundColor;
 
     li {
-        border-color: transparent;
+        border-color   : transparent;
         list-style-type: none;
-        display: block;
-        float: left;
-        border-right: 2px @tabsBorderColor solid;
+        display        : block;
+        float          : left;
+        border-right   : 2px @tabsBorderColor solid;
+        position       : relative;
+
+        a {
+          width:100%;
+        }
     }
-    li:hover, li.active, li:hover:after {
-        border-bottom-color: transparent;
-        border-right-color: @menuBackgroundColor;
+    li:hover, li.active, li:hover:after{
+        border-bottom-color : transparent;
+        border-right-color  : @tabsBorderColorHover;
     }
-/*two arrows*/
+    /*two arrows*/
     li:after, li a:after {
-        left     : 0;
         top      : 45%;
+        left     : auto;
+        bottom   : auto;
     }
     li:after {
-        bottom      : auto;
-        right      : 0;
+        right       : 0;
         border-color: transparent @tabsBorderColor transparent transparent;
         z-index     : 4;
     }
