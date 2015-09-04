@@ -18,6 +18,10 @@ gulp.task('html:dev', function () {
 });
 
 gulp.task('html', function () {
+    //copy .htaccess first
+    gulp.src(config.source+'/.htaccess')
+        .pipe(gulp.dest(config.destination+'/'));
+    //compile jade, minify and dest
     gulp.src(config.jade.files)
         .pipe(data(jsonData))
         .pipe(jade())
