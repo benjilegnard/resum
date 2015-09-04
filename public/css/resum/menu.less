@@ -1,9 +1,9 @@
-@menuBorderColor:#999;
-@menuBorderColorHover:#00B7FF;
+@tabsBorderColor:#999;
+@tabsBorderColorHover:#00B7FF;
 @menuBackgroundColor:#333;
-@pageBackgroundColor:white;
+@menuBorderColor:#666;
 @menuTextColor:white;
-
+@borderSize:4px;
 
 #menu{
     position: fixed;
@@ -12,31 +12,36 @@
     width: 100%;
     z-index:1;
 
+    border-bottom:@borderSize solid @menuBorderColor;
+
       h1{
         color:white;
       }
 }
 img.gravatar{
-        border-radius:40px;
+        border-radius:44px;//half the avatar.png size
         border:4px solid @menuBackgroundColor;
         position:fixed;
         top:-10px;
         left:-5px;
-        z-index: 2;
+        z-index:2;
+        &:after{
+            z-index:0;
+        }
     }
 ul.tabs {
 
     line-height: 1em;
-    overflow-x: hidden;
+    //overflow-x: hidden;
     z-index:3;
     li {
         background: @menuBackgroundColor;
         border-width: 0px 2px 2px;
-        border-color: transparent @menuBackgroundColor @menuBorderColorHover;
+        border-color: transparent @menuBackgroundColor @tabsBorderColorHover;
         list-style-type: none;
         display: block;
         float: left;
-        border-bottom: 2px @menuBorderColor solid;
+        border-bottom: 2px @tabsBorderColor solid;
         position: relative;
         margin: 0 1px;
     }
@@ -44,7 +49,7 @@ ul.tabs {
         border-bottom-color: @menuBackgroundColor;
     }
     li.title a {
-        color: @menuBorderColorHover;
+        color: @tabsBorderColorHover;
     }
     li.title:after, li.title a:after, ul.list {
         display: none;
@@ -53,7 +58,7 @@ ul.tabs {
         background: #444;
     }
     li:hover, li.active, li:hover:after {
-        border-bottom-color: @menuBorderColorHover;
+        border-bottom-color: @tabsBorderColorHover;
     }
     li a {
         color: white;
@@ -63,22 +68,56 @@ ul.tabs {
     }
 /*two arrows*/
     li:after, li a:after {
-        content: "";
-        display: block;
-        left: 45%;
-        width: 0;
-        height: 0;
-        border: 5px transparent solid;
-        position: absolute;
+        content  : "";
+        display  : block;
+        left     : 45%;
+        width    : 0;
+        height   : 0;
+        border   : 5px transparent solid;
+        position : absolute;
     }
     li:after {
-        bottom: 0px;
-        border-color: transparent transparent @menuBorderColor transparent;
-        z-index: 4;
+        bottom      : 0px;
+        border-color: transparent transparent @tabsBorderColor transparent;
+        z-index     : 4;
     }
     li a:after {
         bottom: -3px;
-        border-color: transparent transparent @pageBackgroundColor transparent;
+        border-color: transparent transparent @menuBorderColor transparent;
         z-index: 5;
+    }
+}
+
+//Version verticale
+ul.tabs.active
+{
+    border-right:@borderSize solid @menuBorderColor;
+
+    li {
+        border-color: transparent;
+        list-style-type: none;
+        display: block;
+        float: left;
+        border-right: 2px @tabsBorderColor solid;
+    }
+    li:hover, li.active, li:hover:after {
+        border-bottom-color: transparent;
+        border-right-color: @menuBackgroundColor;
+    }
+/*two arrows*/
+    li:after, li a:after {
+        left     : 0;
+        top      : 45%;
+    }
+    li:after {
+        bottom      : auto;
+        right      : 0;
+        border-color: transparent @tabsBorderColor transparent transparent;
+        z-index     : 4;
+    }
+    li a:after {
+        bottom: auto;
+        right: -3px;
+        border-color: transparent @menuBorderColor transparent transparent;
     }
 }

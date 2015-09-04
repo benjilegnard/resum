@@ -4,19 +4,43 @@ block title
     title CV Benjamin Legrand, D&eacute;veloppeur Web Front-end
 
 block content
-    section#index.blue
-        h2 Resume
+        section#index.blue
+
+            h2 Resume
+            .card
+                h3.card-title
+
         section#whoami.yellow
+            | &nbsp;
+            br
+            br
+            br
+            br
         section#timeline.orange
+            | &nbsp;
+            br
+            br
+            br
+            br
         section#projects.pink
-            dl
             each i in [1,2,3,4,5]
-                dt Title #{i}
-                dd
-                    img(src='http://placekitten.com/g/75/75')
+                .card.media
+                    h4 Title #{i}
+                    img(src='http://placekitten.com/g/75/75',width='75',height='75')
+                    p texte
         section#social.green
+            | &nbsp;
+            br
+            br
+            br
+            br
         section#contact.purple
-        section.row
+            | &nbsp;
+            br
+            br
+            br
+            br
+        section.row.blue-green
             label
                 select#iconSelect
             #cloud
@@ -26,7 +50,7 @@ block content
                 .cloud.bottom &nbsp;
                 .cloud.center &nbsp;
                 .cloud.icon &nbsp;
-        footer
+        footer.card
             p Code and design by Benjamin Legrand with the help of :
             ul
                 li
