@@ -44,6 +44,7 @@
     "jade": "^1.11.0",
     "pdfkit": "^0.7.1",
     "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-ftp": "^0.4.4",
     "vinyl-source-stream": "^1.1.0"

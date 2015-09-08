@@ -5,7 +5,8 @@ var config = require('../config.js');
 //var jpegtran = require('imagemin-jpegtran');
 
 gulp.task('imagemin', function () {
-    return gulp.src( config.source + '/img/*' )
+    return gulp.src( [
+        config.source + '/img/**/*.png'] )
         /*
         .pipe(imagemin({
             progressive: true,

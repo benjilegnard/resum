@@ -1,4 +1,4 @@
-img.gravatar(src='http://www.gravatar.com/avatar/cdb0added8646a655eff90c676b22467')
+img.gravatar(src='./img/avatar-16x16.png')
 header#menu
     
     h1 Benjamin Legrand
@@ -8,32 +8,8 @@ header#menu
             span Menu
             
 ul#tabs.tabs
-    if debug
-        li
-            a(href='#debug') Debug
-            ul#debugZone(style='display:none;')
-                li
-                    | app
-                    ul
-                        li {{ app.name }}
-                li
-                    | rootUri
-                    ul
-                        li {{ rootUri }}
-                li
-                    | debug
-                    ul
-                        li {{ debug }}
-                li
-                    | assetUri
-                    ul
-                        li {{ assetUri }}
-                li
-                    | resourceUri
-                    ul
-                        li {{ resourceUri }}
     each page in pages
         li
-            - var id = '#'+page.key
+            - var id = '#' + page.key
             a(data-id=id,href=page.key+'.html', title=page.title)
                 = page.title
