@@ -33,6 +33,7 @@ aside {
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
+
 }
 
 /* All Mobile Sizes (devices and browser) */
@@ -42,6 +43,9 @@ aside {
     }
     aside {
         .column(12);
+    }
+    #menu h1{
+      font-size:28px;
     }
 }
 
@@ -56,7 +60,7 @@ aside {
   @mobileMenuWidth    : 100px;
   @mobileHeaderHeight : 50px;
 
-  .gravatar{
+  img.gravatar{
     width:60px;
     height:60px;
     border-radius:30px;
@@ -99,8 +103,11 @@ aside {
     display:none;
     visibility: hidden;
   }
+
   ul.tabs{
-    position : absolute;
+    position: fixed;
+    right: 0px;
+    top: 16px;
     li{
       display:inline-block;
       float:left;
