@@ -13,7 +13,13 @@ gulp.task('lint', function () {
         .pipe(jshint.reporter('default', {verbose: true}));
 });
 
-gulp.task('js-copy', function () {
+gulp.task('uglify', function () {
+    return gulp.src(config.source + '/js/**/*.js')
+    	.pipe(uglify())
+        .pipe(gulp.dest(config.destination + '/js'))
+});
+
+gulp.task('uglify:dev', function () {
     return gulp.src(config.source + '/js/**/*.js')
     	.pipe(sourcemaps.init())
     	.pipe(uglify())
