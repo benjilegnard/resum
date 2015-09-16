@@ -5,10 +5,10 @@ var runSequence = require('run-sequence');
 //each gulp task is defined in its own file, cf https://github.com/greypants/gulp-starter for inspiration
 requireDir('./gulp/tasks', { recurse: true });
 
-gulp.task('build:dev', ['html:dev', 'lint', 'less:dev']);
+gulp.task('build:dev', ['html:dev', 'uglify:dev', 'less:dev']);
 
 gulp.task('build',function(done){
-    runSequence('clean',['html', 'js-copy', 'imagemin','less'], done);
+    runSequence('clean',['html', 'uglify', 'imagemin','less'], done);
 } );
 
 gulp.task('default', ['connect', 'watch']);
