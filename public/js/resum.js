@@ -5,14 +5,10 @@ function resizeHandler(e) {
     }
 }
 
-function burgerClickHandler(){
-    document.getElementById('tabs').classList.toggle('active')
-}
-
-function documentReady(e) {
+document.addEventListener('DOMContentLoaded', function(e) {
     resizeHandler(e);
-    document.getElementById('burger').addEventListener('click', burgerClickHandler);
-}
-
-document.addEventListener('DOMContentLoaded', documentReady);
+    document.getElementById('burger').addEventListener('click', function(){
+        document.getElementById('tabs').classList.toggle('active')
+    });
+});
 window.addEventListener('resize', resizeHandler);
