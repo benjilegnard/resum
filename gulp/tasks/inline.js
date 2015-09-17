@@ -15,7 +15,11 @@ gulp.task('inline',['html','less','uglify'], function () {
 		    //js: uglify(),
 		    //css: minifyCSS(),
 		    disabledTypes: ['svg', 'img'], // Only inline css & js files 
-		    ignore: ['https://fonts.googleapis.com/css?family=Roboto:100|Open+Sans','css/resum.css']
+		    ignore: [
+				'https://fonts.googleapis.com/css?family=Roboto:100|Open+Sans',
+				'css/resum.css',
+				'css/fonts.css'
+			]
 		}))
 		.pipe(minifyHTML())
 		.pipe(gulp.dest(config.destination));
