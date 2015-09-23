@@ -6,7 +6,9 @@ var config = require('../config.js');
 
 gulp.task('imagemin', function () {
     return gulp.src( [
-        config.source + '/img/**/*.png'] )
+        config.source + '/**/*.png',
+        config.source + '/**/*.ico'
+    ] )
         /*
         .pipe(imagemin({
             progressive: true,
@@ -14,5 +16,5 @@ gulp.task('imagemin', function () {
             use: [optipng(),jpegtran()]
         }))
         */
-        .pipe(gulp.dest( config.destination + '/img'));
+        .pipe(gulp.dest( config.destination + '/'));
 });
