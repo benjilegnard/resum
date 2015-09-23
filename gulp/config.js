@@ -1,5 +1,5 @@
 
-var source = './public',
+var source = './src',
     destination = './build';
 
 module.exports = {
