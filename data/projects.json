@@ -2,13 +2,19 @@
   {
     "key":"gotloop",
     "description":"A sound sample sharing web application",
-    "githubUrl":"jibhaine/gotloop",
+    "link":"/jibhaine/gotloop",
     "imageUrl":""
   },
   {
     "key":"jerzual",
     "description":"A small indie game studio",
-    "githubUrl":"jerzual",
+    "link":"/jerzual",
+    "imageUrl":""
+  },
+  {
+    "key":"codevember",
+    "description":"My contributions to ",
+    "link":"jerzual",
     "imageUrl":""
   }
 ]
