@@ -1,6 +1,7 @@
 var gulp = require( 'gulp' );
 var util = require( 'gulp-util' );
 var config = require( '../config' );
+var ghPages = require( 'gulp-gh-pages' );
 var ftp = require( 'vinyl-ftp' );
 
 gulp.task( 'deploy',['build'], function() {
@@ -25,6 +26,9 @@ gulp.task( 'deploy',['build'], function() {
         .pipe( connection.dest( '/www/resum' ) );
 
 } );
+gulp.task( 'deploy:gh-pages',['build'], function() {
+    return gulp.src( config.destination + '/**/*').pipe(ghPages());
+});
 
 
 
