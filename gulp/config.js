@@ -8,7 +8,6 @@ module.exports = {
     less:{
         files:
         [
-            source + '/css/font-awesome.less',
             source + '/css/resum.less',
             source + '/css/print.less'
         ]
