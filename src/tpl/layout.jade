@@ -17,12 +17,8 @@ html(lang='fr')
         .wrapper
             block menu
                 include ./inc/menu.jade
-            .content
-            
-                block ariane
-
-                #main.container.scrollable
-                    block content
+            #main.container.scrollable
+                block content
 
     block bottom_js
         script(src='/js/resum.js')

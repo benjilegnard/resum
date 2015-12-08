@@ -7,8 +7,8 @@ requireDir('./gulp/tasks', { recurse: true });
 
 gulp.task('build:dev', ['html:dev', 'uglify:dev', 'less:dev']);
 
-gulp.task('build',function(done){
-    runSequence('clean',['html', 'uglify', 'fonts', 'imagemin','less'],'inline', done);
+gulp.task('build', function(done){
+    runSequence('clean',['html', 'uglify', 'fonts', 'imagemin', 'less'],'inline', done);
 } );
 
 gulp.task('default', ['connect', 'watch']);
