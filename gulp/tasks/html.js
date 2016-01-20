@@ -4,6 +4,7 @@ var config = require( '../config.js' );
 var jade = require( 'gulp-jade' );
 var data = require('gulp-data');
 var jsonData = require('./get-data.js');
+var htmlmin = require('gulp-htmlmin');
 var connect = require( 'gulp-connect' );
 
 gulp.task('html:dev', function () {
@@ -24,5 +25,13 @@ gulp.task('html', function () {
     gulp.src(config.jade.files)
         .pipe(data(jsonData))
         .pipe(jade())
+        //html min options, see https://github.com/kangax/html-minifier
+        .pipe(
+            htmlmin(
+                {
+                    removeComments:true,collapseWhitespace:true
+                }
+            )
+        )
         .pipe(gulp.dest(config.destination+'/'))
 });
