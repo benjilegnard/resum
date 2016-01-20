@@ -3,8 +3,7 @@ var util = require( 'gulp-util' );
 var config = require( '../config.js' );
 var inline = require( 'gulp-inline' );
 var uglify = require('gulp-uglify');
-var minifyCSS = require('gulp-minify-css');
-var minifyHTML = require('gulp-minify-html');
+var htmlmin = require('gulp-htmlmin');
 
 //inline some small resources inside the html file (print.css and resum.js)
 gulp.task('inline',['html','less','uglify'], function () {
@@ -21,6 +20,6 @@ gulp.task('inline',['html','less','uglify'], function () {
 				'css/fonts.css'
 			]
 		}))
-		.pipe(minifyHTML())
+		.pipe(htmlmin())
 		.pipe(gulp.dest(config.destination));
 });

@@ -29,7 +29,8 @@ gulp.task('html', function () {
         .pipe(
             htmlmin(
                 {
-                    removeComments:true,collapseWhitespace:true
+                    removeComments:true,
+                    collapseWhitespace:true
                 }
             )
         )

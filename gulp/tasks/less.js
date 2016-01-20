@@ -32,6 +32,6 @@ gulp.task('less', function () {
         .pipe(less())
         .pipe(autoprefixer())
         .pipe(cssnano(cssCleanOptions))
-        .pipe(concat('resum.min.css'))
+        //.pipe(concat('resum.min.css'))
         .pipe(gulp.dest(config.destination+'/css/'));
 });
