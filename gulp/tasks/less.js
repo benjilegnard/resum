@@ -3,7 +3,7 @@ var gulp = require('gulp');
 var util = require('gulp-util');
 var config = require('../config.js');
 var less = require('gulp-less');
-var minifyCSS = require('gulp-minify-css');
+var cssnano = require('gulp-cssnano');
 var sourceMaps = require('gulp-sourcemaps');
 var concat = require( 'gulp-concat' );
 var size = require( 'gulp-size' );
@@ -21,7 +21,7 @@ gulp.task('less:dev', function () {
         .pipe(sourceMaps.init())
         .pipe(less())
         .pipe(autoprefixer())
-        .pipe(minifyCSS(cssCleanOptions))
+        .pipe(cssnano(cssCleanOptions))
         .pipe(sourceMaps.write())
         .pipe(gulp.dest(config.destination+'/css/'))
         .pipe(connect.reload());
@@ -31,7 +31,7 @@ gulp.task('less', function () {
     return gulp.src(config.less.files)
         .pipe(less())
         .pipe(autoprefixer())
-        .pipe(minifyCSS(cssCleanOptions))
-        //.pipe(concat('resum.min.css'))
+        .pipe(cssnano(cssCleanOptions))
+        .pipe(concat('resum.min.css'))
         .pipe(gulp.dest(config.destination+'/css/'));
 });
