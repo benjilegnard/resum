@@ -1,0 +1,22 @@
+{
+  "description":[
+    "",
+    "",
+    ""
+  ],
+  "hobbies":[
+    {
+      "title":"",
+      "description":""
+    }
+  ],
+  "contact":{
+    "address":{
+      "street":"7 rue des Salicornes",
+      "zipCode":"44200",
+      "city":"Nantes"
+    },
+    "mail":"contact@benjaminlegrand.net",
+    "phone":"+33681678120"
+  }
+}

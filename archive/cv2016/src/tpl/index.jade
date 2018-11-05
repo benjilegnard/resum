@@ -1,0 +1,79 @@
+extends ./layout.jade
+
+block title
+    title CV Benjamin Legrand, D&eacute;veloppeur Web Front-end
+
+block content
+        section#index.blue
+
+            h2 Resume
+            .card
+                h3.card-title
+
+        section#whoami.yellow
+            | &nbsp;
+            br
+            br
+            br
+            br
+        section#timeline.orange
+        section#projects.pink
+            each i in [1,2,3,4,5]
+                .card.media
+                    h4 Title #{i}
+                    img(src='http://placekitten.com/g/75/75',width='75',height='75')
+                    p texte
+        section#social.green
+            | &nbsp;
+            br
+            br
+            br
+            br
+        section#contact.purple
+            | &nbsp;
+            br
+            br
+            br
+            br
+        section.row.blue-green
+            label
+                select#iconSelect
+            #cloud
+                .cloud.top &nbsp;
+                .cloud.left &nbsp;
+                .cloud.right &nbsp;
+                .cloud.bottom &nbsp;
+                .cloud.center &nbsp;
+                .cloud.icon &nbsp;
+        footer
+            p Code and design by Benjamin Legrand with the help of :
+            ul
+                li
+                    a(href='http://lesscss.org/', target='_blank')
+                        | {LESS}
+                li
+                    a(href='http://tylertate.github.io/semantic.gs/', target='_blank')
+                        | Semantic grid
+                li
+                    a(href='http://lesselements.com/', target='_blank')
+                        | Less elements
+                li
+                    a(href='http://gulpjs.com/', target='_blank')
+                        | Gulp
+                li
+                    a(href='http://cubiq.org/iscroll-4', target='_blank')
+                        | iScroll
+                li
+                    a(href='http://backbonejs.org/', target='_blank')
+                        | Backbone
+            //
+              tutos and ressources :
+              http://mobile.tutsplus.com/tutorials/mobile-web-apps/introduction-to-iscroll/
+              http://plnkr.co
+              http://heptine2.rssing.com/browser.php?indx=1376735&item=143
+              http://heptine2.rssing.com/chan-1376735/all_p8.html
+              http://help.slimframework.com/discussions/problems/1131-advise-on-how-to-make-it-work-the-fllowing-setup-slimtwigassetic
+              https://github.com/kriswallsmith/assetic
+              for zell :
+              http://deepliquid.com/content/Jcrop.html    http://www.verious.com/qa/image-crop-with-angular-js/
+              http://stackoverflow.com/questions/14319177/image-crop-with-angularjs

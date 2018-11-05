@@ -1,0 +1,44 @@
+.burger(){
+    display:block;
+    content:'';
+    width:20px;
+    height:6px;
+    border-radius:3px;
+    position:absolute;
+    left:0;
+    background-color:#999;
+}
+
+#burger{
+    position:absolute;
+    right:5px;
+    top:5px;
+    width:30px;
+    height:30px;
+
+    a{
+        position:relative;
+        margin:5px;
+        display:block;
+        	padding:12px 0;
+        span{
+        	text-indent: 500px;
+            .burger();
+            &:after{
+                .burger();
+                top:-12px;
+            }
+            &:before{
+                .burger();
+                top:12px;
+            }
+        }
+    }
+    &:hover{
+        a span,
+        a span:after,
+        a span:before{
+            background-color: #CCC;
+        }
+    }
+}

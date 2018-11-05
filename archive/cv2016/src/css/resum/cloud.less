@@ -1,0 +1,64 @@
+#iconSelect, .minict_wrapper {
+    display:block
+}
+#cloud,
+[id^="cloud"]
+{
+    font-size:32px;
+    position:relative;
+    width:8em;
+    height:4em;
+    margin:1em auto;
+}
+.cloud.top, .cloud.left, .cloud.bottom, .cloud.right, .cloud.center, .cloud.icon {
+    background-color:#FFF;
+    border-radius:1em;
+    width:2em;
+    height:2em;
+    display:block;
+    position:absolute;
+}
+.cloud{
+    &.bottom {
+        background-color:#FFF;
+        border-radius:0;
+        bottom: 0;
+        top: 2em;
+        right: 1em;
+        left: 1em;
+        width: auto;
+    }
+    &.top {
+        top:0;
+        right:1em;
+        border-radius:2em;
+        width:4em;
+        height:4em;
+    }
+    &.left {
+        top:2em;
+        left:0;
+    }
+    &.right {
+        top: 2em;
+        right:0;
+    }
+    &.center {
+        border-radius:1.5em;
+        width:3em;
+        height:3em;
+        top: .5em;
+        left:1em;
+    }
+    &.icon {
+        left:3em;
+        top:1.25em;
+        bottom:0;
+        background:#666;
+        padding:0 .5em;
+        height:2em;
+        width:1em;
+        line-height:2em;
+        color:white;
+    }
+}

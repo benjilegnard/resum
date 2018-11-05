@@ -1,0 +1,39 @@
+@import '../mixins.less';
+//special card with img and text
+.media{
+
+	&:nth-child(odd)
+	{
+		img
+		{
+			float:right;
+			margin:0 0 10px 10px;
+		}
+
+		p
+		{
+			float:left;
+		}
+		h3,h4{
+			.clearfix();
+		}
+		.clearfix();
+	}
+
+	&:nth-child(even)
+	{
+		img
+		{
+			float:left;
+			margin:0 10px 10px 0;
+		}
+
+		p
+		{
+			float:right;
+		}
+		h3,h4{
+			.clearfix();
+		}
+	}
+}
