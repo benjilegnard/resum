@@ -1,18 +1,38 @@
 {
     "scripts": {
-        "composer:install": "docker run --rm -v $(pwd):/app composer/composer:latest",
-        "apache:start": "docker run --rm -p 8000:80 -v $(pwd):/var/www/html php:apache"
+        "start": "webpack --mode development",
+        "build:client": "webpack --mode production",
+        "composer:install": "docker run --rm -v $(pwd):/app composer/composer:latest install",
+        "apache:start": "docker run --rm -p 8000:80 -v $(pwd):/var/www/html php:apache",
+        "build:server": "npm run copy:index && npm run copy:vendor && npm run copy:public",
+        "copy:index": "cp index.php dist/",
+        "copy:vendor": "cp -r vendor dist/",
+        "copy:public": "cp -r client/dist/ dist/",
+        "copy": "npm run copy:index && npm run copy:vendor && npm run copy:public",
+        "stats": "webpack --progress -c --profile --json > stats.json"
     },
     "devDependencies": {
+        "@types/jest": "^23.3.9",
+        "@types/mithril": "^1.1.13",
+        "@types/node": "^10.12.3",
+        "@types/webpack": "^4.4.18",
         "css-loader": "^1.0.1",
+        "jest": "^23.6.0",
         "less-loader": "^4.1.0",
         "pug-loader": "^2.4.0",
+        "ts-jest": "^23.10.4",
         "ts-loader": "^5.3.0",
+        "ts-node": "^7.0.1",
+        "tsconfig-paths": "^3.6.0",
+        "tslint": "^5.11.0",
         "typescript": "^3.1.6",
-        "vue": "^2.5.17",
-        "vue-i18n": "^8.3.0",
-        "vue-loader": "^15.4.2",
-        "vue-template-compiler": "^2.5.17",
-        "webpack": "^4.25.1"
+        "webpack": "^4.25.1",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.10"
+    },
+    "dependencies": {
+        "mithril": "^1.1.6",
+        "mithril-tsx-component": "^3.0.0",
+        "moment": "^2.22.2"
     }
 }
