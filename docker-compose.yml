@@ -1,6 +1,30 @@
-version: '2'
+version: "3"
 services:
   db:
     image: mariadb
-  app:
+    container_name: resum_database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+    volumes:
+      - ./database/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+  web:
     image: php:apache
+    container_name: resum_server
+    links:
+      - db:db
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 7000:80
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: resum_admin
+    links:
+      - db:db
+    ports:
+      - 8000:80
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
