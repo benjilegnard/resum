@@ -8,3 +8,4 @@ vendor/
 *.iml
 *.log
 *.zip
+.env
