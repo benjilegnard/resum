@@ -28,6 +28,7 @@
     "@ngrx/schematics": "^8.3.0",
     "@ngrx/store": "^8.3.0",
     "@ngrx/store-devtools": "^8.3.0",
+    "breakpoint-sass": "^2.7.1",
     "ngx-popper": "^7.0.0",
     "popper.js": "^1.15.0",
     "rxjs": "~6.4.0",
