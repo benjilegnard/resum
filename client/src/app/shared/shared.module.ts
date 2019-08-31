@@ -9,7 +9,13 @@ import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [CardComponent, PageComponent, MenuComponent],
-  exports: [CardComponent, PageComponent, MenuComponent, CommonModule],
   imports: [CommonModule, RouterModule],
+  exports: [
+    CardComponent,
+    PageComponent,
+    MenuComponent,
+    CommonModule,
+    RouterModule,
+  ],
 })
 export class SharedModule {}
