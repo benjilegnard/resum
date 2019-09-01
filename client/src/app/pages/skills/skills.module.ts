@@ -9,7 +9,6 @@ import { SkillsComponent } from './containers/skills/skills.component';
 
 @NgModule({
   declarations: [SkillsComponent],
-  entryComponents: [SkillsComponent],
   imports: [
     SharedModule,
     SkillsRoutingModule
