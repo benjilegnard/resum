@@ -8,7 +8,6 @@ import { ProjectsComponent } from './containers/projects/projects.component';
 
 @NgModule({
   declarations: [ProjectsComponent],
-  entryComponents: [ProjectsComponent],
   imports: [
     SharedModule,
     ProjectsRoutingModule

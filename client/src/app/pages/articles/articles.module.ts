@@ -8,7 +8,6 @@ import { ArticlesComponent } from './containers/articles/articles.component';
 
 @NgModule({
   declarations: [ArticlesComponent],
-  entryComponents: [ArticlesComponent],
   imports: [
     SharedModule,
     ArticlesRoutingModule
