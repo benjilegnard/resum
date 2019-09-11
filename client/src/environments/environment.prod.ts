@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'https://www.benjaminlegrand.net/api/',
+  hmr: false,
 };
