@@ -12,7 +12,9 @@ html {
   padding: 0;
 }
 
-h1 {
+@import "base";
+
+h1::after {
   background: $red;
 
   @include breakpoint($small) {

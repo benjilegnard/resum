@@ -1,4 +1,29 @@
+ @import "mixins";
+
 .page {
   width: 100%;
   height: 100%;
+}
+
+.blue {
+  @include diagonal-gradient(#d0d3ed, #addeff, #f4c8dc);
+}
+.yellow {
+  @include diagonal-gradient(#f8ead8, #ffffc4, #f2d7ec);
+}
+.orange {
+  @include diagonal-gradient(#ffe8a4, #ffd093, #ffffb5);
+}
+.pink {
+  @include diagonal-gradient(#d8d2db, #b4eddb, #ffb5dc);
+}
+.green {
+  @include diagonal-gradient(#cccec2, #e4efaa, #b4eddb);
+}
+.purple {
+  @include diagonal-gradient(#d8c1c6, #c0b8d1, #f5ccba);
+}
+
+.blue-green {
+  @include diagonal-gradient(#b8ddc4, #d9f7a3, #99c4e5);
 }
