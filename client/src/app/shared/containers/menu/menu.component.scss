@@ -1,0 +1,156 @@
+@import "mixins";
+
+$tabsBorderColor: #999;
+$tabsBorderColorHover: #00b7ff;
+$menuBackgroundColor: #32343d;
+$menuBorderColor: #666;
+$menuTextColor: white;
+$borderSize: 4px;
+
+.menu {
+  position: fixed;
+  top: 0; left:0; right:0;
+  height:2em;
+  background: $menuBackgroundColor;
+  width: 100%;
+  z-index: 1;
+
+  border-bottom: $borderSize solid $menuBorderColor;
+  box-shadow: 5px 0 
+  h1 {
+    color: white;
+  }
+}
+
+img.gravatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 48px; //half the avatar.png size + borders
+  border: 4px solid $menuBackgroundColor;
+  position: fixed;
+  top: -10px;
+  left: -5px;
+  z-index: 2;
+  @include pixelate();
+
+  &:before {
+    z-index: 0;
+    border-radius: 57px;
+    width: 98px;
+    height: 98px;
+    top: -15px;
+    left: -10px;
+    background-color: $menuBorderColor;
+    display: block;
+    position: fixed;
+    content: ' ';
+  }
+}
+
+ul.tabs {
+  line-height: 1em;
+  //overflow-x: hidden;
+  z-index: 1;
+  li {
+    background: $menuBackgroundColor;
+    border-width: 0px 2px 2px;
+    border-color: transparent $menuBackgroundColor $tabsBorderColorHover;
+    list-style-type: none;
+    display: block;
+    float: left;
+    border-bottom: 2px $tabsBorderColor solid;
+    position: relative;
+    margin: 0;
+  }
+  li.title {
+    border-bottom-color: $menuBackgroundColor;
+  }
+  li.title a {
+    color: $tabsBorderColorHover;
+  }
+  li.title:after,
+  li.title a:after,
+  ul.list {
+    display: none;
+  }
+  li:hover,
+  li.active {
+    background: #444;
+  }
+  li:hover,
+  li.active,
+  li:hover:after {
+    border-bottom-color: $tabsBorderColorHover;
+  }
+  li a {
+    color: white;
+    padding: 1em;
+    display: block;
+    text-decoration: none;
+  }
+  /*two arrows*/
+  li:after,
+  li a:after {
+    content: '';
+    display: block;
+    left: 45%;
+    width: 0;
+    height: 0;
+    border: 5px transparent solid;
+    position: absolute;
+  }
+  li:after {
+    bottom: 0;
+    border-color: transparent transparent $tabsBorderColor transparent;
+    z-index: 4;
+  }
+  li a:after {
+    bottom: -3px;
+    border-color: transparent transparent $menuBorderColor transparent;
+    z-index: 5;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  //Version verticale
+  ul.tabs {
+    border-right: $borderSize solid $menuBorderColor;
+    background-color: $menuBackgroundColor;
+
+    li {
+      border-color: transparent;
+      list-style-type: none;
+      display: block;
+      float: left;
+      border-right: 2px $tabsBorderColor solid;
+      position: relative;
+
+      a {
+        width: 100%;
+      }
+    }
+    li:hover,
+    li.active,
+    li:hover:after {
+      border-bottom-color: transparent;
+      border-right-color: $tabsBorderColorHover;
+    }
+    /*two arrows*/
+    li:after,
+    li a:after {
+      top: 45%;
+      left: auto;
+      bottom: auto;
+    }
+    li:after {
+      right: 0;
+      border-color: transparent $tabsBorderColor transparent transparent;
+      z-index: 4;
+    }
+    li a:after {
+      bottom: auto;
+      right: -3px;
+      border-color: transparent $menuBorderColor transparent transparent;
+    }
+  }
+}

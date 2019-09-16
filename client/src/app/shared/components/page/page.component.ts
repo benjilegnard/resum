@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, animate, transition, style } from '@angular/animations';
+import * as faker from 'faker';
 
 @Component({
   selector: 'bl-page',
@@ -18,7 +19,20 @@ import { trigger, animate, transition, style } from '@angular/animations';
   ],
 })
 export class PageComponent implements OnInit {
+
+  public backgroundClass: string;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.backgroundClass = faker.helpers.randomize([
+      'blue',
+      'yellow',
+      'orange',
+      'pink',
+      'green',
+      'purple',
+      'blue-green'
+    ]);
+  }
 }
