@@ -24,7 +24,7 @@ build: ## Builds docker images from the current project files
 	docker-compose build 
 
 build-ci: ## Builds docker images from the current project files
-	docker-compose build --force-recreate
+	docker-compose build --no-cache
 
 up: ## Creates and starts the docker containers with development settings
 	docker-compose -f docker-compose.yml up -d
