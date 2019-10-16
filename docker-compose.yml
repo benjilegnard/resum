@@ -1,30 +1,80 @@
-version: "3"
-services:
+version: '3'
+volumes:
+  logs:
+    driver: local
   db:
+    driver: local
+  matomo:
+services:
+  # MySQL database
+  database:
     image: mariadb
-    container_name: resum_database
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: test
+    env_file:
+      - .env.dist
+      - .env
     volumes:
-      - ./database/dump.sql:/docker-entrypoint-initdb.d/dump.sql
-  web:
-    image: php:apache
-    container_name: resum_server
+      - ./database/dump.sql:/docker-entrypoint-initdb.d/init.sql
+      - db:/var/lib/mysql
+
+  # Php 7.3 slim app
+  # server:
+  #   build:
+  #     context: ./server/
+  #   links:
+  #     - database:database
+  #   volumes:
+  #     - ./server/:/var/www/html
+  #   ports:
+  #     - 3000:8080
+  #   env_file:
+  #     - .env.dist
+  #     - .env
+
+  # Angular client running on nginx
+  client:
+    build:
+      context: ./client/
+      args:
+        NG_ENV: local
+    restart: always
+    ports:
+      - 4000:80
+
+  # db admin
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 5000:8080
     links:
-      - db:db
+      - database:database
+    env_file:
+      - .env.dist
+      - .env
+
+  analytics:
+    image: matomo
+    restart: always
     volumes:
-      - .:/var/www/html
-    ports:
-      - 7000:80
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    container_name: resum_admin
-    links:
-      - db:db
-    ports:
-      - 8000:80
+#     - ./config:/var/www/html/config
+#     - ./logs:/var/www/html/logs
+      - matomo:/var/www/html
     environment:
-      MYSQL_USER: user
-      MYSQL_PASSWORD: test
-      MYSQL_ROOT_PASSWORD: test
+      - MATOMO_DATABASE_HOST=database
+      - VIRTUAL_HOST=
+    env_file:
+      - .env.dist
+      - .env
+    ports:
+      - 9000:80
+
+  # tests:
+  #   build:
+  #     context: ./tests/
+  #     args:
+  #       NG_ENV: local
+  #   restart: always
+  #   ports:
+  #     - 4000:80
+
