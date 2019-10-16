@@ -3,7 +3,10 @@ node_js:
   - "12"
 
 script: 
-  make build-ci
+  - make clean
+  - make install-client
+  - make test-client
+  - make build-ci
 
 deploy:
   provider: script
