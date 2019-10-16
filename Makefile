@@ -7,12 +7,10 @@ clean:  ## remove all dependencies and build directories
 	rm -rf ./server/vendor
 
 install-client: ## install client dependencies
-	cd client
-	npm install
+	cd ./client && npm install
 
 install-server: ## install server dependencies
-	cd server
-	composer install
+	cd ./server && composer install
 
 test-client: ## run client tests
 	cd ./client && npm run test
