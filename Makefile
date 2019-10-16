@@ -22,6 +22,7 @@ build: ## Builds docker images from the current project files
 	docker-compose build 
 
 build-ci: ## Builds docker images from the current project files
+    cp ./env.dist .env
 	docker-compose build --no-cache
 
 up: ## Creates and starts the docker containers with development settings
