@@ -12,7 +12,8 @@ services:
     restart: always
     env_file:
       - .env.dist
-      - .env
+    environment: 
+      - MYSQL_ROOT_PASSWORD
     volumes:
       - ./database/dump.sql:/docker-entrypoint-initdb.d/init.sql
       - db:/var/lib/mysql
@@ -67,14 +68,14 @@ services:
       - .env.dist
       - .env
     ports:
-      - 9000:80
+      - 6000:80
 
-  # tests:
-  #   build:
-  #     context: ./tests/
-  #     args:
-  #       NG_ENV: local
-  #   restart: always
-  #   ports:
-  #     - 4000:80
+  tests:
+    build:
+      context: ./tests/
+      args:
+        RESUM_HOST: http://localhost:80/
+    restart: always
+    ports:
+      - 8000:8080
 
