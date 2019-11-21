@@ -5,6 +5,7 @@ volumes:
   db:
     driver: local
   matomo:
+    driver: local
 services:
   # MySQL database
   database:
@@ -14,23 +15,27 @@ services:
       - .env.dist
     environment: 
       - MYSQL_ROOT_PASSWORD
+    ports:
+      - 3306
     volumes:
-      - ./database/dump.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
       - db:/var/lib/mysql
 
   # Php 7.3 slim app
-  # server:
-  #   build:
-  #     context: ./server/
-  #   links:
-  #     - database:database
-  #   volumes:
-  #     - ./server/:/var/www/html
-  #   ports:
-  #     - 3000:8080
-  #   env_file:
-  #     - .env.dist
-  #     - .env
+  server:
+    build:
+      context: ./server/
+    links:
+      - database:database
+    command: php -S localhost:8080 -t public public/index.php
+    working_dir: /var/www/html
+    volumes:
+      - ./server/:/var/www/html
+    ports:
+      - 9000:8080
+    env_file:
+      - .env.dist
+      - .env
 
   # Angular client running on nginx
   client:
@@ -48,13 +53,13 @@ services:
     restart: always
     ports:
       - 5000:8080
-    links:
-      - database:database
     env_file:
       - .env.dist
       - .env
+    links:
+      - database:database
 
-  analytics:
+  tracker:
     image: matomo
     restart: always
     volumes:
@@ -68,7 +73,7 @@ services:
       - .env.dist
       - .env
     ports:
-      - 6000:80
+      - 7000:80
 
   tests:
     build:
