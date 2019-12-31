@@ -1,4 +1,6 @@
-@import "mixins";
+@import 'mixins';
+@import 'variables';
+@import 'breakpoint-sass';
 
 $tabsBorderColor: #999;
 $tabsBorderColorHover: #00b7ff;
@@ -9,7 +11,9 @@ $borderSize: 4px;
 
 .menu {
   position: fixed;
-  top: 0; left:0; right:0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 50px;
   color: white;
   background: $menuBackgroundColor;
@@ -17,17 +21,43 @@ $borderSize: 4px;
   z-index: 1;
 
   border-bottom: $borderSize solid $menuBorderColor;
-  box-shadow: 0 0 15px rgba(0,0,0,0.25);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
 
   h1 {
     margin-left: 60px;
-    font-size: 50px;
+    font-size: 40px;
+    line-height: 50px;
     color: white;
     font-weight: 100;
     text-shadow: 0 0 5px black;
   }
 }
+.menu-items {
+  background: rgba(200, 200, 200, 0.5);
+  line-height: 25px;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 50px;
+  padding: 5px 0;
+  color: black;
+  bl-menu-item {
+    flex: 1 1 auto;
+    display: flex;
+    width: auto;
+  }
 
+  @include breakpoint($small) {
+  }
+  @include breakpoint($large) {
+    background: transparent;
+    color: white;
+    left: 35%;
+    top: 5px;
+  }
+}
 img.gravatar {
   width: 60px;
   height: 60px;
