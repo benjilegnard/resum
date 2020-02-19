@@ -1,39 +1,34 @@
-# resum
+# Resum
 
-my timeLine based portfolio / resume, to sell myself and tell the world my technical and professional background.
+This is my personal resume / site / blog.
 
-[Benjamin Legrand](http://www.benjaminlegrand.net)
+## Architecture
 
-## Features
+The project is composed of three main modules / docker images.
 
-* A sell-myself slideshow.
-* A node-based resume : skills, experience and projects.
-* It's basically a static site generator using JSON files for data, fed to jade template for HTML.
+- client : the angular app frontend, running in an nginx container
+- server : a php graphql api, running with php-fpm
+- tests  : performance and end-to-end tests requiring the app to be running
+- archive: is where i store my old versions of this resume, look at it, it's fun and has not aged very well
 
-## Installation
+## Tech Stack
 
-You will need node.js and npm available in your PATH
 
-  npm install
+### Client
 
-## Technical details
+* angular
+* ngrx
+* apollo-graphql
+* ckeditor
+* sass
 
-### Gulp
+### Server
 
-The site is built using gulp tasks and several libraries :
+* SlimPHP
+* Graphql
+* Eloquent
 
-* gulp-jade
-* gulp-less
-* gulp-imagemin
-* gulp-font
-* etc... see package.json for details
+### Database
 
-### Future Enhancements
-
-* Internationalization
-* Automatic PDF generation (see http://pdfkit.org/)
-*
-
-## Credits
-
-Coded with love by Benjamin Legrand for himself (c) 2013-2015.
+* MariaDB / MySQL
+* 

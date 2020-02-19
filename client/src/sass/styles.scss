@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'variables';
+@import 'mixins';
+
+@import 'breakpoint-sass';
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@import "base";
+
+h1::after {
+  background: $red;
+
+  @include breakpoint($small) {
+    background: $blue;
+  }
+
+  @include breakpoint($medium) {
+    background: $yellow;
+  }
+
+  @include breakpoint($large) {
+    background: $green;
+  }
+  @include breakpoint($xlarge) {
+    background: $orange;
+  }
+}

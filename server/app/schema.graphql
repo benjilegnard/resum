@@ -1,0 +1,32 @@
+type Article {
+    id: string
+    slug: string
+}
+
+type Project {
+    createdAt: Number
+    endedAt: Number
+}
+
+type Step {
+    startedAt: Number
+    endedAt: Number
+    slug: String
+}
+
+type Node {
+    id: string
+    parentId: String!
+}
+query allPosts {
+    posts {
+        id
+        title
+        votes
+        author {
+            id
+            firstName
+            lastName
+        }
+    }
+}

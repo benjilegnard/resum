@@ -2,8 +2,10 @@ node_modules/
 .publish/
 build/
 cache/
+vendor/
 .idea/
 .svn/
 *.iml
 *.log
 *.zip
+.env

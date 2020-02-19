@@ -1,6 +1,18 @@
 language: node_js
 node_js:
-  - "0.12"
-before_script:
-  - npm install -g gulp
-script: gulp zip
+  - "12"
+
+script: 
+  - make clean
+  - make install-client
+  - make test-client
+  - make build-ci 
+  # - docker-compose exec tests npm run lighthouse
+  - docker-compose down
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/<dir> <ssh-user>@<deploy-host>:path/to/files
+  on:
+    branch: master
