@@ -13,12 +13,12 @@
   margin: 0 auto;
 }
 .page {
-  width: 100%;
+  width: 80%;
   height: 100%;
   background-color: white;
-  margin: 25px;
+  margin: 25px auto;
   padding: 25px;
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
   @include breakpoint($medium) {
     margin: 25px auto;
