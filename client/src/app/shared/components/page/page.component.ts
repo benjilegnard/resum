@@ -16,7 +16,7 @@ import * as faker from 'faker';
         animate('.15s', style({ opacity: 1, transform: 'translateX(0)' })),
       ]),
       transition(':leave', [
-        animate('.15s', style({ opacity: 0, transform: 'translateX(-100%)' })),
+        animate('.15s', style({ opacity: 0, transform: 'translateX(100%)' })),
       ]),
     ]),
   ],
