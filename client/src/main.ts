@@ -9,7 +9,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-function basicBootstrap(AppModule) {
+function basicBootstrap() {
   return platformBrowserDynamic().bootstrapModule(AppModule)
     .then(MODULE_REF => {
       console.log('Bootstrap success');
