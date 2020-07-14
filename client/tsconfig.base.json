@@ -21,7 +21,7 @@
   },
   "angularCompilerOptions": {
     "entryModule": "./src/app/app.module#AppModule",
-    "fullTemplateTypeCheck": true,
+    "strictTemplates": true,
     "strictInjectionParameters": true
   }
 }
