@@ -13,7 +13,7 @@ import { AdminComponent } from './containers/admin/admin.component';
   declarations: [AdminComponent],
   imports: [
     SharedModule,
-    AdminRoutingModule
+    AdminRoutingModule,
   ]
 })
 export class AdminModule { }

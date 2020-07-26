@@ -6,6 +6,7 @@ import { CardComponent } from './components/card/card.component';
 import { PageComponent } from './components/page/page.component';
 import { MenuComponent } from './containers/menu/menu.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
+import { MediaComponent } from './components/media/media.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
     PageComponent,
     MenuComponent,
     MenuItemComponent,
+    MediaComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
