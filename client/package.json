@@ -9,7 +9,8 @@
     "test": "jest",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
@@ -23,7 +24,11 @@
     "@angular/router": "~10.0.3",
     "@briebug/jest-schematic": "^2.1.1",
     "@ckeditor/ckeditor5-angular": "^1.2.3",
+    "@ctrl/ngx-emoji-mart": "^4.0.2",
     "@ctrl/ngx-headroom": "^3.0.0",
+    "@ng-web-apis/canvas": "^1.0.0",
+    "@ng-web-apis/common": "^1.4.1",
+    "@ng-web-apis/intersection-observer": "^2.0.0",
     "@ngrx/effects": "^9.2.0",
     "@ngrx/router-store": "^9.2.0",
     "@ngrx/schematics": "^9.2.0",

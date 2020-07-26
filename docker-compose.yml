@@ -68,7 +68,7 @@ services:
       - matomo:/var/www/html
     environment:
       - MATOMO_DATABASE_HOST=database
-      - VIRTUAL_HOST=
+      - VIRTUAL_HOST=tracker.resum
     env_file:
       - .env.dist
       - .env
@@ -84,3 +84,11 @@ services:
     ports:
       - 8000:8080
 
+  swagger-editor:
+    image: swaggerapi/swagger-editor
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/tmp
+    environment: 
+      SWAGGER_FILE: /tmp/resum.openapi.yml
