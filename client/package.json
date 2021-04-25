@@ -23,7 +23,7 @@
     "@angular/platform-browser-dynamic": "~11.2.11",
     "@angular/router": "~11.2.11",
     "@briebug/jest-schematic": "^2.1.1",
-    "@ckeditor/ckeditor5-angular": "^1.2.3",
+    "@ckeditor/ckeditor5-angular": "^2.0.1",
     "@ctrl/ngx-emoji-mart": "^4.0.2",
     "@ctrl/ngx-headroom": "^3.0.0",
     "@ng-web-apis/canvas": "^1.0.0",
