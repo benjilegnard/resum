@@ -12,7 +12,7 @@ html {
   padding: 0;
 }
 
-@import "base";
+@import 'base';
 
 h1::after {
   background: $red;
@@ -31,4 +31,13 @@ h1::after {
   @include breakpoint($xlarge) {
     background: $orange;
   }
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }

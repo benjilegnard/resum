@@ -49,7 +49,7 @@ import { SetAppState } from './actions/app.actions';
 export class AppModule {
   constructor(
     private appRef: ApplicationRef,
-    private store: Store<fromRoot.State>,
+    private rootStore: Store<fromRoot.State>,
   ) {}
 
   public hmrOnInit(store) {
@@ -57,7 +57,7 @@ export class AppModule {
       return;
     }
     // restore state
-    this.store.dispatch(new SetAppState(store.state));
+    this.rootStore.dispatch(new SetAppState(store.state));
     // restore input values
     if ('restoreInputValues' in store) {
       const restoreInputValues = store.restoreInputValues;
@@ -73,7 +73,7 @@ export class AppModule {
       cmp => cmp.location.nativeElement,
     );
     let currentState: fromRoot.State;
-    this.store.pipe(take(1)).subscribe(state => (currentState = state));
+    this.rootStore.pipe(take(1)).subscribe(state => (currentState = state));
     store.state = currentState;
     // recreate elements
     store.disposeOldHosts = createNewHosts(cmpLocation);
