@@ -1,9 +1,23 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/e2e",
+    "target": "es2015",
     "module": "commonjs",
-    "target": "es5",
-    "types": ["jasmine", "jasminewd2", "node", "cucumber"]
-  }
+    "removeComments": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": true,
+    "strictNullChecks": true,
+    "types": [
+      "node",
+      "jest",
+      "webdriverio/async",
+      "@wdio/cucumber-framework",
+      "expect-webdriverio"
+    ]
+  },
+  "include": [
+    "wdio.conf.ts",
+    "./src/**/*.ts",
+    "./src/types/**/*.ts"
+  ]
 }

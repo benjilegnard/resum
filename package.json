@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/benjilegnard/resum/issues"
   },
-  "homepage": "https://github.com/benjilegnard/resum#readme"
+  "homepage": "https://github.com/benjilegnard/resum#readme",
+  "workspaces": [
+    "client",
+    "tests"
+  ]
 }
