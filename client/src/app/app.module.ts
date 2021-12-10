@@ -18,6 +18,7 @@ import { AppEffects } from './app.effects';
 import { environment } from '../environments/environment';
 import { SharedModule } from './shared/shared.module';
 import { SetAppState } from './actions/app.actions';
+import { ScullyLibModule } from '@scullyio/ng-lib';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SetAppState } from './actions/app.actions';
       serializer: MinimalRouterStateSerializer,
       stateKey: 'router',
     }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    ScullyLibModule
   ],
   providers: [],
   bootstrap: [AppComponent]
