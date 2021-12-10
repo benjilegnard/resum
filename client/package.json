@@ -10,7 +10,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "test:watch": "jest --watch",
-    "postinstall": "ngcc"
+    "postinstall": "ngcc",
+    "scully": "npx scully --",
+    "scully:serve": "npx scully serve --"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +35,10 @@
     "@ngrx/schematics": "^13.0.2",
     "@ngrx/store": "^13.0.2",
     "@ngrx/store-devtools": "^13.0.2",
+    "@scullyio/init": "^2.0.5",
+    "@scullyio/ng-lib": "^2.0.0",
+    "@scullyio/scully": "^2.0.0",
+    "@scullyio/scully-plugin-puppeteer": "^2.0.0",
     "breakpoint-sass": "^2.7.1",
     "faker": "^4.1.0",
     "ngx-popper": "^7.0.0",
