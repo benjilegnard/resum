@@ -5,11 +5,10 @@ import { TimelineComponent } from './containers/timeline/timeline.component';
 import { SharedModule } from 'app/shared/shared.module';
 
 @NgModule({
-  declarations: [TimelineComponent],
-  entryComponents: [TimelineComponent],
-  imports: [
-    SharedModule,
-    TimelineRoutingModule
-  ]
+    declarations: [TimelineComponent],
+    imports: [
+        SharedModule,
+        TimelineRoutingModule
+    ]
 })
 export class TimelineModule { }
