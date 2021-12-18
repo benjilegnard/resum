@@ -43,7 +43,7 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
       stateKey: 'router',
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    ScullyLibModule
+    ScullyLibModule.forRoot({useTransferState: true}),
   ],
   providers: [],
   bootstrap: [AppComponent]
