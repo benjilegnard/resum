@@ -20,7 +20,6 @@ export const reducers: ActionReducerMap<State> = {
 // router selectors.
 
 export const selectRouter = createFeatureSelector<
-  State,
   fromRouter.RouterReducerState<any>
 >('router');
 

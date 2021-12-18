@@ -116,8 +116,7 @@
             },
             "hmr": {
               "hmr": true,
-              "browserTarget": "client:build:hmr",
-              "hmrWarning": false
+              "browserTarget": "client:build:hmr"
             }
           }
         },
