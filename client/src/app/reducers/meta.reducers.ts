@@ -1,5 +1,5 @@
 import { ActionReducer, Action } from '@ngrx/store';
-import { AppActions, AppActionTypes } from 'app/actions/app.actions';
+import { AppActions, AppActionTypes } from '../actions/app.actions';
 
 // state setter for hot reload
 export function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
