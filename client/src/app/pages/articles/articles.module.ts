@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArticlesComponent } from './containers/articles/articles.component';
