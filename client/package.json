@@ -6,6 +6,8 @@
     "start": "ng serve",
     "hmr": "ng serve --configuration hmr",
     "build": "ng build --configuration production",
+    "postbuild": "npm run copy-htaccess",
+    "copy-htaccess": "cp .htaccess dist/client",
     "test": "jest",
     "lint": "ng lint",
     "e2e": "ng e2e",
