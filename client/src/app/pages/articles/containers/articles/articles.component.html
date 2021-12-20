@@ -1,2 +1,6 @@
 <h2>Articles</h2>
-<article *ngFor="let article of articles | async">{{ article }}</article>
+<ul>
+  <li *ngFor="let article of article$ | async">
+    <a [routerLink]="article.route">{{ article.title }}</a>
+  </li>
+</ul>
