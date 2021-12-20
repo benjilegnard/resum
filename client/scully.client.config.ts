@@ -8,5 +8,11 @@ export const config: ScullyConfig = {
   projectName: "client",
   outDir: './dist/static',
   routes: {
+    '/articles/:slug': {
+      type: 'contentFolder',
+      slug: {
+        folder: "./data/articles"
+      }
+    },
   }
 };
