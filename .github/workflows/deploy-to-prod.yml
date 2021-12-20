@@ -43,5 +43,5 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }}
-        local_folder: './dist/client'
-        cleanup: false
+        local_folder: 'client/dist/client'
+        cleanup: true
