@@ -5,8 +5,8 @@
 
 .page-container {
   display: flex;
-  margin-top: 50px;
-  min-height: 100vh;
+  padding-top: 50px;
+  min-height: calc(100vh - 50px);
 }
 .page-title {
   padding: 25px 0;
