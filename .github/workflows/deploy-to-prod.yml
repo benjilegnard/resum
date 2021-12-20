@@ -1,0 +1,47 @@
+
+name: Deploy to prod
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  client-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Setup node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14.x
+    - name: Cache node modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
+      with:
+        # npm cache files are stored in `~/.npm` on Linux/macOS
+        path: ~/.npm
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+    - name: Install
+      run: npm ci
+    - name: Build
+      run: npm run build --if-present
+    - name: Deploy
+      uses: sand4rt/ftp-deployer@v1.3
+      with:
+        sftp: true
+        host: ${{ secrets.FTP_HOST }}
+        port: 22
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }}
+        local_folder: './dist/client'
+        cleanup: false
