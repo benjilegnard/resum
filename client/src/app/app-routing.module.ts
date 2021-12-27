@@ -18,11 +18,6 @@ export const routes: Routes = [
       import('./pages/timeline/timeline.module').then(m => m.TimelineModule),
   },
   {
-    path: 'skills',
-    loadChildren: () =>
-      import('./pages/skills/skills.module').then(m => m.SkillsModule),
-  },
-  {
     path: 'projects',
     loadChildren: () =>
       import('./pages/projects/projects.module').then(m => m.ProjectsModule),
