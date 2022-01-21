@@ -54,7 +54,6 @@ $borderSize: 4px;
   }
 
   @include breakpoint($small) {
-    
   }
   @include breakpoint($large) {
     background: transparent;
@@ -73,7 +72,7 @@ img.gravatar {
   top: -10px;
   left: -5px;
   z-index: 2;
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   &:before {
     z-index: 0;
     border-radius: 57px;
@@ -86,11 +85,15 @@ img.gravatar {
     position: fixed;
     content: ' ';
   }
-  &:hover{
+  &:hover {
     transform: rotate(360deg);
   }
 }
-
+.hide-alt {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
 ul.tabs {
   line-height: 1em;
   //overflow-x: hidden;
