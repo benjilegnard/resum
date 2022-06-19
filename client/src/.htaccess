@@ -7,3 +7,29 @@ RewriteRule ^ - [L]
 # If the requested resource doesn't exist, use index.html
 RewriteRule ^ /index.html
 
+# Security headers
+<IfModule mod_headers.c>
+    # Strict-Transport-Security
+	Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+	Header set X-Content-Type-Options "nosniff"
+	Header set X-Frame-Options "SAMEORIGIN"
+	Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# BROWSER CACHING USING CACHE-CONTROL HEADERS
+<IfModule mod_headers.c> 
+    # One year for image and video files
+    <filesMatch ".(flv|gif|ico|jpg|jpeg|mp4|mpeg|png|svg|swf|webp)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </filesMatch>
+
+    # One year for JavaScript and PDF files
+    <filesMatch ".(js|pdf)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </filesMatch>
+
+    # One year for CSS files
+    <filesMatch ".(css)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </filesMatch>
+</IfModule>
