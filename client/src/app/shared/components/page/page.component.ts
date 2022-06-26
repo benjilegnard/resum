@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, animate, transition, style } from '@angular/animations';
-import * as faker from 'faker';
-
+import { rand } from "@ngneat/falso";
 /**
  * Page is a wrapper component, providethe gradient and white background
  */
@@ -36,7 +35,7 @@ export class PageComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.backgroundClass = faker.helpers.randomize([
+    this.backgroundClass = rand([
       'blue',
       'yellow',
       'orange',
