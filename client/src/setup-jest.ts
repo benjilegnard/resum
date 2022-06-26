@@ -1,4 +1,5 @@
 import 'jest-preset-angular/setup-jest';
+import { jest } from '@jest/globals';
 
 /* global mocks for jsdom */
 const mock = () => {
@@ -13,10 +14,27 @@ const mock = () => {
 
 Object.defineProperty(window, 'localStorage', { value: mock() });
 Object.defineProperty(window, 'sessionStorage', { value: mock() });
-Object.defineProperty(window, 'getComputedStyle', {
-  value: () => ['-webkit-appearance'],
+
+
+Object.defineProperty(window, 'CSS', { value: null });
+
+Object.defineProperty(document, 'doctype', {
+  value: '<!DOCTYPE html>',
 });
 
+Object.defineProperty(window, 'getComputedStyle', {
+  value: () => {
+    return {
+      display: 'none',
+      appearance: ['-webkit-appearance'],
+    };
+  },
+});
+
+/**
+ * ISSUE: https://github.com/angular/material2/issues/7101
+ * Workaround for JSDOM missing transform property
+ */
 Object.defineProperty(document.body.style, 'transform', {
   value: () => {
     return {
@@ -26,5 +44,4 @@ Object.defineProperty(document.body.style, 'transform', {
   },
 });
 
-/* output shorter and more meaningful Zone error stack traces */
-// Error.stackTraceLimit = 2;
+HTMLCanvasElement.prototype.getContext = <typeof HTMLCanvasElement.prototype.getContext>jest.fn();
