@@ -1,16 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'bl-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-    console.log("init menu")
-  }
-
-}
+export class MenuComponent {}

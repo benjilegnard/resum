@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+jest.mock('@ngneat/falso', () => ({rand: (values: any[]) => values[0]}))
 import { PageComponent } from './page.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
