@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, animate, transition, style } from '@angular/animations';
-import { rand } from "@ngneat/falso";
+
 /**
  * Page is a wrapper component, providethe gradient and white background
  */
@@ -35,7 +35,7 @@ export class PageComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.backgroundClass = rand([
+    const values = [
       'blue',
       'yellow',
       'orange',
@@ -43,6 +43,8 @@ export class PageComponent implements OnInit {
       'green',
       'purple',
       'blue-green',
-    ]);
+    ];
+    const randomIndex = Math.floor(Math.random() * values.length);
+    this.backgroundClass = values[randomIndex];
   }
 }

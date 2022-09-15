@@ -5,13 +5,17 @@ import { MockComponent } from 'ng-mocks';
 
 import { AppComponent } from './app.component';
 import { PageComponent } from './shared/components/page/page.component';
-import { SharedModule } from './shared/shared.module';
+import { MenuComponent } from './shared/containers/menu/menu.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule, SharedModule, NoopAnimationsModule],
-      declarations: [AppComponent, MockComponent(PageComponent)],
+      imports: [RouterTestingModule, NoopAnimationsModule],
+      declarations: [
+        AppComponent,
+        MockComponent(PageComponent),
+        MockComponent(MenuComponent),
+      ],
     }).compileComponents();
   });
 
@@ -19,20 +23,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'client'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('client');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain(
-      'Benjamin Legrand',
-    );
   });
 });
