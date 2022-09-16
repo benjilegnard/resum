@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "hmr": "ng serve --configuration hmr",
+    "hmr": "ng serve --hmr",
     "build": "ng build --configuration production",
     "test": "jest",
     "lint": "ng lint",
@@ -51,7 +51,6 @@
     "@angular/cli": "^14.2.2",
     "@angular/compiler-cli": "^14.2.2",
     "@angular/language-service": "^14.2.2",
-    "@angularclass/hmr": "^3.0.0",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.8",
     "@types/jest": "^28.1.3",
