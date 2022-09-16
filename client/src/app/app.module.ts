@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, ApplicationRef } from '@angular/core';
 
 import { StoreModule, Store } from '@ngrx/store';
@@ -26,7 +25,6 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
     StoreModule.forRoot(reducers, {
