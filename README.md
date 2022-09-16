@@ -17,18 +17,27 @@ The project is composed of three main modules / docker images.
 ### Client
 
 * angular
-* ngrx
-* apollo-graphql
-* ckeditor
+* scully
 * sass
 
 ### Server
 
-* SlimPHP
-* Graphql
-* Eloquent
+* Framework-x: the core framewxork to respond to requests
+* Pest: for unit tests
+* PHP 8.1, modules required :
 
 ### Database
 
 * MariaDB / MySQL
 * 
+
+## Installation
+
+### Pre-requisites
+
+- PHP 8.1
+
+For the server, needed extension : 
+
+    sudo apt install php8.1-gd php-8.1-cli php8.1-xdebug composer
+### build it
