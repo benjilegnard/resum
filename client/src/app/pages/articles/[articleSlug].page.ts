@@ -10,29 +10,33 @@ import { SvgIconComponent, provideSvgIcons } from '@ngneat/svg-icon';
 import { RouteMeta } from '@analogjs/router';
 
 import { calendarBlankIcon } from '../../svg/calendar-blank';
+import { PageComponent } from '../../shared/components/page/page.component';
 
 export const routeMeta: RouteMeta = {
   canActivate: [() => true],
   providers: [provideSvgIcons([calendarBlankIcon])],
+  data: { animation: 'ChildPage' },
 };
 
 @Component({
   selector: 'bl-article',
   template: `
-    <ng-container *ngIf="article$ | async as article">
-      <div class="article-header">
-        <span class="article-date"
-          ><svg-icon [key]="'calendar-blank'" [fontSize]="'16px'"></svg-icon>
-          {{ article.attributes.publishedAt | date }}
-        </span>
-      </div>
-      <div class="article-content">
-        <analog-markdown [content]="article.content"></analog-markdown>
-      </div>
-      <ul class="article-share-box">
-        <li></li>
-      </ul>
-    </ng-container>
+    <bl-page>
+      <ng-container *ngIf="article$ | async as article">
+        <div class="article-header">
+          <span class="article-date"
+            ><svg-icon [key]="'calendar-blank'" [fontSize]="'16px'"></svg-icon>
+            {{ article.attributes.publishedAt | date }}
+          </span>
+        </div>
+        <div class="article-content">
+          <analog-markdown [content]="article.content"></analog-markdown>
+        </div>
+        <ul class="article-share-box">
+          <li></li>
+        </ul>
+      </ng-container>
+    </bl-page>
   `,
   styles: [
     `
@@ -53,7 +57,14 @@ export const routeMeta: RouteMeta = {
       }
     `,
   ],
-  imports: [MarkdownComponent, NgIf, AsyncPipe, DatePipe, SvgIconComponent],
+  imports: [
+    MarkdownComponent,
+    NgIf,
+    AsyncPipe,
+    DatePipe,
+    SvgIconComponent,
+    PageComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })

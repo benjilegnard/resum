@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockComponent } from 'ng-mocks';
 
@@ -9,7 +10,7 @@ import { MenuComponent } from './shared/containers/menu/menu.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, NoopAnimationsModule],
       declarations: [
         AppComponent,
         MockComponent(PageComponent),

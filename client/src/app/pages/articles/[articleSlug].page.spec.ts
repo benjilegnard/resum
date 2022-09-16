@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Component } from '@angular/core';
 import { MarkdownComponent } from '@analogjs/content';
 
+// eslint-disable-next-line @angular-eslint/component-selector
 @Component({ selector: 'markdown-content', standalone: true, template: '' })
 class FakeMarkdownComponent {}
 
