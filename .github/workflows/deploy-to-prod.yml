@@ -47,3 +47,4 @@ jobs:
         remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }}
         local_folder: 'client/dist/static'
         cleanup: true
+        include: '["*", "**/*", ".*"]'
