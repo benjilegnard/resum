@@ -1,13 +1,19 @@
+import { RouteMeta } from '@analogjs/router';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TranslocoDirective } from '@ngneat/transloco';
+import { PageComponent } from '../../shared/components/page/page.component';
+
+export const routeMeta: RouteMeta = {
+  data: { animation: 'ParentPage' },
+};
 
 @Component({
   selector: 'bl-timeline',
-  imports: [TranslocoDirective],
+  imports: [TranslocoDirective, PageComponent],
   template: `
-    <ng-container *transloco="let t; read: 'timeline'">
+    <bl-page *transloco="let t; read: 'timeline'">
       <h2>{{ t('title') }}</h2>
-    </ng-container>
+    </bl-page>
   `,
   styles: [``],
   changeDetection: ChangeDetectionStrategy.OnPush,

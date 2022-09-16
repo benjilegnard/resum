@@ -2,6 +2,7 @@ import { injectContentFiles } from '@analogjs/content';
 import { NgFor } from '@angular/common';
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { PageComponent } from '../../../shared/components/page/page.component';
 
 import { ArticleAttributes } from '@benjilegnard/resum/shared/model';
 import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
@@ -9,19 +10,19 @@ import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
 @Component({
   selector: 'bl-articles',
   template: `
-    <ng-container *transloco="let t; read: 'articles'">
+    <bl-page *transloco="let t; read: 'articles'">
       <h2>{{ t('title') }}</h2>
       <ul>
         <li *ngFor="let article of articles">
           <a [routerLink]="article.slug">{{ article.attributes.title }}</a>
         </li>
       </ul>
-    </ng-container>
+    </bl-page>
   `,
   styles: [``],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterLink, NgFor, TranslocoDirective],
+  imports: [RouterLink, NgFor, TranslocoDirective, PageComponent],
 })
 export class ArticlesPageComponent {
   private readonly transloco = inject(TranslocoService);

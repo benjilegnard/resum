@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { trigger, animate, transition, style } from '@angular/animations';
 import { NgIf } from '@angular/common';
 
 /**
@@ -7,12 +8,12 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'bl-page',
   template: `
-    <main class="page-container {{ backgroundClass }}">
+    <article class="page-container">
       <h2 *ngIf="title">{{ title }}</h2>
       <section class="page">
         <ng-content></ng-content>
       </section>
-    </main>
+    </article>
   `,
   styles: [
     `
@@ -48,57 +49,16 @@ import { NgIf } from '@angular/common';
           max-width: 1024px;
         }
       }
-
-      .blue {
-        @include diagonal-gradient(#d0d3ed, #addeff, #f4c8dc);
-      }
-      .yellow {
-        @include diagonal-gradient(#f8ead8, #ffffc4, #f2d7ec);
-      }
-      .orange {
-        @include diagonal-gradient(#ffe8a4, #ffd093, #ffffb5);
-      }
-      .pink {
-        @include diagonal-gradient(#d8d2db, #b4eddb, #ffb5dc);
-      }
-      .green {
-        @include diagonal-gradient(#cccec2, #e4efaa, #b4eddb);
-      }
-      .purple {
-        @include diagonal-gradient(#d8c1c6, #c0b8d1, #f5ccba);
-      }
-
-      .blue-green {
-        @include diagonal-gradient(#b8ddc4, #d9f7a3, #99c4e5);
-      }
     `,
   ],
   standalone: true,
   imports: [NgIf],
 })
-export class PageComponent implements OnInit {
+export class PageComponent {
   /**
    * Set page title.
    */
   @Input()
   public title!: string;
 
-  /**
-   * name of random class (linked to classes in page.component.scss)
-   */
-  public backgroundClass!: string;
-
-  ngOnInit() {
-    const values = [
-      'blue',
-      'yellow',
-      'orange',
-      'pink',
-      'green',
-      'purple',
-      'blue-green',
-    ];
-    const randomIndex = Math.floor(Math.random() * values.length);
-    this.backgroundClass = values[randomIndex];
-  }
 }
