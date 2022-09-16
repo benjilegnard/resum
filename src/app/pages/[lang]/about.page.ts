@@ -1,11 +1,17 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { PageComponent } from '../../shared/components/page/page.component';
 import { TranslocoDirective } from '@ngneat/transloco';
+import { RouteMeta } from '@analogjs/router';
+
+export const routeMeta: RouteMeta = {
+  data: { animation: 'ChildPage' },
+};
 
 @Component({
   selector: 'bl-about',
-  imports: [TranslocoDirective],
+  imports: [TranslocoDirective, PageComponent],
   template: `
-    <ng-container *transloco="let t; read: 'about'">
+    <bl-page *transloco="let t; read: 'about'">
       <h2>{{ t('title') }}</h2>
       <h3>{{ t('skills.title') }}</h3>
       <p>{{ t('skills.description') }}</p>
@@ -25,7 +31,7 @@ import { TranslocoDirective } from '@ngneat/transloco';
           <a href="https://cloudflare.com/" target="_blank">Cloudflare</a>
         </li>
       </ul>
-    </ng-container>
+    </bl-page>
   `,
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,

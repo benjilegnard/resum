@@ -1,13 +1,19 @@
+import { RouteMeta } from '@analogjs/router';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@ngneat/transloco';
+import { PageComponent } from '../shared/components/page/page.component';
+
+export const routeMeta: RouteMeta = {
+  data: { animation: 'ParentPage' },
+};
 
 @Component({
   selector: 'bl-lang-selector',
   standalone: true,
-  imports: [RouterLink, TranslocoDirective],
+  imports: [RouterLink, TranslocoDirective, PageComponent],
   template: `
-    <ng-container *transloco="let t">
+    <bl-page *transloco="let t">
       <h2>{{ t('lang.select') }} :</h2>
       <ul>
         <li>
@@ -17,7 +23,7 @@ import { TranslocoDirective } from '@ngneat/transloco';
           <a routerLink="/fr">{{ t('lang.langs.fr') }} 🇫🇷</a>
         </li>
       </ul>
-    </ng-container>
+    </bl-page>
   `,
   styles: [``],
 })

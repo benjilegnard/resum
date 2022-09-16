@@ -2,14 +2,20 @@ import { injectContentFiles } from '@analogjs/content';
 
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { PageComponent } from '../../../shared/components/page/page.component';
 
 import { ArticleAttributes } from '@benjilegnard/resum/shared/model';
 import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
+import { RouteMeta } from '@analogjs/router';
+
+export const routeMeta: RouteMeta = {
+  data: { animation: 'ParentPage' },
+};
 
 @Component({
   selector: 'bl-articles',
   template: `
-    <ng-container *transloco="let t; read: 'articles'">
+    <bl-page *transloco="let t; read: 'articles'">
       <h2>{{ t('title') }}</h2>
       <ul>
         @for (article of articles; track article) {
@@ -18,12 +24,12 @@ import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
           </li>
         }
       </ul>
-    </ng-container>
+    </bl-page>
   `,
   styles: [``],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterLink, TranslocoDirective],
+  imports: [RouterLink, TranslocoDirective, PageComponent],
 })
 export class ArticlesPageComponent {
   private readonly transloco = inject(TranslocoService);

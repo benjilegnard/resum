@@ -7,15 +7,18 @@ import { SvgIconComponent, provideSvgIcons } from '@ngneat/svg-icon';
 import { RouteMeta } from '@analogjs/router';
 
 import { calendarBlankIcon } from '../../../svg/calendar-blank';
+import { PageComponent } from '../../../shared/components/page/page.component';
 
 export const routeMeta: RouteMeta = {
   canActivate: [() => true],
   providers: [provideSvgIcons([calendarBlankIcon])],
+  data: { animation: 'ChildPage' },
 };
 
 @Component({
   selector: 'bl-article',
   template: `
+  <bl-page>
     @if (article$ | async; as article) {
       <header class="article-header">
         <div class="article-date">
@@ -32,6 +35,7 @@ export const routeMeta: RouteMeta = {
         </ul>
       </footer>
     }
+    </bl-page>
   `,
   styles: [
     `
@@ -52,7 +56,13 @@ export const routeMeta: RouteMeta = {
       }
     `,
   ],
-  imports: [MarkdownComponent, AsyncPipe, DatePipe, SvgIconComponent],
+  imports: [
+  MarkdownComponent,
+  AsyncPipe,
+  DatePipe,
+    PageComponent,
+    SvgIconComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
