@@ -17,6 +17,7 @@ import { provideFileRouter, requestContextInterceptor } from '@analogjs/router';
 import { withComponentInputBinding } from '@angular/router';
 import { provideContent, withMarkdownRenderer } from '@analogjs/content';
 import { withShikiHighlighter } from '@analogjs/content/shiki-highlighter';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideSvgIcons } from '@ngneat/svg-icon';
 
 import { articleIcon } from './svg/article';
@@ -39,6 +40,7 @@ export const appConfig: ApplicationConfig = {
       withFetch(),
       withInterceptors([requestContextInterceptor]),
     ),
+    provideAnimations(),
     provideClientHydration(withEventReplay()),
     provideSvgIcons([articleIcon, gitBranchIcon, infoIcon]),
     provideTransloco({
