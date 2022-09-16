@@ -2,7 +2,7 @@
 ### STAGE 1: Build ###
 
 # We label our stage as 'builder'
-FROM composer:1.9 as builder
+FROM composer:2.2.6 as builder
 
 
 # COPY composer.json composer.lock ./
@@ -18,7 +18,7 @@ RUN composer install && mkdir /slim-app && mv ./vendor ./slim-app/
 
 ### STAGE 2: Setup ###
 
-FROM php:7.3-fpm-alpine
+FROM php:8.1-fpm-alpine
 
 COPY --from=builder /slim-app/ /var/www/html/
 
