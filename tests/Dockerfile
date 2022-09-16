@@ -15,7 +15,7 @@ RUN npm ci && mkdir /tests-app && mv ./node_modules ./tests-app/
 
 ### STAGE 2: Setup ###
 
-FROM node:12-alpine
+FROM node:16-alpine
 
 ## Move to /tests-app (eq: cd /tests-app)
 WORKDIR /tests-app

@@ -2,7 +2,7 @@
 ### STAGE 1: Build ###
 
 # We label our stage as 'builder'
-FROM node:14-buster as builder
+FROM node:16-buster as builder
 
 ADD https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb google-chrome-stable_current_amd64.deb
 RUN apt-get update \
