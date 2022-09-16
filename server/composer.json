@@ -24,6 +24,7 @@
     "scripts": {
         "start": "php -S localhost:8888 -t public public/index.php",
         "test": "./vendor/bin/pest",
+        "test-coverage": "XDEBUG_MODE=coverage ./vendor/bin/pest --coverage",
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ]

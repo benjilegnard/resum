@@ -21,7 +21,7 @@ jobs:
     - name: Setup node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 14.x
+        node-version: 16.x
     - name: Cache node modules
       uses: actions/cache@v2
       env:
@@ -42,23 +42,34 @@ jobs:
       run: npm run scully --if-present
     - name: Test
       run: npm run test -- --collectCoverage
-  # server-unit-tests:
-  #   runs-on: ubuntu-latest
-  #   defaults:
-  #     run:
-  #       working-directory: ./server
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-  #     - name: Cache Composer dependencies
-  #       uses: actions/cache@v2
-  #       with:
-  #         path: /tmp/composer-cache
-  #         key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
-  #     - name: Install Composer Dependencies
-  #       uses: php-actions/composer@v6
-  #       with:
-  #         php_version: 8.1
-  #         version: 2
-  #     - name: Run Tests
-  #       uses: php-actions/phpunit@v2
+  server-unit-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
+    container:
+      image: php:8.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache Composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+      - name: Install Composer Dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.1"
+          php_extensions: xml gd
+          dev: yes
+          args: --profile --ignore-platform-reqs --working-dir=server
+      - name: Run Tests
+        uses: NWBY/pest-action@v1.2.0
+  aggregate:
+    runs-on: ubuntu-latest
+    needs: [client-unit-tests, server-unit-tests]
+    steps:
+      - uses: actions/checkout@v2
+      - run: ls -l ./client/coverage
+      - run: ls -l ./server/coverage

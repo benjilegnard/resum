@@ -1,0 +1,8 @@
+{
+  "name": "@benjilegnard/server",
+  "scripts": {
+    "install": "composer install",
+    "start": "composer start",
+    "test": "composer test"
+  }
+}
