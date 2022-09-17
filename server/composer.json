@@ -4,8 +4,9 @@
     "description": "A simple api to help the static blog, stores reactions linked to urls, generate random images",
     "license": "MIT",
     "require": {
-        "clue/framework-x": "dev-main",
         "php": "^8.1",
+        "clue/framework-x": "dev-main",
+        "kus/php-image": "dev-master",
         "vlucas/phpdotenv": "^3.6"
     },
     "require-dev": {
