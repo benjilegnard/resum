@@ -27,12 +27,9 @@ services:
       context: ./server/
     links:
       - database:database
-    command: php -S localhost:8080 -t public public/index.php
     working_dir: /var/www/html
-    volumes:
-      - ./server/:/var/www/html
     ports:
-      - 9000:8080
+      - 8888:8888
     env_file:
       - .env.dist
       - .env
