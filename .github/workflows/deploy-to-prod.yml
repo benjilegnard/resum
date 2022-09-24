@@ -48,3 +48,35 @@ jobs:
         local_folder: 'client/dist/static'
         cleanup: true
         include: '["*", "**/*", ".*"]'
+  server-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache Composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+      - name: Install Composer Dependencies
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.1"
+          php_extensions: xml gd
+          dev: yes
+          args: --profile --no-dev --ignore-platform-reqs --working-dir=server
+      - name: Deploy
+        uses: sand4rt/ftp-deployer@v1.3
+        with:
+          sftp: true
+          host: ${{ secrets.FTP_HOST }}
+          port: 22
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          remote_folder: ${{ secrets.FTP_SERVER_REMOTE_FOLDER }}
+          local_folder: 'server/'
+          cleanup: true
+          include: '["public/**/*", "vendor/**/*", ".htaccess"]'
