@@ -1,5 +1,10 @@
 <?php
 
+// todo remove later, deprecated warnings popups mainly because of intval being deprecated : 
+// solution: either use another lib for graphics, or use gd directly
+// see: https://php.watch/versions/8.1/deprecate-implicit-conversion-incompatible-float-string 
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = new FrameworkX\App();
