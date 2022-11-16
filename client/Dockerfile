@@ -2,7 +2,7 @@
 ### STAGE 1: Build ###
 
 # We label our stage as 'builder'
-FROM node:16-buster as builder
+FROM node:18-buster as builder
 
 ADD https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb google-chrome-stable_current_amd64.deb
 RUN apt-get update \
@@ -22,9 +22,8 @@ WORKDIR /ng-app
 COPY . .
 
 ## Build the angular app in production mode and store the artifacts in dist folder
-ARG NG_ENV=production
-RUN npx ng build --configuration=$NG_ENV
-RUN npx scully
+RUN npm run build
+RUN npm run scully
 
 ### STAGE 2: Setup ###
 
