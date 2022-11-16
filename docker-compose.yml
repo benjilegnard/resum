@@ -21,7 +21,7 @@ services:
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
       - db:/var/lib/mysql
 
-  # Php 7.3 slim app
+  # Php 8 + apache
   server:
     build:
       context: ./server/
@@ -29,7 +29,7 @@ services:
       - database:database
     working_dir: /var/www/html
     ports:
-      - 8888:8888
+      - 8888:80
     env_file:
       - .env.dist
       - .env

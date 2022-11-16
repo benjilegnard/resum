@@ -22,9 +22,9 @@ The project is composed of three main modules / docker images.
 
 ### Server
 
-* Framework-x: the core framewxork to respond to requests
+* Framework-x: the core framework to respond to requests
 * Pest: for unit tests
-* PHP 8.1, modules required :
+* PHP 8.1, modules required : gd, xml
 
 ### Database
 
@@ -39,5 +39,7 @@ The project is composed of three main modules / docker images.
 
 For the server, needed extension : 
 
-    sudo apt install php8.1-gd php-8.1-cli php8.1-xdebug composer
+    sudo apt install php8.1-gd php8.1-cli php8.1-xdebug php8.1-xml composer
+
 ### build it
+
