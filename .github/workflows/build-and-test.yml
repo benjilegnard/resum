@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./client
+        working-directory: client
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -33,7 +33,7 @@ jobs:
     - name: Build (scully)
       run: pnpm run scully
     - name: Test
-      run: pnpm run test -- --collectCoverage
+      run: pnpx jest --collectCoverage
   server-unit-tests:
     runs-on: ubuntu-latest
     defaults:
