@@ -81,11 +81,3 @@ services:
     ports:
       - 8000:8080
 
-  swagger-editor:
-    image: swaggerapi/swagger-editor
-    ports:
-      - 8080:8080
-    volumes:
-      - .:/tmp
-    environment: 
-      SWAGGER_FILE: /tmp/resum.openapi.yml
