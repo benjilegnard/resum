@@ -14,5 +14,5 @@ interface Route{
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticlesComponent {
-  public article$: Observable<Route[]>;
+  public article$!: Observable<Route[]>;
 }

@@ -13,12 +13,12 @@ export class PageComponent implements OnInit {
    * Set page title.
    */
   @Input()
-  public title: string;
+  public title!: string;
 
   /**
    * name of random class (linked to classes in page.component.scss)
    */
-  public backgroundClass: string;
+  public backgroundClass!: string;
 
   constructor() {}
 

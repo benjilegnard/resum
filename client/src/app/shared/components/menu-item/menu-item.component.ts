@@ -13,7 +13,7 @@ import {
 })
 export class MenuItemComponent implements OnInit {
   @Input()
-  routerLink: string[];
+  routerLink: string[] = [];
   constructor() {}
 
   ngOnInit() {}
