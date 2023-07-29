@@ -2,21 +2,20 @@
   "name": "resum",
   "version": "1.0.0",
   "description": "root project for Benjamin Legrand's resume",
-  "main": "index.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "generate": "echo \"Error: no test specified\" && exit 1"
+    "build": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jibhaine/resum.git"
+    "url": "git+https://github.com/benjilegnard/resum.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jibhaine/resum/issues"
+    "url": "https://github.com/benjilegnard/resum/issues"
   },
-  "homepage": "https://github.com/jibhaine/resum#readme"
+  "homepage": "https://github.com/benjilegnard/resum#readme"
 }
