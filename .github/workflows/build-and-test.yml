@@ -18,7 +18,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - uses: pnpm/action-setup@v2
+    - name: Setup npm
+      uses: pnpm/action-setup@v2
       with:
         version: 8
     - name: Setup node.js
@@ -30,8 +31,6 @@ jobs:
       run: pnpm install
     - name: Build (angular)
       run: pnpm run build
-    - name: Build (scully)
-      run: pnpm run scully
     - name: Test
       run: pnpx jest --collectCoverage
   server-unit-tests:

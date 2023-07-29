@@ -17,7 +17,6 @@ The project is composed of three main modules / docker images.
 ### Client
 
 * angular
-* scully
 * sass
 
 ### Server

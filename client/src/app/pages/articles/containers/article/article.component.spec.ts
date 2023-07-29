@@ -1,6 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ScullyContentComponent } from '@scullyio/ng-lib';
-import { MockComponent } from 'ng-mocks';
 
 import { ArticleComponent } from './article.component';
 
@@ -10,7 +8,7 @@ describe('ArticleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ArticleComponent, MockComponent(ScullyContentComponent)],
+      declarations: [ArticleComponent],
     }).compileComponents();
   });
 
