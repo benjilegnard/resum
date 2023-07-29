@@ -4,13 +4,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   selector: 'bl-media',
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class MediaComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminComponent } from './admin.component';
-import { SharedModule } from '../../../../shared/shared.module';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -9,8 +8,7 @@ describe('AdminComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SharedModule],
-      declarations: [AdminComponent],
+      imports: [AdminComponent],
     }).compileComponents();
   });
 

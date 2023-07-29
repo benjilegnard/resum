@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgIf } from '@angular/common';
 
 /**
  * Page is a wrapper component, providethe gradient and white background
@@ -7,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'bl-page',
   templateUrl: './page.component.html',
   styleUrls: ['./page.component.scss'],
+  standalone: true,
+  imports: [NgIf],
 })
 export class PageComponent implements OnInit {
   /**
