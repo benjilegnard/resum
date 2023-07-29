@@ -25,9 +25,9 @@ jobs:
     - name: Install
       run: pnpm install
     - name: Build (angular)
-      run: pnpm run build --if-present
+      run: pnpm run build
     - name: Build (scully)
-      run: pnpm run scully --if-present
+      run: pnpm run scully
     - name: Deploy
       uses: sand4rt/ftp-deployer@v1.3
       with:
