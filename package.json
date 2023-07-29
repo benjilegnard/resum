@@ -12,8 +12,8 @@
     "type": "git",
     "url": "git+https://github.com/benjilegnard/resum.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Benjamin Legrand",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/benjilegnard/resum/issues"
   },
