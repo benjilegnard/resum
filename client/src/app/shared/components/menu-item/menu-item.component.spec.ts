@@ -9,10 +9,8 @@ describe('MenuItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MenuItemComponent ],
-      imports: [RouterTestingModule],
-    })
-    .compileComponents();
+      imports: [MenuItemComponent, RouterTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {
