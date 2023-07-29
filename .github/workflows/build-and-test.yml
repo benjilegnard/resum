@@ -14,34 +14,26 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./client
+        working-directory: client
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
     - name: Setup node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
-        node-version: 16.x
-    - name: Cache node modules
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-node-modules
-      with:
-        # npm cache files are stored in `~/.npm` on Linux/macOS
-        path: ~/.npm
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
+        node-version: 18.x
+        cache: 'pnpm'
     - name: Install
-      run: npm install
+      run: pnpm install
     - name: Build (angular)
-      run: npm run build --if-present
+      run: pnpm run build
     - name: Build (scully)
-      run: npm run scully --if-present
+      run: pnpm run scully
     - name: Test
-      run: npm run test -- --collectCoverage
+      run: pnpx jest --collectCoverage
   server-unit-tests:
     runs-on: ubuntu-latest
     defaults:
@@ -49,7 +41,7 @@ jobs:
         working-directory: ./server
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Cache Composer dependencies
         uses: actions/cache@v2
         with:
@@ -72,6 +64,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [client-unit-tests, server-unit-tests]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: ls -l .
 
