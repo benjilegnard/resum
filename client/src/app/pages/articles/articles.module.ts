@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { ScullyLibModule } from '@scullyio/ng-lib';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -12,7 +11,6 @@ import { ArticleComponent } from './containers/article/article.component';
   declarations: [ArticlesComponent, ArticleComponent],
   imports: [
     SharedModule,
-    ScullyLibModule,
     ArticlesRoutingModule
   ]
 })

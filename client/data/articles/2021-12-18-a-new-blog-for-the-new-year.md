@@ -29,7 +29,7 @@ mainly articles about web development, tutorials on angular, and other technolog
 
 ### Technical stack & roadmap
 
-This "blog" is built with [angular](https://angular.io) and [scully](https://scully.io)
+This "blog" is built with [angular](https://angular.io) and [analog](https://analogjs.org)
 I'll build it in the open on [github](https://github.com/benjilegnard/resum), here are some of the features planned : 
 
 __Technical roadmap__
