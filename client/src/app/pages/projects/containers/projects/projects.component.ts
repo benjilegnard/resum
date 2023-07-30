@@ -1,14 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'bl-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss'],
+  template: `<h2>Projects</h2>
+
+    <p>Here are some side project that you could be interested in:</p> `,
+  styles: [``],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class ProjectsComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class ProjectsComponent {}
