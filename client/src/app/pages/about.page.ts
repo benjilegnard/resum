@@ -9,6 +9,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class AboutComponent {
-  constructor() {}
-}
+export class AboutPageComponent {}
+
+export default AboutPageComponent;

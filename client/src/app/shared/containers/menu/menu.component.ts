@@ -13,10 +13,10 @@ import { MenuItemComponent } from '../../components/menu-item/menu-item.componen
       />
       <h1 class="menu-title">Benjamin Legrand</h1>
       <nav class="menu-items">
-        <bl-menu-item [routerLink]="['articles']">Home</bl-menu-item>
-        <bl-menu-item [routerLink]="['experience']">Experience</bl-menu-item>
+        <bl-menu-item [routerLink]="['articles']">Articles</bl-menu-item>
+        <!--<bl-menu-item [routerLink]="['timeline']">Experience</bl-menu-item>-->
         <bl-menu-item [routerLink]="['projects']">Projects</bl-menu-item>
-        <bl-menu-item [routerLink]="['about-me']">About</bl-menu-item>
+        <bl-menu-item [routerLink]="['about']">About</bl-menu-item>
       </nav>
     </header>
   `,

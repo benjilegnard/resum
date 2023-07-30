@@ -9,4 +9,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class ProjectsComponent {}
+export class ProjectsListPageComponent {}
+
+export default ProjectsListPageComponent;
