@@ -4,16 +4,21 @@ import { PageComponent } from '../../../../shared/components/page/page.component
 
 @Component({
   selector: 'bl-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'],
+  template: `<bl-page>
+    <h2>Administration</h2>
+    <bl-card>
+      <!-- <ckeditor [editor]="text"></ckeditor> -->
+    </bl-card>
+  </bl-page> `,
+  styles: [
+    `
+      .admin-card {
+        background: white;
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [PageComponent, CardComponent],
 })
-export class AdminComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {
-    console.log('admin');
-  }
-}
+export class AdminComponent {}

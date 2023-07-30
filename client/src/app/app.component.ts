@@ -5,8 +5,21 @@ import { PageComponent } from './shared/components/page/page.component';
 
 @Component({
   selector: 'bl-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  template: `
+    <bl-menu></bl-menu>
+    <bl-page>
+      <router-outlet></router-outlet>
+    </bl-page>
+  `,
+  styles: [
+    `
+      :host {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+    `,
+  ],
   standalone: true,
   imports: [MenuComponent, PageComponent, RouterOutlet],
 })

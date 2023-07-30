@@ -1,14 +1,14 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'bl-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss'],
+  template: `<h2>About me</h2>
+    <p>A small presentation text</p>
+    <p>Another small presentation text</p> `,
+  styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent {
   constructor() {}
-
-  ngOnInit() {}
 }
