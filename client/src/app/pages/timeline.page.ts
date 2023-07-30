@@ -7,4 +7,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
-export class TimelineComponent {}
+export class TimelinePageComponent {}
+
+export default TimelinePageComponent;

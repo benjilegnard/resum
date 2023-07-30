@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { CardComponent } from '../../../../shared/components/card/card.component';
-import { PageComponent } from '../../../../shared/components/page/page.component';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
+import { PageComponent } from '../shared/components/page/page.component';
+import { CardComponent } from '../shared/components/card/card.component';
 
 @Component({
   selector: 'bl-admin',
@@ -21,4 +22,6 @@ import { PageComponent } from '../../../../shared/components/page/page.component
   standalone: true,
   imports: [PageComponent, CardComponent],
 })
-export class AdminComponent {}
+export class AdminPageComponent {}
+
+export default AdminPageComponent;

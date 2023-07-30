@@ -20,6 +20,8 @@ interface Route {
   standalone: true,
   imports: [RouterLink, NgFor, AsyncPipe],
 })
-export class ArticlesComponent {
+export class ArticlesPageComponent {
   public article$!: Observable<Route[]>;
 }
+
+export default ArticlesPageComponent;
