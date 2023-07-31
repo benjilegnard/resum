@@ -35,7 +35,7 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }}
-        local_folder: 'client/dist/static'
+        local_folder: 'client/dist/analog/public'
         cleanup: true
         include: '["*", "**/*", ".*"]'
   server-deploy:
