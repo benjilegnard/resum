@@ -4,7 +4,6 @@ import {
   Component,
   ChangeDetectionStrategy,
   Input,
-  OnInit,
 } from '@angular/core';
 
 import 'prismjs';
