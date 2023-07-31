@@ -1,6 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticlePageComponent } from './[articleSlug].page';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Component } from '@angular/core';
+import { MarkdownComponent } from '@analogjs/content';
+
+@Component({ selector: 'markdown-content', standalone: true, template: '' })
+class FakeMarkdownComponent {}
+
+vi.mock('@analogjs/content', () => ({
+  MarkdownComponent: vi.fn(),
+  injectContent: vi.fn(),
+}));
 
 describe('ArticleComponent', () => {
   let component: ArticlePageComponent;
@@ -8,8 +19,13 @@ describe('ArticleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ArticlePageComponent],
-    }).compileComponents();
+      imports: [ArticlePageComponent, RouterTestingModule],
+    })
+      .overrideComponent(ArticlePageComponent, {
+        remove: { imports: [MarkdownComponent] },
+        add: { imports: [FakeMarkdownComponent] },
+      })
+      .compileComponents();
   });
 
   beforeEach(() => {
