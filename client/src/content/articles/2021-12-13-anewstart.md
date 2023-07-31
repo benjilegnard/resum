@@ -1,13 +1,14 @@
 ---
-title: 2021-12-13-anewstart
+title: a new start
+slug: 2021-12-13-anewstart
 description: blog description
 published: false
 lang: en
-slugs:
-    - ___UNPUBLISHED___kxbkpejs_lDaUD7pydiP3eSNxzBVzU2uYuIno5nKF
 ---
 
-# 2021-12-13-anewstart
+Introduction paragraph
+
+## A new start :  examples
 
 tralala pouet pouet
 
@@ -15,8 +16,20 @@ tralala pouet pouet
 | ----- | ----------- |
 | label | description |
 
+### Code syntax coloration:
+
 ```typescript
 function yolo(test: string) {
-    return "523"
+  return '523';
 }
+```
+
+### Mermaid graphs and diagrams
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
 ```
