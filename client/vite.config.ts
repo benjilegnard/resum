@@ -24,7 +24,10 @@ export default defineConfig(({ mode }) => ({
           '/articles',
           '/timeline',
           '/projects',
-        ]
+        ],
+        sitemap: {
+          host: 'https://benjaminlegrand.net/',
+        },
       }
     }),
   ],
