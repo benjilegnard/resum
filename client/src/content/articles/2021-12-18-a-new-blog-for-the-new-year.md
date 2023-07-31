@@ -1,5 +1,6 @@
 ---
 title: A New blog for the new year
+slug: 2021-21-18-a-new-blog-for-the-new-year
 description: Where The author introduces this new web log and what you might find here
 publishedAt: 2022-06-26T10:12:00.000Z
 updatedAt: 2022-06-26T10:12:00.000Z
@@ -15,7 +16,7 @@ authors:
 
 ## A new blog for the new year
 
-Yeah i know it's almost june, but the idea for this was last year.
+Yeah i know it's almost june, but the idea for this was last year. (Author note (of 2021, it is now 2023 at the date of publication))
 
 ### Introduction
 
@@ -26,6 +27,8 @@ This site is my attempt at taking back what i can of my identity online.
 ### What you'll find here
 
 mainly articles about web development, tutorials on angular, and other technologies if i'm motivated.
+
+Think pieces about development practices in teams, about our sausage society.
 
 ### Technical stack & roadmap
 
