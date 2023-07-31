@@ -1,5 +1,5 @@
 {
-  "name": "resum-tests",
+  "name": "@benjilegnard/resum-tests",
   "version": "1.0.0",
   "description": "run end to end, accessibility and performance tests",
   "main": "index.js",
