@@ -13,7 +13,7 @@ jobs:
         working-directory: ./client
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - uses: pnpm/action-setup@v2
       with:
         version: 8
@@ -45,12 +45,12 @@ jobs:
         working-directory: ./server
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Cache Composer dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: /tmp/composer-cache
-          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
       - name: Install Composer Dependencies
         uses: php-actions/composer@v6
         with:
