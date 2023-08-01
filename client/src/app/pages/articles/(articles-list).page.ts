@@ -21,7 +21,7 @@ import { ArticleAttributes } from '@benjilegnard/resum/shared/model';
 export class ArticlesPageComponent {
   readonly articles = injectContentFiles<ArticleAttributes>((contentFile) => {
     return contentFile.filename.includes('/src/content/articles/');
-  });
+  }).filter((content) => content.attributes.published);
 }
 
 export default ArticlesPageComponent;
