@@ -30,6 +30,7 @@
     "@nx/angular": "^16.5.5",
     "breakpoint-sass": "^2.7.1",
     "front-matter": "^4.0.2",
+    "h3": "^1.7.1",
     "marked": "^5.1.2",
     "marked-gfm-heading-id": "^3.0.4",
     "marked-highlight": "^2.0.1",
