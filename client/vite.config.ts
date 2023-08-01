@@ -17,6 +17,7 @@ export default defineConfig(({ mode }) => ({
       vite: {
         inlineStylesExtension: 'scss',
       },
+      apiPrefix: 'api',
       prerender: {
         routes: async () => [
           '/',
@@ -24,11 +25,12 @@ export default defineConfig(({ mode }) => ({
           '/articles',
           '/timeline',
           '/projects',
+          '/api/rss.xml',
         ],
         sitemap: {
           host: 'https://benjaminlegrand.net/',
         },
-      }
+      },
     }),
   ],
   css: {
