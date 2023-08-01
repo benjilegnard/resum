@@ -15,7 +15,8 @@ interface FrontMatterAttributes {
   slug: string;
   title: string;
   description: string;
-  publishedAt: string;
+  published?: boolean;
+  publishedAt?: string;
 }
 
 const baseUrl = 'https://benjaminlegrand.net';
@@ -48,26 +49,25 @@ const attributesToItem = (attributes: FrontMatterAttributes): FeedItem => ({
   pubDate: new Date(attributes.publishedAt).toUTCString(),
 });
 
-const parseArticles = async (): Promise<FeedItem[]> => {
-  const dirPath = [process.cwd(), 'src', 'content', 'articles'].join(sep);
-  console.log('Generating XML from ', dirPath);
-  const dirContents = await readdir(dirPath, {
-    withFileTypes: true,
-    encoding,
-    recursive: true,
-  });
-  const fileContents = await Promise.all(
-    dirContents
-      .filter((dirEntry) => dirEntry.isFile() && !dirEntry.isDirectory())
-      .map((dirEntry) =>
-        readFile([dirEntry.path, dirEntry.name].join(sep), encoding),
-      ),
-  );
-  return fileContents
+const parseArticles = async (): Promise<FeedItem[]> =>
+  (
+    await Promise.all(
+      (
+        await readdir([process.cwd(), 'src', 'content', 'articles'].join(sep), {
+          withFileTypes: true,
+          encoding,
+          recursive: true,
+        })
+      )
+        .filter((dirEntry) => dirEntry.isFile())
+        .map((dirEntry) =>
+          readFile([dirEntry.path, dirEntry.name].join(sep), encoding),
+        ),
+    )
+  )
     .map((fileContent) => fm<FrontMatterAttributes>(fileContent, {}))
-    .filter((value) => value.attributes.publishedAt !== undefined)
+    .filter(({attributes}) => attributes.published && attributes.publishedAt)
     .map(({ attributes }) => attributesToItem(attributes));
-};
 
 export default defineEventHandler(async (event) => {
   const frontMatter = await parseArticles();
