@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  Input,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -20,6 +16,12 @@ import { RouterLink } from '@angular/router';
       @import 'variables';
       @import 'mixins';
       @import 'breakpoint-sass';
+
+      :host {
+        flex: 1 1 auto;
+        display: flex;
+        width: auto;
+      }
 
       .menu-item {
         font-size: 20px;
