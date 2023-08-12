@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 
-import { defineConfig } from 'vite';
+import { defineConfig, searchForWorkspaceRoot } from 'vite';
 import analog from '@analogjs/platform';
 
 // https://vitejs.dev/config/
@@ -38,6 +38,14 @@ export default defineConfig(({ mode }) => ({
       scss: {
         includePaths: ['src/sass'],
       },
+    },
+  },
+  server: {
+    fs: {
+      allow: [
+        // search up for workspace root
+        searchForWorkspaceRoot(process.cwd()),
+      ],
     },
   },
   test: {

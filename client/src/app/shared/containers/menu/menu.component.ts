@@ -26,38 +26,34 @@ import { MenuItemComponent } from '../../components/menu-item/menu-item.componen
       @import 'variables';
       @import 'breakpoint-sass';
 
-      $tabsBorderColor: #999;
-      $tabsBorderColorHover: #00b7ff;
-      $menuBackgroundColor: #32343d;
-      $menuBorderColor: #666;
-      $menuTextColor: white;
-      $borderSize: 4px;
-
+      :root {
+        --menu-border-size: 4px;
+      }
       .menu {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         height: 50px;
-        color: white;
-        background: $menuBackgroundColor;
+        color: var(--text);
+        background: var(--base);
         width: 100%;
         z-index: 1;
 
-        border-bottom: $borderSize solid $menuBorderColor;
+        border-bottom: var(--menu-border-size) solid var(--surface0);
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
 
         h1 {
-          margin-left: 64px;
+          margin-left: 70px;
           font-size: 40px;
           line-height: 50px;
           color: white;
           font-weight: 100;
           text-shadow: 0 0 5px black;
+          white-space: nowrap;
         }
       }
       .menu-items {
-        background: rgba(200, 200, 200, 0.5);
         line-height: 25px;
         display: flex;
         flex-direction: row;
@@ -67,17 +63,13 @@ import { MenuItemComponent } from '../../components/menu-item/menu-item.componen
         top: auto;
         bottom: 0;
         padding: 5px 0;
-        color: black;
         font-family: 'Nunito';
         letter-spacing: 0.2em;
         font-weight: bold;
-        bl-menu-item {
-          flex: 1 1 auto;
-          display: flex;
-          width: auto;
-        }
 
         @include breakpoint($small) {
+          background: rgba(200, 200, 200, 0.5);
+          color: black;
         }
         @include breakpoint($large) {
           background: transparent;
@@ -91,24 +83,12 @@ import { MenuItemComponent } from '../../components/menu-item/menu-item.componen
         width: 60px;
         height: 60px;
         border-radius: 32px; //half the avatar.png size + borders
-        border: 4px solid $menuBackgroundColor;
+        border: 4px solid var(--base);
         position: fixed;
-        top: -10px;
-        left: -5px;
+        top: -2px;
+        left: -2px;
         z-index: 2;
         transition: transform 0.3s ease-in-out;
-        &:before {
-          z-index: 0;
-          border-radius: 57px;
-          width: 98px;
-          height: 98px;
-          top: -15px;
-          left: -10px;
-          background-color: $menuBorderColor;
-          display: block;
-          position: fixed;
-          content: ' ';
-        }
         &:hover {
           transform: rotate(360deg);
         }
@@ -117,113 +97,6 @@ import { MenuItemComponent } from '../../components/menu-item/menu-item.componen
         text-indent: 100%;
         white-space: nowrap;
         overflow: hidden;
-      }
-      ul.tabs {
-        line-height: 1em;
-        //overflow-x: hidden;
-        z-index: 1;
-        li {
-          background: $menuBackgroundColor;
-          border-width: 0px 2px 2px;
-          border-color: transparent $menuBackgroundColor $tabsBorderColorHover;
-          list-style-type: none;
-          display: block;
-          float: left;
-          border-bottom: 2px $tabsBorderColor solid;
-          position: relative;
-          margin: 0;
-        }
-        li.title {
-          border-bottom-color: $menuBackgroundColor;
-        }
-        li.title a {
-          color: $tabsBorderColorHover;
-        }
-        li.title:after,
-        li.title a:after,
-        ul.list {
-          display: none;
-        }
-        li:hover,
-        li.active {
-          background: #444;
-        }
-        li:hover,
-        li.active,
-        li:hover:after {
-          border-bottom-color: $tabsBorderColorHover;
-        }
-        li a {
-          color: white;
-          padding: 1em;
-          display: block;
-          text-decoration: none;
-        }
-        /*two arrows*/
-        li:after,
-        li a:after {
-          content: '';
-          display: block;
-          left: 45%;
-          width: 0;
-          height: 0;
-          border: 5px transparent solid;
-          position: absolute;
-        }
-        li:after {
-          bottom: 0;
-          border-color: transparent transparent $tabsBorderColor transparent;
-          z-index: 4;
-        }
-        li a:after {
-          bottom: -3px;
-          border-color: transparent transparent $menuBorderColor transparent;
-          z-index: 5;
-        }
-      }
-
-      @media only screen and (max-width: 479px) {
-        //Version verticale
-        ul.tabs {
-          border-right: $borderSize solid $menuBorderColor;
-          background-color: $menuBackgroundColor;
-
-          li {
-            border-color: transparent;
-            list-style-type: none;
-            display: block;
-            float: left;
-            border-right: 2px $tabsBorderColor solid;
-            position: relative;
-
-            a {
-              width: 100%;
-            }
-          }
-          li:hover,
-          li.active,
-          li:hover:after {
-            border-bottom-color: transparent;
-            border-right-color: $tabsBorderColorHover;
-          }
-          /*two arrows*/
-          li:after,
-          li a:after {
-            top: 45%;
-            left: auto;
-            bottom: auto;
-          }
-          li:after {
-            right: 0;
-            border-color: transparent $tabsBorderColor transparent transparent;
-            z-index: 4;
-          }
-          li a:after {
-            bottom: auto;
-            right: -3px;
-            border-color: transparent $menuBorderColor transparent transparent;
-          }
-        }
       }
     `,
   ],
