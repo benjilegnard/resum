@@ -27,7 +27,7 @@ jobs:
     - name: Build (angular)
       run: pnpm run build
     - name: Deploy
-      uses: sand4rt/ftp-deployer@v1.3
+      uses: sand4rt/ftp-deployer@v1.7
       with:
         sftp: true
         host: ${{ secrets.FTP_HOST }}
@@ -55,11 +55,10 @@ jobs:
         uses: php-actions/composer@v6
         with:
           php_version: "8.2"
-          php_extensions: xml gd
           dev: no
-          args: --profile --ignore-platform-reqs --working-dir=server
+          args: --profile --no-dev --ignore-platform-reqs --working-dir=server
       - name: Deploy
-        uses: sand4rt/ftp-deployer@v1.3
+        uses: sand4rt/ftp-deployer@v1.7
         with:
           sftp: true
           host: ${{ secrets.FTP_HOST }}
