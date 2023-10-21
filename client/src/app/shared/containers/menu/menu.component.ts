@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MenuItemComponent } from '../../components/menu-item/menu-item.component';
+import { SvgIconComponent } from '@ngneat/svg-icon';
 
 @Component({
   selector: 'bl-menu',
@@ -13,10 +14,16 @@ import { MenuItemComponent } from '../../components/menu-item/menu-item.componen
       />
       <h1 class="menu-title">Benjamin Legrand</h1>
       <nav class="menu-items">
-        <bl-menu-item [routerLink]="['articles']">Articles</bl-menu-item>
+        <bl-menu-item [routerLink]="['articles']" [icon]="'article'">
+          Articles</bl-menu-item
+        >
         <!--<bl-menu-item [routerLink]="['timeline']">Experience</bl-menu-item>-->
-        <bl-menu-item [routerLink]="['projects']">Projects</bl-menu-item>
-        <bl-menu-item [routerLink]="['about']">About</bl-menu-item>
+        <bl-menu-item [routerLink]="['projects']" [icon]="'git-branch'">
+          Projects</bl-menu-item
+        >
+        <bl-menu-item [routerLink]="['about']" [icon]="'info'">
+          About</bl-menu-item
+        >
       </nav>
     </header>
   `,
@@ -101,6 +108,7 @@ import { MenuItemComponent } from '../../components/menu-item/menu-item.componen
     `,
   ],
   standalone: true,
-  imports: [MenuItemComponent, RouterLink],
+  imports: [MenuItemComponent, RouterLink, SvgIconComponent],
 })
-export class MenuComponent {}
+export class MenuComponent {
+}

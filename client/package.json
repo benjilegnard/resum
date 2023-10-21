@@ -8,7 +8,9 @@
     "build": "ng build",
     "watch": "ng build --watch",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "prebuild": "npm run svg",
+    "svg": "svg-generator"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +29,7 @@
     "@ctrl/ngx-headroom": "^5.0.0",
     "@ng-web-apis/common": "^3.0.2",
     "@ng-web-apis/intersection-observer": "^3.1.2",
+    "@ngneat/svg-icon": "^7.1.0",
     "@nx/angular": "^16.6.0",
     "breakpoint-sass": "^2.7.1",
     "front-matter": "^4.0.2",
@@ -51,6 +54,7 @@
     "@angular/cli": "^16.2.0",
     "@angular/compiler-cli": "^16.2.0",
     "@angular/language-service": "^16.2.0",
+    "@ngneat/svg-generator": "^7.0.2",
     "@nx/vite": "^16.6.0",
     "@types/node": "^20.4.10",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
