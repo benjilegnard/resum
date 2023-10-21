@@ -57,7 +57,11 @@
           }
         },
         "test": {
-          "builder": "@nx/vite:test"
+          "builder": "@nx/vite:test",
+          "options": {
+            "config": "vite.config.ts",
+            "reportsDirectory": "coverage/client"
+          }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
