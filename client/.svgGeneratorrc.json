@@ -1,0 +1,16 @@
+{
+  "outputPath": "./src/app/svg",
+  "srcPath": "./src/assets/icons",
+  "svgoConfig": {
+    "plugins": [
+      "removeDimensions",
+      "cleanupAttrs",
+      {
+        "name": "convertColors",
+        "params": {
+          "currentColor": true
+        }
+      }
+    ]
+  }
+}

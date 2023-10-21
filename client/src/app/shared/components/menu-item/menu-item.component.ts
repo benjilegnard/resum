@@ -1,11 +1,17 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { SvgIconComponent, SvgIcons } from '@ngneat/svg-icon';
+import { SvgIconType } from '@ngneat/svg-icon/lib/providers';
 
 @Component({
   selector: 'bl-menu-item',
   template: `
     <a class="menu-item" [routerLink]="routerLink">
-      <svg:svg class="menu-item-icon" width="32" height="32"></svg:svg>
+      <svg-icon
+        class="menu-item-icon"
+        [fontSize]="iconSize"
+        [key]="icon"
+      ></svg-icon>
       <span class="menu-item-text">
         <ng-content></ng-content>
       </span>
@@ -31,7 +37,7 @@ import { RouterLink } from '@angular/router';
         width: 100%;
         text-decoration: none;
         align-items: center;
-
+        gap: 8px;
         @include breakpoint($large) {
           flex-direction: row;
         }
@@ -49,14 +55,22 @@ import { RouterLink } from '@angular/router';
 
       .menu-item-icon {
         flex: 0 0 auto;
+        @include breakpoint($large) {
+          color: white;
+        }
       }
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, SvgIconComponent],
 })
 export class MenuItemComponent {
   @Input()
   routerLink: string[] = [];
+
+  @Input()
+  icon!: SvgIcons;
+
+  protected iconSize: string = '20px';
 }

@@ -4,6 +4,11 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideFileRouter } from '@analogjs/router';
 import { withComponentInputBinding } from '@angular/router';
 import { provideContent, withMarkdownRenderer } from '@analogjs/content';
+import { provideSvgIcons } from '@ngneat/svg-icon';
+
+import { articleIcon } from './svg/article';
+import { gitBranchIcon } from './svg/git-branch';
+import { infoIcon } from './svg/info';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,5 +18,6 @@ export const appConfig: ApplicationConfig = {
     ),
     provideHttpClient(),
     provideClientHydration(),
+    provideSvgIcons([articleIcon, gitBranchIcon, infoIcon]),
   ],
 };
