@@ -49,16 +49,12 @@ jobs:
       - name: Install Composer Dependencies
         uses: php-actions/composer@v6
         with:
-          php_version: "8.1"
+          php_version: "8.2"
           php_extensions: xml gd
           dev: yes
           args: --profile --ignore-platform-reqs --working-dir=server
       - name: Test
-        uses: php-actions/composer@v6
-        with:
-          php_version: "8.1"
-          args: --profile --working-dir=server
-          command: run test
+        run: ./vendor/bin/pest
   aggregate:
     runs-on: ubuntu-latest
     needs: [client-unit-tests, server-unit-tests]

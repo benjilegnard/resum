@@ -54,10 +54,10 @@ jobs:
       - name: Install Composer Dependencies
         uses: php-actions/composer@v6
         with:
-          php_version: "8.1"
+          php_version: "8.2"
           php_extensions: xml gd
-          dev: yes
-          args: --profile --no-dev --ignore-platform-reqs --working-dir=server
+          dev: no
+          args: --profile --ignore-platform-reqs --working-dir=server
       - name: Deploy
         uses: sand4rt/ftp-deployer@v1.3
         with:
