@@ -47,7 +47,9 @@ jobs:
     needs: [unit-tests]
     steps:
       - uses: actions/checkout@v4
-      - run: ls -l .
+      - uses: actions/download-artifact@v4
+      - name: Display structure of downloaded files
+        run: ls -R
       - name: Code Coverage Summary Report
         uses: saschanowak/CloverCodeCoverageSummary@0.4.0
         with:
