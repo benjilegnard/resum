@@ -60,7 +60,9 @@ jobs:
           dev: yes
           args: --profile --ignore-platform-reqs --working-dir=server
       - name: Test with pest and coverage
-        run: ./vendor/bin/pest --coverage-clover=coverage/clover.xml
+        run: ./vendor/bin/pest --coverage --coverage-clover=coverage/clover.xml
+      - name: Display structure of generated files
+        run: ls -R
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
         with:
@@ -72,7 +74,9 @@ jobs:
     needs: [client-unit-tests, server-unit-tests]
     steps:
       - uses: actions/checkout@v3
-      - run: ls -l .
+      - uses: actions/download-artifact@v3
+      - name: Display structure of downloaded files
+        run: ls -R
       - name: Code Coverage Summary Report
         uses: saschanowak/CloverCodeCoverageSummary@0.4.0
         with:
