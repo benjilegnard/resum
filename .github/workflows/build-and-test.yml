@@ -56,13 +56,20 @@ jobs:
         uses: php-actions/composer@v6
         with:
           php_version: '8.2'
-          php_extensions: xml gd
+          php_extensions: xml gd xdebug
           dev: yes
           args: --profile --ignore-platform-reqs --working-dir=server
+      - run: php -v
+      # show loaded extensions
+      - run: export XDEBUG_MODE=coverage 
+      - run: php -r "print_r(get_loaded_extensions());"
+      - run: php -r "print_r(xdebug_info());"
       - name: Test with pest and coverage
-        run: ./vendor/bin/pest --coverage --coverage-clover=coverage/clover.xml
+        run: XDEBUG_MODE=coverage ./vendor/bin/pest --coverage --coverage-text --coverage-clover=coverage/clover.xml
+        env:
+          XDEBUG_MODE: coverage
       - name: Display structure of generated files
-        run: ls -R
+        run: ls -R | grep coverage
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v3
         with:
@@ -73,21 +80,21 @@ jobs:
     runs-on: ubuntu-latest
     needs: [client-unit-tests, server-unit-tests]
     steps:
-      - uses: actions/checkout@v3
+      # - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
       - name: Display structure of downloaded files
         run: ls -R
+      - name: Coverage Report as Comment (Clover)
+        uses: lucassabreu/comment-coverage-clover@main
+        with:
+          file: client-coverage-report/clover.xml
       - name: Code Coverage Summary Report
         uses: saschanowak/CloverCodeCoverageSummary@0.4.0
         with:
-          filename: ./*/coverage/clover.xml
+          filename: '**/clover.xml'
       - name: 'Add Code Coverage Summary as PR Comment'
         uses: marocchino/sticky-pull-request-comment@v2
         if: github.event_name == 'pull_request'
         with:
           recreate: true
           path: code-coverage-summary.md
-      - name: Coverage Report as Comment (Clover)
-        uses: lucassabreu/comment-coverage-clover@main
-        with:
-          file: ./*/coverage/clover.xml
