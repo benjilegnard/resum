@@ -4,6 +4,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideFileRouter } from '@analogjs/router';
 import { withComponentInputBinding } from '@angular/router';
 import { provideContent, withMarkdownRenderer } from '@analogjs/content';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideSvgIcons } from '@ngneat/svg-icon';
 
 import { articleIcon } from './svg/article';
@@ -16,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideContent(
       withMarkdownRenderer({ loadMermaid: () => import('mermaid') }),
     ),
+    provideAnimations(),
     provideHttpClient(),
     provideClientHydration(),
     provideSvgIcons([articleIcon, gitBranchIcon, infoIcon]),
