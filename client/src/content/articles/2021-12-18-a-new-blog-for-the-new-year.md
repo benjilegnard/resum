@@ -21,7 +21,7 @@ Yeah i know it's almost june, but the idea for this was last year. (Author note 
 ### Introduction
 
 I used to have a blog, still available at [jibhaine.fr](https://jibhaine.fr), i gave it up around the time social networks rose to popularity and everyone that had a blog was posting stuff on facebook or twitter.
-There are too many social networks today, having control of what everyone publishes. 
+There are too many social networks today, having control of what everyone publishes.
 This site is my attempt at taking back what i can of my identity online.
 
 ### What you'll find here
@@ -33,16 +33,15 @@ Think pieces about development practices in teams, about our sausage society.
 ### Technical stack & roadmap
 
 This "blog" is built with [angular](https://angular.io) and [analog](https://analogjs.org)
-I'll build it in the open on [github](https://github.com/benjilegnard/resum), here are some of the features planned : 
+I'll build it in the open on [github](https://github.com/benjilegnard/resum), here are some of the features planned :
 
-__Technical roadmap__
+**Technical roadmap**
 
-- [ ] internationalization english / french
-- [ ] RSS feed
-- [ ] links to share articles on social network 
+- [x] internationalization english / french
+- [x] RSS feed
+- [ ] links to share articles on social network
 - [ ] projects list / timeline type of articles
 - [ ] analytics
 - [ ] reactions on blog posts
 
 Be seeing you :wave:
-

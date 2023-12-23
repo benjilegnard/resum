@@ -1,13 +1,17 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
   selector: 'bl-projects',
-  template: `<h2>Projects</h2>
-
-    <p>Here are some side project that you could be interested in:</p>
-    <ul>
-      <li><a></a></li>
-    </ul> `,
+  imports: [TranslocoDirective],
+  template: `
+    <ng-container *transloco="let t; read: 'projects'">
+      <h2>{{ t('title') }}</h2>
+      <p>
+        {{ t('description') }}
+      </p>
+    </ng-container>
+  `,
   styles: [``],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,

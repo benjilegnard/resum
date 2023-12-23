@@ -2,7 +2,26 @@
 
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
 import analog from '@analogjs/platform';
-import { AvailableLang } from '@benjilegnard/resum/shared/model';
+import {
+  ArticleAttributes,
+  AvailableLang,
+} from '@benjilegnard/resum/shared/model';
+import { readFileSync, readdirSync } from 'fs';
+import fm from 'front-matter';
+
+function loadArticles(lang: AvailableLang): string[] {
+  return readdirSync(`src/content/articles/`)
+    .map((filePath) => {
+      const fileContents = readFileSync(
+        `src/content/articles/${filePath}`,
+        'utf8',
+      );
+      const frontMatter = fm(fileContents);
+      return frontMatter.attributes as unknown as ArticleAttributes;
+    })
+    .filter((attributes) => `/${attributes.lang}` === lang)
+    .map((attributes) => `${lang}/articles/${attributes.slug}`);
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -26,6 +45,7 @@ export default defineConfig(({ mode }) => ({
             `${lang}`,
             `${lang}/about`,
             `${lang}/articles`,
+            ...loadArticles(lang),
             `${lang}/timeline`,
             `${lang}/projects`,
           ]),

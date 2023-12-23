@@ -8,13 +8,35 @@
   },
   "home": {
     "title": "Bonjour, je m'appelle Benjamin Legrand",
-    "description": "Je suis un développeur, un architecte logiciel, un musicien, un speaker, bref.",
+    "subTitle": "Je suis un développeur, un architecte logiciel, un musicien, un speaker, bref.",
     "introduction": "Vous pourrez trouver ici quelques informations sur moi, mes projets, mes articles, mes conférences, etc.",
-    "callToAction": "En savoir plus sur moi"
+    "callToAction": {
+      "about": "En savoir plus sur moi",
+      "projects": "Voir mes projets",
+      "articles": "Lire mes articles"
+    }
   },
   "about": {
     "title": "À propos",
-    "description": "This is the about page."
+    "description": "C'est la page des crédits. Apprenez en plus sur moi, mes compétences et ce site.",
+    "skills": {
+      "title": "Skills",
+      "description": "Here are some of my skills:"
+    },
+    "thisBlog": {
+      "title": "Ce site",
+      "description": "a été développé avec l'aide de ces technologies",
+      "credits": {
+        "icons": {
+          "by": "Icônes par",
+          "label": "Phosphoricons"
+        },
+        "analog": {
+          "by": "Propulsé par",
+          "label": "Analogjs"
+        }
+      }
+    }
   },
   "articles": {
     "title": "Articles",

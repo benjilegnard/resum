@@ -1,14 +1,14 @@
 ---
-title: a new start
-slug: 2021-12-13-anewstart
-description: blog description
+title: AnalogJS Demo Page
+slug: 2021-12-13-analogjs-demo-page
+description: A simple blog post demonstrating the markdown, front-matter and mermaidjs integration of AnalogJS
 published: false
 lang: en
 ---
 
 Introduction paragraph
 
-## A new start :  examples
+## A new start : examples
 
 tralala pouet pouet
 
