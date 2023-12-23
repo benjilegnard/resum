@@ -9,7 +9,7 @@ import { ArticleAttributes } from '@benjilegnard/resum/shared/model';
 import { SvgIconComponent, provideSvgIcons } from '@ngneat/svg-icon';
 import { RouteMeta } from '@analogjs/router';
 
-import { calendarBlankIcon } from '../../svg/calendar-blank';
+import { calendarBlankIcon } from '../../../svg/calendar-blank';
 
 export const routeMeta: RouteMeta = {
   canActivate: [() => true],
