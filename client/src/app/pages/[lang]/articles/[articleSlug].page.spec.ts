@@ -4,6 +4,7 @@ import { ArticlePageComponent } from './[articleSlug].page';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Component } from '@angular/core';
 import { MarkdownComponent } from '@analogjs/content';
+import { getTranslocoModule } from '../../../transloco-testing.module';
 
 @Component({ selector: 'markdown-content', standalone: true, template: '' })
 class FakeMarkdownComponent {}
@@ -19,7 +20,11 @@ describe('ArticleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ArticlePageComponent, RouterTestingModule],
+      imports: [
+        ArticlePageComponent,
+        RouterTestingModule,
+        getTranslocoModule(),
+      ],
     })
       .overrideComponent(ArticlePageComponent, {
         remove: { imports: [MarkdownComponent] },
