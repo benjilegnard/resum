@@ -37,11 +37,14 @@ I'll build it in the open on [github](https://github.com/benjilegnard/resum), he
 
 **Technical roadmap**
 
+- [x] generate article pages from markdown with front-matter
 - [x] internationalization english / french
 - [x] RSS feed
 - [ ] links to share articles on social network
-- [ ] projects list / timeline type of articles
-- [ ] analytics
+- [ ] projects list / timeline type of content
+- [ ] analytics ??
 - [ ] reactions on blog posts
+
+I'll try to keep this list updated.
 
 Be seeing you :wave:

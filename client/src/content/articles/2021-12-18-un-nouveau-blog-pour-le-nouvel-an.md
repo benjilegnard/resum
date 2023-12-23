@@ -26,22 +26,25 @@ Ce site est une tentative de reprendre contrôle sur ma présence en ligne, et d
 
 ### Qu'allez vous trouver ici ?
 
-mainly articles about web development, tutorials on angular, and other technologies if i'm motivated.
+Principalement des articles à propos du développement web, des tutoriels sur angular, et pour d'autres technologies si je suis motivé.
 
-Think pieces about development practices in teams, about our sausage society.
+Egalement des articles un peu plus réflexif sur la manière dont on travaille et notre société.
 
 ### Stack technique et roadmap
 
-This "blog" is built with [angular](https://angular.io) and [analog](https://analogjs.org)
-I'll build it in the open on [github](https://github.com/benjilegnard/resum), here are some of the features planned :
+Ce blog est construit avec [angular](https://angular.io) et [analog](https://analogjs.org)
+Je le construirais en public sur [github](https://github.com/benjilegnard/resum), voici quelques fonctionnalités que j'envisage :
 
 **Technical roadmap**
 
+- [x] génération des articles à partir de fichiers markdown et front-matter
 - [x] internationalisation anglais / français
 - [x] flux RSS
-- [ ] links to share articles on social network
-- [ ] projects list / timeline type of articles
-- [ ] analytics
-- [ ] reactions on blog posts
+- [ ] liens de partages des articles sur les réseaux sociaux
+- [ ] types de contenus pour projets et expériences
+- [ ] analytics ??
+- [ ] réactions sur les articles
+
+Je viendrais mettre à jour cette liste au fur et à mesure, promis.
 
 Bonjour chez vous :wave:
