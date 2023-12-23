@@ -1,5 +1,5 @@
 import { injectContentFiles } from '@analogjs/content';
-import { AsyncPipe, NgFor } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -21,7 +21,7 @@ import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
   styles: [``],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterLink, NgFor, AsyncPipe, TranslocoDirective],
+  imports: [RouterLink, NgFor, TranslocoDirective],
 })
 export class ArticlesPageComponent {
   private readonly transloco = inject(TranslocoService);
