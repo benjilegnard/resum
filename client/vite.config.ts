@@ -2,6 +2,7 @@
 
 import { defineConfig, searchForWorkspaceRoot } from 'vite';
 import analog from '@analogjs/platform';
+import { AvailableLang } from '@benjilegnard/resum/shared/model';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -21,10 +22,14 @@ export default defineConfig(({ mode }) => ({
       prerender: {
         routes: async () => [
           '/',
-          '/about',
-          '/articles',
-          '/timeline',
-          '/projects',
+          ...['/en', '/fr'].flatMap((lang) => [
+            `${lang}`,
+            `${lang}/about`,
+            `${lang}/articles`,
+            `${lang}/timeline`,
+            `${lang}/projects`,
+          ]),
+
           '/api/rss.xml',
         ],
         sitemap: {

@@ -1,0 +1,63 @@
+{
+  "lang": {
+    "select": "Sélectionner une langue",
+    "langs": {
+      "en": "Anglais",
+      "fr": "Français"
+    }
+  },
+  "home": {
+    "title": "Bonjour, je m'appelle Benjamin Legrand",
+    "description": "Je suis un développeur, un architecte logiciel, un musicien, un speaker, bref.",
+    "introduction": "Vous pourrez trouver ici quelques informations sur moi, mes projets, mes articles, mes conférences, etc.",
+    "callToAction": "En savoir plus sur moi"
+  },
+  "about": {
+    "title": "À propos",
+    "description": "This is the about page."
+  },
+  "articles": {
+    "title": "Articles",
+    "description": "This is the articles page."
+  },
+  "article": {
+    "title": "Article",
+    "share": "Share this article on socal media :"
+  },
+  "timeline": {
+    "title": "Chronologie",
+    "description": "3615 Ma Vie, organisée dans une ligne de temps antéchronologique."
+  },
+  "projects": {
+    "title": "Projets",
+    "description": "Voici quelques-un de mes projets personnels :"
+  },
+  "ui": {
+    "nav": {
+      "home": "Accueil",
+      "about": "À propos",
+      "articles": "Articles",
+      "talks": "Conférences",
+      "timeline": "Chronologie",
+      "projects": "Projets"
+    },
+    "social": {
+      "twitter": "Twitter",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "reddit": "Reddit",
+      "instagram": "Instagram",
+      "youtube": "YouTube",
+      "twitch": "Twitch",
+      "email": "Courriel"
+    },
+    "actions": {
+      "readMore": "En lire plus...",
+      "back": "Retour",
+      "next": "Suivant"
+    },
+    "aria": {
+      "skipToContent": "Aller au contenu principal"
+    }
+  }
+}
