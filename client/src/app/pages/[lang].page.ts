@@ -1,25 +1,13 @@
 import { RouteMeta } from '@analogjs/router';
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AvailableLang, availableLangs } from '../shared/model';
-import { DOCUMENT } from '@angular/common';
-import { TranslocoService } from '@ngneat/transloco';
+import { availableLangGuard } from '../shared/i18n/available-lang.guard';
+import { langResolver } from '../shared/i18n/lang.resolver';
 
 export const routeMeta: RouteMeta = {
-  canActivate: [
-    (route) => {
-      return availableLangs.includes(route.params['lang'] as AvailableLang);
-    },
-  ],
+  canActivate: [availableLangGuard],
   resolve: {
-    lang: (route) => {
-      const { lang } = route.params;
-      const rootDocument = inject<Document>(DOCUMENT);
-      rootDocument.documentElement.lang = lang;
-      const translate = inject(TranslocoService);
-      translate.setActiveLang(lang);
-      return lang as string;
-    },
+    lang: langResolver,
   },
 };
 
