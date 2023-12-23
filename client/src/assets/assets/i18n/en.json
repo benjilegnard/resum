@@ -1,0 +1,47 @@
+{
+  "lang": {
+    "select": "Select your preferred language",
+    "langs": {
+      "en": "English",
+      "fr": "French"
+    }
+  },
+  "home": {
+    "title": "Home",
+    "description": "This is the home page."
+  },
+  "about": {
+    "title": "About",
+    "description": "This is the about page."
+  },
+  "articles": {
+    "title": "Articles",
+    "description": "This is the articles page."
+  },
+  "timeline": {
+    "title": "Timeline",
+    "description": "This is the timeline page."
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Here are some side project that you could be interested in:"
+  },
+  "ui": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "articles": "Articles",
+      "talks": "Talks",
+      "timeline": "Timeline",
+      "projects": "Projects"
+    },
+    "actions": {
+      "readMore": "Read more",
+      "back": "Back",
+      "next": "Next"
+    },
+    "aria": {
+      "skipToContent": "Skip to content"
+    }
+  }
+}
