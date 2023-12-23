@@ -2,6 +2,7 @@ import { defineEventHandler } from 'h3';
 import { readFile, readdir } from 'fs/promises';
 import fm from 'front-matter';
 import { sep } from 'path';
+import { AvailableLang } from '@benjilegnard/resum/shared/model';
 
 interface FeedItem {
   link: string;
@@ -14,6 +15,7 @@ interface FeedItem {
 interface FrontMatterAttributes {
   slug: string;
   title: string;
+  lang: AvailableLang;
   description: string;
   published?: boolean;
   publishedAt?: string;
@@ -43,10 +45,10 @@ const renderItem = (item: FeedItem) => `
 `;
 
 const attributesToItem = (attributes: FrontMatterAttributes): FeedItem => ({
-  link: `${baseUrl}/articles/${attributes.slug}`,
+  link: `${baseUrl}/${attributes.lang}/articles/${attributes.slug}`,
   title: attributes.title,
   description: attributes.description,
-  pubDate: new Date(attributes.publishedAt).toUTCString(),
+  pubDate: new Date(attributes.publishedAt ?? '').toUTCString(),
 });
 
 const parseArticles = async (): Promise<FeedItem[]> =>
@@ -66,12 +68,12 @@ const parseArticles = async (): Promise<FeedItem[]> =>
     )
   )
     .map((fileContent) => fm<FrontMatterAttributes>(fileContent, {}))
-    .filter(({attributes}) => attributes.published && attributes.publishedAt)
+    .filter(({ attributes }) => attributes.published && attributes.publishedAt)
     .map(({ attributes }) => attributesToItem(attributes));
 
 export default defineEventHandler(async (event) => {
   const frontMatter = await parseArticles();
-  const feedString = feedHeader(frontMatter.map(renderItem).join());
+  const feedString = feedHeader(frontMatter.map(renderItem).join('\n'));
   event.node.res.setHeader('content-type', 'text/xml');
   event.node.res.end(feedString);
 });

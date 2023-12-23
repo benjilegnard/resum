@@ -1,16 +1,34 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
   selector: 'bl-home',
   standalone: true,
+  imports: [TranslocoDirective, RouterLink],
   template: `
-    <h2>Welcome, my name is Benjamin Legrand</h2>
+    <ng-container *transloco="let t; read: 'home'">
+      <h2>{{ t('title') }}</h2>
 
-    <h3>I am a fullstack developer at most!</h3>
+      <h3>{{ t('subTitle') }}</h3>
+      <p>{{ t('introduction') }}</p>
+      <nav>
+        <ul>
+          <li>
+            <a routerLink="articles">{{ t('callToAction.articles') }}</a>
+          </li>
+          <li>
+            <a routerLink="projects">{{ t('callToAction.projects') }}</a>
+          </li>
+          <li>
+            <a routerLink="about">{{ t('callToAction.about') }}</a>
+          </li>
+        </ul>
+      </nav>
+    </ng-container>
   `,
   styles: [``],
 })
-export class HomePageComponent {
-}
+export class HomePageComponent {}
 
 export default HomePageComponent;

@@ -4,20 +4,24 @@ import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ArticleAttributes } from '@benjilegnard/resum/shared/model';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'bl-articles',
-  template: `<h2>Articles</h2>
-    <ul>
-      <li *ngFor="let article of articles">
-        <a [routerLink]="article.slug">{{ article.attributes.title }}</a>
-      </li>
-    </ul> `,
+  template: `
+    <ng-container *transloco="let t; read: 'articles'">
+      <h2>{{ t('title') }}</h2>
+      <ul>
+        <li *ngFor="let article of articles">
+          <a [routerLink]="article.slug">{{ article.attributes.title }}</a>
+        </li>
+      </ul>
+    </ng-container>
+  `,
   styles: [``],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterLink, NgFor, AsyncPipe],
+  imports: [RouterLink, NgFor, AsyncPipe, TranslocoDirective],
 })
 export class ArticlesPageComponent {
   private readonly transloco = inject(TranslocoService);

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MenuItemComponent } from '../../components/menu-item/menu-item.component';
 import { SvgIconComponent } from '@ngneat/svg-icon';
+import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'bl-menu',
@@ -13,16 +15,16 @@ import { SvgIconComponent } from '@ngneat/svg-icon';
         alt="Benjamin Legrand's face"
       />
       <h1 class="menu-title">Benjamin Legrand</h1>
-      <nav class="menu-items">
-        <bl-menu-item [routerLink]="['articles']" [icon]="'article'">
-          Articles</bl-menu-item
+      <nav class="menu-items" *transloco="let t; read: 'ui.nav'">
+        <bl-menu-item [routerLink]="[lang, 'articles']" [icon]="'article'">
+          {{ t('articles') }}</bl-menu-item
         >
-        <!--<bl-menu-item [routerLink]="['timeline']">Experience</bl-menu-item>-->
-        <bl-menu-item [routerLink]="['projects']" [icon]="'git-branch'">
-          Projects</bl-menu-item
+        <!--<bl-menu-item [routerLink]="['timeline']">{{ t('timeline') }}</bl-menu-item>-->
+        <bl-menu-item [routerLink]="[lang, 'projects']" [icon]="'git-branch'">
+          {{ t('projects') }}</bl-menu-item
         >
-        <bl-menu-item [routerLink]="['about']" [icon]="'info'">
-          About</bl-menu-item
+        <bl-menu-item [routerLink]="[lang, 'about']" [icon]="'info'">
+          {{ t('about') }}</bl-menu-item
         >
       </nav>
     </header>
@@ -108,7 +110,16 @@ import { SvgIconComponent } from '@ngneat/svg-icon';
     `,
   ],
   standalone: true,
-  imports: [MenuItemComponent, RouterLink, SvgIconComponent],
+  imports: [
+    MenuItemComponent,
+    RouterLink,
+    SvgIconComponent,
+    TranslocoDirective,
+  ],
 })
 export class MenuComponent {
+  protected readonly transloco = inject(TranslocoService);
+  get lang(): string {
+    return this.transloco.getActiveLang();
+  }
 }

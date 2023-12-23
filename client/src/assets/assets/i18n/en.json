@@ -7,12 +7,36 @@
     }
   },
   "home": {
-    "title": "Home",
-    "description": "This is the home page."
+    "title": "Hi, my name is Benjamin Legrand",
+    "subTitle": "I am a developer, a software architect, your favorite tech lead, a musician, a speaker.",
+    "introduction": "You can find on this site some of my articles, my talks, my projects and my timeline.",
+    "callToAction": {
+      "about": "Learn more about me",
+      "projects": "See my projects",
+      "articles": "Read my articles"
+    }
   },
   "about": {
     "title": "About",
-    "description": "This is the about page."
+    "description": "This is the about page. Learn a bit more about me, my skills and this website.",
+    "skills": {
+      "title": "Skills",
+      "description": "Here are some of my skills:"
+    },
+    "thisBlog": {
+      "title": "This blog",
+      "description": "Was made possible thanks to these technologies",
+      "credits": {
+        "icons": {
+          "by": "Icons from",
+          "label": "Phosphoricons"
+        },
+        "analog": {
+          "by": "Powered by",
+          "label": "Analogjs"
+        }
+      }
+    }
   },
   "articles": {
     "title": "Articles",
