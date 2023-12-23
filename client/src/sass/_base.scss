@@ -451,7 +451,12 @@ select {
   padding: 6px 4px;
   outline: none;
   @include rounded();
-  font: 13px 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font:
+    13px 'HelveticaNeue',
+    'Helvetica Neue',
+    Helvetica,
+    Arial,
+    sans-serif;
   color: #777;
   margin: 0;
   width: 210px;

@@ -1,12 +1,11 @@
-
 // color palette https://paletton.com/#uid=53q0u0k++++qKZWAF+V+VAFZWqK
-$blue: #00B9FF;
-$yellow: #FFB600;
-$orange: #FF8500;
-$red: #FF2C00;
-$green: #00FF5F;
+$blue: #00b9ff;
+$yellow: #ffb600;
+$orange: #ff8500;
+$red: #ff2c00;
+$green: #00ff5f;
 
-$white: #F2F2F2;
+$white: #f2f2f2;
 
 // media queries
 $small: 481px;
@@ -15,12 +14,12 @@ $large: 1025px;
 $xlarge: 1921px;
 
 // old colors
-$resumBlue:			#36ACFF;
-$resumYellow:		#FFD400;
-$resumOrange:		#EC6500;
-$resumPink:			#FF40A7;
-$resumGreen:		#A9C705;
-$resumPurple:		#853C85;
+$resumBlue: #36acff;
+$resumYellow: #ffd400;
+$resumOrange: #ec6500;
+$resumPink: #ff40a7;
+$resumGreen: #a9c705;
+$resumPurple: #853c85;
 
 $borderColor: #eee;
 $iconMuted: #eee;
@@ -29,7 +28,7 @@ $iconDark: #333;
 
 // #Body Variables
 // ==================================================
-$bodyFontFamily: "Open Sans", Helvetica, Arial, sans-serif;
+$bodyFontFamily: 'Open Sans', Helvetica, Arial, sans-serif;
 $bodyFontSize: 14px;
 $bodyFontWeight: 21px;
 
@@ -43,10 +42,9 @@ $linkHoverColor: #000;
 
 // #Header Variables
 // ==================================================
-$headerFontFamily: "Nunito", "Futura", sans-serif;
+$headerFontFamily: 'Nunito', 'Futura', sans-serif;
 $headerFontWeight: 100;
 $headerColor: #181818;
-
 
 // h1
 $h1FontSize: 46px;
