@@ -8,7 +8,6 @@ meta:
     content: Un rogue lite placé dans un labyrinthe
 ---
 
-
 ```mermaid
 
 ```

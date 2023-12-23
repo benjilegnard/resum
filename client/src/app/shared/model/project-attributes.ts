@@ -1,3 +1,1 @@
-export interface ProjectAttributes {
-
-}
+export interface ProjectAttributes {}
