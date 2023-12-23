@@ -1,10 +1,5 @@
-import { RouteMeta } from '@analogjs/router';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
-export const routeMeta: RouteMeta = {
-  resolve: {},
-};
 
 @Component({
   selector: 'bl-not-found',
