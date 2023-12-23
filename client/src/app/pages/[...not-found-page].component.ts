@@ -6,8 +6,11 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink],
   template: `
-    <h2>Error 404: page not found</h2>
-    <a routerLink="/">Go Back Home</a>
+    <ng-container *transloco="let t">
+      <h2>{{ t('errors.404.title') }}</h2>
+      <p>{{ t('errors.404.description') }}</p>
+      <a routerLink="/">{{ t('ui.actions.backToHome') }}</a>
+    </ng-container>
   `,
   styles: [``],
 })

@@ -50,6 +50,12 @@
     "title": "Projects",
     "description": "Here are some side project that you could be interested in:"
   },
+  "errors": {
+    "404": {
+      "title": "404 Error",
+      "description": "Page not found"
+    }
+  },
   "ui": {
     "nav": {
       "home": "Home",
@@ -62,7 +68,8 @@
     "actions": {
       "readMore": "Read more",
       "back": "Back",
-      "next": "Next"
+      "next": "Next",
+      "backToHome": "Back to home"
     },
     "aria": {
       "skipToContent": "Skip to content"

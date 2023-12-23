@@ -54,6 +54,12 @@
     "title": "Projets",
     "description": "Voici quelques-un de mes projets personnels :"
   },
+  "errors": {
+    "404": {
+      "title": "Erreur 404",
+      "description": "Page inexistante"
+    }
+  },
   "ui": {
     "nav": {
       "home": "Accueil",
@@ -76,7 +82,8 @@
     "actions": {
       "readMore": "En lire plus...",
       "back": "Retour",
-      "next": "Suivant"
+      "next": "Suivant",
+      "backToHome": "Retour à l'accueil"
     },
     "aria": {
       "skipToContent": "Aller au contenu principal"
