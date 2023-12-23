@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutPageComponent } from './about.page';
+import { getTranslocoModule } from '../../transloco-testing.module';
 
 describe('AboutPageComponent', () => {
   let component: AboutPageComponent;
@@ -8,7 +9,7 @@ describe('AboutPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AboutPageComponent],
+      imports: [AboutPageComponent, getTranslocoModule()],
     }).compileComponents();
   });
 

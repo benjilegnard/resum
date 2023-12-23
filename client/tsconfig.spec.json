@@ -5,7 +5,8 @@
     "outDir": "./out-tsc/spec",
     "types": ["vitest/globals", "node"],
     "esModuleInterop": true,
-    "module": "ES2020"
+    "module": "ES2020",
+    "resolveJsonModule": true
   },
   "files": ["src/test.ts"],
   "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
