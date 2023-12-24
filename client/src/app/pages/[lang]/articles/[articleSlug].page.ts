@@ -1,5 +1,5 @@
 import { MarkdownComponent, injectContent } from '@analogjs/content';
-import { AsyncPipe, DatePipe, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 import 'prismjs';
@@ -19,7 +19,7 @@ export const routeMeta: RouteMeta = {
 @Component({
   selector: 'bl-article',
   template: `
-    <ng-container *ngIf="article$ | async as article">
+    @if (article$ | async; as article) {
       <div class="article-header">
         <span class="article-date"
           ><svg-icon [key]="'calendar-blank'" [fontSize]="'16px'"></svg-icon>
@@ -32,7 +32,7 @@ export const routeMeta: RouteMeta = {
       <ul class="article-share-box">
         <li></li>
       </ul>
-    </ng-container>
+    }
   `,
   styles: [
     `
@@ -53,7 +53,7 @@ export const routeMeta: RouteMeta = {
       }
     `,
   ],
-  imports: [MarkdownComponent, NgIf, AsyncPipe, DatePipe, SvgIconComponent],
+  imports: [MarkdownComponent, AsyncPipe, DatePipe, SvgIconComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
