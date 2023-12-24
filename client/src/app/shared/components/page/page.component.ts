@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgIf } from '@angular/common';
 
 /**
  * Page is a wrapper component, provide the gradient and white background
@@ -8,7 +7,9 @@ import { NgIf } from '@angular/common';
   selector: 'bl-page',
   template: `
     <main class="page-container {{ backgroundClass }}">
-      <h2 *ngIf="title">{{ title }}</h2>
+      @if (title) {
+        <h2>{{ title }}</h2>
+      }
       <section class="page">
         <ng-content></ng-content>
       </section>
@@ -74,7 +75,7 @@ import { NgIf } from '@angular/common';
     `,
   ],
   standalone: true,
-  imports: [NgIf],
+  imports: [],
 })
 export class PageComponent implements OnInit {
   /**
