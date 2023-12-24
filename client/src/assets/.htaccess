@@ -8,7 +8,7 @@
 </IfModule>
 
 # BROWSER CACHING USING CACHE-CONTROL HEADERS
-<IfModule mod_headers.c> 
+<IfModule mod_headers.c>
     # One year for image and video files
     <FilesMatch "\.(flv|gif|ico|jpg|jpeg|mp4|mpeg|png|svg|swf|webp)$">
         Header set Cache-Control "max-age=31536000"
@@ -26,6 +26,10 @@
 </IfModule>
 
 RewriteEngine On
+# Redirect to www subdomain
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
 # If an existing asset or directory is requested go to it as it is
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
