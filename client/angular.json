@@ -5,12 +5,6 @@
   "projects": {
     "client": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss",
-          "changeDetection": "OnPush"
-        }
-      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "bl",
@@ -50,12 +44,6 @@
             }
           }
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "client:build"
-          }
-        },
         "test": {
           "builder": "@nx/vite:test"
         },
@@ -81,7 +69,11 @@
     },
     "@schematics/angular:component": {
       "inlineTemplate": true,
-      "inlineStyle": true
+      "inlineStyle": true,
+      "standalone": true,
+      "prefix": "bl",
+      "style": "scss",
+      "changeDetection": "OnPush"
     }
   }
 }

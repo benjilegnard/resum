@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from './shared/containers/menu/menu.component';
 import { PageComponent } from './shared/components/page/page.component';
@@ -21,6 +21,7 @@ import { PageComponent } from './shared/components/page/page.component';
     `,
   ],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MenuComponent, PageComponent, RouterOutlet],
 })
 export class AppComponent {}

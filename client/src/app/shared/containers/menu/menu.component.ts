@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MenuItemComponent } from '../../components/menu-item/menu-item.component';
 import { SvgIconComponent } from '@ngneat/svg-icon';
@@ -110,6 +110,7 @@ import { map } from 'rxjs';
     `,
   ],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MenuItemComponent,
     RouterLink,
