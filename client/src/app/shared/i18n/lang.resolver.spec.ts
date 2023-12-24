@@ -5,7 +5,6 @@ import { langResolver } from './lang.resolver';
 import { AvailableLang } from '../model';
 import { TranslocoService } from '@ngneat/transloco';
 import { DOCUMENT } from '@angular/common';
-import exp from 'constants';
 
 describe('langResolver', () => {
   const executeResolver: ResolveFn<AvailableLang | null> = (
