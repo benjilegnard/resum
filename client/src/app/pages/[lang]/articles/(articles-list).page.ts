@@ -1,5 +1,5 @@
 import { injectContentFiles } from '@analogjs/content';
-import { NgFor } from '@angular/common';
+
 import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -12,16 +12,18 @@ import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
     <ng-container *transloco="let t; read: 'articles'">
       <h2>{{ t('title') }}</h2>
       <ul>
-        <li *ngFor="let article of articles">
-          <a [routerLink]="article.slug">{{ article.attributes.title }}</a>
-        </li>
+        @for (article of articles; track article) {
+          <li>
+            <a [routerLink]="article.slug">{{ article.attributes.title }}</a>
+          </li>
+        }
       </ul>
     </ng-container>
   `,
   styles: [``],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterLink, NgFor, TranslocoDirective],
+  imports: [RouterLink, TranslocoDirective],
 })
 export class ArticlesPageComponent {
   private readonly transloco = inject(TranslocoService);
