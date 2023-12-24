@@ -1,4 +1,4 @@
-import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Translation, TranslocoLoader } from '@ngneat/transloco';
 import { HttpClient } from '@angular/common/http';
 import * as path from 'path';
