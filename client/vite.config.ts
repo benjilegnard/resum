@@ -53,7 +53,7 @@ export default defineConfig(({ mode }) => ({
           '/api/rss.xml',
         ],
         sitemap: {
-          host: 'https://benjaminlegrand.net/',
+          host: 'https://www.benjaminlegrand.net/',
         },
       },
     }),
