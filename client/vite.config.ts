@@ -78,7 +78,12 @@ export default defineConfig(({ mode }) => ({
     environment: 'jsdom',
     setupFiles: ['src/test.ts'],
     include: ['**/*.spec.ts'],
-    coverage: { provider: 'v8' },
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'clover'],
+      reportsDirectory: 'coverage',
+      all: true,
+    },
   },
   define: {
     'import.meta.vitest': mode !== 'production',
