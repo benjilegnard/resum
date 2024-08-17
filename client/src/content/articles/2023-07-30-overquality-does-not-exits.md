@@ -1,5 +1,5 @@
 ---
-title: La sur-qualité n'existe pas 
+title: La sur-qualité n'existe pas
 description: ''
 published: false
 lang: fr
@@ -21,9 +21,9 @@ Et moi tout ce que j'entends c'est "faites de la merde, merci"
 
 Je peux plus l'entendre ce concept.
 
-Ca veut dire que tu me demande à moi,  dans le dev web depuis une dizaine d'années... 
+Ca veut dire que tu me demande à moi, dans le dev web depuis une dizaine d'années...
 
-qui commence à avoir une certaine expertise dans le domaine... 
+qui commence à avoir une certaine expertise dans le domaine...
 
 Tu me demandes de ne pas faire mon boulot ? ou de le faire mal? WTF
 
@@ -31,7 +31,7 @@ Tu me demandes de ne pas faire mon boulot ? ou de le faire mal? WTF
 
 Quel niveau d'arrogance il faut avoir dans sa tête pour dire à ses collègues "vous faites trop bien en fait c'est pas demandé"
 
-Parce que oui on en est là avec ce délire, faire juste une application qui fonctionne, et avec pas trop de bugs, ca serait de la sur-qualité ? 
+Parce que oui on en est là avec ce délire, faire juste une application qui fonctionne, et avec pas trop de bugs, ca serait de la sur-qualité ?
 
 ---
 
@@ -43,23 +43,24 @@ Là je vais rentrer dans les détails techniques vite fait mais :
 
 - bloquer le bouton d'envoi d'un formulaire de création, pour éviter les erreurs de double click.
 - avertir l'utilisateur que s'il quitte la page en cours, il va perdre ses données pas enregistrées.
-- 
+-
 
 ---
+
 - faire en sorte qu'un ctrl + r / f5 de la page ne casse pas tout
 - mettre des alternatives textuelles, des tooltips et des messages d'aide
 
 c'est pas de la sur-qualité, c'est juste de la qualité de base de ce qu'on fait.
 
 ---
+
 et faut qu'on parle des entrants vites fait. Parce que:
 
 - en tant que X
 - je veux faire Y
 - parce que Z
 
-il est ou le niveau de qualité à fournir là ? vos entrants sont nuls à chier, venez pas me dire comment je dois faire mon boulot à partir de ça.
----
+## il est ou le niveau de qualité à fournir là ? vos entrants sont nuls à chier, venez pas me dire comment je dois faire mon boulot à partir de ça.
 
 Alors oui, peut y avoir des dérives dans le dev, du genre:
 

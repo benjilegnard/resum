@@ -9,8 +9,9 @@ React est la pire des choses qui soit arrivé au développement web ces dernièr
 
 React n'est qu'une abstraction par dessus le DOM, et si vous ne savez pas utiliser le DOM, vous allez dans le mur
 
-React résouds des problèmes QUE VOUS N'AVEZ PAS : 
-- le rendu colocalisé de la même donnée à plusieurs endroits. 
+React résouds des problèmes QUE VOUS N'AVEZ PAS :
+
+- le rendu colocalisé de la même donnée à plusieurs endroits.
 - le rafraichissement en temps réèl de ces données.
 - l'interactivité par rapport aux deux points du dessus
 
@@ -20,5 +21,4 @@ Notez que cette critique peut s'appliquer à touts les frameworks haut niveau he
 
 Commme toutes les bonnes abstractions, il faut savoir ce qu'il y'a en dessous : aprenez à rampez avant de courir. Apprenez HTML, Apprenez le Js vanilla, et après, et seulement après, apprenez à mettre des abstraction par dessus.
 
-Mais on se retrouve aujourd'hui avec des devs qui n'ont appris que ça, qui ne voient pas plus loin que le bout de leur biais de confirmation, et c'est triste. Parce que 
-
+Mais on se retrouve aujourd'hui avec des devs qui n'ont appris que ça, qui ne voient pas plus loin que le bout de leur biais de confirmation, et c'est triste. Parce que

@@ -22,7 +22,7 @@
     "lib": ["ES2022", "dom"],
     "useDefineForClassFields": false,
     "paths": {
-      "@benjilegnard/resum/shared/*": ["app/shared/*"],
+      "@benjilegnard/resum/shared/*": ["app/shared/*"]
     }
   },
   "angularCompilerOptions": {

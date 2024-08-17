@@ -5,9 +5,9 @@ name: Unit tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   client-unit-tests:
@@ -16,23 +16,23 @@ jobs:
       run:
         working-directory: client
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Setup npm
-      uses: pnpm/action-setup@v2
-      with:
-        version: 8
-    - name: Setup node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18.x
-        cache: 'pnpm'
-    - name: Install
-      run: pnpm install
-    - name: Build (angular)
-      run: pnpm run build
-    - name: Test
-      run: pnpm run test
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup npm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'pnpm'
+      - name: Install
+        run: pnpm install
+      - name: Build (angular)
+        run: pnpm run build
+      - name: Test
+        run: pnpm run test
   server-unit-tests:
     runs-on: ubuntu-latest
     defaults:
@@ -49,7 +49,7 @@ jobs:
       - name: Install Composer Dependencies
         uses: php-actions/composer@v6
         with:
-          php_version: "8.2"
+          php_version: '8.2'
           php_extensions: xml gd
           dev: yes
           args: --profile --ignore-platform-reqs --working-dir=server
@@ -61,4 +61,3 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: ls -l .
-

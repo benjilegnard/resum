@@ -4,7 +4,7 @@ J'aimerais élargir le propos du tweet sur les fuseaux horaires aux "problèmes 
 
 Parce que gérer une date, son format, son calendrier 📅
 
-Ça fait partie des problèmes qu'on ne devrait plus avoir  à gérer... 
+Ça fait partie des problèmes qu'on ne devrait plus avoir à gérer...
 
 Mais c'est pas le seul 🧵
 
@@ -12,7 +12,7 @@ Mais c'est pas le seul 🧵
 
 Et c'est dur d'identifier ce genre de problématiques...
 
-Soit quand on débute 🧑‍🎓, 
+Soit quand on débute 🧑‍🎓,
 soit quand on connaît pas les solutions existantes 😬, ou quand on est juste médiocre 😈
 
 // ( je prends plus de gants ici, c'est fini 🖕 )
@@ -29,7 +29,7 @@ Il suffit d'exposer un problème pour avoir une solution.
 
 📬 les algorithmes de tri
 
-surtout que "j'apprends le bubble vs  merge vs quick ou chépluquoi sort" en sortie d'école est utilisé en mesure de compétence...
+surtout que "j'apprends le bubble vs merge vs quick ou chépluquoi sort" en sortie d'école est utilisé en mesure de compétence...
 
 sauf qu'en fait ça sert à rien, il faut savoir que ça existe, peut-être mais on va pas réimplémenter...
 
@@ -63,7 +63,7 @@ Story time : je suis passé une fois sur un projet qui avait décidé d'utiliser
 
 des semaines à débugger la solution à la fin. Des gens qui deviennent fous parce que tu peux rien faire avec le truc zippé en prod. que des emmerdes.
 
-pourquoi ? parce que tout l'état local était dedans ( et ressorti / recompressé sans arrêt ) 
+pourquoi ? parce que tout l'état local était dedans ( et ressorti / recompressé sans arrêt )
 
 encore une fois on est trop bêtes
 
@@ -73,16 +73,18 @@ En vrai c'est anecdotique, mais d'où tu crois sortir un meilleur algo de compre
 
 Solutionnisme / Technocratie encore et toujours
 
---- 
+---
 
-Bref pour conclure, tout ça c'est certes  des problèmes à connaître quand tu fais de l'informatique. mais justement à connaître pour ne pas avoir à les résoudre. ou pour ne pas appliquer des solutions là ou il faut pas
+Bref pour conclure, tout ça c'est certes des problèmes à connaître quand tu fais de l'informatique. mais justement à connaître pour ne pas avoir à les résoudre. ou pour ne pas appliquer des solutions là ou il faut pas
 
 ---
+
 Est ce qu'on est là pour "résoudre des problèmes" et ça n'importe qui peut le faire dans son coin, ou est ce qu'on est là pour "répondre à un besoin" ?
 
 J'en sais rien et je m'en fous
 
 ---
-Juste plus j'avance, plus le plus souvent les problèmes sont humains, sociétaux. inter-classes, inter-personnels. 
+
+Juste plus j'avance, plus le plus souvent les problèmes sont humains, sociétaux. inter-classes, inter-personnels.
 
 Et c'est pas la technique va résoudre ça.

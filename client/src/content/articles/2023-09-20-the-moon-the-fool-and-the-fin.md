@@ -2,11 +2,11 @@
 
 # La lune; le doigt
 
-Moi: * montre la lune, et dit que ca serait con si ça explosait
+Moi: \* montre la lune, et dit que ca serait con si ça explosait
 
-Toi: * tire sur mon doigt
+Toi: \* tire sur mon doigt
 
-La lune: * explose
+La lune: \* explose
 
 ---
 
@@ -22,12 +22,10 @@ Moi, sarcastique: il fallait pas tirer sur mon doigt.
 
 Toi: donc c'est de ta faute.
 
-Moi: * quitte la conversation
+Moi: \* quitte la conversation
 
 ---
 
 C'est pas "Toi" hein, c'est toutes les pires de mes interactions professionelles depuis quelques années, mais c'est pareil
-
-
 
 bisous partout, xxx.

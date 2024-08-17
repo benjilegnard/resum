@@ -4,7 +4,7 @@ description: How I configured my neovim, my choices of plugins for 2024
 published: false
 meta:
   - canonical:
-    - en: /fr/articles/2024-01-02-je-passe-sur-neovim
+      - en: /fr/articles/2024-01-02-je-passe-sur-neovim
 ---
 
 Ca fait quelques années que j'utilise les keybindings de vim.
@@ -37,7 +37,7 @@ Pour que neovim soit lancé à la place de vi ou vim, une petite séries d'updat
 
 ### Premiers fichiers de configuration
 
-Un des avantages de neovim c'est que la configuration se fait en lua, un language de script assez simple.  
+Un des avantages de neovim c'est que la configuration se fait en lua, un language de script assez simple.
 
 On va créer un fichier init.lua dans le répertoire de configuration de neovim (`~/.config/nvim/init.lua`)
 
@@ -47,16 +47,16 @@ print('coucou');
 
 En lancant neovim, on peut voir que le fichier a bien été lu et que la trace s'affiche dans notre zone de commandes:
 
-Pour regrouper touts mes fichiers perso, je me crée un répertoire dans lequel j'initie un autre fichier init.lua. 
+Pour regrouper touts mes fichiers perso, je me crée un répertoire dans lequel j'initie un autre fichier init.lua.
 
 et celui ci importe d'autres
 
-| nom du fichier | description |
-| - | - |
-| lazy.lua  | configuration de lazy.nvim, le gestionnaire de paquet, et liste des plugins   |
-| set.lua | options / drapeaux d'activation des options de neovim |
-| remap.lua  | toutes les configurations un peu globales de re-mappage de commandes |
-| catppuccin.lua | la configuration du theme catppuccin |
+| nom du fichier | description                                                                 |
+| -------------- | --------------------------------------------------------------------------- |
+| lazy.lua       | configuration de lazy.nvim, le gestionnaire de paquet, et liste des plugins |
+| set.lua        | options / drapeaux d'activation des options de neovim                       |
+| remap.lua      | toutes les configurations un peu globales de re-mappage de commandes        |
+| catppuccin.lua | la configuration du theme catppuccin                                        |
 
 Pour chaque plugin nécéssitant une configuration plus conséquente, je mettrais les
 
@@ -64,20 +64,17 @@ dans un répertoire `~/.config/nvim/after/plugin/`
 
 cela permettra à chaque configuration d'être chargé une fois le plugin chargé.
 
-
 ### Installer un gestionnaire de plugins: [lazy.vim](https://github.com/folke/lazy.nvim)
 
 Il suffit de suivre la doc
 
 en gros, j'automatise le checkout du dépot git de lazy.vim
 
-puis je charge un premier plugin, le thème [catppuccin/nvim]() : 
+puis je charge un premier plugin, le thème [catppuccin/nvim]() :
 
 ### Mon premier remap
 
-
 ### Quelques configurations sympatiques
-
 
 ## Conclusion
 
@@ -86,8 +83,6 @@ Voilà pour un premier jet, pour éviter de faire un gros pavé césar, je vais 
 Prochain épisode : les plugins 'cosmétiques' vitaux ( fuzzy-finder, xLine, et quelques utilitaires ( tree, bar ) )
 
 Episode suivant, un peu plus avancé, comprendra : la coloration syntaxique, les fournisseurs de serveurs de language, les outils de debug, de tests et d'améliorations des diagnostics. ft
-
-
 
 ---
 
@@ -109,13 +104,11 @@ Pour continuer notre configuration de neovim initiée dans l'article précédent
 
 ### Vim tree [nvim-tree/nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)
 
-Même si l'intérêt d'une arborescence de fichier est discutable avec un bon fuzzy-finder, j'aime bien pouvoir naviguer 
-
+Même si l'intérêt d'une arborescence de fichier est discutable avec un bon fuzzy-finder, j'aime bien pouvoir naviguer
 
 ### Dropbar [Bekaboo/dropbar.nvim](https://github.com/Bekaboo/dropbar.nvim/tree/master)
 
-Même critique à faire qu'à 
-
+Même critique à faire qu'à
 
 ## Conclusion
 
@@ -130,12 +123,12 @@ Même critique à faire qu'à
 à l'instar d'easymotion sur vim, sneak permets
 
 Alternatives:
+
 - easymotion
 - leap
 - hop
 
 ### treesitter : Coloration syntaxique []()
-
 
 ### LSP ( Language Service Provider ) [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) & [mason.nvim]()
 
@@ -143,16 +136,12 @@ Alternatives:
 
 ### DAP ( Debug Adapter Protocol ) [nvim-dap](https://github.com/mfussenegger/nvim-dap) et [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
 
-
 ### Neotest []()
 
 ### Symbols outline [simrat39/symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim)
 
-
-
 ### Trouble [folke/trouble.nvim](https://github.com/folke/trouble.nvim)
-
 
 ## Conclusion
 
-J'espére que cet article en trois partie vous a montré 
+J'espére que cet article en trois partie vous a montré

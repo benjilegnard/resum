@@ -6,4 +6,3 @@ lang: fr
 ---
 
 procedural-generation-and-wfc.md
-

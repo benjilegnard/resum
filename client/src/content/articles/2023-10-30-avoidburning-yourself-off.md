@@ -9,15 +9,15 @@ Si tu veux pas faire un burnout à 27 ans comme j'ai fait.
 Avant j'avais le pc grosse tour au boulor, tu sors du taff c'est fini tu l'utilise plus
 
 1. Donc tu n'utilise pas le pc du boulo pour chez toi
-- les notifications faut les rếgler pour que ca t'emmerdes pas
 
+- les notifications faut les rếgler pour que ca t'emmerdes pas
 
 ---
 
 2. la séparation "je travaille pour quelqu'un d'autre, je travaille pour moi"
 
 - doit être 'CLAIRE' et limpide
-- c'est pour ca que j'ai beaucoup de mal avec les bootcamps et les vendeurs de SAAS : 
+- c'est pour ca que j'ai beaucoup de mal avec les bootcamps et les vendeurs de SAAS :
 
 ---
 

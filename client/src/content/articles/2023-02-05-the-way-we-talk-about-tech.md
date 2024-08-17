@@ -11,6 +11,4 @@ Mais on peut pas, parce qu'on a des "scientifiques" qui voient flou dès que c'e
 
 ---
 
-J'etais longtemps de la team "minimum d'emotions dans la communication. 
-
-
+J'etais longtemps de la team "minimum d'emotions dans la communication.

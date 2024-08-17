@@ -15,7 +15,7 @@ Je vous vois continuer à vous battre et c'est bien, juste pensez à vous parfoi
 
 Dans le militantisme comme dans l'expertise, c'est pas facile de voir qu'on devient aussi toxique que ce qu'on dénonce et combat.
 
-En élargissant au dramas twitter du moment: CHILL OUT les gens, relax. On progresse, petit à petit. 
+En élargissant au dramas twitter du moment: CHILL OUT les gens, relax. On progresse, petit à petit.
 
 C'est pas parfait mais c'est mieux qu'avant.
 
@@ -27,13 +27,13 @@ Pour l'instant je choisi le premier, je veux plus qu'on vienne me voir en mode "
 
 ---
 
-ca me rappelle une take du genre "je veux pas être la police quand je fais de la revue de code"  bah parfois il faut l'être, et parfois il faut savoir lâcher du lest.
+ca me rappelle une take du genre "je veux pas être la police quand je fais de la revue de code" bah parfois il faut l'être, et parfois il faut savoir lâcher du lest.
 
 plus d'empathie dans les discours, moins de condescendance, pas facile en 280 char = ca prends du temps
 
 ---
 
-Et c'est pas grave, y'a des moulins à vent qui continueront à tourner 
+Et c'est pas grave, y'a des moulins à vent qui continueront à tourner
 
 Y'a des collines qui méritent qu'on meure dessus. d'autres on peut se permettre de faire une pause dans la pente.
 

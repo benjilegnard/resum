@@ -18,13 +18,14 @@ Sauf que quand tu vis la vérite du développement logiciel, tu sais bien que ca
 ---
 
 Revenons-en à AngularJS: le framework était incroyable et résolvait un vrai problème :
+
 - Comment je fais circuler la donnée entre ma vue et mon template.
 - Comment je gère les évènements à un seul endroit (adieu addEventListener)
 - Comment j'organise mon code à l'échelle
 
 ---
 
-Ca existait déjà à côté hein, bisous Flex et Adobe Air, ou côté front "Lourd", java ou autre, les RCP (Rich Client Platform, remember ?) 
+Ca existait déjà à côté hein, bisous Flex et Adobe Air, ou côté front "Lourd", java ou autre, les RCP (Rich Client Platform, remember ?)
 
 Par contre dans le développement web, c'était génial et révolutionnaire. AngularJS a pavé la voie de touts les frameworks qui ont suivi,
 
@@ -38,7 +39,7 @@ Il y a deux angular, le AngularJS historique, et le rebrand Angular tout court. 
 
 ---
 
-En 2016 est sorti ce qui était à la base Angular 2, ;ais il y a tellement de différences dans la syntaxe et la stack technique 
+En 2016 est sorti ce qui était à la base Angular 2, ;ais il y a tellement de différences dans la syntaxe et la stack technique
 Bref angular est parti dans la version
 
 ---
@@ -52,7 +53,7 @@ Il faut faire rouler ton ancienne voiture et la nouvelle EN MÊME TEMPS et rempl
 
 J'invente rien c'est la préco du guide de migration officiel
 
-Si vous avez eu la chance de faire du angular 1.5 en ;ode "component directive" c'était jouable parce que les concepts ont étés "backporté " les input output 
+Si vous avez eu la chance de faire du angular 1.5 en ;ode "component directive" c'était jouable parce que les concepts ont étés "backporté " les input output
 
 ---
 
@@ -80,6 +81,7 @@ Mais les gens se font àppater par la fausse promesse du TGV à la place
 ---
 
 Maintenant aujourd'hui Angular c'est quoi :
+
 - c'est un framework carré, avec des opinions et un styleguide au top
 - c'est des stratégies de migration / montées de versions les plus agréales que j'ai jamais vu dans ma courte carrière
 - c'est une plateforme, avec laquelle tu peux faire aussi bien du mobile (bisoux ionic) aue du rendu serveur
@@ -89,4 +91,3 @@ Maintenant aujourd'hui Angular c'est quoi :
 Encore une fois défaillance de marketing a joué contre là ou plein de nouveaux players mettent la dose, mais font pas fondamentale;ent mieux
 
 ---
-
