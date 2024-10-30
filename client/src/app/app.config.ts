@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideContent(
       withMarkdownRenderer({ loadMermaid: () => import('mermaid') }),
     ),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     provideClientHydration(),
     provideSvgIcons([articleIcon, gitBranchIcon, infoIcon]),
     provideTransloco({
