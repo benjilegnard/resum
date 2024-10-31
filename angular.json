@@ -5,7 +5,7 @@
   "projects": {
     "client": {
       "projectType": "application",
-      "root": "",
+      "root": ".",
       "sourceRoot": "src",
       "prefix": "bl",
       "architect": {
@@ -46,13 +46,7 @@
           }
         },
         "test": {
-          "builder": "@analogjs/platform:vitest"
-        },
-        "lint": {
-          "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
-          }
+          "builder": "@analogjs/vitest-angular:test"
         }
       }
     }
