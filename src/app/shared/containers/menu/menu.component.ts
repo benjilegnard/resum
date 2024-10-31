@@ -91,7 +91,7 @@ import { map } from 'rxjs';
       img.gravatar {
         width: 60px;
         height: 60px;
-        border-radius: 32px; //half the avatar.png size + borders
+        border-radius: 32px; /* half the avatar.png size + borders */
         border: 4px solid var(--base);
         position: fixed;
         top: -2px;
