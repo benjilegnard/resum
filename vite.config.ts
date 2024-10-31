@@ -1,7 +1,8 @@
 /// <reference types="vitest" />
 
-import { defineConfig, searchForWorkspaceRoot } from 'vite';
+import { defineConfig } from 'vite';
 import analog from '@analogjs/platform';
+import viteTsConfigPaths from 'vite-tsconfig-paths';
 import {
   ArticleAttributes,
   AvailableLang,
@@ -33,9 +34,10 @@ export default defineConfig(({ mode }) => ({
     mainFields: ['module'],
   },
   plugins: [
+    viteTsConfigPaths(),
     analog({
-      vite: {
-        inlineStylesExtension: 'scss',
+      content: {
+        highlighter: 'shiki',
       },
       apiPrefix: 'api',
       prerender: {
@@ -65,20 +67,13 @@ export default defineConfig(({ mode }) => ({
       },
     },
   },
-  server: {
-    fs: {
-      allow: [
-        // search up for workspace root
-        searchForWorkspaceRoot(process.cwd()),
-      ],
-    },
-  },
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['src/test.ts'],
+    setupFiles: ['src/test-setup.ts'],
     include: ['**/*.spec.ts'],
     coverage: { provider: 'v8' },
+    reporters: ['default'],
   },
   define: {
     'import.meta.vitest': mode !== 'production',
