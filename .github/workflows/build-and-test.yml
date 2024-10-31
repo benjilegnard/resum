@@ -13,29 +13,28 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Setup npm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
-    - name: Setup npm
-      uses: pnpm/action-setup@v4
-      with:
-        version: 9
+      - name: Setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'pnpm'
 
-    - name: Setup node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 22.x
-        cache: 'pnpm'
+      - name: Install
+        run: pnpm install
 
-    - name: Install
-      run: pnpm install
+      - name: Build (angular)
+        run: pnpm run build
 
-    - name: Build (angular)
-      run: pnpm run build
-
-    - name: Test
-      run: pnpm run test
+      - name: Test
+        run: pnpm run test
 
   aggregate:
     runs-on: ubuntu-latest
@@ -43,4 +42,3 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: ls -l .
-
