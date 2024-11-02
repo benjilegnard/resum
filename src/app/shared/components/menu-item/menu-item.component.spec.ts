@@ -1,25 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
+import { render } from '@testing-library/angular';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 import { MenuItemComponent } from './menu-item.component';
 
 describe('MenuItemComponent', () => {
-  let component: MenuItemComponent;
-  let fixture: ComponentFixture<MenuItemComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MenuItemComponent, RouterTestingModule],
-    }).compileComponents();
-  });
-
+  let providers: unknown[];
   beforeEach(() => {
-    fixture = TestBed.createComponent(MenuItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    providers = [provideRouter([])];
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should create', async () => {
+    const { container } = await render(MenuItemComponent, { providers });
+    expect(container).toBeTruthy();
   });
 });
