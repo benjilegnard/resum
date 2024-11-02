@@ -19,45 +19,20 @@ import { SvgIconType } from '@ngneat/svg-icon/lib/providers';
   `,
   styles: [
     `
-      @import 'variables';
-      @import 'mixins';
-      @import 'breakpoint-sass';
-
       :host {
-        flex: 1 1 auto;
-        display: flex;
-        width: auto;
+        @apply flex w-auto;
       }
 
       .menu-item {
-        font-size: 20px;
-        text-transform: uppercase;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        text-decoration: none;
-        align-items: center;
-        gap: 8px;
-        @include breakpoint($large) {
-          flex-direction: row;
-        }
+        @apply text-2xl uppercase flex flex-col w-full no-underline items-center gap-2 lg:flex-row;
       }
 
       .menu-item-text {
-        flex: 0 0 auto;
-        color: #444;
-
-        text-decoration: none;
-        @include breakpoint($large) {
-          color: white;
-        }
+        @apply flex-none text-text no-underline;
       }
 
       .menu-item-icon {
-        flex: 0 0 auto;
-        @include breakpoint($large) {
-          color: white;
-        }
+        @apply flex-none text-text;
       }
     `,
   ],

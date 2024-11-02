@@ -31,81 +31,72 @@ import { map } from 'rxjs';
   `,
   styles: [
     `
-      @import 'mixins';
-      @import 'variables';
-      @import 'breakpoint-sass';
-
       :root {
         --menu-border-size: 4px;
       }
+
       .menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
-        color: var(--text);
-        background: var(--base);
-        width: 100%;
-        z-index: 1;
-
-        border-bottom: var(--menu-border-size) solid var(--surface0);
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
-
-        h1 {
-          margin-left: 70px;
-          font-size: 40px;
-          line-height: 50px;
-          color: white;
-          font-weight: 100;
-          text-shadow: 0 0 5px black;
-          white-space: nowrap;
-        }
+        @apply fixed
+        flex
+        top-0
+        left-0
+        right-0
+        h-[50px]
+        w-full
+        z-10
+        bg-base
+        text-text
+        border-b-[var(--menu-border-size)]
+        border-teal
+        shadow-[0_0_15px_rgba(0,0,0,0.25)];
       }
-      .menu-items {
-        line-height: 25px;
-        display: flex;
-        flex-direction: row;
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: auto;
-        bottom: 0;
-        padding: 5px 0;
-        font-family: 'Nunito';
-        letter-spacing: 0.2em;
-        font-weight: bold;
 
-        @include breakpoint($small) {
-          background: rgba(200, 200, 200, 0.5);
-          color: black;
-        }
-        @include breakpoint($large) {
-          background: transparent;
-          color: white;
-          left: 35%;
-          top: 5px;
-          bottom: auto;
-        }
+      .menu-title {
+        @apply ml-[70px]
+         text-[40px]
+         leading-[50px]
+         text-text
+         font-thin
+         whitespace-nowrap;
+      }
+
+      .menu-items {
+        @apply leading-6
+          flex
+          flex-row
+          gap-4
+          fixed
+          left-0
+          right-0
+          bottom-0
+          py-1
+          font-title
+          tracking-widest
+          font-bold;
+
+        @apply sm:bg-[rgba(200,200,200,0.5)] sm:text-black;
+
+        @apply lg:bg-transparent lg:text-white lg:left-[35%] lg:top-[5px] lg:bottom-auto;
       }
       img.gravatar {
-        width: 60px;
-        height: 60px;
-        border-radius: 32px; /* half the avatar.png size + borders */
-        border: 4px solid var(--base);
-        position: fixed;
-        top: -2px;
-        left: -2px;
-        z-index: 2;
-        transition: transform 0.3s ease-in-out;
-        &:hover {
-          transform: rotate(360deg);
-        }
+        @apply block
+          w-16
+          h-16
+          rounded-full
+          ring-inset ring-base
+          fixed
+          top-[-2px]
+          left-[-2px]
+          z-20
+          transition-transform
+          duration-300
+          ease-in-out;
+      }
+      img.gravatar:hover {
+        @apply rotate-180;
       }
       .hide-alt {
-        text-indent: 100%;
-        white-space: nowrap;
-        overflow: hidden;
+        @apply indent-[-100%] whitespace-nowrap overflow-hidden;
       }
     `,
   ],
