@@ -4,6 +4,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideFileRouter } from '@analogjs/router';
 import { withComponentInputBinding } from '@angular/router';
 import { provideContent, withMarkdownRenderer } from '@analogjs/content';
+import { withShikiHighlighter } from '@analogjs/content/shiki-highlighter';
 import { provideSvgIcons } from '@ngneat/svg-icon';
 
 import { articleIcon } from './svg/article';
@@ -18,6 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideFileRouter(withComponentInputBinding()),
     provideContent(
       withMarkdownRenderer({ loadMermaid: () => import('mermaid') }),
+      withShikiHighlighter()
     ),
     provideHttpClient(withFetch()),
     provideClientHydration(),
