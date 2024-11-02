@@ -9,12 +9,8 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: [
     `
-      @import '_variables';
-
       .card {
-        background-color: $white;
-        margin: 15px;
-        box-shadow: 0 0 15px black;
+        @apply bg-base m-4 shadow-lg;
       }
     `,
   ],

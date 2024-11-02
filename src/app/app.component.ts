@@ -14,9 +14,7 @@ import { PageComponent } from './shared/components/page/page.component';
   styles: [
     `
       :host {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
+        @apply flex flex-col h-screen;
       }
     `,
   ],

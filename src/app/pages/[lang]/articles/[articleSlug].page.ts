@@ -37,19 +37,16 @@ export const routeMeta: RouteMeta = {
   styles: [
     `
       .article-header {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
+        @apply grid flex-row justify-items-end mb-4;
       }
       .article-content {
+        @apply leading-6 text-xl;
       }
       .article-header {
-        line-height: 16px;
+        @apply leading-4;
       }
       .article-date {
-        display: flex;
-        gap: 8px;
-        font-size: 16px;
+        @apply flex gap-2 text-text self-end items-baseline;
       }
     `,
   ],
