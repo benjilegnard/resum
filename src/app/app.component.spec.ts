@@ -1,26 +1,19 @@
-import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { MockComponent } from 'ng-mocks';
-
 import { AppComponent } from './app.component';
-import { PageComponent } from './shared/components/page/page.component';
-import { MenuComponent } from './shared/containers/menu/menu.component';
+import { beforeEach, describe, it } from 'vitest';
+import { provideRouter } from '@angular/router';
+import { render } from '@testing-library/angular';
+import { getTranslocoModule } from './transloco-testing.module';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [
-        AppComponent,
-        MockComponent(PageComponent),
-        MockComponent(MenuComponent),
-      ],
-    }).compileComponents();
+  let providers: unknown[];
+  beforeEach(() => {
+    providers = [provideRouter([])];
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+  it('should create the app', async () => {
+    await render(AppComponent, {
+      providers,
+      imports: [getTranslocoModule()],
+    });
   });
 });
