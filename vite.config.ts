@@ -38,6 +38,15 @@ export default defineConfig(({ mode }) => ({
     analog({
       content: {
         highlighter: 'shiki',
+        shikiOptions: {
+          highlight: {
+            theme: 'catppuccin-mocha'
+          },
+          highlighter: {
+             // add more languages
+            additionalLangs: ['mermaid'],
+          },
+        },
       },
       apiPrefix: 'api',
       prerender: {
