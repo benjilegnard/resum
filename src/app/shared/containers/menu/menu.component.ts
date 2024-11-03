@@ -13,17 +13,19 @@ import { map } from 'rxjs';
         class="gravatar hide-alt"
         src="/benjamin-legrand.png"
         alt="Benjamin Legrand's face"
+        width="64"
+        height="64"
       />
       <h1 class="menu-title">Benjamin Legrand</h1>
       <nav class="menu-items" *transloco="let t; read: 'ui.nav'">
-        <bl-menu-item [routerLink]="[lang, 'articles']" [icon]="'article'">
+        <bl-menu-item [link]="[lang, 'articles']" [icon]="'article'">
           {{ t('articles') }}</bl-menu-item
         >
         <!--<bl-menu-item [routerLink]="['timeline']">{{ t('timeline') }}</bl-menu-item>-->
-        <bl-menu-item [routerLink]="[lang, 'projects']" [icon]="'git-branch'">
+        <bl-menu-item [link]="[lang, 'projects']" [icon]="'git-branch'">
           {{ t('projects') }}</bl-menu-item
         >
-        <bl-menu-item [routerLink]="[lang, 'about']" [icon]="'info'">
+        <bl-menu-item [link]="[lang, 'about']" [icon]="'info'">
           {{ t('about') }}</bl-menu-item
         >
       </nav>
@@ -31,6 +33,9 @@ import { map } from 'rxjs';
   `,
   styles: [
     `
+      :host {
+        @apply select-none;
+      }
       :root {
         --menu-border-size: 4px;
       }
@@ -38,6 +43,7 @@ import { map } from 'rxjs';
       .menu {
         @apply fixed
         flex
+        items-stretch
         top-0
         left-0
         right-0
@@ -64,36 +70,36 @@ import { map } from 'rxjs';
         @apply leading-6
           flex
           flex-row
-          gap-4
-          fixed
+          w-full
+          justify-end
+          items-stretch
+          gap-5
+          relative
           left-0
           right-0
           bottom-0
-          py-1
+          p-3
           font-title
           tracking-widest
           font-bold;
 
-        @apply sm:bg-[rgba(200,200,200,0.5)] sm:text-black;
+        @apply max-lg:fixed max-lg:backdrop-blur max-lg:bg-crust max-lg:w-full max-lg:items-stretch max-lg:justify-center;
 
-        @apply lg:bg-transparent lg:text-white lg:left-[35%] lg:top-[5px] lg:bottom-auto;
       }
       img.gravatar {
         @apply block
-          w-16
-          h-16
+          w-10
+          h-10
           rounded-full
-          ring-inset ring-base
           fixed
-          top-[-2px]
-          left-[-2px]
+          m-1
           z-20
           transition-transform
           duration-300
           ease-in-out;
       }
       img.gravatar:hover {
-        @apply rotate-180;
+        @apply rotate-180 scale-150;
       }
       .hide-alt {
         @apply indent-[-100%] whitespace-nowrap overflow-hidden;
@@ -104,7 +110,6 @@ import { map } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     MenuItemComponent,
-    RouterLink,
     SvgIconComponent,
     TranslocoDirective,
   ],

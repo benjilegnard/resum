@@ -1,3 +1,4 @@
+
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SvgIconComponent, SvgIcons } from '@ngneat/svg-icon';
@@ -6,7 +7,7 @@ import { SvgIconType } from '@ngneat/svg-icon/lib/providers';
 @Component({
   selector: 'bl-menu-item',
   template: `
-    <a class="menu-item" [routerLink]="routerLink">
+    <a class="menu-item" [routerLink]="link">
       <svg-icon
         class="menu-item-icon"
         [fontSize]="iconSize"
@@ -24,11 +25,11 @@ import { SvgIconType } from '@ngneat/svg-icon/lib/providers';
       }
 
       .menu-item {
-        @apply text-2xl uppercase flex flex-col w-full no-underline items-center gap-2 lg:flex-row;
+        @apply uppercase flex flex-col w-full no-underline items-center gap-3 rounded-lg px-2 lg:flex-row hover:bg-surface0 focus:bg-surface0;
       }
 
       .menu-item-text {
-        @apply flex-none text-text no-underline;
+        @apply flex-1 text-text no-underline;
       }
 
       .menu-item-icon {
@@ -42,7 +43,7 @@ import { SvgIconType } from '@ngneat/svg-icon/lib/providers';
 })
 export class MenuItemComponent {
   @Input()
-  routerLink: string[] = [];
+  link: string[] = [];
 
   @Input()
   icon!: SvgIcons;

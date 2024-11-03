@@ -2,9 +2,6 @@ import { MarkdownComponent, injectContent } from '@analogjs/content';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import 'prismjs';
-import 'prismjs/themes/prism.css';
-
 import { ArticleAttributes } from '@benjilegnard/resum/shared/model';
 import { SvgIconComponent, provideSvgIcons } from '@ngneat/svg-icon';
 import { RouteMeta } from '@analogjs/router';
@@ -20,12 +17,12 @@ export const routeMeta: RouteMeta = {
   selector: 'bl-article',
   template: `
     @if (article$ | async; as article) {
-      <div class="article-header">
-        <span class="article-date"
+      <header class="article-header">
+        <div class="article-date"
           ><svg-icon [key]="'calendar-blank'" [fontSize]="'16px'"></svg-icon>
           {{ article.attributes.publishedAt | date }}
-        </span>
-      </div>
+        </div>
+      </header>
       <div class="article-content">
         <analog-markdown [content]="article.content"></analog-markdown>
       </div>
