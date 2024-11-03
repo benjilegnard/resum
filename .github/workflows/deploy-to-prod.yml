@@ -26,3 +26,16 @@ jobs:
 
       - name: Build (angular)
         run: pnpm run build
+
+      - name: Deploy
+        uses: sand4rt/ftp-deployer@v1.7
+        with:
+          sftp: true
+          host: ${{ secrets.FTP_HOST }}
+          port: 22
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }}
+          local_folder: 'dist/analog/public'
+          cleanup: true
+          include: '["*", "**/*", ".*"]'
