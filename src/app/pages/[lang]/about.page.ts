@@ -20,6 +20,10 @@ import { TranslocoDirective } from '@ngneat/transloco';
           {{ t('thisBlog.credits.analog.by') }}
           <a href="https://analogjs.org/" target="_blank">Analogjs</a>
         </li>
+        <li>
+          {{ t('thisBlog.credits.cloudflare.by') }}
+          <a href="https://cloudflare.com/" target="_blank">Cloudflare</a>
+        </li>
       </ul>
     </ng-container>
   `,
