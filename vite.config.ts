@@ -27,6 +27,12 @@ function loadArticles(lang: AvailableLang): string[] {
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   publicDir: 'src/assets',
+  server: {
+    host: process.env['PW_TEST_CONNECT_WS_ENDPOINT'] ? '0.0.0.0' : '127.0.0.1',
+    allowedHosts: process.env['PW_TEST_CONNECT_WS_ENDPOINT']
+      ? ['hostmachine']
+      : undefined,
+  },
   build: {
     target: ['es2020'],
   },
@@ -73,6 +79,7 @@ export default defineConfig(({ mode }) => ({
     environment: 'jsdom',
     setupFiles: ['src/test-setup.ts'],
     include: ['**/*.spec.ts'],
+    exclude: ['e2e/**', 'node_modules/**', 'dist/**'],
     coverage: { provider: 'v8' },
     reporters: ['default'],
   },
