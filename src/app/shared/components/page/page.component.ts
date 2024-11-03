@@ -24,8 +24,7 @@ import { Component, OnInit, Input } from '@angular/core';
         @apply m-auto py-[25px];
       }
       .page {
-        @apply
-          w-full
+        @apply w-full
           h-full
           bg-mantle
           text-text

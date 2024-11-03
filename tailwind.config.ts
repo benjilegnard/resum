@@ -8,7 +8,7 @@ export default {
       sans: ['Open Sans', 'sans-serif'],
       title: ['Nunito', 'sans-serif'],
       mono: ['Hack', 'monospace'],
-    }
+    },
   },
   plugins: [
     require('@catppuccin/tailwindcss')({

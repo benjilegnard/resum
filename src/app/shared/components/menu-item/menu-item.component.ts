@@ -1,4 +1,3 @@
-
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SvgIconComponent, SvgIcons } from '@ngneat/svg-icon';

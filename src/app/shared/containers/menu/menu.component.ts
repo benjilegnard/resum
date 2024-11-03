@@ -84,7 +84,6 @@ import { map } from 'rxjs';
           font-bold;
 
         @apply max-lg:fixed max-lg:backdrop-blur max-lg:bg-crust max-lg:w-full max-lg:items-stretch max-lg:justify-center;
-
       }
       img.gravatar {
         @apply block
@@ -108,11 +107,7 @@ import { map } from 'rxjs';
   ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    MenuItemComponent,
-    SvgIconComponent,
-    TranslocoDirective,
-  ],
+  imports: [MenuItemComponent, SvgIconComponent, TranslocoDirective],
 })
 export class MenuComponent {
   protected readonly transloco = inject(TranslocoService);
