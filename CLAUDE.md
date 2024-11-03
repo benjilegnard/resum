@@ -8,9 +8,6 @@ Personal resume / blog of Benjamin Legrand (https://benjaminlegrand.net), built 
 **AnalogJS** (Angular meta-framework on Vite) app, prerendered at build time and deployed
 to **Cloudflare Workers**.
 
-Note: `README.md` is stale — it describes an older three-module architecture (Angular client +
-PHP GraphQL server + MariaDB). None of that exists anymore; this is a single Angular/Analog app.
-
 ## Commands
 
 Package manager is **pnpm** (see `pnpm-workspace.yaml` for `overrides` / `allowBuilds`).
@@ -18,7 +15,9 @@ Package manager is **pnpm** (see `pnpm-workspace.yaml` for `overrides` / `allowB
 ```bash
 pnpm dev                       # ng serve on port 5173 (HMR)
 pnpm build                     # prebuild runs `svg` + `format`, then ng build
-pnpm test                      # ng test -> @analogjs/vitest-angular
+pnpm test                      # ng test -> @analogjs/vitest-angular (unit)
+pnpm test:e2e                  # playwright test — needs browsers on the machine
+pnpm test:e2e:docker           # same, with browsers from a docker container
 pnpm lint                      # ng lint (eslint over **/*.ts + **/*.html)
 pnpm format                    # prettier --write .
 pnpm exec prettier --check .   # what CI enforces
@@ -37,8 +36,9 @@ pnpm exec ng test --watch                              # also --coverage, -u
 ```
 
 CI (`.github/workflows/build-and-test.yml`) runs lint, prettier `--check`, build and unit
-tests in parallel on every push to `main` and every PR. Push to `main` also triggers
-`deploy-to-prod.yml` (build with `NITRO_PRESET=cloudflare`, then `wrangler deploy`).
+tests in parallel on every push to `main` and every PR; `playwright.yml` runs the e2e suite on
+the same triggers. Push to `main` also triggers `deploy-to-prod.yml` (build with
+`NITRO_PRESET=cloudflare`, then `wrangler deploy`).
 
 ## Architecture
 
@@ -127,5 +127,36 @@ code, eslint-ignored, do not hand-edit**. Register icons where they are used via
 
 ## Tests
 
+### Unit
+
 Vitest + jsdom + `@testing-library/angular` (`render`, not `TestBed` directly). Specs sit next to
-their subject as `*.spec.ts`; setup is `src/test-setup.ts`.
+their subject as `*.spec.ts`; setup is `src/test-setup.ts`. `e2e/**` is excluded from the Vitest
+`include` in `vite.config.ts`, so the two suites never overlap.
+
+### End-to-end (Playwright)
+
+Specs live in `e2e/*.spec.ts`, config is `playwright.config.ts` (chromium / firefox / webkit).
+`webServer` boots `pnpm run start` on port 5173 automatically and reuses an already-running dev
+server outside CI.
+
+Two ways to run, depending on whether browsers are available on the machine:
+
+- **`pnpm test:e2e`** — plain `playwright test`, uses locally installed browsers (i.e. after a
+  `pnpm exec playwright install`, or a global Playwright install).
+- **`pnpm test:e2e:docker`** — no local browsers needed. `scripts/playwright-docker.sh` starts
+  `mcr.microsoft.com/playwright:v<version>-noble` running `playwright run-server`, then runs the
+  suite against it via `PW_TEST_CONNECT_WS_ENDPOINT`. Requires docker.
+
+Extra args are forwarded to `playwright test` in both cases:
+`pnpm test:e2e:docker --project=chromium`.
+
+**The client and the browser server must be the exact same Playwright version** — a mismatch
+fails with `428 Precondition Required` (remote) or `Executable doesn't exist at /ms-playwright/…`
+(container image). The shell script derives the version from the installed `@playwright/test`, so
+it can never drift; the `container.image` tag in `.github/workflows/playwright.yml` is evaluated
+before any step runs and therefore **must be bumped by hand** whenever the lockfile moves.
+
+When connecting to a containerized browser, the dev server still runs on the **host**: the script
+passes `--add-host=hostmachine:host-gateway`, `playwright.config.ts` switches `baseURL` to
+`http://hostmachine:5173`, and `vite.config.ts` flips `server.host` to `0.0.0.0` plus
+`allowedHosts: ['hostmachine']` — all three keyed off `PW_TEST_CONNECT_WS_ENDPOINT` being set.
