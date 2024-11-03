@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideFileRouter(withComponentInputBinding()),
     provideContent(
       withMarkdownRenderer({ loadMermaid: () => import('mermaid') }),
-      withShikiHighlighter()
+      withShikiHighlighter(),
     ),
     provideHttpClient(withFetch()),
     provideClientHydration(),

@@ -18,8 +18,8 @@ export const routeMeta: RouteMeta = {
   template: `
     @if (article$ | async; as article) {
       <header class="article-header">
-        <div class="article-date"
-          ><svg-icon [key]="'calendar-blank'" [fontSize]="'16px'"></svg-icon>
+        <div class="article-date">
+          <svg-icon [key]="'calendar-blank'" [fontSize]="'16px'"></svg-icon>
           {{ article.attributes.publishedAt | date }}
         </div>
       </header>

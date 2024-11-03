@@ -40,10 +40,10 @@ export default defineConfig(({ mode }) => ({
         highlighter: 'shiki',
         shikiOptions: {
           highlight: {
-            theme: 'catppuccin-mocha'
+            theme: 'catppuccin-mocha',
           },
           highlighter: {
-             // add more languages
+            // add more languages
             additionalLangs: ['mermaid'],
           },
         },

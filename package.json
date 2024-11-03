@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "format": "prettier --write .",
-    "prebuild": "npm run svg",
+    "prebuild": "npm run svg && npm run format",
     "svg": "svg-generator"
   },
   "private": true,

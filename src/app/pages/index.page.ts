@@ -11,8 +11,7 @@ import { TranslocoDirective } from '@ngneat/transloco';
       <h2>{{ t('lang.select') }} :</h2>
       <ul>
         <li>
-          <a routerLink="/en">
-          {{ t('lang.langs.en') }} 🇬🇧</a>
+          <a routerLink="/en"> {{ t('lang.langs.en') }} 🇬🇧</a>
         </li>
         <li>
           <a routerLink="/fr">{{ t('lang.langs.fr') }} 🇫🇷</a>
