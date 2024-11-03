@@ -18,7 +18,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styles: [
     `
       .page-container {
-        @apply flex pt-[50px] min-h-[calc(100vh)] bg-surface0 text-text content-center justify-center;
+        @apply flex pt-[50px] pb-[68px] min-h-[calc(100vh)] bg-surface0 text-text content-center justify-center;
       }
       .page-title {
         @apply m-auto py-[25px];
@@ -27,7 +27,7 @@ import { Component, OnInit, Input } from '@angular/core';
         @apply
           w-full
           h-full
-          bg-base
+          bg-mantle
           text-text
           m-0
           p-6

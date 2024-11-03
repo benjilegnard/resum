@@ -32,7 +32,6 @@
 }
 
 @layer base {
-  h1,
   h2,
   h3,
   h4,
@@ -40,25 +39,34 @@
   h6 {
     @apply uppercase tracking-wider font-title;
   }
+  h1 {
+    @apply font-title;
+  }
   h2 {
-    @apply text-4xl;
+    @apply text-4xl my-4;
   }
   h3 {
-    @apply text-3xl;
+    @apply text-3xl my-4;
   }
   h4 {
-    @apply text-2xl;
+    @apply text-2xl my-3;
   }
   h5 {
-    @apply text-xl;
+    @apply text-xl my-2;
   }
   h6 {
-    @apply text-lg;
+    @apply text-lg my-1;
   }
-  p {
-    @apply my-2 leading-relaxed font-sans;
+  p, ul {
+    @apply my-2 leading-relaxed font-sans text-xl;
   }
   a {
     @apply text-sky underline underline-offset-8 hover:underline-offset-4;
   }
+  pre {
+    @apply bg-base;
+  }
+}
+pre.shiki, .mermaid{
+  @apply bg-base w-4/5 mx-auto p-6;
 }
