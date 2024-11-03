@@ -1,0 +1,5 @@
+name = "resum"
+compatibility_date = "2024-09-19"
+main = "./dist/analog/server/index.mjs"
+assets = { directory = "./dist/analog/public/", binding = "ASSETS" }
+

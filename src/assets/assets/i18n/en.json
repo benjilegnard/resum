@@ -25,7 +25,7 @@
     },
     "thisBlog": {
       "title": "This blog",
-      "description": "Was made possible thanks to these technologies",
+      "description": "Was made possible thanks to these technologies :",
       "credits": {
         "icons": {
           "by": "Icons from",
@@ -34,6 +34,10 @@
         "analog": {
           "by": "Powered by",
           "label": "Analogjs"
+        },
+        "cloudflare": {
+          "by": "Hosted on",
+          "label": "Cloudflare"
         }
       }
     }

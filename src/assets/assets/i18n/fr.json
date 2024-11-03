@@ -25,7 +25,7 @@
     },
     "thisBlog": {
       "title": "Ce site",
-      "description": "a été développé avec l'aide de ces technologies",
+      "description": "a été développé avec l'aide de ces technologies :",
       "credits": {
         "icons": {
           "by": "Icônes par",
@@ -34,6 +34,10 @@
         "analog": {
           "by": "Propulsé par",
           "label": "Analogjs"
+        },
+        "cloudflare": {
+          "by": "Hébergé sur",
+          "label": "Cloudflare"
         }
       }
     }
