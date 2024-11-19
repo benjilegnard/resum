@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { inject } from '@angular/core';
 import { ResolveFn } from '@angular/router';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { AvailableLang } from '../model';
 
 export const langResolver: ResolveFn<AvailableLang | null> = (route, state) => {
@@ -9,6 +9,7 @@ export const langResolver: ResolveFn<AvailableLang | null> = (route, state) => {
   const rootDocument = inject<Document>(DOCUMENT);
   rootDocument.documentElement.lang = lang;
   const translate = inject(TranslocoService);
+  console.log("langResolver",lang);
   translate.setActiveLang(lang);
   return lang as string;
 };

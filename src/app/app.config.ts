@@ -11,7 +11,7 @@ import { articleIcon } from './svg/article';
 import { gitBranchIcon } from './svg/git-branch';
 import { infoIcon } from './svg/info';
 import { TranslocoHttpLoader } from './transloco-loader';
-import { provideTransloco } from '@ngneat/transloco';
+import { provideTransloco } from '@jsverse/transloco';
 import { availableLangs } from './shared/model';
 
 export const appConfig: ApplicationConfig = {

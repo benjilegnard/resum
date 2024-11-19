@@ -1,6 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
+import { langResolver } from '../shared/i18n/lang.resolver';
+import { RouteMeta } from '@analogjs/router';
+
+export const routeMeta: RouteMeta = {
+  resolve: {
+    lang: langResolver,
+  },
+};
 
 @Component({
   selector: 'bl-lang-selector',
