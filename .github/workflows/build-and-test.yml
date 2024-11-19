@@ -35,11 +35,33 @@ jobs:
         run: pnpm run build
 
       - name: Test
-        run: pnpm run test
+        run: pnpm run test --coverage
+
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/clover.xml
 
   aggregate:
     runs-on: ubuntu-latest
     needs: [unit-tests]
     steps:
       - uses: actions/checkout@v4
-      - run: ls -l .
+      - uses: actions/download-artifact@v4
+      - name: Display structure of downloaded files
+        run: ls -R
+      - name: Code Coverage Summary Report
+        uses: saschanowak/CloverCodeCoverageSummary@0.4.0
+        with:
+          filename: ./*/coverage/clover.xml
+      - name: 'Add Code Coverage Summary as PR Comment'
+        uses: marocchino/sticky-pull-request-comment@v2
+        if: github.event_name == 'pull_request'
+        with:
+          recreate: true
+          path: code-coverage-summary.md
+      - name: Coverage Report as Comment (Clover)
+        uses: lucassabreu/comment-coverage-clover@main
+        with:
+          file: ./*/coverage/clover.xml

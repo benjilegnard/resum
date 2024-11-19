@@ -46,7 +46,11 @@
           }
         },
         "test": {
-          "builder": "@analogjs/vitest-angular:test"
+          "builder": "@analogjs/vitest-angular:test",
+          "options": {
+            "config": "vite.config.ts",
+            "reportsDirectory": "coverage/client"
+          }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
