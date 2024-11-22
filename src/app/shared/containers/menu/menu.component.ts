@@ -58,7 +58,7 @@ import { map } from 'rxjs';
       }
 
       .menu-title {
-        @apply ml-[70px]
+        @apply ml-[50px]
          text-[40px]
          leading-[50px]
          text-text
