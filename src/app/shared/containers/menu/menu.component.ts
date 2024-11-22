@@ -11,7 +11,7 @@ import { map } from 'rxjs';
     <header class="menu">
       <img
         class="gravatar hide-alt"
-        src="/benjamin-legrand.png"
+        src="/benjamin-legrand.webp"
         alt="Benjamin Legrand's face"
         width="64"
         height="64"
@@ -58,7 +58,7 @@ import { map } from 'rxjs';
       }
 
       .menu-title {
-        @apply ml-[70px]
+        @apply ml-[50px]
          text-[40px]
          leading-[50px]
          text-text
@@ -97,9 +97,6 @@ import { map } from 'rxjs';
           duration-300
           ease-in-out;
       }
-      img.gravatar:hover {
-        @apply rotate-180 scale-150;
-      }
       .hide-alt {
         @apply indent-[-100%] whitespace-nowrap overflow-hidden;
       }
@@ -107,7 +104,7 @@ import { map } from 'rxjs';
   ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MenuItemComponent, SvgIconComponent, TranslocoDirective],
+  imports: [MenuItemComponent, TranslocoDirective],
 })
 export class MenuComponent {
   protected readonly transloco = inject(TranslocoService);
