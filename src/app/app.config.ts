@@ -1,6 +1,10 @@
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { ApplicationConfig, isDevMode } from '@angular/core';
-import { provideClientHydration } from '@angular/platform-browser';
+import {
+  ApplicationConfig,
+  isDevMode,
+  provideExperimentalZonelessChangeDetection,
+} from '@angular/core';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideFileRouter } from '@analogjs/router';
 import { withComponentInputBinding } from '@angular/router';
 import { provideContent, withMarkdownRenderer } from '@analogjs/content';
@@ -21,8 +25,9 @@ export const appConfig: ApplicationConfig = {
       withMarkdownRenderer({ loadMermaid: () => import('mermaid') }),
       withShikiHighlighter(),
     ),
+    provideExperimentalZonelessChangeDetection(),
     provideHttpClient(withFetch()),
-    provideClientHydration(),
+    provideClientHydration(withEventReplay()),
     provideSvgIcons([articleIcon, gitBranchIcon, infoIcon]),
     provideTransloco({
       config: {
