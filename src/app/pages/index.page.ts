@@ -1,6 +1,18 @@
+import { RouteMeta } from '@analogjs/router';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@ngneat/transloco';
+
+export const routeMeta: RouteMeta = {
+  meta: [
+    { name: 'description', content: "Benjamin Legrand's personal website" },
+    { name: 'author', content: 'Benjamin Legrand' },
+    {
+      name: 'og:title',
+      content: "Benjamin Legrand's personal website, select your language",
+    },
+  ],
+};
 
 @Component({
   selector: 'bl-lang-selector',
