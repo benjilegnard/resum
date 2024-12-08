@@ -52,7 +52,7 @@ export default defineConfig(({ mode }) => ({
       apiPrefix: 'api',
       prerender: {
         routes: async () => [
-          '',
+          '/',
           ...['/en', '/fr'].flatMap((lang) => [
             `${lang}`,
             `${lang}/about`,
