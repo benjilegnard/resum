@@ -26,24 +26,29 @@ export const routeMeta: RouteMeta = {
       <div class="article-content">
         <analog-markdown [content]="article.content"></analog-markdown>
       </div>
-      <ul class="article-share-box">
-        <li></li>
-      </ul>
+      <footer class="article-footer">
+        <ul class="article-share-box">
+          <li></li>
+        </ul>
+      </footer>
     }
   `,
   styles: [
     `
       .article-header {
-        @apply grid flex-row justify-items-end mb-4;
+        @apply grid flex-row justify-items-end mb-4 leading-4;
+      }
+      .article-date {
+        @apply flex gap-2 text-text self-end items-baseline;
       }
       .article-content {
         @apply leading-6 text-xl;
       }
-      .article-header {
+      .article-footer {
         @apply leading-4;
       }
-      .article-date {
-        @apply flex gap-2 text-text self-end items-baseline;
+      .article-share-box{
+        @apply list-none;
       }
     `,
   ],

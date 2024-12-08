@@ -2,15 +2,18 @@
 title: AnalogJS Demo Page
 slug: 2021-12-13-analogjs-demo-page
 description: A simple blog post demonstrating the markdown, front-matter and mermaidjs integration of AnalogJS
-published: false
+published: true
 lang: en
+publishedAt: 2021-12-13
 ---
 
-Introduction paragraph
+An introduction paragraph
 
-## A new start : examples
+## Markdown renderer features
 
-tralala pouet pouet
+This is a demonstration page for the markdown renderer.
+
+Here is a html `<table>`:
 
 | Label | Description |
 | ----- | ----------- |
@@ -33,3 +36,34 @@ graph TD;
     B-->D;
     C-->D;
 ```
+
+### Lists and other common elements
+
+A list
+
+- a list
+- with bullets
+- points
+
+An ordered list
+
+1. a list
+2. with numbers
+3. dots
+
+[a link to an external site](https://www.google.com)
+
+> a quote
+
+    a code sample
+
+An image
+
+![Picture of Benjamin Legrand](/benjamin-legrand.webp)
+
+### Headings: level 2
+#### Level 4 title
+##### Level 5 title
+###### Level 6 title
+
+

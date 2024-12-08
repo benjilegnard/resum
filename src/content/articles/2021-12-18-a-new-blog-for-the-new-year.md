@@ -20,13 +20,13 @@ Yeah i know it's almost june, but the idea for this was last year. (Author note 
 
 ### Introduction
 
-I used to have a blog, still available at [jibhaine.fr](https://jibhaine.fr), i gave it up around the time social networks rose to popularity and everyone that had a blog was posting stuff on facebook or twitter.
+I used to have a blog, still available at [jibhaine.fr](https://jibhaine.fr), i gave it up around the time social networks rose to popularity and everyone that had a blog was posting stuff on Facebook or Twitter.
 There are too many social networks today, having control of what everyone publishes.
-This site is my attempt at taking back what i can of my identity online.
+This site is my attempt at taking back what I can of my identity online.
 
 ### What you'll find here
 
-mainly articles about web development, tutorials on angular, and other technologies if i'm motivated.
+Mainly articles about web development, tutorials on angular, and other technologies if i'm motivated.
 
 Think pieces about development practices in teams, about our sausage society.
 
@@ -40,6 +40,9 @@ I'll build it in the open on [github](https://github.com/benjilegnard/resum), he
 - [x] generate article pages from markdown with front-matter
 - [x] internationalization english / french
 - [x] RSS feed
+- [ ] link to rss feed in menu
+- [x] mermaid integration
+- [x] rework styles with tailwind
 - [ ] links to share articles on social network
 - [ ] projects list / timeline type of content
 - [ ] analytics ??
@@ -47,4 +50,4 @@ I'll build it in the open on [github](https://github.com/benjilegnard/resum), he
 
 I'll try to keep this list updated.
 
-Be seeing you :wave:
+Be seeing you 👋

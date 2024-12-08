@@ -20,26 +20,30 @@ Bon, je sais qu'on est en juin, mais j'ai eu cette idée l'année dernière.
 
 ### Introduction
 
-J'avais un blog à une époque, toujours disponible à l'adresse [jibhaine.fr](https://jibhaine.fr), je l'ai complètement abandonné à partir du moment ou tout le mondes est passé sur les réseaux sociaux, et ou toute la blogosphère est passée sur facebook, certes, mais surtout twitter.
+J'avais un blog à une époque, toujours disponible à l'adresse [jibhaine.fr](https://jibhaine.fr), je l'ai complètement abandonné à partir du moment ou tout le mondes est passé sur les réseaux sociaux, et ou toute la blogosphère est passée sur Facebook, certes, mais surtout Twitter.
 
 Ce site est une tentative de reprendre contrôle sur ma présence en ligne, et de ne plus dépendre de ces plateformes.
 
-### Qu'allez vous trouver ici ?
+### Qu'allez-vous trouver ici ?
 
 Principalement des articles à propos du développement web, des tutoriels sur angular, et pour d'autres technologies si je suis motivé.
 
-Egalement des articles un peu plus réflexif sur la manière dont on travaille et notre société.
+Des "hot-takes", ou opinions épicées en français dans le texte.
 
-### Stack technique et roadmap
+Également des articles un peu plus réflexif sur la manière dont on travaille et notre société.
+
+### Choix techniques et roadmap
 
 Ce blog est construit avec [angular](https://angular.io) et [analog](https://analogjs.org)
 Je le construirais en public sur [github](https://github.com/benjilegnard/resum), voici quelques fonctionnalités que j'envisage :
 
-**Technical roadmap**
+**Liste de trucs à faire**
 
 - [x] génération des articles à partir de fichiers markdown et front-matter
 - [x] internationalisation anglais / français
 - [x] flux RSS
+- [x] intégration mermaid
+- [ ] lien vers le flux RSS dans le menu
 - [ ] liens de partages des articles sur les réseaux sociaux
 - [ ] types de contenus pour projets et expériences
 - [ ] analytics ??
@@ -47,4 +51,5 @@ Je le construirais en public sur [github](https://github.com/benjilegnard/resum)
 
 Je viendrais mettre à jour cette liste au fur et à mesure, promis.
 
-Bonjour chez vous :wave:
+Bonjour chez vous 👋
+

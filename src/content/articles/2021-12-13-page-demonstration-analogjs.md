@@ -2,15 +2,16 @@
 title: Page de démonstration des fonctionnalités d'analogjs
 slug: 2021-12-13-page-demonstration-analogjs
 description: blog description
-published: false
+published: true
 lang: fr
+publishedAt: 2021-12-13
 ---
 
-Introduction paragraph
+This is an introduction paragraph
 
 ## A new start : examples
 
-tralala pouet pouet
+Here is an html `<table>` element:
 
 | Label | Description |
 | ----- | ----------- |
@@ -33,3 +34,34 @@ graph TD;
     B-->D;
     C-->D;
 ```
+
+### Lists and other common elements
+
+A list
+
+- a list
+- with bullets
+- points
+
+An ordered list
+
+1. a list
+2. with numbers
+3. dots
+
+[a link to an external site](https://www.google.com)
+
+> a quote
+
+    a code sample
+
+An image
+
+![Picture of Benjamin Legrand](/benjamin-legrand.webp)
+
+### Headings: level 2
+#### Level 4 title
+##### Level 5 title
+###### Level 6 title
+
+
