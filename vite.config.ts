@@ -44,7 +44,7 @@ export default defineConfig(({ mode }) => ({
           },
           highlighter: {
             // add more languages
-            additionalLangs: ['mermaid'],
+            additionalLangs: ['mermaid', 'bash', 'lua', 'angular-ts'],
           },
         },
       },
