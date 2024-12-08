@@ -15,7 +15,7 @@ export const routeMeta: RouteMeta = {
   selector: 'bl-lang',
   standalone: true,
   imports: [RouterOutlet],
-  template: ` <router-outlet></router-outlet> `,
+  template: `<router-outlet></router-outlet>`,
   styles: [``],
 })
 export class LangPageComponent {}

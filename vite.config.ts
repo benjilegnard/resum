@@ -52,7 +52,7 @@ export default defineConfig(({ mode }) => ({
       apiPrefix: 'api',
       prerender: {
         routes: async () => [
-          '/',
+          '',
           ...['/en', '/fr'].flatMap((lang) => [
             `${lang}`,
             `${lang}/about`,
@@ -61,7 +61,6 @@ export default defineConfig(({ mode }) => ({
             `${lang}/timeline`,
             `${lang}/projects`,
           ]),
-
           '/api/rss.xml',
         ],
         sitemap: {
