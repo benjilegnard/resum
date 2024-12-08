@@ -27,6 +27,9 @@ export const routeMeta: RouteMeta = {
         <analog-markdown [content]="article.content"></analog-markdown>
       </div>
       <footer class="article-footer">
+        <button type="button" title="">
+          <svg-icon [key]="'globe-hemisphere-east'" [fontSize]="'16px'" />
+        </button>
         <ul class="article-share-box">
           <li></li>
         </ul>
