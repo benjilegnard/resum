@@ -3,7 +3,7 @@ import { ResolveFn } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { AvailableLang } from '../model';
 
-export const langResolver: ResolveFn<AvailableLang | null> = (route, state) => {
+export const langResolver: ResolveFn<AvailableLang | null> = (route) => {
   const { lang } = route.params;
   const rootDocument = inject<Document>(DOCUMENT);
   rootDocument.documentElement.lang = lang;

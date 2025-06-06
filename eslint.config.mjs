@@ -1,18 +1,18 @@
 // @ts-check
-const eslint = require('@eslint/js');
-const tseslint = require('typescript-eslint');
-const angular = require('angular-eslint');
+import js from '@eslint/js';
+import ts, { config } from 'typescript-eslint';
+import ng, { processInlineTemplates } from 'angular-eslint';
 
-module.exports = tseslint.config(
+export default config(
   {
     files: ['**/*.ts'],
     extends: [
-      eslint.configs.recommended,
-      ...tseslint.configs.recommended,
-      ...tseslint.configs.stylistic,
-      ...angular.configs.tsRecommended,
+      js.configs.recommended,
+      ...ts.configs.recommended,
+      ...ts.configs.stylistic,
+      ...ng.configs.tsRecommended,
     ],
-    processor: angular.processInlineTemplates,
+    processor: processInlineTemplates,
     rules: {
       '@angular-eslint/directive-selector': [
         'error',
@@ -35,8 +35,8 @@ module.exports = tseslint.config(
   {
     files: ['**/*.html'],
     extends: [
-      ...angular.configs.templateRecommended,
-      ...angular.configs.templateAccessibility,
+      ...ng.configs.templateRecommended,
+      ...ng.configs.templateAccessibility,
     ],
     rules: {},
   },
