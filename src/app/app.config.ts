@@ -1,11 +1,19 @@
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withFetch,
+  withInterceptors,
+} from '@angular/common/http';
 import {
   ApplicationConfig,
   isDevMode,
-  provideExperimentalZonelessChangeDetection,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
 } from '@angular/core';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideFileRouter } from '@analogjs/router';
+import {
+  provideClientHydration,
+  withEventReplay,
+} from '@angular/platform-browser';
+import { provideFileRouter, requestContextInterceptor } from '@analogjs/router';
 import { withComponentInputBinding } from '@angular/router';
 import { provideContent, withMarkdownRenderer } from '@analogjs/content';
 import { withShikiHighlighter } from '@analogjs/content/shiki-highlighter';
@@ -20,13 +28,17 @@ import { availableLangs } from './shared/model';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideBrowserGlobalErrorListeners(),
     provideFileRouter(withComponentInputBinding()),
     provideContent(
       withMarkdownRenderer({ loadMermaid: () => import('mermaid') }),
       withShikiHighlighter(),
     ),
-    provideExperimentalZonelessChangeDetection(),
-    provideHttpClient(withFetch()),
+    provideZonelessChangeDetection(),
+    provideHttpClient(
+      withFetch(),
+      withInterceptors([requestContextInterceptor]),
+    ),
     provideClientHydration(withEventReplay()),
     provideSvgIcons([articleIcon, gitBranchIcon, infoIcon]),
     provideTransloco({

@@ -18,7 +18,6 @@ import { PageComponent } from './shared/components/page/page.component';
       }
     `,
   ],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MenuComponent, PageComponent, RouterOutlet],
 })

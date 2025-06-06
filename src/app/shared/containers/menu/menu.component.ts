@@ -102,7 +102,6 @@ import { map } from 'rxjs';
       }
     `,
   ],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MenuItemComponent, TranslocoDirective],
 })

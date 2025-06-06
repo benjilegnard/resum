@@ -1,7 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SvgIconComponent, SvgIcons } from '@ngneat/svg-icon';
-import { SvgIconType } from '@ngneat/svg-icon/lib/providers';
 
 @Component({
   selector: 'bl-menu-item',
@@ -37,7 +36,6 @@ import { SvgIconType } from '@ngneat/svg-icon/lib/providers';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [RouterLink, SvgIconComponent],
 })
 export class MenuItemComponent {

@@ -22,7 +22,6 @@ import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
   `,
   styles: [``],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [RouterLink, TranslocoDirective],
 })
 export class ArticlesPageComponent {

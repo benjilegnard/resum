@@ -4,7 +4,6 @@ import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
   selector: 'bl-lang-selector',
-  standalone: true,
   imports: [RouterLink, TranslocoDirective],
   template: `
     <ng-container *transloco="let t">

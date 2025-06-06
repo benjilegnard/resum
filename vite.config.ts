@@ -20,7 +20,7 @@ function loadArticles(lang: AvailableLang): string[] {
       const frontMatter = fm(fileContents);
       return frontMatter.attributes as unknown as ArticleAttributes;
     })
-    .filter(attributes => attributes.published === true && attributes.slug)
+    .filter((attributes) => attributes.published === true && attributes.slug)
     .filter((attributes) => `/${attributes.lang}` === lang)
     .map((attributes) => `${lang}/articles/${attributes.slug}`);
 }

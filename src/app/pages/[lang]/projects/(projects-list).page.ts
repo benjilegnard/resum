@@ -14,7 +14,6 @@ import { TranslocoDirective } from '@ngneat/transloco';
   `,
   styles: [``],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
 })
 export class ProjectsListPageComponent {}
 
