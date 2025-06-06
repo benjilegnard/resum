@@ -1,10 +1,15 @@
 import { TestBed } from '@angular/core/testing';
-import { ResolveFn } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  ResolveFn,
+  RouterStateSnapshot,
+} from '@angular/router';
 
 import { langResolver } from './lang.resolver';
 import { AvailableLang } from '../model';
 import { TranslocoService } from '@jsverse/transloco';
 import { DOCUMENT } from '@angular/common';
+import { beforeEach, describe, vi, it, expect } from 'vitest';
 
 describe('langResolver', () => {
   const executeResolver: ResolveFn<AvailableLang | null> = (
@@ -17,7 +22,7 @@ describe('langResolver', () => {
       providers: [
         {
           provide: TranslocoService,
-          useValue: { setActiveLang: vitest.fn() } as Partial<TranslocoService>,
+          useValue: { setActiveLang: vi.fn() } as Partial<TranslocoService>,
         },
         { provide: DOCUMENT, useValue: document },
       ],
@@ -32,7 +37,10 @@ describe('langResolver', () => {
 
   it('should return "fr" for "fr"', () => {
     expect(
-      executeResolver({ params: { lang: 'fr' } } as any, undefined as any),
+      executeResolver(
+        { params: { lang: 'fr' } } as unknown as ActivatedRouteSnapshot,
+        undefined as unknown as RouterStateSnapshot,
+      ),
     ).toBe('fr');
     expect(translocoServiceStub.setActiveLang).toHaveBeenCalledWith('fr');
     expect(documentStub.documentElement?.lang).toBe('fr');

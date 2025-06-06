@@ -45,5 +45,5 @@ export class MenuItemComponent {
   @Input()
   icon!: SvgIcons;
 
-  protected iconSize: string = '20px';
+  protected iconSize = '20px';
 }

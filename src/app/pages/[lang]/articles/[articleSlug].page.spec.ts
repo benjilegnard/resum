@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
 import { MarkdownComponent } from '@analogjs/content';
 import { getTranslocoModule } from '../../../transloco-testing.module';
 
+// we want to mock external component, so it's ok
+// eslint-disable-next-line @angular-eslint/component-selector
 @Component({ selector: 'markdown-content', standalone: true, template: '' })
 class FakeMarkdownComponent {}
 

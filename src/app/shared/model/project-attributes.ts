@@ -1,1 +1,5 @@
-export interface ProjectAttributes {}
+export interface ProjectAttributes {
+  title: string;
+  description: string;
+  github: string;
+}

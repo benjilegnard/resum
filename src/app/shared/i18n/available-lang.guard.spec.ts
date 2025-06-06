@@ -1,5 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-import { CanActivateFn, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivateFn,
+  RouterStateSnapshot,
+} from '@angular/router';
+import { describe, beforeEach, it, expect } from 'vitest';
 
 import { availableLangGuard } from './available-lang.guard';
 
@@ -18,7 +23,7 @@ describe('availableLangGuard', () => {
   it('should return true for "fr"', () => {
     expect(
       executeGuard(
-        { params: { lang: 'fr' } } as any,
+        { params: { lang: 'fr' } } as unknown as ActivatedRouteSnapshot,
         {} as unknown as RouterStateSnapshot,
       ),
     ).toBe(true);
@@ -26,7 +31,7 @@ describe('availableLangGuard', () => {
   it('should return true for "en"', () => {
     expect(
       executeGuard(
-        { params: { lang: 'en' } } as any,
+        { params: { lang: 'en' } } as unknown as ActivatedRouteSnapshot,
         {} as unknown as RouterStateSnapshot,
       ),
     ).toBe(true);
@@ -34,7 +39,7 @@ describe('availableLangGuard', () => {
   it('should return false for "it"', () => {
     expect(
       executeGuard(
-        { params: { lang: 'it' } } as any,
+        { params: { lang: 'it' } } as unknown as ActivatedRouteSnapshot,
         {} as unknown as RouterStateSnapshot,
       ),
     ).toBe(false);
