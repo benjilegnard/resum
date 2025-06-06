@@ -10,6 +10,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
   getTranslation(lang: string) {
     if (import.meta.env.SSR) {
       // pre-render
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       if ((globalThis as any).$fetch) {
         const __dirname = path.dirname(new URL(import.meta.url).pathname);
         return new Promise<Translation>((resolve) => {

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MenuItemComponent } from '../../components/menu-item/menu-item.component';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
+
+import { MenuItemComponent } from '../../components/menu-item/menu-item.component';
 
 @Component({
   selector: 'bl-menu',
