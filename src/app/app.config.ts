@@ -2,7 +2,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import {
   ApplicationConfig,
   isDevMode,
-  provideExperimentalZonelessChangeDetection,
+  provideZonelessChangeDetection,
 } from '@angular/core';
 import {
   provideClientHydration,
@@ -28,7 +28,7 @@ export const appConfig: ApplicationConfig = {
       withMarkdownRenderer({ loadMermaid: () => import('mermaid') }),
       withShikiHighlighter(),
     ),
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
     provideHttpClient(withFetch()),
     provideClientHydration(withEventReplay()),
     provideSvgIcons([articleIcon, gitBranchIcon, infoIcon]),
