@@ -61,7 +61,6 @@ import { Component, OnInit, Input } from '@angular/core';
       }
     `,
   ],
-  standalone: true,
   imports: [],
 })
 export class PageComponent implements OnInit {

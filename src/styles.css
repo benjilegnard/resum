@@ -90,27 +90,32 @@
   ol {
     @apply my-4 leading-relaxed font-sans text-xl;
   }
-  ul{@apply list-disc list-inside my-4;}
-  ol{@apply list-decimal list-inside my-4;}
+  ul {
+    @apply list-disc list-inside my-4;
+  }
+  ol {
+    @apply list-decimal list-inside my-4;
+  }
   a {
     @apply text-sky underline underline-offset-8 hover:underline-offset-4;
   }
   pre {
     @apply bg-base;
   }
-  table{
+  table {
     @apply w-full text-left my-4;
   }
-  table td, table th {
+  table td,
+  table th {
     @apply border border-surface0 border-collapse p-2;
   }
-  table thead{
+  table thead {
     @apply bg-crust;
   }
-  table tbody{
+  table tbody {
     @apply bg-mantle;
   }
-  blockquote{
+  blockquote {
     @apply py-2 px-4 bg-crust relative w-3/4 mx-auto my-4
     after:content-['”'] after:absolute after:right-3 after:top-1 after:text-4xl after:text-surface1;
   }

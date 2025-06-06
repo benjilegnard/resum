@@ -37,7 +37,6 @@ import { SvgIconType } from '@ngneat/svg-icon/lib/providers';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [RouterLink, SvgIconComponent],
 })
 export class MenuItemComponent {

@@ -13,7 +13,6 @@ export const routeMeta: RouteMeta = {
 
 @Component({
   selector: 'bl-lang',
-  standalone: true,
   imports: [RouterOutlet],
   template: `<router-outlet></router-outlet>`,
   styles: [``],

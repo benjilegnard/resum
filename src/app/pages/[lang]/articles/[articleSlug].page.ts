@@ -47,14 +47,13 @@ export const routeMeta: RouteMeta = {
       .article-footer {
         @apply leading-4;
       }
-      .article-share-box{
+      .article-share-box {
         @apply list-none;
       }
     `,
   ],
   imports: [MarkdownComponent, AsyncPipe, DatePipe, SvgIconComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
 })
 export class ArticlePageComponent {
   @Input()

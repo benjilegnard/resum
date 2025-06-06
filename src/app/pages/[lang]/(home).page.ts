@@ -4,7 +4,6 @@ import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
   selector: 'bl-home',
-  standalone: true,
   imports: [TranslocoDirective, RouterLink],
   template: `
     <ng-container *transloco="let t; read: 'home'">
