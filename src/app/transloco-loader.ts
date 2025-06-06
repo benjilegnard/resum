@@ -14,7 +14,7 @@ export class TranslocoHttpLoader implements TranslocoLoader {
         const __dirname = path.dirname(new URL(import.meta.url).pathname);
         return new Promise<Translation>((resolve) => {
           const langJson = fs.readFileSync(
-            path.join(__dirname, `./assets/i18n/${lang}.json`),
+            path.join(__dirname, `./i18n/${lang}.json`),
             'utf-8',
           );
           const res = JSON.parse(langJson);
@@ -23,12 +23,10 @@ export class TranslocoHttpLoader implements TranslocoLoader {
       }
       // running on live-reload mode, node.js SSR
       return this.http.get<Translation>(
-        `${
-          import.meta.env.VITE_ANALOG_PUBLIC_BASE_URL
-        }/assets/i18n/${lang}.json`,
+        `${import.meta.env.VITE_ANALOG_PUBLIC_BASE_URL}/i18n/${lang}.json`,
       );
     }
 
-    return this.http.get<Translation>(`/assets/i18n/${lang}.json`);
+    return this.http.get<Translation>(`/i18n/${lang}.json`);
   }
 }

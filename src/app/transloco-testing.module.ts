@@ -2,8 +2,8 @@ import {
   TranslocoTestingModule,
   TranslocoTestingOptions,
 } from '@ngneat/transloco';
-import * as en from '../assets/assets/i18n/en.json';
-import * as fr from '../assets/assets/i18n/fr.json';
+import * as en from '../assets/i18n/en.json';
+import * as fr from '../assets/i18n/fr.json';
 import { availableLangs } from './shared/model';
 
 export function getTranslocoModule(options: TranslocoTestingOptions = {}) {
