@@ -1,6 +1,6 @@
 import { inject, DOCUMENT } from '@angular/core';
 import { ResolveFn } from '@angular/router';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { AvailableLang } from '../model';
 
 export const langResolver: ResolveFn<AvailableLang | null> = (route, state) => {

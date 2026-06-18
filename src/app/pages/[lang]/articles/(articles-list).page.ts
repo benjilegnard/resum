@@ -4,12 +4,12 @@ import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ArticleAttributes } from '@benjilegnard/resum/shared/model';
-import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
+import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'bl-articles',
   template: `
-    <ng-container *transloco="let t; read: 'articles'">
+    <ng-container *transloco="let t; prefix: 'articles'">
       <h2>{{ t('title') }}</h2>
       <ul>
         @for (article of articles; track article) {
@@ -27,7 +27,7 @@ import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
 export class ArticlesPageComponent {
   private readonly transloco = inject(TranslocoService);
   readonly articles = injectContentFiles<ArticleAttributes>((contentFile) => {
-    return contentFile.filename.includes('/src/content/articles/');
+    return contentFile.filename.includes('src/content/articles/');
   })
     .filter((content) => content.attributes.published)
     .filter((content) => {
