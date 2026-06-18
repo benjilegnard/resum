@@ -1,7 +1,7 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+# This workflow installs dependencies once, runs all validation jobs in
+# parallel, and exposes a single aggregate result for branch protection.
 
-name: Unit tests
+name: Build and test
 
 on:
   push:
@@ -14,13 +14,13 @@ env:
   PNPM_VERSION: '11'
 
 jobs:
-  unit-tests:
+  install:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Setup npm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
           version: ${{ env.PNPM_VERSION }}
@@ -30,26 +30,151 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
+          cache: pnpm
+
+      - name: Restore installed dependencies
+        id: dependencies-cache
+        uses: actions/cache@v5
+        with:
+          path: node_modules
+          key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
 
       - name: Install
-        run: pnpm install
+        if: steps.dependencies-cache.outputs.cache-hit != 'true'
+        run: pnpm install --frozen-lockfile
 
-      #      - name: Lint
-      #        run: pnpm run lint
+  lint:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
 
-      #      - name: Format
-      #        run: pnpm run format
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          run_install: false
 
-      - name: Build (angular)
+      - name: Setup node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore installed dependencies
+        uses: actions/cache/restore@v5
+        with:
+          path: node_modules
+          key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
+          fail-on-cache-miss: true
+
+      - name: Lint
+        run: pnpm run lint
+
+  format:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          run_install: false
+
+      - name: Setup node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore installed dependencies
+        uses: actions/cache/restore@v5
+        with:
+          path: node_modules
+          key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
+          fail-on-cache-miss: true
+
+      - name: Check formatting
+        run: pnpm exec prettier --check .
+
+  build:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          run_install: false
+
+      - name: Setup node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore installed dependencies
+        uses: actions/cache/restore@v5
+        with:
+          path: node_modules
+          key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
+          fail-on-cache-miss: true
+
+      - name: Build
         run: pnpm run build
 
-      - name: Test
+  unit-tests:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          run_install: false
+
+      - name: Setup node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore installed dependencies
+        uses: actions/cache/restore@v5
+        with:
+          path: node_modules
+          key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
+          fail-on-cache-miss: true
+
+      - name: Unit tests
         run: pnpm run test
 
   aggregate:
     runs-on: ubuntu-latest
-    needs: [unit-tests]
+    if: always()
+    needs: [lint, format, build, unit-tests]
     steps:
-      - uses: actions/checkout@v6
-      - run: ls -l .
+      - name: Report validation results
+        env:
+          LINT_RESULT: ${{ needs.lint.result }}
+          FORMAT_RESULT: ${{ needs.format.result }}
+          BUILD_RESULT: ${{ needs.build.result }}
+          UNIT_TESTS_RESULT: ${{ needs.unit-tests.result }}
+        run: |
+          echo "lint: $LINT_RESULT"
+          echo "format: $FORMAT_RESULT"
+          echo "build: $BUILD_RESULT"
+          echo "unit-tests: $UNIT_TESTS_RESULT"
+
+          if [ "$LINT_RESULT" != "success" ] ||
+             [ "$FORMAT_RESULT" != "success" ] ||
+             [ "$BUILD_RESULT" != "success" ] ||
+             [ "$UNIT_TESTS_RESULT" != "success" ]; then
+            exit 1
+          fi
