@@ -46,6 +46,10 @@
     "title": "Articles",
     "description": "This is the articles page."
   },
+  "talks": {
+    "title": "Talks",
+    "description": "Recordings, slides and resources from my talks."
+  },
   "timeline": {
     "title": "Timeline",
     "description": "This is the timeline page."
