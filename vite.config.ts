@@ -2,7 +2,6 @@
 
 import { defineConfig } from 'vite';
 import analog from '@analogjs/platform';
-import viteTsConfigPaths from 'vite-tsconfig-paths';
 import {
   ArticleAttributes,
   AvailableLang,
@@ -33,9 +32,9 @@ export default defineConfig(({ mode }) => ({
   },
   resolve: {
     mainFields: ['module'],
+    tsconfigPaths: true,
   },
   plugins: [
-    viteTsConfigPaths(),
     analog({
       content: {
         highlighter: 'shiki',
@@ -69,13 +68,6 @@ export default defineConfig(({ mode }) => ({
       },
     }),
   ],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        includePaths: ['src/sass'],
-      },
-    },
-  },
   test: {
     globals: true,
     environment: 'jsdom',

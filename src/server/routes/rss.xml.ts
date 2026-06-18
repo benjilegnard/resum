@@ -63,7 +63,7 @@ const parseArticles = async (): Promise<FeedItem[]> =>
       )
         .filter((dirEntry) => dirEntry.isFile())
         .map((dirEntry) =>
-          readFile([dirEntry.path, dirEntry.name].join(sep), encoding),
+          readFile([dirEntry.parentPath, dirEntry.name].join(sep), encoding),
         ),
     )
   )
