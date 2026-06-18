@@ -7,23 +7,26 @@ on:
 
 env:
   NITRO_PRESET: 'cloudflare'
+  NODE_VERSION: '24.x'
+  PNPM_VERSION: '11'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - uses: pnpm/action-setup@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
         with:
-          version: 9
+          version: ${{ env.PNPM_VERSION }}
           run_install: false
 
       - name: Setup node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 22.x
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'pnpm'
 
       - name: Install
