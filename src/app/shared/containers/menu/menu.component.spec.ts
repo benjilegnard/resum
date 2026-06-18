@@ -5,10 +5,16 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { MenuComponent } from './menu.component';
 
 import { getTranslocoModule } from '../../../transloco-testing.module';
+import {
+  EnvironmentProviders,
+  ModuleWithProviders,
+  Provider,
+  Type,
+} from '@angular/core';
 
 describe('MenuComponent', () => {
-  let providers: unknown[];
-  let imports: unknown[];
+  let providers: (Provider | EnvironmentProviders)[];
+  let imports: (Type<unknown> | ModuleWithProviders<unknown>)[];
   beforeEach(() => {
     providers = [provideRouter([])];
     imports = [MenuComponent, getTranslocoModule()];
