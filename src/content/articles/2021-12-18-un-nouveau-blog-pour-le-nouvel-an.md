@@ -52,4 +52,3 @@ Je le construirais en public sur [github](https://github.com/benjilegnard/resum)
 Je viendrais mettre à jour cette liste au fur et à mesure, promis.
 
 Bonjour chez vous 👋
-

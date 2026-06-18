@@ -5,4 +5,3 @@ Il faut qu'on fasse en sorte de travailler ENSEMBLE, il faut que les gens se COM
 Rien que ça c'est dix fois plus difficile, que de parler à une machine.
 
 ---
-

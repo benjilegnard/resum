@@ -15,7 +15,7 @@ ah bah si on sait ce que ca fait, ca exclut les gens et les pousse à désac, à
 
 toujour les mêmes modèles cependant, t'as la première vague qui te suit déjà, qui comprends un peu ton sarcasme ou ton domaine. et qui est là ahah, oui oui "I can relate", ć'est les meilleures interactions et je vous aime d'amour pour celles là, mais ca ne dure qu'un temps...
 
-Puis t'arrive les contradicteurs. les gars on rien d'autre à foutre de leurs journées que se faire l'avocat du diable, les "oui mais si on danse ?". Bah j'en sais rien mais z'êtes déjà hors sujet... 
+Puis t'arrive les contradicteurs. les gars on rien d'autre à foutre de leurs journées que se faire l'avocat du diable, les "oui mais si on danse ?". Bah j'en sais rien mais z'êtes déjà hors sujet...
 
 Juste pour le plaisir de la contradiction, et du "oui mais moi je".
 
@@ -29,14 +29,12 @@ Alors oui vous me direz, bah désactive tes notifications benji, tu les liras pl
 
 Juste des fois ca pue du cul et vous avez aucune idée de ce que votre petite réaction dans votre coin vient se rajouter à 43 autres réactions.
 
-Donc déso si je réponds mal et que je veux juste vous baffer parce que z'êtes le 42e  qui passe derrière les 41 autre
+Donc déso si je réponds mal et que je veux juste vous baffer parce que z'êtes le 42e qui passe derrière les 41 autre
 
 Juste tournez votre langue dans votre bouche parfois, plus d'une fois pour arrier à 7 avant de parler.
-
 
 je suis pas un bon example, et on devrait tous fermer nos gueules plus souvent.
 
 les gens ils parlent d'eux même et de ce qu'ils ou elles vivent avant de parler aux autres. et c'est pas grave
 
 Mais quand t'as compris ca, un minimum d'empathie pour cracher à la gueule de personne, ca fait du bien.
-

@@ -60,8 +60,9 @@ An image
 ![Picture of Benjamin Legrand](/benjamin-legrand.webp)
 
 ### Headings: level 2
+
 #### Level 4 title
+
 ##### Level 5 title
+
 ###### Level 6 title
-
-

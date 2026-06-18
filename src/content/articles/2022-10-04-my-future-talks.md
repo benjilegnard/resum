@@ -36,16 +36,13 @@ Finies la génération de schéma, la synchronisation back-front,
 Retour d'expérience humain et technique sur un une transformation micro machines
 Quels étaient les problèmes rencontrés ? Quels pattern d'archi me micro front nous force à suivre.
 
-
 ## Comment faire du code créatif m'a sauvé du bore-out.
 
 Il y a pas que le dev sérieux/d'entreprise dans la vie.
 Exprimez votre créativité avec des concepts de base comme: la trigonométrie, les système de particules, les générateurs de nombres aléatoires ou la théorie de la couleur.
-
 
 ## Pourquoi vous devriez virer vos devs 10x, ou comment gérer les over-performers dans vos équipes.
 
 On a tous rencontré cette personne ultra compétente sur les projets.
 
 ## Supabase, une alternative open-source à firebase pour dé-googliser vos développements serverless
-

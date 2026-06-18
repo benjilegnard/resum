@@ -37,7 +37,7 @@ Pin-Priority: 1001
 
 # no snap pref
 
-__/etc/apt/preferences.d/no-snap.pref__
+**/etc/apt/preferences.d/no-snap.pref**
 
 ```
 # To install snapd, specify its version with 'apt install snapd=VERSION'
