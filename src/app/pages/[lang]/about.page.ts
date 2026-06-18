@@ -1,11 +1,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'bl-about',
   imports: [TranslocoDirective],
   template: `
-    <ng-container *transloco="let t; read: 'about'">
+    <ng-container *transloco="let t; prefix: 'about'">
       <h2>{{ t('title') }}</h2>
       <h3>{{ t('skills.title') }}</h3>
       <p>{{ t('skills.description') }}</p>

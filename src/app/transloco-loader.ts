@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { Translation, TranslocoLoader } from '@ngneat/transloco';
+import { Translation, TranslocoLoader } from '@jsverse/transloco';
 import { HttpClient } from '@angular/common/http';
-import * as path from 'path';
-import * as fs from 'fs';
+import * as path from 'node:path';
+import * as fs from 'node:fs';
 
 @Injectable({ providedIn: 'root' })
 export class TranslocoHttpLoader implements TranslocoLoader {

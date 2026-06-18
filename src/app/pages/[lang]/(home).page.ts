@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'bl-home',
   imports: [TranslocoDirective, RouterLink],
   template: `
-    <ng-container *transloco="let t; read: 'home'">
+    <ng-container *transloco="let t; prefix: 'home'">
       <h2>{{ t('title') }}</h2>
 
       <h3>{{ t('subTitle') }}</h3>

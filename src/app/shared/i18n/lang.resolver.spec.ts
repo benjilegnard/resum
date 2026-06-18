@@ -3,7 +3,7 @@ import { ResolveFn } from '@angular/router';
 
 import { langResolver } from './lang.resolver';
 import { AvailableLang } from '../model';
-import { TranslocoService } from '@ngneat/transloco';
+import { TranslocoService } from '@jsverse/transloco';
 import { DOCUMENT } from '@angular/common';
 
 describe('langResolver', () => {

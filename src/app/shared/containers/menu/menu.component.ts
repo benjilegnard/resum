@@ -1,9 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { MenuItemComponent } from '../../components/menu-item/menu-item.component';
-import { SvgIconComponent } from '@ngneat/svg-icon';
-import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
-import { map } from 'rxjs';
+import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'bl-menu',
@@ -17,7 +14,7 @@ import { map } from 'rxjs';
         height="64"
       />
       <h1 class="menu-title">Benjamin Legrand</h1>
-      <nav class="menu-items" *transloco="let t; read: 'ui.nav'">
+      <nav class="menu-items" *transloco="let t; prefix: 'ui.nav'">
         <bl-menu-item [link]="[lang, 'articles']" [icon]="'article'">
           {{ t('articles') }}</bl-menu-item
         >
