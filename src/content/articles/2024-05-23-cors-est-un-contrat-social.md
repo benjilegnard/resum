@@ -1,6 +1,5 @@
 Les entêtes CORS sont un contrat social, un thread 🧵👇
 
-
 ---
 
 Qu'est ce qu'un contrat social déjà, c'est un contrat implicite entre deux parties,, parce qu'on vit dans une saucisse, dont personne a les régles.
@@ -29,22 +28,19 @@ Salut, je vais t'envoyer une requête depuis tel domaine, vers tel domaine, avec
 
 Si cette requête initiale échoue, tout le reste est dans les choux.
 
-Access-Control-Allow-Origin: "*": la première erreur = osef de la gueule du monde
+Access-Control-Allow-Origin: "\*": la première erreur = osef de la gueule du monde
 
 ---
 
 CORS dans le fond c'est quoi ? c'est un ensemble de régles mises en place pour éviter des failles de sécurité.
 
-la plus 
-
+la plus
 
 ---
 
 mises en place parce qu'aux début du web, on avait pas autant de filets de sécurité.
 
-
 Et qu'on s'est retrouvé avec des attaques de pirates de types "homme dans le milieu"
-
 
 (man in the middle, générique de malcom dans ta tête).
 
@@ -55,7 +51,6 @@ https://www.youtube.com/watch?v=x5Za8HggalY
 Life is unfair,
 
 Et donc quelqu'un de mal intentionné pouvait arriver, et dire : regarde moi, maintenant c'est moi le serveur.
-
 
 ---
 

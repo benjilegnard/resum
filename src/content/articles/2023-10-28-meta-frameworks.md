@@ -49,11 +49,12 @@ ca vient avec ses inconvénients:
 
 ---
 
-Et puis surtout 
+Et puis surtout
 
-- comment je fais comprendre à mes collègues dev front qu'il doivent pas utiliser des apis `browser-only`` parce que pas dispo coté serveur 
+- comment je fais comprendre à mes collègues dev front qu'il doivent pas utiliser des apis `browser-only`` parce que pas dispo coté serveur
 - comment je fais comprendre à l'infra qu'on est pas juste des ressources statiques
 - comment je leur fait comprendre a tous que c'est du dev et pas du coloriage
+
 ---
 
 J'en ai pratiqué des projets comme ça, et c'est pas nouveau.
@@ -82,8 +83,7 @@ l'example de next.js il vous a choqué, mais si tu comprends que ton composant f
 
 on simplifie l'api, on regroupe ce qui change en même temps, ensemble.
 
-bref, dés
----
+## bref, dés
 
 bref, désolé pour encore un thread technique
 
@@ -92,6 +92,5 @@ mais vu la violence que je vois dans les mentions, je pense que le schisme back 
 mais bon vous savez:
 
 "certaine choses ne veulent pas mourir"
-
 
 Donc les gens qui ont les réponses les plus violentes dans mes mentions, vous avez juste bouffé le cool aid récent qu'il y a un métier de dev back et un métier de dev front ( et non, déso,)

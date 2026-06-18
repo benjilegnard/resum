@@ -36,7 +36,7 @@ de pas te voir j'en crêve et je te sens dans mon ventre
 jouer peut-être du violoncelle, avoir une belle écriture
 pour écrire des mots rebelles, à faire tomber touts les murs
 
---- 
+---
 
 j'aurais oublié tout ça quand j'aurais appris tout le reste
 
@@ -46,7 +46,6 @@ tu crois que la rue, c'est les vacances ?
 
 ---
 
-
 j'aime surtout tout ce qui vous fait peur, la douleur et la nuit
 
 ---
@@ -54,5 +53,3 @@ j'aime surtout tout ce qui vous fait peur, la douleur et la nuit
 on lui a mis la tête contre une brique, que même la brique, elle a eu mal.
 
 ---
-
-

@@ -2,7 +2,7 @@ Au travers de plusieurs de mes "combats" dans le dev logiciel, talks, arguments,
 
 Je me rends compte qu'un des buts principal, souvent, tout le temps :
 
-C'est de réduire un maximum le poids du "changement de contexte" (context-switching) ... 
+C'est de réduire un maximum le poids du "changement de contexte" (context-switching) ...
 
 ---
 
@@ -16,7 +16,7 @@ Passer d'un language front à un language back par example...
 
 Passer d'un language à typage dynamique à un fortement de typé, de fonctionnel à objet.
 
-Un truc qui te force à t'arrêtez deux seconde cérébralement. 
+Un truc qui te force à t'arrêtez deux seconde cérébralement.
 
 De yaml à json, de teams à jira.
 
@@ -48,13 +48,10 @@ Réduire le changement de contexte, c'est aussi éliminer de la complexité.
 
 C'est pour ça que certaines stack tech ou manière de faire sont intéréssantes pour moi et vont rester.
 
-
-
 Un truc que j'ai appris quand je veux transmettre, c'est oublier tout ces autres contextes justement.
 
 C'est pas "stupidifier" le truc, c'est le rendre plus digeste, agréable.
 
-
 Est-ce que ce thread est une manière de justifier pourquoi je fais plein de trucs "à côté", oui surement.
 
-Les tâches en sous-marin, qui n'ont "pas de valeur métier". 
+Les tâches en sous-marin, qui n'ont "pas de valeur métier".

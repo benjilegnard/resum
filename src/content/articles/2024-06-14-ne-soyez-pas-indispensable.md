@@ -1,7 +1,8 @@
 ---
-title: "Ne soyez pas indispensable"
+title: 'Ne soyez pas indispensable'
 date: 2024-06-14
 ---
+
 Ne soyez pas indispensable. Si vous l'êtes, vous ne pourrez jamais partir.
 
 ---
@@ -44,7 +45,7 @@ Optimiser le fait qu'on puisse faire évoluer et grandir votre système sans vou
 
 En mettant en place les bonnes pratiques, et en expliquant les rêgles et les enjeux.
 
---- 
+---
 
 Et pour ça il faut s'éloigner du dogme.
 
@@ -62,9 +63,6 @@ Mais je me suis perdu en route.
 
 En gros on a des outils de génération de code
 
-
 ---
 
 Choisissez vos batailles, la mienne c'est que le projet se casse pas la gueule quand je serai parti.
-
-

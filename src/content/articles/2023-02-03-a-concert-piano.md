@@ -17,7 +17,7 @@ Comme si toute ma vie j'avais vu que des gens en costard, aux cheveux blancs, pl
 
 ---
 
-... des trucs qui prennent au tripes. Qui passent à la télé avec une audience dans un opéra aux dorures. 
+... des trucs qui prennent au tripes. Qui passent à la télé avec une audience dans un opéra aux dorures.
 
 Eux, ils SAVENT lire le solfège, ils ont FAIT le conservatoire.
 
@@ -41,7 +41,7 @@ Pourquoi le deuxième devrait empiéter sur le premier ?
 
 ---
 
-Parler en public, donner des confs c'est le même délire au final. Ou apprendre d'autres languages, ou utiliser vim. 
+Parler en public, donner des confs c'est le même délire au final. Ou apprendre d'autres languages, ou utiliser vim.
 
 C'était pas pour moi au premier abord pareil, mais on peut se forcer aussi en poussant le curseur mental de "non" vers "si si tu peux, go"
 
@@ -50,4 +50,3 @@ C'était pas pour moi au premier abord pareil, mais on peut se forcer aussi en p
 Bref, j'en sais rien, je sais pas où je vais avec ce fil, j'ai pas de réponse.
 
 Cette semaine j'irais jouer un truc sur ce piano.
-

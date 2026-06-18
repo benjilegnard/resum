@@ -5,13 +5,11 @@ published: false
 lang: fr
 ---
 
-
 plus sérieusement, y'aura toujours besoin de dev et d'ops, hein. Ne serait que pour déployer et maintenir les solutions
 
 De ce que je vois passer des résultats c'est encore pas fiable. La forme y est, mais pas le fond.
 
 Par contre le métier va changer...
-
 
 ---
 
@@ -41,13 +39,12 @@ Ni d'enlever la connnaissance incroyable que c'est de faire fontionner des ordin
 
 ---
 
-
-
 ---
 
 J'ai quand même l'impression qu'on est devant un test de turing trafiqué.
 
 La uncanney valley joue beaucoup:
+
 - est ce que c'est un être humain
 - est ce que c'est une machine qui me réponds ?
 
@@ -57,7 +54,7 @@ Forme > Fond encore,
 
 de tout ce que je vois passer des prompts gpt 3, l'impression d'être devant un gamin qui a avalé un dictionnaire et peut te réciter chaque mot mais quand tu lui demande :
 
- t'as compris? tu peux faire une phrase avec ?
+t'as compris? tu peux faire une phrase avec ?
 
 ... non mais toi même d'abord. tu m'avais pas dit qu'il fallait faire des phrases
 
@@ -66,4 +63,3 @@ de tout ce que je vois passer des prompts gpt 3, l'impression d'être devant un 
 Bref tant qu'on passe de "language humain" -> "language de dev pensé pour être lu par un humain" on est safe.
 
 Le jour ou on connecte réellement la demande client au code exécutable et que ca déploie direct des solutions on est morts, et j'ai lu trop de SF pour pas angoisser direct
-

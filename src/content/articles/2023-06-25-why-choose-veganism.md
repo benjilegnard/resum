@@ -5,7 +5,6 @@ published: false
 lang: fr
 ---
 
-
 # carnists are faschists, an essay
 
 Vu que le discours carnistes vs végé revient dans ma TL avec les mecs à bêrèts là, j'ai envie de dire quelques trucs:
@@ -16,9 +15,9 @@ Attention je vais 1. raconter ma vie, et 2. faire un raccourci rapide carniste =
 
 Mon contexte déjà : Francais, blanc, classe moyenne. On a peu de plats à disposition dans notre culture qui soient végés. Poulet frites le week end, rognons et cote de porc à l'école, rillettes au petit dej ( la sarthe c'est un délire )
 
---- 
+---
 
-Ma premiére exposition avec le véganisme c'était une copine vegan, vers 2010, et je comprenais pas à l'époque, mais on s'arrange, on essaie de proposer autre chose... 
+Ma premiére exposition avec le véganisme c'était une copine vegan, vers 2010, et je comprenais pas à l'époque, mais on s'arrange, on essaie de proposer autre chose...
 
 ---
 
@@ -32,7 +31,7 @@ au delà d'être mon deuxième burnout, le projet me laisse un goût amer sur : 
 
 Quand je dis que c'était pas très éthique : on nous demandais (aux devs) de fausser des sorties du moteur de calcul de protêines alimentaires venant de l'INRA, pour disciller du stock restant des vendeurs de foins...
 
-----
+---
 
 Bref passons, dans le même temps je vois pas mal de tweet et toute l'activité de L214 et franchement, c'est dur, et hardcore, mais il faut voir leurs vidéos pour comprendre le complexe agro-industriel dans lequel on est et son absence d'humanité
 
@@ -46,7 +45,7 @@ Dans le même temps, je fais pas mal de soirées dub/reggae, ou la restauration 
 
 ---
 
-Décembre 2017 je fais une soirée de noël d'entreprise, je choisis l'assiette végé. Pendant toute la soirée, j'ai eu un voisin de table qui m'a soulé avec le "oui mais les protêines"/"Moi je pourrais pas"/"La nature, on est des prédateurs" et tout le discours défensif habituel alors que : MEC, je ne t'ai RIEN REPROCHÉ. 
+Décembre 2017 je fais une soirée de noël d'entreprise, je choisis l'assiette végé. Pendant toute la soirée, j'ai eu un voisin de table qui m'a soulé avec le "oui mais les protêines"/"Moi je pourrais pas"/"La nature, on est des prédateurs" et tout le discours défensif habituel alors que : MEC, je ne t'ai RIEN REPROCHÉ.
 
 ---
 
@@ -73,7 +72,3 @@ Bon pour revenir sur du positif, moi ca m'a apporté quoi ? un autre régime dé
 Accélérons jusqu'à l'année dernière, on a plein de choix végés dans les supermarchés, ca progresse? ca dépends.
 
 Je vous laisse avec une dernière anecdote une femme, voyant le plat végé qui arrive devant moi, sort un truc du genre, oh bizarre, les plats vègès cést pour les meufs d'habitude non?
-
-
-
-
