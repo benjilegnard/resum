@@ -19,6 +19,9 @@ import { MenuItemComponent } from '../../components/menu-item/menu-item.componen
         <bl-menu-item [link]="[lang, 'articles']" [icon]="'article'">
           {{ t('articles') }}</bl-menu-item
         >
+        <bl-menu-item [link]="[lang, 'talks']" [icon]="'quotes'">
+          {{ t('talks') }}</bl-menu-item
+        >
         <!--<bl-menu-item [routerLink]="['timeline']">{{ t('timeline') }}</bl-menu-item>-->
         <bl-menu-item [link]="[lang, 'projects']" [icon]="'git-branch'">
           {{ t('projects') }}</bl-menu-item

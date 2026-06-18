@@ -50,6 +50,10 @@
     "title": "Article",
     "share": "Share this article on socal media :"
   },
+  "talks": {
+    "title": "Conférences",
+    "description": "Enregistrements, présentations et ressources de mes conférences."
+  },
   "timeline": {
     "title": "Chronologie",
     "description": "3615 Ma Vie, organisée dans une ligne de temps antéchronologique."

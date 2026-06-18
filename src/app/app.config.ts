@@ -22,6 +22,7 @@ import { provideSvgIcons } from '@ngneat/svg-icon';
 import { articleIcon } from './svg/article';
 import { gitBranchIcon } from './svg/git-branch';
 import { infoIcon } from './svg/info';
+import { quotesIcon } from './svg/quotes';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco } from '@jsverse/transloco';
 import { availableLangs } from './shared/model';
@@ -40,7 +41,7 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([requestContextInterceptor]),
     ),
     provideClientHydration(withEventReplay()),
-    provideSvgIcons([articleIcon, gitBranchIcon, infoIcon]),
+    provideSvgIcons([articleIcon, gitBranchIcon, infoIcon, quotesIcon]),
     provideTransloco({
       config: {
         availableLangs,
