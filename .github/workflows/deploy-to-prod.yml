@@ -6,16 +6,16 @@ on:
     branches: [main]
 
 env:
-  NITRO_PRESET: 'cloudflare'
-  NODE_VERSION: '24.x'
-  PNPM_VERSION: '11'
+  NITRO_PRESET: "cloudflare"
+  NODE_VERSION: "24.x"
+  PNPM_VERSION: "11"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
@@ -24,10 +24,10 @@ jobs:
           run_install: false
 
       - name: Setup node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
+          cache: pnpm
 
       - name: Install
         run: pnpm install
@@ -37,7 +37,7 @@ jobs:
 
       - name: Deploy
         id: deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
