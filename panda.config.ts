@@ -64,16 +64,17 @@ export default defineConfig({
       '--global-font-body': 'token(fonts.sans)',
       '--global-font-mono': 'token(fonts.mono)',
     },
-    'h1, h2, h3, h4, h5, h6': { fontFamily: 'title' },
-    'h2, h3, h4, h5, h6': {
+    'h1, h2, h3, h4, h5, h6': {
+      fontFamily: 'title',
       textTransform: 'uppercase',
       letterSpacing: 'wider',
     },
-    h2: { fontSize: '4xl', lineHeight: '4xl', my: '4' },
-    h3: { fontSize: '3xl', lineHeight: '3xl', my: '4' },
-    h4: { fontSize: '2xl', lineHeight: '2xl', my: '4' },
-    h5: { fontSize: 'xl', lineHeight: 'xl', my: '4' },
-    h6: { fontSize: 'lg', lineHeight: 'lg', my: '4' },
+    h1: { fontSize: '5xl', lineHeight: '1', my: '4' },
+    h2: { fontSize: '4xl', lineHeight: '1', my: '4' },
+    h3: { fontSize: '2xl', lineHeight: '1', my: '4' },
+    h4: { fontSize: 'xl', lineHeight: '1', my: '4' },
+    h5: { fontSize: 'lg', lineHeight: '1', my: '4' },
+    h6: { fontSize: 'md', lineHeight: '1', my: '4' },
     'p, ul, ol': {
       my: '4',
       lineHeight: 'relaxed',
@@ -115,6 +116,12 @@ export default defineConfig({
         color: 'surface1',
       },
     },
-    'pre.shiki, .mermaid': { bg: 'base', w: '80%', mx: 'auto', p: '6' },
+    'pre.shiki, .mermaid': {
+      bg: 'base',
+      mx: 'auto',
+    },
+    'pre.shiki': {
+      overflowY: 'auto',
+    },
   },
 });

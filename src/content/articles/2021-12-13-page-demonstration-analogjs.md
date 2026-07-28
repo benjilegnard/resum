@@ -9,7 +9,7 @@ publishedAt: 2021-12-13
 
 This is an introduction paragraph
 
-## A new start : examples
+# Analogjs markdown renderer examples
 
 Here is an html `<table>` element:
 
@@ -17,7 +17,7 @@ Here is an html `<table>` element:
 | ----- | ----------- |
 | label | description |
 
-### Code syntax coloration:
+## Code syntax coloration:
 
 ```typescript
 function yolo(test: string) {
@@ -25,7 +25,7 @@ function yolo(test: string) {
 }
 ```
 
-### Mermaid graphs and diagrams
+## Mermaid graphs and diagrams
 
 ```mermaid
 graph TD;
@@ -35,7 +35,7 @@ graph TD;
     C-->D;
 ```
 
-### Lists and other common elements
+## Lists and other common elements
 
 A list
 
@@ -59,7 +59,9 @@ An image
 
 ![Picture of Benjamin Legrand](/benjamin-legrand.webp)
 
-### Headings: level 2
+## Headings: level 2
+
+### Headings: level 3
 
 #### Level 4 title
 

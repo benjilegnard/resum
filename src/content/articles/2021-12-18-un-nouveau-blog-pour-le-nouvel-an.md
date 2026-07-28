@@ -14,17 +14,17 @@ authors:
   - Benjamin Legrand
 ---
 
-## Un nouveau blog pour le nouvel an
+# Un nouveau blog pour le nouvel an
 
 Bon, je sais qu'on est en juin, mais j'ai eu cette idée l'année dernière.
 
-### Introduction
+## Introduction
 
 J'avais un blog à une époque, toujours disponible à l'adresse [jibhaine.fr](https://jibhaine.fr), je l'ai complètement abandonné à partir du moment ou tout le mondes est passé sur les réseaux sociaux, et ou toute la blogosphère est passée sur Facebook, certes, mais surtout Twitter.
 
 Ce site est une tentative de reprendre contrôle sur ma présence en ligne, et de ne plus dépendre de ces plateformes.
 
-### Qu'allez-vous trouver ici ?
+## Qu'allez-vous trouver ici ?
 
 Principalement des articles à propos du développement web, des tutoriels sur angular, et pour d'autres technologies si je suis motivé.
 
@@ -32,7 +32,7 @@ Des "hot-takes", ou opinions épicées en français dans le texte.
 
 Également des articles un peu plus réflexif sur la manière dont on travaille et notre société.
 
-### Choix techniques et roadmap
+## Choix techniques et roadmap
 
 Ce blog est construit avec [angular](https://angular.io) et [analog](https://analogjs.org)
 Je le construirais en public sur [github](https://github.com/benjilegnard/resum), voici quelques fonctionnalités que j'envisage :

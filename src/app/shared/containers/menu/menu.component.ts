@@ -18,7 +18,7 @@ const MENU_HEIGHT = '50px';
         width="64"
         height="64"
       />
-      <h1 [class]="styles.title">Benjamin Legrand</h1>
+      <div [class]="styles.title">Benjamin Legrand</div>
       <nav [class]="styles.items" *transloco="let t; prefix: 'ui.nav'">
         <bl-menu-item [link]="[lang, 'articles']" [icon]="'article'">
           {{ t('articles') }}</bl-menu-item
@@ -68,7 +68,7 @@ export class MenuComponent {
     title: css({
       ml: MENU_HEIGHT,
       fontSize: '40px',
-      lineHeight: MENU_HEIGHT,
+      lineHeight: '1',
       fontWeight: 'thin',
       color: 'text',
       whiteSpace: 'nowrap',

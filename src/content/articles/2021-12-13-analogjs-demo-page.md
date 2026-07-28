@@ -9,7 +9,7 @@ publishedAt: 2021-12-13
 
 An introduction paragraph
 
-## Markdown renderer features
+# Markdown renderer features
 
 This is a demonstration page for the markdown renderer.
 
@@ -19,7 +19,7 @@ Here is a html `<table>`:
 | ----- | ----------- |
 | label | description |
 
-### Code syntax coloration:
+## Code syntax coloration:
 
 ```typescript
 function yolo(test: string) {
@@ -27,7 +27,7 @@ function yolo(test: string) {
 }
 ```
 
-### Mermaid graphs and diagrams
+## Mermaid graphs and diagrams
 
 ```mermaid
 graph TD;
@@ -37,7 +37,7 @@ graph TD;
     C-->D;
 ```
 
-### Lists and other common elements
+## Lists and other common elements
 
 A list
 
@@ -61,7 +61,9 @@ An image
 
 ![Picture of Benjamin Legrand](/benjamin-legrand.webp)
 
-### Headings: level 2
+## Headings: level 2
+
+### Level 3 title
 
 #### Level 4 title
 
