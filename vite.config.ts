@@ -119,6 +119,7 @@ export default defineConfig(({ mode }) => ({
           highlighter: {
             // add more languages
             additionalLangs: ['mermaid', 'bash', 'lua', 'angular-ts'],
+            skipLangs: ['mermaid'],
           },
         },
       },
