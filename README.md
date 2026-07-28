@@ -1,42 +1,39 @@
 # Resum
 
-This is my personal resume / site / blog.
+My personal resume / site / blog — https://benjaminlegrand.net
 
-## Architecture
+A single [AnalogJS](https://analogjs.org) application (Angular on Vite), fully prerendered at
+build time.
 
-The project is composed of three main modules / docker images.
+## Tech stack
 
-- client : the angular app frontend, running in an nginx container
-- server : a php graphql api, running with php-fpm
-- tests : performance and end-to-end tests requiring the app to be running
-- archive: is where i store my old versions of this resume, look at it, it's fun and has not aged very well
+- **Angular 22** — standalone, zoneless, SSR + hydration
+- **AnalogJS** — file-based routing (`src/app/pages/`), markdown content, Nitro server routes
+- **Tailwind CSS** with the [Catppuccin](https://github.com/catppuccin/tailwindcss) Mocha palette
+- **Transloco** for i18n (English / French, language is the first URL segment)
+- **Vitest** + Testing Library for unit tests
 
-## Tech Stack
+Blog posts and projects are markdown files with front matter under `src/content/`. An RSS feed is
+served at `/api/rss.xml`.
 
-### Client
+## Getting started
 
-- angular
-- sass
+Requires Node.js 24 and pnpm 11.
 
-### Server
+```bash
+pnpm install
+pnpm dev            # http://localhost:5173
+```
 
-- Framework-x: the core framework to respond to requests
-- Pest: for unit tests
-- PHP 8.1, modules required : gd, xml
+## Scripts
 
-### Database
+```bash
+pnpm dev            # dev server with HMR
+pnpm build          # prerendered production build into dist/
+pnpm test           # unit tests
+pnpm lint           # eslint
+pnpm format         # prettier --write .
+pnpm svg            # regenerate icon components from src/assets/icons/
+```
 
-- MariaDB / MySQL
--
-
-## Installation
-
-### Pre-requisites
-
-- PHP 8.1
-
-For the server, needed extension :
-
-    sudo apt install php8.1-gd php8.1-cli php8.1-xdebug php8.1-xml composer
-
-### build it
+Run a single spec with `pnpm exec ng test --testFile=<path or substring>`.

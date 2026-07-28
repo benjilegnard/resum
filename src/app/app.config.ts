@@ -1,8 +1,4 @@
-import {
-  provideHttpClient,
-  withFetch,
-  withInterceptors,
-} from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import {
   ApplicationConfig,
   isDevMode,
@@ -35,10 +31,7 @@ export const appConfig: ApplicationConfig = {
       withShikiHighlighter(),
     ),
     provideZonelessChangeDetection(),
-    provideHttpClient(
-      withFetch(),
-      withInterceptors([requestContextInterceptor]),
-    ),
+    provideHttpClient(withInterceptors([requestContextInterceptor])),
     provideClientHydration(withEventReplay()),
     provideSvgIcons([articleIcon, gitBranchIcon, infoIcon]),
     provideTransloco({

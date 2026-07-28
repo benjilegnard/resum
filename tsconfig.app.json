@@ -9,5 +9,13 @@
     "src/**/*.d.ts",
     "src/app/pages/**/*.page.ts",
     "src/server/middleware/**/*.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "extendedDiagnostics": {
+      "checks": {
+        "nullishCoalescingNotNullable": "suppress",
+        "optionalChainNotNullable": "suppress"
+      }
+    }
+  }
 }
