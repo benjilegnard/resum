@@ -14,7 +14,8 @@ Package manager is **pnpm** (see `pnpm-workspace.yaml` for `overrides` / `allowB
 
 ```bash
 pnpm dev                       # ng serve on port 5173 (HMR)
-pnpm build                     # prebuild runs `svg` + `format`, then ng build
+pnpm build                     # prebuild runs `panda` + `svg` + `format`, then ng build
+pnpm panda                     # regenerate styled-system/* from panda.config.ts
 pnpm test                      # ng test -> @analogjs/vitest-angular (unit)
 pnpm test:e2e                  # playwright test — needs browsers on the machine
 pnpm test:e2e:docker           # same, with browsers from a docker container
@@ -110,14 +111,39 @@ Icons are authored as SVGs in `src/assets/icons/`, then compiled by `@ngneat/svg
 code, eslint-ignored, do not hand-edit**. Register icons where they are used via
 `provideSvgIcons([...])`, either globally in `app.config.ts` or route-scoped in `routeMeta.providers`.
 
+### Styling (Panda CSS)
+
+Styles are authored in TypeScript with **Panda CSS** and bound to `[class]`. There is no
+`@apply`, no `styles` array on components, and no utility classes written by hand in templates.
+
+- `panda.config.ts` holds the theme. The **Catppuccin Mocha** palette is defined there as flat
+  color tokens, so styles read `bg: 'base'`, `color: 'text'`, `borderColor: 'teal'`, …
+  Everything else (spacing, `fontSizes`, `radii`, `shadows`, breakpoints) comes from
+  `@pandacss/preset-panda`, whose scales match the Tailwind ones this project used before.
+- Element-level defaults (`h1`–`h6`, `p`, `ul`, `a`, `table`, `blockquote`, `pre.shiki`,
+  `.mermaid`) are `globalCss` in that same file. They **must** stay global because
+  `<analog-markdown>` injects article HTML at runtime.
+- `src/styles.css` is only the `@layer reset, base, tokens, recipes, utilities;` declaration
+  Panda's PostCSS plugin injects into, plus the `@font-face` rules.
+- In components: `css({...})` for a single element, `cva({ base, variants })` when an element has
+  mutually exclusive looks (see the gradient variants in `page.component.ts`). Collect them in a
+  `protected readonly styles = { … }` object and reference `styles.foo` from the template.
+- Host styling uses a `host: { '[class]': 'styles.host' }` binding — Panda emits into the global
+  stylesheet, so view encapsulation is irrelevant.
+- Import from the `@styled-system/*` path alias, e.g. `import { css } from '@styled-system/css'`.
+- `styled-system/` is **generated** (`pnpm panda`, also run by `prepare` and `prebuild`) and is
+  git-ignored, prettier-ignored and eslint-ignored. Never hand-edit it. After changing
+  `panda.config.ts`, re-run `pnpm panda` so the token types refresh.
+- Responsive/state styles are nested conditions: `lg: {...}`, `lgDown: {...}` (the former
+  `max-lg:`), `_hover: {...}`, `_focus: {...}`, `_after: {...}`.
+
 ## Conventions
 
 - Component/directive selector prefix `bl-` / `bl` (enforced by eslint).
-- Components are standalone, **inline template + inline styles**, `ChangeDetectionStrategy.OnPush`
+- Components are standalone, **inline template**, `ChangeDetectionStrategy.OnPush`
   (see the `@schematics/angular:component` defaults in `angular.json`).
-- Styling is **Tailwind `@apply` inside the component's inline `styles`** — not utility classes
-  in the template, and not separate `.scss` files. Palette is Catppuccin Mocha
-  (`bg-base`, `bg-mantle`, `text-text`, `border-teal`, …) via `@catppuccin/tailwindcss`.
+- Styling is **Panda CSS** — see the dedicated section below. Components have **no `styles`
+  array** and no separate `.scss` files.
 - **Zoneless** change detection (`provideZonelessChangeDetection()`); SSR hydration with event
   replay.
 - Import shared code through the path alias `@benjilegnard/resum/shared/*` → `src/app/shared/*`.

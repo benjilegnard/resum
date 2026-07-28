@@ -9,7 +9,8 @@ build time.
 
 - **Angular 22** — standalone, zoneless, SSR + hydration
 - **AnalogJS** — file-based routing (`src/app/pages/`), markdown content, Nitro server routes
-- **Tailwind CSS** with the [Catppuccin](https://github.com/catppuccin/tailwindcss) Mocha palette
+- **[Panda CSS](https://panda-css.com)** for styling, with the
+  [Catppuccin](https://github.com/catppuccin/catppuccin) Mocha palette as theme tokens
 - **Transloco** for i18n (English / French, language is the first URL segment)
 - **Vitest** + Testing Library for unit tests, **Playwright** for end-to-end tests
 
@@ -35,6 +36,7 @@ pnpm test:e2e       # end-to-end tests (browsers installed locally)
 pnpm test:e2e:docker # end-to-end tests (browsers from a docker container)
 pnpm lint           # eslint
 pnpm format         # prettier --write .
+pnpm panda          # regenerate styled-system/ from panda.config.ts
 pnpm svg            # regenerate icon components from src/assets/icons/
 ```
 

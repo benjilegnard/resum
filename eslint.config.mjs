@@ -7,7 +7,7 @@ import { defineConfig } from 'eslint/config';
 export default defineConfig(
   {
     files: ['**/*.ts'],
-    ignores: ['dist/**', 'src/app/svg/**', 'tailwind.config.ts'],
+    ignores: ['dist/**', 'src/app/svg/**', 'styled-system/**'],
     extends: [
       js.configs.recommended,
       ...ts.configs.recommended,

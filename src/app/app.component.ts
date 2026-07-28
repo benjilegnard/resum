@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from './shared/containers/menu/menu.component';
 import { PageComponent } from './shared/components/page/page.component';
 
+import { css } from '@styled-system/css';
+
 @Component({
   selector: 'bl-root',
   template: `
@@ -11,14 +13,16 @@ import { PageComponent } from './shared/components/page/page.component';
       <router-outlet></router-outlet>
     </bl-page>
   `,
-  styles: [
-    `
-      :host {
-        @apply flex flex-col h-screen;
-      }
-    `,
-  ],
+  host: {
+    '[class]': 'hostClass',
+  },
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MenuComponent, PageComponent, RouterOutlet],
 })
-export class AppComponent {}
+export class AppComponent {
+  protected readonly hostClass = css({
+    display: 'flex',
+    flexDirection: 'column',
+    h: '100vh',
+  });
+}

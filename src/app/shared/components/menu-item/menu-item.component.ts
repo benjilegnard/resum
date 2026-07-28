@@ -2,39 +2,25 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SvgIconComponent, SvgIcons } from '@ngneat/svg-icon';
 
+import { css } from '@styled-system/css';
+
 @Component({
   selector: 'bl-menu-item',
   template: `
-    <a class="menu-item" [routerLink]="link">
+    <a [class]="styles.link" [routerLink]="link">
       <svg-icon
-        class="menu-item-icon"
+        [class]="styles.icon"
         [fontSize]="iconSize"
         [key]="icon"
       ></svg-icon>
-      <span class="menu-item-text">
+      <span [class]="styles.text">
         <ng-content></ng-content>
       </span>
     </a>
   `,
-  styles: [
-    `
-      :host {
-        @apply flex w-auto;
-      }
-
-      .menu-item {
-        @apply uppercase flex flex-col w-full no-underline items-center gap-3 rounded-lg px-2 lg:flex-row hover:bg-surface0 focus:bg-surface0;
-      }
-
-      .menu-item-text {
-        @apply flex-1 text-text no-underline;
-      }
-
-      .menu-item-icon {
-        @apply flex-none text-text;
-      }
-    `,
-  ],
+  host: {
+    '[class]': 'styles.host',
+  },
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, SvgIconComponent],
 })
@@ -46,4 +32,24 @@ export class MenuItemComponent {
   icon!: SvgIcons;
 
   protected iconSize = '20px';
+
+  protected readonly styles = {
+    host: css({ display: 'flex', w: 'auto' }),
+    link: css({
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      w: 'full',
+      gap: '3',
+      px: '2',
+      rounded: 'lg',
+      textTransform: 'uppercase',
+      textDecoration: 'none',
+      lg: { flexDirection: 'row' },
+      _hover: { bg: 'surface0' },
+      _focus: { bg: 'surface0' },
+    }),
+    text: css({ flex: '1', color: 'text', textDecoration: 'none' }),
+    icon: css({ flex: 'none', color: 'text' }),
+  };
 }
