@@ -1,4 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import {
+  Component,
+  OnInit,
+  Input,
+  TransferState,
+  PLATFORM_ID,
+  inject,
+  makeStateKey,
+} from '@angular/core';
 
 import { css, cva } from '@styled-system/css';
 
@@ -116,8 +125,22 @@ export class PageComponent implements OnInit {
     }),
   };
 
+  private transferState = inject(TransferState);
+
+  private platformId = inject(PLATFORM_ID);
+
   ngOnInit() {
-    const randomIndex = Math.floor(Math.random() * BACKGROUNDS.length);
+    let randomIndex = Math.floor(Math.random() * BACKGROUNDS.length);
+    const stateKey = makeStateKey<number>('randomColorIndex');
+    if (isPlatformServer(this.platformId)) {
+      this.transferState.set(stateKey, randomIndex);
+    }
+    if (
+      isPlatformBrowser(this.platformId) &&
+      this.transferState.hasKey(stateKey)
+    ) {
+      randomIndex = this.transferState.get(stateKey, randomIndex);
+    }
     this.containerClass = pageContainer({
       background: BACKGROUNDS[randomIndex],
     });
