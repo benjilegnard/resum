@@ -23,6 +23,8 @@ env:
 
 permissions:
   contents: read
+  # Recording the deployment on the commit, so it shows up in its pull request.
+  deployments: write
 
 # One deploy at a time per branch; a newer commit supersedes an in-flight run.
 concurrency:
@@ -73,6 +75,7 @@ jobs:
         run: |
           if [ "$BRANCH" = 'main' ]; then
             echo 'mode=prod' >> "$GITHUB_OUTPUT"
+            echo 'environment=production' >> "$GITHUB_OUTPUT"
             echo 'command=deploy' >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -84,7 +87,40 @@ jobs:
             cut -c1-40 |
             sed -e 's/^-*//' -e 's/-*$//')
           echo 'mode=preview' >> "$GITHUB_OUTPUT"
+          echo "environment=preview-${alias:-branch}" >> "$GITHUB_OUTPUT"
           echo "command=versions upload --preview-alias ${alias:-branch}" >> "$GITHUB_OUTPUT"
+
+      # Marks the commit as being deployed, which surfaces as a deployment box in
+      # its pull request. Created before wrangler runs so a failed deploy is
+      # recorded too, instead of leaving the PR with no trace at all.
+      - name: Create GitHub deployment
+        id: github-deployment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+          ENVIRONMENT: ${{ steps.target.outputs.environment }}
+          MODE: ${{ steps.target.outputs.mode }}
+        run: |
+          # required_contexts must be empty, otherwise GitHub refuses to create a
+          # deployment for a commit whose checks are not all green yet (409), and
+          # auto_merge must be off, otherwise it answers 202 without deploying.
+          id=$(jq -n \
+            --arg ref "$SHA" \
+            --arg environment "$ENVIRONMENT" \
+            --arg description "Cloudflare Workers ($MODE)" \
+            --argjson production "$([ "$MODE" = 'prod' ] && echo true || echo false)" \
+            '{
+              ref: $ref,
+              environment: $environment,
+              description: $description,
+              production_environment: $production,
+              transient_environment: ($production | not),
+              auto_merge: false,
+              required_contexts: []
+            }' |
+            gh api "repos/$GITHUB_REPOSITORY/deployments" \
+              --method POST --input - --jq '.id')
+          echo "id=$id" >> "$GITHUB_OUTPUT"
 
       - name: Deploy
         id: deploy
@@ -101,6 +137,8 @@ jobs:
           WRANGLER_COMMAND: ${{ steps.target.outputs.command }}
           MODE: ${{ steps.target.outputs.mode }}
           BRANCH: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+          ENVIRONMENT: ${{ steps.target.outputs.environment }}
+          DEPLOYMENT_ID: ${{ steps.github-deployment.outputs.id }}
         run: |
           echo "$MODE ($BRANCH): wrangler $WRANGLER_COMMAND -> ${DEPLOYMENT_URL:-no url reported}"
           {
@@ -110,12 +148,40 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
           # "Playwright Tests" runs on workflow_run and cannot read step outputs
-          # from this run, so hand the url over as an artifact.
-          printf '%s\n' "$DEPLOYMENT_URL" > deployment-url.txt
+          # from this run, so hand them over as an artifact. It reports back on
+          # the deployment, hence the id and the environment travelling along.
+          jq -n \
+            --arg url "$DEPLOYMENT_URL" \
+            --arg environment "$ENVIRONMENT" \
+            --argjson deployment_id "${DEPLOYMENT_ID:-null}" \
+            '{url: $url, environment: $environment, deployment_id: $deployment_id}' \
+            > deployment.json
 
-      - name: Upload deployment-url
+      - name: Upload deployment metadata
         uses: actions/upload-artifact@v6
         with:
-          name: deployment-url
-          path: deployment-url.txt
+          name: deployment
+          path: deployment.json
           retention-days: 7
+
+      # Closes the deployment out either way: "View deployment" in the pull
+      # request then points at the url wrangler reported.
+      - name: Report GitHub deployment status
+        if: always() && steps.github-deployment.outputs.id
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEPLOYMENT_ID: ${{ steps.github-deployment.outputs.id }}
+          ENVIRONMENT: ${{ steps.target.outputs.environment }}
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+          STATE: ${{ steps.deploy.outcome == 'success' && 'success' || 'failure' }}
+          LOG_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          jq -n \
+            --arg state "$STATE" \
+            --arg environment "$ENVIRONMENT" \
+            --arg environment_url "$DEPLOYMENT_URL" \
+            --arg log_url "$LOG_URL" \
+            '{state: $state, environment: $environment, log_url: $log_url}
+              + (if $environment_url == "" then {} else {environment_url: $environment_url} end)' |
+            gh api "repos/$GITHUB_REPOSITORY/deployments/$DEPLOYMENT_ID/statuses" \
+              --method POST --input - --jq '"\(.state) -> \(.environment_url // "no url")"'

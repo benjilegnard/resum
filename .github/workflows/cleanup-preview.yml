@@ -1,0 +1,65 @@
+name: Cleanup preview
+run-name: Cleanup preview for ${{ github.event.pull_request.head.ref }}
+
+# Preview deployments pile up on the pull request as it gets pushed to; once it
+# is closed they only clutter the commit history and the environments list.
+#
+# Nothing is cleaned up on the Cloudflare side, because nothing can be: wrangler
+# exposes no delete for a version or a preview alias. The alias is re-pointed by
+# the next upload of the same branch, and old versions age out of the retained
+# history on their own.
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  deployments: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete preview deployments
+        env:
+          # ENVIRONMENTS_TOKEN, when set, is a PAT with `Administration: write`.
+          # It is the only way to drop the environment record itself — see below.
+          GH_TOKEN: ${{ secrets.ENVIRONMENTS_TOKEN || secrets.GITHUB_TOKEN }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          # Same sanitisation as the preview alias in deploy-to-prod.yml.
+          alias=$(printf '%s' "$BRANCH" |
+            tr '[:upper:]' '[:lower:]' |
+            tr -cs 'a-z0-9' '-' |
+            cut -c1-40 |
+            sed -e 's/^-*//' -e 's/-*$//')
+          environment="preview-${alias:-branch}"
+          echo "Cleaning up $environment"
+
+          ids=$(gh api --paginate \
+            "repos/$GITHUB_REPOSITORY/deployments?environment=$environment&per_page=100" \
+            --jq '.[].id')
+
+          if [ -z "$ids" ]; then
+            echo "No deployment recorded for $environment, nothing to do."
+            exit 0
+          fi
+
+          for id in $ids; do
+            # GitHub refuses to delete a deployment that is still active.
+            printf '{"state":"inactive"}' |
+              gh api "repos/$GITHUB_REPOSITORY/deployments/$id/statuses" \
+                --method POST --input - --jq '.state' > /dev/null
+            gh api "repos/$GITHUB_REPOSITORY/deployments/$id" --method DELETE
+            echo "deleted deployment $id"
+          done
+
+          # The now empty environment record survives its deployments, and the
+          # built-in token cannot remove it: that endpoint wants `Administration:
+          # write`, which GITHUB_TOKEN cannot be granted. Best effort, so adding
+          # an ENVIRONMENTS_TOKEN secret later is all it takes to finish the job.
+          if gh api "repos/$GITHUB_REPOSITORY/environments/$environment" \
+            --method DELETE --silent 2>/dev/null; then
+            echo "deleted environment $environment"
+          else
+            echo "::notice::$environment kept its (empty) environment record — set an ENVIRONMENTS_TOKEN secret to a PAT with Administration write to delete it too"
+          fi
