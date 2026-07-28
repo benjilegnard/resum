@@ -9,8 +9,8 @@ on:
   pull_request:
 
 env:
-  NODE_VERSION: "24.x"
-  PNPM_VERSION: "11"
+  NODE_VERSION: '24.x'
+  PNPM_VERSION: '11'
 
 jobs:
   install:

@@ -6,9 +6,9 @@ on:
     branches: [main]
 
 env:
-  NITRO_PRESET: "cloudflare"
-  NODE_VERSION: "24.x"
-  PNPM_VERSION: "11"
+  NITRO_PRESET: 'cloudflare'
+  NODE_VERSION: '24.x'
+  PNPM_VERSION: '11'
 
 jobs:
   deploy:
