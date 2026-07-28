@@ -4,18 +4,43 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+  # Deploy a branch once "Build and test" passed on it. main is excluded because
+  # the push trigger above already covers it — otherwise every merge would fire
+  # two concurrent production deploys of the same commit.
+  workflow_run:
+    workflows: ['Build and test']
+    types: [completed]
+    branches-ignore: [main]
 
 env:
   NITRO_PRESET: 'cloudflare_module'
   NODE_VERSION: '24.x'
   PNPM_VERSION: '11'
 
+permissions:
+  contents: read
+
+# One deploy at a time per branch; a newer commit supersedes an in-flight run.
+concurrency:
+  group: deploy-${{ github.event.workflow_run.head_branch || github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # workflow_run also fires when the tests failed, and for a fork PR the head
+    # commit is untrusted code — neither may reach the production credentials.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_repository.full_name == github.repository)
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          # A workflow_run job runs the workflow file from the default branch and
+          # checks out its SHA by default; we want the commit that was tested.
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
@@ -35,6 +60,26 @@ jobs:
       - name: Build (angular)
         run: pnpm run build
 
+      # main goes live; any other branch is uploaded as a Workers *version*,
+      # reachable on its own preview URL without taking production traffic.
+      - name: Resolve wrangler command
+        id: target
+        env:
+          BRANCH: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+        run: |
+          if [ "$BRANCH" = 'main' ]; then
+            echo 'command=deploy' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Preview aliases are subdomain labels: lowercase, alphanumeric, dashes.
+          alias=$(printf '%s' "$BRANCH" |
+            tr '[:upper:]' '[:lower:]' |
+            tr -cs 'a-z0-9' '-' |
+            cut -c1-40 |
+            sed -e 's/^-*//' -e 's/-*$//')
+          echo "command=versions upload --preview-alias ${alias:-branch}" >> "$GITHUB_OUTPUT"
+
       - name: Deploy
         id: deploy
         uses: cloudflare/wrangler-action@v4
@@ -42,8 +87,16 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           packageManager: pnpm
+          command: ${{ steps.target.outputs.command }}
 
       - name: print deployment-url
         env:
           DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
-        run: echo $DEPLOYMENT_URL
+          WRANGLER_COMMAND: ${{ steps.target.outputs.command }}
+          BRANCH: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+        run: |
+          echo "$BRANCH: wrangler $WRANGLER_COMMAND -> ${DEPLOYMENT_URL:-no url reported}"
+          {
+            echo "### \`$BRANCH\` — wrangler $WRANGLER_COMMAND"
+            echo "${DEPLOYMENT_URL:-No URL reported by wrangler.}"
+          } >> "$GITHUB_STEP_SUMMARY"
