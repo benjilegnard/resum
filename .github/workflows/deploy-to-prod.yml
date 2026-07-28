@@ -158,7 +158,7 @@ jobs:
             > deployment.json
 
       - name: Upload deployment metadata
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: deployment
           path: deployment.json
