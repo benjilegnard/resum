@@ -14,9 +14,6 @@ on:
   workflow_run:
     workflows: ['Deployment']
     types: [completed]
-env:
-  NODE_VERSION: 24
-  PNPM_VERSION: 11
 permissions:
   contents: read
   # Reading the deployment artifact of another run needs more than the implicit
@@ -45,14 +42,13 @@ jobs:
           # A workflow_run job checks out the default branch by default; take the
           # commit that was actually deployed.
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
-      - uses: actions/setup-node@v7
-        with:
-          node-version: ${{ env.NODE_VERSION }}
       - uses: pnpm/action-setup@v6
         name: Install pnpm
         with:
-          version: ${{ env.PNPM_VERSION }}
           run_install: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: package.json
       - name: Install dependencies
         run: pnpm install
 
