@@ -1,12 +1,18 @@
 name: Playwright Tests
+run-name: >-
+  E2E on ${{ github.event_name != 'workflow_run' && 'dev server' ||
+  (github.event.workflow_run.head_branch == 'main' && 'prod' || 'preview') }}
+  (${{ github.event.workflow_run.head_branch || github.head_ref ||
+  github.ref_name }})
+
 on:
   push:
     branches: [main]
   pull_request:
-  # Re-run the suite against the url "Deploy to prod" just published, instead of
+  # Re-run the suite against the url "Deployment" workflow just published, instead of
   # against a dev server booted by Playwright.
   workflow_run:
-    workflows: ['Deploy to prod']
+    workflows: ['Deployment']
     types: [completed]
 env:
   NODE_VERSION: 24

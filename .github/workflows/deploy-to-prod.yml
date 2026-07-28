@@ -1,4 +1,8 @@
-name: Deploy to prod
+name: Deployment
+run-name: >-
+  Deploy ${{ github.event.workflow_run.head_branch || github.ref_name }} to ${{
+  (github.event.workflow_run.head_branch || github.ref_name) == 'main' && 'prod'
+  || 'preview' }}
 
 on:
   workflow_dispatch:
@@ -68,6 +72,7 @@ jobs:
           BRANCH: ${{ github.event.workflow_run.head_branch || github.ref_name }}
         run: |
           if [ "$BRANCH" = 'main' ]; then
+            echo 'mode=prod' >> "$GITHUB_OUTPUT"
             echo 'command=deploy' >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -78,6 +83,7 @@ jobs:
             tr -cs 'a-z0-9' '-' |
             cut -c1-40 |
             sed -e 's/^-*//' -e 's/-*$//')
+          echo 'mode=preview' >> "$GITHUB_OUTPUT"
           echo "command=versions upload --preview-alias ${alias:-branch}" >> "$GITHUB_OUTPUT"
 
       - name: Deploy
@@ -93,11 +99,13 @@ jobs:
         env:
           DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
           WRANGLER_COMMAND: ${{ steps.target.outputs.command }}
+          MODE: ${{ steps.target.outputs.mode }}
           BRANCH: ${{ github.event.workflow_run.head_branch || github.ref_name }}
         run: |
-          echo "$BRANCH: wrangler $WRANGLER_COMMAND -> ${DEPLOYMENT_URL:-no url reported}"
+          echo "$MODE ($BRANCH): wrangler $WRANGLER_COMMAND -> ${DEPLOYMENT_URL:-no url reported}"
           {
-            echo "### \`$BRANCH\` — wrangler $WRANGLER_COMMAND"
+            echo "### $MODE — \`$BRANCH\`"
+            echo "\`wrangler $WRANGLER_COMMAND\`"
             echo "${DEPLOYMENT_URL:-No URL reported by wrangler.}"
           } >> "$GITHUB_STEP_SUMMARY"
 
