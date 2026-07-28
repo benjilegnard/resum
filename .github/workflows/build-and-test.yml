@@ -8,10 +8,6 @@ on:
     branches: [main]
   pull_request:
 
-env:
-  NODE_VERSION: '24.x'
-  PNPM_VERSION: '11'
-
 jobs:
   install:
     runs-on: ubuntu-latest
@@ -22,13 +18,12 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: ${{ env.PNPM_VERSION }}
           run_install: false
 
       - name: Setup node.js
         uses: actions/setup-node@v7
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: package.json
           cache: pnpm
 
       - name: Restore installed dependencies
@@ -36,7 +31,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: node_modules
-          key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
+          key: dependencies-${{ runner.os }}-${{ hashFiles('package.json', 'pnpm-lock.yaml') }}
 
       - name: Install
         if: steps.dependencies-cache.outputs.cache-hit != 'true'
@@ -52,20 +47,19 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: ${{ env.PNPM_VERSION }}
           run_install: false
 
       - name: Setup node.js
         uses: actions/setup-node@v7
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: package.json
           cache: pnpm
 
       - name: Restore installed dependencies
         uses: actions/cache/restore@v6
         with:
           path: node_modules
-          key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
+          key: dependencies-${{ runner.os }}-${{ hashFiles('package.json', 'pnpm-lock.yaml') }}
           fail-on-cache-miss: true
 
       - name: Lint
@@ -81,20 +75,19 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: ${{ env.PNPM_VERSION }}
           run_install: false
 
       - name: Setup node.js
         uses: actions/setup-node@v7
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: package.json
           cache: pnpm
 
       - name: Restore installed dependencies
         uses: actions/cache/restore@v6
         with:
           path: node_modules
-          key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
+          key: dependencies-${{ runner.os }}-${{ hashFiles('package.json', 'pnpm-lock.yaml') }}
           fail-on-cache-miss: true
 
       - name: Check formatting
@@ -110,20 +103,19 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: ${{ env.PNPM_VERSION }}
           run_install: false
 
       - name: Setup node.js
         uses: actions/setup-node@v7
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: package.json
           cache: pnpm
 
       - name: Restore installed dependencies
         uses: actions/cache/restore@v6
         with:
           path: node_modules
-          key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
+          key: dependencies-${{ runner.os }}-${{ hashFiles('package.json', 'pnpm-lock.yaml') }}
           fail-on-cache-miss: true
 
       - name: Build
@@ -139,19 +131,18 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: ${{ env.PNPM_VERSION }}
           run_install: false
 
       - name: Setup node.js
         uses: actions/setup-node@v7
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: package.json
 
       - name: Restore installed dependencies
         uses: actions/cache/restore@v6
         with:
           path: node_modules
-          key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
+          key: dependencies-${{ runner.os }}-${{ hashFiles('package.json', 'pnpm-lock.yaml') }}
           fail-on-cache-miss: true
 
       - name: Unit tests
