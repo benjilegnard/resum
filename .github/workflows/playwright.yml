@@ -19,9 +19,11 @@ env:
   PNPM_VERSION: 11
 permissions:
   contents: read
-  # Reading the deployment-url artifact of another run needs more than the
-  # implicit checkout permissions.
+  # Reading the deployment artifact of another run needs more than the implicit
+  # checkout permissions.
   actions: read
+  # Reporting the suite's verdict back on the deployment it just tested.
+  deployments: write
 jobs:
   test:
     timeout-minutes: 60
@@ -54,27 +56,32 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Download deployment-url
+      - name: Download deployment metadata
         if: github.event_name == 'workflow_run'
         uses: actions/download-artifact@v6
         with:
-          name: deployment-url
+          name: deployment
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Resolve deployment url
+      - name: Resolve deployment
         id: deployment
         if: github.event_name == 'workflow_run'
         run: |
-          url=$(tr -d '[:space:]' < deployment-url.txt)
+          url=$(jq -r '.url // ""' deployment.json)
           if [ -z "$url" ]; then
             echo "::error::the deploy run published no url, nothing to test"
             exit 1
           fi
           echo "Testing $url"
           echo "url=$url" >> "$GITHUB_OUTPUT"
+          # Absent when the deploy could not record a deployment; the reporting
+          # step below is skipped then rather than failing the suite.
+          echo "id=$(jq -r '.deployment_id // ""' deployment.json)" >> "$GITHUB_OUTPUT"
+          echo "environment=$(jq -r '.environment // ""' deployment.json)" >> "$GITHUB_OUTPUT"
 
       - name: Run Playwright tests
+        id: e2e
         # Empty on push / pull_request, where Playwright boots the dev server.
         env:
           PLAYWRIGHT_BASE_URL: ${{ steps.deployment.outputs.url }}
@@ -86,3 +93,27 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+      # A deployment that serves traffic but fails its suite should not stay green
+      # in the pull request.
+      - name: Report e2e verdict on the deployment
+        if: always() && steps.deployment.outputs.id
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEPLOYMENT_ID: ${{ steps.deployment.outputs.id }}
+          ENVIRONMENT: ${{ steps.deployment.outputs.environment }}
+          DEPLOYMENT_URL: ${{ steps.deployment.outputs.url }}
+          STATE: ${{ steps.e2e.outcome == 'success' && 'success' || 'failure' }}
+          DESCRIPTION: ${{ steps.e2e.outcome == 'success' && 'e2e passed' || 'e2e failed' }}
+          LOG_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          jq -n \
+            --arg state "$STATE" \
+            --arg environment "$ENVIRONMENT" \
+            --arg environment_url "$DEPLOYMENT_URL" \
+            --arg log_url "$LOG_URL" \
+            --arg description "$DESCRIPTION" \
+            '{state: $state, environment: $environment, environment_url: $environment_url,
+              log_url: $log_url, description: $description}' |
+            gh api "repos/$GITHUB_REPOSITORY/deployments/$DEPLOYMENT_ID/statuses" \
+              --method POST --input - --jq '"\(.state): \(.description)"'
