@@ -9,15 +9,15 @@ on:
   pull_request:
 
 env:
-  NODE_VERSION: '24.x'
-  PNPM_VERSION: '11'
+  NODE_VERSION: "24.x"
+  PNPM_VERSION: "11"
 
 jobs:
   install:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
@@ -26,14 +26,14 @@ jobs:
           run_install: false
 
       - name: Setup node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
 
       - name: Restore installed dependencies
         id: dependencies-cache
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: node_modules
           key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
@@ -47,7 +47,7 @@ jobs:
     needs: install
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
@@ -56,12 +56,13 @@ jobs:
           run_install: false
 
       - name: Setup node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
 
       - name: Restore installed dependencies
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: node_modules
           key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
@@ -75,7 +76,7 @@ jobs:
     needs: install
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
@@ -84,12 +85,13 @@ jobs:
           run_install: false
 
       - name: Setup node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
 
       - name: Restore installed dependencies
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: node_modules
           key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
@@ -103,7 +105,7 @@ jobs:
     needs: install
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
@@ -112,12 +114,13 @@ jobs:
           run_install: false
 
       - name: Setup node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
 
       - name: Restore installed dependencies
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: node_modules
           key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
@@ -131,7 +134,7 @@ jobs:
     needs: install
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
@@ -140,12 +143,12 @@ jobs:
           run_install: false
 
       - name: Setup node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Restore installed dependencies
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@v6
         with:
           path: node_modules
           key: dependencies-${{ runner.os }}-node-24-${{ hashFiles('pnpm-lock.yaml') }}
