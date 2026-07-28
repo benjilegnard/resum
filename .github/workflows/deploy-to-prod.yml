@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 env:
-  NITRO_PRESET: 'cloudflare'
+  NITRO_PRESET: 'cloudflare_module'
   NODE_VERSION: '24.x'
   PNPM_VERSION: '11'
 

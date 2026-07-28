@@ -1,5 +1,6 @@
 name = "resum"
 compatibility_date = "2024-09-19"
+compatibility_flags = ["nodejs_compat"]
 main = "./dist/analog/server/index.mjs"
 assets = { directory = "./dist/analog/public/", binding = "ASSETS", html_handling = "drop-trailing-slash" }
 
