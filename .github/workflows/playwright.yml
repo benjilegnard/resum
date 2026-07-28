@@ -40,12 +40,12 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.62.0-noble
       options: --user 1001
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           # A workflow_run job checks out the default branch by default; take the
           # commit that was actually deployed.
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ env.NODE_VERSION }}
       - uses: pnpm/action-setup@v6
@@ -58,7 +58,7 @@ jobs:
 
       - name: Download deployment metadata
         if: github.event_name == 'workflow_run'
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v8
         with:
           name: deployment
           run-id: ${{ github.event.workflow_run.id }}
@@ -87,7 +87,7 @@ jobs:
           PLAYWRIGHT_BASE_URL: ${{ steps.deployment.outputs.url }}
         run: pnpm exec playwright test
 
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
