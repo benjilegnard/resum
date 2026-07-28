@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Panda CSS injects its output into these layers, in this order. */
+@layer reset, base, tokens, recipes, utilities;
 
 @font-face {
   font-family: 'Nunito';
@@ -30,99 +29,4 @@
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
     U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
     U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-:root {
-  --rosewater: #f5e0dc;
-  --flamingo: #f2cdcd;
-  --pink: #f5c2e7;
-  --mauve: #cba6f7;
-  --red: #f38ba8;
-  --maroon: #eba0ac;
-  --peach: #fab387;
-  --yellow: #f9e2af;
-  --green: #a6e3a1;
-  --teal: #94e2d5;
-  --sky: #89dceb;
-  --sapphire: #74c7ec;
-  --blue: #89b4fa;
-  --lavender: #b4befe;
-  --text: #cdd6f4;
-  --subtext1: #bac2de;
-  --subtext0: #a6adc8;
-  --overlay2: #9399b2;
-  --overlay1: #7f849c;
-  --overlay0: #6c7086;
-  --surface2: #585b70;
-  --surface1: #45475a;
-  --surface0: #313244;
-  --base: #1e1e2e;
-  --mantle: #181825;
-  --crust: #11111b;
-}
-
-@layer base {
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply uppercase tracking-wider font-title;
-  }
-  h1 {
-    @apply font-title;
-  }
-  h2 {
-    @apply text-4xl my-4;
-  }
-  h3 {
-    @apply text-3xl my-4;
-  }
-  h4 {
-    @apply text-2xl my-4;
-  }
-  h5 {
-    @apply text-xl my-4;
-  }
-  h6 {
-    @apply text-lg my-4;
-  }
-  p,
-  ul,
-  ol {
-    @apply my-4 leading-relaxed font-sans text-xl;
-  }
-  ul {
-    @apply list-disc list-inside my-4;
-  }
-  ol {
-    @apply list-decimal list-inside my-4;
-  }
-  a {
-    @apply text-sky underline underline-offset-8 hover:underline-offset-4;
-  }
-  pre {
-    @apply bg-base;
-  }
-  table {
-    @apply w-full text-left my-4;
-  }
-  table td,
-  table th {
-    @apply border border-surface0 border-collapse p-2;
-  }
-  table thead {
-    @apply bg-crust;
-  }
-  table tbody {
-    @apply bg-mantle;
-  }
-  blockquote {
-    @apply py-2 px-4 bg-crust relative w-3/4 mx-auto my-4
-    after:content-['”'] after:absolute after:right-3 after:top-1 after:text-4xl after:text-surface1;
-  }
-}
-pre.shiki,
-.mermaid {
-  @apply bg-base w-4/5 mx-auto p-6;
 }

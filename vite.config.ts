@@ -28,6 +28,13 @@ function loadArticles(lang: AvailableLang): string[] {
 export default defineConfig(({ mode }) => ({
   publicDir: 'src/assets',
   server: {
+    exclude: [
+      'test-results',
+      'playwright-report',
+      'coverage',
+      'e2e',
+      'scripts',
+    ],
     host: process.env['PW_TEST_CONNECT_WS_ENDPOINT'] ? '0.0.0.0' : '127.0.0.1',
     allowedHosts: process.env['PW_TEST_CONNECT_WS_ENDPOINT']
       ? ['hostmachine']

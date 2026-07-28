@@ -5,3 +5,4 @@ playwright-report/
 coverage/
 .wrangler
 .nx
+styled-system/
