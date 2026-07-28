@@ -1,9 +1,16 @@
 import { defineConfig, devices } from '@playwright/test';
 
 const usesRemoteBrowser = Boolean(process.env['PW_TEST_CONNECT_WS_ENDPOINT']);
-const baseURL = usesRemoteBrowser
+const localURL = usesRemoteBrowser
   ? 'http://hostmachine:5173'
   : 'http://127.0.0.1:5173';
+
+/**
+ * Set to test an already running deployment (the Cloudflare url resolved by the
+ * `Deploy to prod` workflow) instead of a dev server started by Playwright.
+ */
+const deploymentURL = process.env['PLAYWRIGHT_BASE_URL'];
+const baseURL = deploymentURL || localURL;
 
 /**
  * Read environment variables from file.
@@ -75,10 +82,13 @@ export default defineConfig({
     // },
   ],
 
-  /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'pnpm run start',
-    url: 'http://127.0.0.1:5173',
-    reuseExistingServer: !process.env.CI,
-  },
+  /* Run your local dev server before starting the tests, unless a deployment is
+   * the target — there is nothing to boot then. */
+  webServer: deploymentURL
+    ? undefined
+    : {
+        command: 'pnpm run start',
+        url: 'http://127.0.0.1:5173',
+        reuseExistingServer: !process.env.CI,
+      },
 });

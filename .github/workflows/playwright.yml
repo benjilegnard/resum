@@ -3,13 +3,29 @@ on:
   push:
     branches: [main]
   pull_request:
+  # Re-run the suite against the url "Deploy to prod" just published, instead of
+  # against a dev server booted by Playwright.
+  workflow_run:
+    workflows: ['Deploy to prod']
+    types: [completed]
 env:
   NODE_VERSION: 24
   PNPM_VERSION: 11
+permissions:
+  contents: read
+  # Reading the deployment-url artifact of another run needs more than the
+  # implicit checkout permissions.
+  actions: read
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    # workflow_run also fires when the deploy failed, and a fork PR head is
+    # untrusted code.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_repository.full_name == github.repository)
     container:
       # Must match the @playwright/test version in pnpm-lock.yaml, otherwise the
       # browsers baked into the image do not match the ones the client expects.
@@ -17,18 +33,47 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v6
+        with:
+          # A workflow_run job checks out the default branch by default; take the
+          # commit that was actually deployed.
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
         name: Install pnpm
         with:
           version: ${{ env.PNPM_VERSION }}
           run_install: false
       - name: Install dependencies
         run: pnpm install
+
+      - name: Download deployment-url
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@v6
+        with:
+          name: deployment-url
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Resolve deployment url
+        id: deployment
+        if: github.event_name == 'workflow_run'
+        run: |
+          url=$(tr -d '[:space:]' < deployment-url.txt)
+          if [ -z "$url" ]; then
+            echo "::error::the deploy run published no url, nothing to test"
+            exit 1
+          fi
+          echo "Testing $url"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
       - name: Run Playwright tests
+        # Empty on push / pull_request, where Playwright boots the dev server.
+        env:
+          PLAYWRIGHT_BASE_URL: ${{ steps.deployment.outputs.url }}
         run: pnpm exec playwright test
+
       - uses: actions/upload-artifact@v6
         if: ${{ !cancelled() }}
         with:

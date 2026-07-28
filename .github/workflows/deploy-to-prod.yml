@@ -100,3 +100,14 @@ jobs:
             echo "### \`$BRANCH\` — wrangler $WRANGLER_COMMAND"
             echo "${DEPLOYMENT_URL:-No URL reported by wrangler.}"
           } >> "$GITHUB_STEP_SUMMARY"
+
+          # "Playwright Tests" runs on workflow_run and cannot read step outputs
+          # from this run, so hand the url over as an artifact.
+          printf '%s\n' "$DEPLOYMENT_URL" > deployment-url.txt
+
+      - name: Upload deployment-url
+        uses: actions/upload-artifact@v6
+        with:
+          name: deployment-url
+          path: deployment-url.txt
+          retention-days: 7
