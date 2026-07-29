@@ -1,14 +1,15 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 import { css } from '@styled-system/css';
 
-import { MenuItemComponent } from '../../components/menu-item/menu-item.component';
+import { MenuItem } from '../../components/menu-item/menu-item.component';
 
 const MENU_HEIGHT = '50px';
 
 @Component({
   selector: 'bl-menu',
+  imports: [MenuItem, TranslocoDirective],
   template: `
     <header [class]="styles.menu">
       <img
@@ -36,10 +37,8 @@ const MENU_HEIGHT = '50px';
   host: {
     '[class]': 'styles.host',
   },
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MenuItemComponent, TranslocoDirective],
 })
-export class MenuComponent {
+export class Menu {
   protected readonly transloco = inject(TranslocoService);
   get lang(): string {
     return this.transloco.getActiveLang();

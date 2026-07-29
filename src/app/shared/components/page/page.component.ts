@@ -97,7 +97,7 @@ const pageContainer = cva({
   `,
   imports: [],
 })
-export class PageComponent implements OnInit {
+export class Page implements OnInit {
   /**
    * Set page title.
    */

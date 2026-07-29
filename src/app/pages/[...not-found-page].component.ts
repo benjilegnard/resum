@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
   selector: 'bl-not-found',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, TranslocoDirective],
   template: `
     <ng-container *transloco="let t">
       <h2>{{ t('errors.404.title') }}</h2>
@@ -12,8 +13,7 @@ import { RouterLink } from '@angular/router';
       <a routerLink="/">{{ t('ui.actions.backToHome') }}</a>
     </ng-container>
   `,
-  styles: [``],
 })
-export class NotFoundPageComponent {}
+export class NotFoundPage {}
 
-export default NotFoundPageComponent;
+export default NotFoundPage;

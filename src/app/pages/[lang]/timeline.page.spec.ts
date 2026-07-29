@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimelinePageComponent } from './timeline.page';
+import { TimelinePage } from './timeline.page';
 import { getTranslocoModule } from '../../transloco-testing.module';
 
-describe('TimelinePageComponent', () => {
-  let component: TimelinePageComponent;
-  let fixture: ComponentFixture<TimelinePageComponent>;
+describe('TimelinePage', () => {
+  let component: TimelinePage;
+  let fixture: ComponentFixture<TimelinePage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TimelinePageComponent, getTranslocoModule()],
+      imports: [TimelinePage, getTranslocoModule()],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TimelinePageComponent);
+    fixture = TestBed.createComponent(TimelinePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
