@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslocoDirective } from '@jsverse/transloco';
 
 @Component({
@@ -9,9 +9,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
       <h2>{{ t('title') }}</h2>
     </ng-container>
   `,
-  styles: [``],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimelinePageComponent {}
+export class TimelinePage {}
 
-export default TimelinePageComponent;
+export default TimelinePage;

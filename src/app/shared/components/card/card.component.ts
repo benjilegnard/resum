@@ -11,7 +11,7 @@ import { css } from '@styled-system/css';
   `,
   standalone: true,
 })
-export class CardComponent {
+export class Card {
   protected readonly styles = {
     card: css({ bg: 'base', m: '4', boxShadow: 'lg' }),
   };

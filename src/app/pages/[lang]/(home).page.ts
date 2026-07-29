@@ -26,8 +26,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
       </nav>
     </ng-container>
   `,
-  styles: [``],
 })
-export class HomePageComponent {}
+export class HomePage {}
 
-export default HomePageComponent;
+export default HomePage;

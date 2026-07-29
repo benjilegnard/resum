@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SvgIconComponent, SvgIcons } from '@ngneat/svg-icon';
 
@@ -21,10 +21,9 @@ import { css } from '@styled-system/css';
   host: {
     '[class]': 'styles.host',
   },
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, SvgIconComponent],
 })
-export class MenuItemComponent {
+export class MenuItem {
   @Input()
   link: string[] = [];
 

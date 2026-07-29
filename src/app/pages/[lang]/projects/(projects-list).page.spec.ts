@@ -1,20 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProjectsListPageComponent } from './(projects-list).page';
+import { ProjectsListPage } from './(projects-list).page';
 
 import { getTranslocoModule } from '../../../transloco-testing.module';
-describe('ProjectsComponent', () => {
-  let component: ProjectsListPageComponent;
-  let fixture: ComponentFixture<ProjectsListPageComponent>;
+
+describe('ProjectsListPage', () => {
+  let component: ProjectsListPage;
+  let fixture: ComponentFixture<ProjectsListPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProjectsListPageComponent, getTranslocoModule()],
+      imports: [ProjectsListPage, getTranslocoModule()],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProjectsListPageComponent);
+    fixture = TestBed.createComponent(ProjectsListPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

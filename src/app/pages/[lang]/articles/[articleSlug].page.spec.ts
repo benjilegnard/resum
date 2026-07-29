@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArticlePageComponent } from './[articleSlug].page';
+import { ArticlePage } from './[articleSlug].page';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Component } from '@angular/core';
 import { MarkdownComponent } from '@analogjs/content';
@@ -16,19 +16,15 @@ vi.mock('@analogjs/content', () => ({
   injectContent: vi.fn(),
 }));
 
-describe('ArticleComponent', () => {
-  let component: ArticlePageComponent;
-  let fixture: ComponentFixture<ArticlePageComponent>;
+describe('ArticlePage', () => {
+  let component: ArticlePage;
+  let fixture: ComponentFixture<ArticlePage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        ArticlePageComponent,
-        RouterTestingModule,
-        getTranslocoModule(),
-      ],
+      imports: [ArticlePage, RouterTestingModule, getTranslocoModule()],
     })
-      .overrideComponent(ArticlePageComponent, {
+      .overrideComponent(ArticlePage, {
         remove: { imports: [MarkdownComponent] },
         add: { imports: [FakeMarkdownComponent] },
       })
@@ -36,7 +32,7 @@ describe('ArticleComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArticlePageComponent);
+    fixture = TestBed.createComponent(ArticlePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

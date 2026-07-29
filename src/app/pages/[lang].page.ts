@@ -15,8 +15,7 @@ export const routeMeta: RouteMeta = {
   selector: 'bl-lang',
   imports: [RouterOutlet],
   template: `<router-outlet></router-outlet>`,
-  styles: [``],
 })
-export class LangPageComponent {}
+export class LangPage {}
 
-export default LangPageComponent;
+export default LangPage;

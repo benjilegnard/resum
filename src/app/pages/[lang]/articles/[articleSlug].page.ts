@@ -1,6 +1,6 @@
 import { MarkdownComponent, injectContent } from '@analogjs/content';
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { ArticleAttributes } from '@benjilegnard/resum/shared/model';
 import { SvgIconComponent, provideSvgIcons } from '@ngneat/svg-icon';
@@ -17,6 +17,7 @@ export const routeMeta: RouteMeta = {
 
 @Component({
   selector: 'bl-article',
+  imports: [MarkdownComponent, AsyncPipe, DatePipe, SvgIconComponent],
   template: `
     @if (article$ | async; as article) {
       <header [class]="styles.header">
@@ -35,10 +36,8 @@ export const routeMeta: RouteMeta = {
       </footer>
     }
   `,
-  imports: [MarkdownComponent, AsyncPipe, DatePipe, SvgIconComponent],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ArticlePageComponent {
+export class ArticlePage {
   @Input()
   public slug!: string;
 
@@ -67,4 +66,4 @@ export class ArticlePageComponent {
   };
 }
 
-export default ArticlePageComponent;
+export default ArticlePage;

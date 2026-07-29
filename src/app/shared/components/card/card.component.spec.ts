@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { render } from '@testing-library/angular';
 
-import { CardComponent } from './card.component';
+import { Card } from './card.component';
 
-describe('CardComponent', () => {
+describe('Card', () => {
   it('should create', async () => {
-    const { container } = await render(CardComponent);
+    const { container } = await render(Card);
     expect(container).toBeTruthy();
   });
 });

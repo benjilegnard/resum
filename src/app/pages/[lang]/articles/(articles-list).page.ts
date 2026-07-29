@@ -1,6 +1,6 @@
 import { injectContentFiles } from '@analogjs/content';
 
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ArticleAttributes } from '@benjilegnard/resum/shared/model';
@@ -8,6 +8,7 @@ import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 @Component({
   selector: 'bl-articles',
+  imports: [RouterLink, TranslocoDirective],
   template: `
     <ng-container *transloco="let t; prefix: 'articles'">
       <h2>{{ t('title') }}</h2>
@@ -20,11 +21,8 @@ import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
       </ul>
     </ng-container>
   `,
-  styles: [``],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, TranslocoDirective],
 })
-export class ArticlesPageComponent {
+export class ArticlesListPage {
   private readonly transloco = inject(TranslocoService);
   readonly articles = injectContentFiles<ArticleAttributes>((contentFile) => {
     return contentFile.filename.includes('src/content/articles/');
@@ -35,4 +33,4 @@ export class ArticlesPageComponent {
     });
 }
 
-export default ArticlesPageComponent;
+export default ArticlesListPage;

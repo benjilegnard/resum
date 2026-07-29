@@ -1,12 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MenuComponent } from './shared/containers/menu/menu.component';
-import { PageComponent } from './shared/components/page/page.component';
+import { Menu } from './shared/containers/menu/menu.component';
+import { Page } from './shared/components/page/page.component';
 
 import { css } from '@styled-system/css';
 
 @Component({
   selector: 'bl-root',
+  imports: [Menu, Page, RouterOutlet],
   template: `
     <bl-menu></bl-menu>
     <bl-page>
@@ -16,10 +17,8 @@ import { css } from '@styled-system/css';
   host: {
     '[class]': 'hostClass',
   },
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MenuComponent, PageComponent, RouterOutlet],
 })
-export class AppComponent {
+export class App {
   protected readonly hostClass = css({
     display: 'flex',
     flexDirection: 'column',

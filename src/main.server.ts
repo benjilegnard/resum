@@ -8,7 +8,7 @@ import { renderApplication } from '@angular/platform-server';
 import { provideServerContext } from '@analogjs/router/server';
 import { ServerContext } from '@analogjs/router/tokens';
 
-import { AppComponent } from './app/app.component';
+import { App } from './app/app.component';
 import { config } from './app/app.config.server';
 
 if (import.meta.env.PROD) {
@@ -16,7 +16,7 @@ if (import.meta.env.PROD) {
 }
 
 export function bootstrap(context: BootstrapContext) {
-  return bootstrapApplication(AppComponent, config, context);
+  return bootstrapApplication(App, config, context);
 }
 
 export default async function render(

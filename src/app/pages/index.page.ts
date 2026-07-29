@@ -18,8 +18,7 @@ import { TranslocoDirective } from '@jsverse/transloco';
       </ul>
     </ng-container>
   `,
-  styles: [``],
 })
-export class LangSelectorPageComponent {}
+export class LangSelectorPage {}
 
-export default LangSelectorPageComponent;
+export default LangSelectorPage;

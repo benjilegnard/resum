@@ -74,8 +74,7 @@
       "standalone": true,
       "prefix": "bl",
       "style": "scss",
-      "changeDetection": "OnPush",
-      "type": "component"
+      "changeDetection": "OnPush"
     },
     "@schematics/angular:directive": {
       "type": "directive"
