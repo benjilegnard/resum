@@ -3,7 +3,7 @@ import { TranslocoDirective, TranslocoService } from '@jsverse/transloco';
 
 import { css } from '@styled-system/css';
 
-import { MenuItem } from '../../components/menu-item/menu-item.component';
+import { MenuItem } from '../../components/menu-item/menu-item';
 
 const MENU_HEIGHT = '50px';
 
