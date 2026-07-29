@@ -1,4 +1,4 @@
-import { Page } from './page.component';
+import { Page } from './page';
 import { describe, expect, it } from 'vitest';
 import { render } from '@testing-library/angular';
 

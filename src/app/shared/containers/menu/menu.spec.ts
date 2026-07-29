@@ -2,7 +2,7 @@ import { provideRouter } from '@angular/router';
 import { render } from '@testing-library/angular';
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { Menu } from './menu.component';
+import { Menu } from './menu';
 
 import { getTranslocoModule } from '../../../transloco-testing.module';
 import {

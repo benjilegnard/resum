@@ -8,7 +8,7 @@ import { renderApplication } from '@angular/platform-server';
 import { provideServerContext } from '@analogjs/router/server';
 import { ServerContext } from '@analogjs/router/tokens';
 
-import { App } from './app/app.component';
+import { App } from './app/app';
 import { config } from './app/app.config.server';
 
 if (import.meta.env.PROD) {

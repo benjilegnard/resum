@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Menu } from './shared/containers/menu/menu.component';
-import { Page } from './shared/components/page/page.component';
+import { Menu } from './shared/containers/menu/menu';
+import { Page } from './shared/components/page/page';
 
 import { css } from '@styled-system/css';
 

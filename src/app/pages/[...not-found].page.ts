@@ -1,6 +1,21 @@
+import { RouteMeta } from '@analogjs/router';
+import { injectResponse } from '@analogjs/router/tokens';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@jsverse/transloco';
+
+export const routeMeta: RouteMeta = {
+  canActivate: [
+    () => {
+      const response = injectResponse();
+      if (import.meta.env.SSR && response) {
+        response.statusCode = 404;
+        response.end();
+      }
+      return true;
+    },
+  ],
+};
 
 @Component({
   selector: 'bl-not-found',

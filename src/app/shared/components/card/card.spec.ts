@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { render } from '@testing-library/angular';
 
-import { Card } from './card.component';
+import { Card } from './card';
 
 describe('Card', () => {
   it('should create', async () => {

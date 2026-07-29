@@ -1,4 +1,4 @@
-import { App } from './app.component';
+import { App } from './app';
 import { beforeEach, describe, it } from 'vitest';
 import { provideRouter } from '@angular/router';
 import { render } from '@testing-library/angular';

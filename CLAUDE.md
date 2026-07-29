@@ -30,7 +30,7 @@ Single test file / pattern — use `--testFile` (the `@analogjs/vitest-angular` 
 The value is a Vitest path filter, so a substring works and the flag is repeatable:
 
 ```bash
-pnpm exec ng test --testFile=card.component            # one spec
+pnpm exec ng test --testFile=card                      # one spec
 pnpm exec ng test --testFile=shared/components         # every spec under a folder
 pnpm exec ng test --testFile=card --testFile=menu-item # several
 pnpm exec ng test --watch                              # also --coverage, -u
@@ -51,7 +51,7 @@ route config file. Naming conventions matter:
 - `[lang].page.ts` — dynamic segment; hosts a bare `<router-outlet>` plus `routeMeta` with the
   language guard/resolver, so **every localized route inherits it**.
 - `[lang]/(home).page.ts` — parentheses mean "index route without adding a path segment".
-- `[...not-found-page].component.ts` — catch-all.
+- `[...not-found].page.ts` — catch-all.
 - Each page file must `export default` its component.
 - Per-route config (guards, resolvers, route-scoped providers) goes in an exported
   `routeMeta: RouteMeta` const in the same file.
@@ -126,7 +126,7 @@ Styles are authored in TypeScript with **Panda CSS** and bound to `[class]`. The
 - `src/styles.css` is only the `@layer reset, base, tokens, recipes, utilities;` declaration
   Panda's PostCSS plugin injects into, plus the `@font-face` rules.
 - In components: `css({...})` for a single element, `cva({ base, variants })` when an element has
-  mutually exclusive looks (see the gradient variants in `page.component.ts`). Collect them in a
+  mutually exclusive looks (see the gradient variants in `page.ts`). Collect them in a
   `protected readonly styles = { … }` object and reference `styles.foo` from the template.
 - Host styling uses a `host: { '[class]': 'styles.host' }` binding — Panda emits into the global
   stylesheet, so view encapsulation is irrelevant.
