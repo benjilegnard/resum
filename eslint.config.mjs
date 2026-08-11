@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from 'eslint-plugin-storybook';
+
 // @ts-check
 import js from '@eslint/js';
 import ts from 'typescript-eslint';
@@ -13,6 +16,7 @@ export default defineConfig(
       ...ts.configs.recommended,
       ...ts.configs.stylistic,
       ...ng.configs.tsRecommended,
+      ...storybook.configs['flat/recommended'],
     ],
     processor: processInlineTemplates,
     rules: {

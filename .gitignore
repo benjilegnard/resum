@@ -56,3 +56,6 @@ node_modules/
 
 # Panda CSS codegen output
 /styled-system
+
+*storybook.log
+storybook-static
