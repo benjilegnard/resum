@@ -51,6 +51,9 @@ export default defineConfig({
           title: { value: "'Nunito', sans-serif" },
           mono: { value: "'Hack', monospace" },
         },
+        // height of the top menu bar, also used as the title left offset
+        sizes: { menu: { value: '50px' } },
+        spacing: { menu: { value: '50px' } },
       },
     },
   },

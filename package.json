@@ -37,6 +37,7 @@
     "@angular/platform-server": "^22.0.8",
     "@angular/router": "^22.0.8",
     "@angular/ssr": "^22.0.8",
+    "@catppuccin/palette": "^1.8.0",
     "@jsverse/transloco": "^8.4.0",
     "@jsverse/transloco-utils": "^8.4.0",
     "@ngneat/svg-icon": "^8.0.0",

@@ -126,7 +126,7 @@ Styles are authored in TypeScript with **Panda CSS** and bound to `[class]`. The
 - `src/styles.css` is only the `@layer reset, base, tokens, recipes, utilities;` declaration
   Panda's PostCSS plugin injects into, plus the `@font-face` rules.
 - In components: `css({...})` for a single element, `cva({ base, variants })` when an element has
-  mutually exclusive looks (see the gradient variants in `page.ts`). Collect them in a
+  mutually exclusive looks. Collect them in a
   `protected readonly styles = { … }` object and reference `styles.foo` from the template.
 - Host styling uses a `host: { '[class]': 'styles.host' }` binding — Panda emits into the global
   stylesheet, so view encapsulation is irrelevant.

@@ -5,8 +5,6 @@ import { css } from '@styled-system/css';
 
 import { MenuItem } from '../../components/menu-item/menu-item';
 
-const MENU_HEIGHT = '50px';
-
 @Component({
   selector: 'bl-menu',
   imports: [MenuItem, TranslocoDirective],
@@ -45,32 +43,36 @@ export class Menu {
   }
 
   protected readonly styles = {
-    host: css({ userSelect: 'none' }),
+    host: css({
+      userSelect: 'none',
+      py: '6',
+    }),
     menu: css({
-      position: 'fixed',
-      top: '0',
-      left: '0',
-      right: '0',
-      zIndex: '10',
       display: 'flex',
+      // nav goes below the title on mobile
+      flexDirection: 'column',
       alignItems: 'stretch',
       w: 'full',
-      h: MENU_HEIGHT,
-      bg: 'base/90',
+      mx: 'auto',
       color: 'text',
-      backdropBlur: 'md',
-      borderBottomWidth: '1px',
-      borderBottomStyle: 'solid',
-      borderBottomColor: 'base',
-      boxShadow: '0 0 15px rgba(0, 0, 0, 0.25)',
+      // same width as the `bl-page` content card
+      md: {
+        flexDirection: 'row',
+        left: '6',
+        right: '6',
+        w: 'auto',
+        maxW: '3xl',
+      },
+      lg: { maxW: '5xl' },
     }),
     title: css({
-      ml: MENU_HEIGHT,
+      ml: 'menu',
       fontSize: '40px',
       lineHeight: '1',
       fontWeight: 'thin',
       color: 'text',
-      whiteSpace: 'nowrap',
+      // wraps on mobile, single line once the menu is a row
+      md: { whiteSpace: 'nowrap' },
     }),
     items: css({
       position: 'relative',
@@ -79,7 +81,8 @@ export class Menu {
       bottom: '0',
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'flex-end',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
       alignItems: 'stretch',
       w: 'full',
       gap: '5',
@@ -88,19 +91,10 @@ export class Menu {
       fontFamily: 'title',
       fontWeight: 'bold',
       letterSpacing: 'widest',
-      lgDown: {
-        position: 'fixed',
-        justifyContent: 'center',
-        alignItems: 'stretch',
-        w: 'full',
-        bg: 'crust/80',
-        backdropFilter: 'auto',
-        backdropBlur: 'sm',
-      },
+      md: { justifyContent: 'flex-end' },
     }),
-    // also hides the `alt` text, which stays available to assistive tech
     gravatar: css({
-      position: 'fixed',
+      position: 'absolute',
       zIndex: '20',
       display: 'block',
       w: '10',
@@ -113,6 +107,9 @@ export class Menu {
       textIndent: '-100%',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
+      borderWidth: '2px',
+      borderStyle: 'solid',
+      borderColor: 'crust',
     }),
   };
 }
